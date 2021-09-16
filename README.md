@@ -5,7 +5,7 @@ L'un de mes amis a écrit et développé un univers de Fantasy qui sert de base 
 Le projet est entièrement libre ! Il n'y a pas de client, le site étant réalisé à mon initiative et avec l'aval du créateur de l'univers en question.
 
 <details>
-<summary>Apparté : C'est quoi le jeu de rôle ??</summary>
+<summary>Apparté : C'est quoi le jeu de rôle ?!?</summary>
 Le jeu de rôle, c'est la rencontre entre le conte, le théâtre d'improvisation et le jeu de société !  
 Plusieurs personnes se réunissent pour incarner des personnages qui évolueront au travers d'une histoire contée par le Maître du Jeu.
 
