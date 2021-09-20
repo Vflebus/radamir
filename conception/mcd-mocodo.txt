@@ -1,0 +1,21 @@
+appartient à, 0N CAMPAGNE, 11 NOTE
+NOTE: _contenu, est_privée
+crée, 0N UTILISATEUR, 11 NOTE
+
+
+CAMPAGNE: nom_campagne, description, date_création
+organise, 0N UTILISATEUR, 11 CAMPAGNE
+UTILISATEUR: pseudonyme, email, mot_de_passe, est_admin
+gère, 1N UTILISATEUR, 11 WIKI
+WIKI: titre
+WIKI_A_DES_BLOCS, 1N BLOC, 11 WIKI
+BLOC: _titre, contenu
+
+CAMPAGNE_A_DES_JOUEURS,  0N UTILISATEUR, 1N CAMPAGNE
+:
+régit, 1N UTILISATEUR, 11 RÉGION
+
+
+:
+:
+RÉGION: région, géographie, architecture, langue, monnaie, dirigeants, religion, classes_sociales, noms, justice, mages, tenue, hygiène_de_vie, soins, se_déplacer, alimentation, art, divertissements
