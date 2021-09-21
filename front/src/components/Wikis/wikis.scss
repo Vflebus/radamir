@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background: url("../../assets/images/bg-carte.png");
+  font-family: "IM Fell English SC", "Times New Roman", Times, serif;
+}
+
+.wikis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  color: #3b160d;
+
+  &__title {
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+
+  &__regions {
+    padding: 2rem;
+    width: 70%;
+    border: 1px solid #3b160d;
+
+    &-list {
+      display: flex;
+    }
+
+    &-link {
+      padding: 0.5rem 1rem;
+      margin-right: 1rem;
+      border: 1px solid #3b160d;
+      color: #3b160d;
+
+      &:hover {
+        color: #cfccac;
+        background-color: #3b160d;
+      }
+    }
+  }
+}
