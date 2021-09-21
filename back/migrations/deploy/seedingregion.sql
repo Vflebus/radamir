@@ -307,7 +307,85 @@ Manger, boire et dormir sont des distractions en soi, aussi les Nains les pratiq
 '
 ),
 -- #endregion nains - 4
-();
+(
+'
+Drok''nor
+', 
+'
+L''Île de Drok''nor est la terre natale des Orcs, des créatures de plus de deux mètres et toutes en muscles. À l''origine, les clans vivaient paisiblement et commerçaient même avec le Royaume de Kervollen à l''occasion ; ce fut d''autant plus une surprise lorsqu''ils attaquèrent les humains par le Sud.
+L''attaque fut dévastatrice, les orcs s''étant ralliés aux gobelins, de petites créatures se reproduisant à une vitesse folle, et aux ogres, des géants de cinq à six mètres, capables de balayer tout sur leur passage. Mais l''arme la plus terrible de ces ""peaux-vertes"", était les mots de pouvoirs permettant de ramener les morts à la vie, et de commander à ces morts-vivants décérébrés. Ainsi, chaque adversaire qui tombait se relevait pour grossir les rangs de l''armée qui toujours avançait, menée par un Marqué, Katon le Vorace.
+Parvenu jusqu''aux portes de la capitale, Kaelic, il fallut l''Alliance des Humains, des Elfes et des Nains, pour abattre Katon et repousser les envahisseurs jusqu''à leur île.
+Désormais, les Orcs vivent en autarcie sur Drok''nor, et il est devenu rare d''en croiser sur le continent, tant la haine de ce peuple est encore vivace chez les autres.
+',
+'
+Au Sud du continent, séparée de ce dernier par la mer, l''Île de Drok''nor est tout sauf un endroit accueillant. Le climat est sec, chaud en journée et froid la nuit, et les terres rocheuses et arides manquent cruellement de points d''eau, obligeant les habitants comme la faune à constamment se déplacer d''une oasis à une autre, seuls endroits épagnés où on peut trouver à boire, à manger, et de la végétation. Il existe de nombreux réseaux soutterrains, des grottes et cavernes reliées entre elles, possédant de nombreux filons de minerais mais abritant souvent des créatures toutes plus dangereuses les unes que les autres. Quelques plages disposent de petits bois d''arbres fruitiers et de criques où l''on trouve des crustacés.
+Une seule et énorme ville se tient au centre de l''île : la Forgecité d''Inkosi, vestige du lieu de rassemblement des peaux-vertes avant la Grande Guerre, et aujourd''hui pratiquemment désertée.
+',
+'
+Les Orcs étant nomades, ils visent au plus pratique, afin de pouvoir s''installer et se déplacer rapidement : tentes en peaux et cuirs de bêtes, assemblées avec de grands os ou défenses d''ivoire. On dort sur des paillasses de paille sèche, et on fait cuire les aliments sur un feu de camp sommaire.
+La Forgecité d''Inkosi était quand à elle le lieu où ont été forgées les armes et armures pour la Grande Guerre. N''ayant pas vocation à être défendu, l''endroit à ciel ouvert s''étend sur des kilomètres. Plutôt que des entrepôts, difficiles à construire car le bois est une denrée rare et précieuse, on creusait des tranchées et des fosses où on entreposait le matériel et les vivres. Une immense arène est également présente, où on entraînait les peaux-vertes au combat.
+On trouve également d''anciennes constructions en pierre sur l''île, mais toutes en ruines et rongées par le vent, la chaleur, et le temps.
+',
+'
+Les Orcs parlent l''Orc, sans grande surprise. La langue est très gutturale, les voix souvent graves et profondes.
+',
+'
+On utilise le troc plutôt que de la monnaie, et tout peut s''échanger, de la ration de nourriture à la hache en fer. Du temps où les orcs commerçaient avec les visiteurs de l''île, on échangeait du cuir ou des minerais de fer, présents en abondance même si dangereusement récupérables, contre de la nourriture et du bois du continent.
+',
+'
+Il existe aujourd''hui trois clans se partageant l''Île. En périphérie, aux abords de l''eau, se trouvent le Clan Mbali. Historiquement, c''est le clan qui commerçait avec les humains du continent avant la guerre, et qui cherche aujourd''hui à renouer avec eux. C''est le plus ""pacifique"" des trois clans, dans le sens où il n''attaquera pas à vue ceux qui s''approchent. Ils sont menés par un vieil orc nommé Chifundo, qui aspire à mener son peuple sur la voie de la rédemption.
+Plus loin sur les terres se trouve le Clan Penjani. Principalement des chasseurs et des guerriers nomades, qui cherchent surtout à survivre sur leur île en défendant farouchement leurs territoires de chasse. Assez hostiles, ils sont menés par Gugulethu, un orc imposant qui respecte avant tout la force et la férocité.
+Enfin au centre de l''île se trouve le Clan Tinashe. Guerriers, forgerons, nécromants, ils sont les plus aggressifs et vivent principalement d''attaques et de pillages sur les deux autres clans, ramenant à la vie les corps tombés pour les servir. Ils sont menés par Fungai, une orque nécromant, qui a participé à la Grande Guerre et rumine depuis sa vengeance  en léchant ses plaies.
+',
+'
+Pendant des générations, les Orcs priaient Seok, le dieu crocodile, qui envoyait ses Marqués au sein de son peuple afin qu''ils leurs viennent en aide. Il n''y avait ni temple, ni autel : les prières étaient communes et un chaman les officiait, remerciant le dieu de ses bienfaits.
+Aujourd''hui, plus aucun Marqué n''est présent sur l''Île de Drok''nor, et Seok n''est plus prié que par le clan Mbali.
+',
+'
+Le Chef de Clan est en haut de l''échelle sociale. C''est lui qui prend les décisions importantes, qui est le guide de son peuple, et qui a la responsabilité de leur survie, et sa parole doit être respectée. Un Orc peut défier le Chef de Clan en duel à mort pour prendre sa place s''il n''est pas d''accord avec une décision et refuse de la suivre.
+Les guerriers défendent le Clan contre les agressions extérieures, qu''elles viennent d''un autre clan ou de l''une des créatures dangereuses qui pourrait les menacer. Ils peuvent être aussi envoyés à l''assaut d''un clan rival, en vue de récupérer des fournitures qui leur seront vitales.
+Les chasseurs ont la tâche de réapprovisionner le Clan en viande, cuir, os... Cela passe aussi bien par la traque de créatures comestibles que par la pêche au harpon à proximité des eaux dangereuses, ou bien tout simplement par la récolte sur une charogne de ce qui peut être utile.
+Le reste du Clan compte les enfants, qui sont mis à contribution pour la cueillette de fruits et d''herbes, les anciens, qui ont diverses tâches comme surveiller le feu, conter les histoires, ou des travaux manuels de couture ou de cuisine.
+',
+'
+Les noms sont d''inspiration Sud Africaine, et un orc n''a qu''un seul prénom, suivi du nom de son clan : ""Je suis Limbani, du clan Shona"".
+',
+'
+Si un orc commet un méfait au sein de son propre clan - voler de la nourriture, attaquer et blesser un autre membre, voire le tuer - tout dépend du clan auquel il appartient.
+Le Clan Mbali organisera un conseil avec le chef, et ils décideront de la culpabilité ou non de l''orc : s''il est jugé coupable et que le crime est grave, ou qu''il s''agit d''une récidive, il sera exclu du Clan, et devra partir seul (souvent synonyme de mort). Si on lui pardonne, il devra faire un don à la personne offensée, qu''il s''agisse d''une arme, de nourriture, d''une couverture, ou d''un service.
+Le Clan Penjani organisera un duel entre les deux individus. Le plus fort aura raison, et repartira avec l''objet de la discorde, ou s''en sortira sans être inquiété.
+Le Clan Tinashe ne s''embarrasse pas de justice. Si quelqu''un n''obéit pas aux ordres ou fait preuve d''une attitude rebelle, il sera tué, et relevé en cadavre pour servir.
+',
+'
+Les Orcs du Clan Tinashe possèdent plusieurs mots de pouvoirs, permettant de relever les morts en tant que cadavres décérébrés, de leur donner des ordres, ou de les faire exploser. Ces capacités étaient particulièrement redoutées lors de la Grande Guerre, car chaque guerrier ennemi abattu rejoignait les rangs des Orcs.
+S''il reste parmi les autres clans des Orcs doués de l''Étincelle, la magie, elle, est un souvenir lointain et traumatisant : on évite d''y avoir recours et on décourage ceux qui cherchent à développer ce don.
+',
+'
+Les Orcs se sont adaptés à leur environnement hostile. Ils supportent très bien les températures élevées comme basses, et leurs tenues sont principalement des peaux de bêtes, trophées de chasse, des crânes et ossements en décoration, et quelques pièces d''armures en fer pour compléter le tout.
+Les Orcs apprécient les piercings, en os ou en métal, les bijoux notamment les colliers de crocs, et savent tatouer. Les cheveux se rasent ou se tressent.
+',
+'
+Les Orcs préfèrant boire l''eau que de se la verser sur le corps ou les cheveux, l''hygiène se résume à un bain de temps à autre dans la mer, s''ils vivent à proximité, ou dans l''eau d''une oasis.
+',
+'
+Les Orcs sont robustes, mais ne sont pas pour autant à l''abri d''un mauvais coup, surtout à force de se cogner dessus entre eux. La magie n''étant utilisée que par le Clan Tinashe - et pas vraiment dans le but de guérir - ce sont des remèdes naturels qui sont utilisés par les anciens : on se sert surtout de plantes et d''une pâte épaisse d''origine végétale afin de panser les blessures, on fait des attelles avec des os et des fibres tissées, on fait ingérer au blessé du jus de cactus hallucinogènes le temps de la convalescence en cas de fortes douleurs.
+',
+'
+On se déplace à pied sur la terre ferme, et en pirogue pour le clan Mbali, proche de la mer, quand il s''agit d''aller pêcher. Les Orcs ne chevauchent pas, car aucune créature de l''île ne se laisserait dompter et parce qu''ils préfèrent de toutes façons les manger.
+',
+'
+La nourriture est au coeur des préoccupations des Orcs. Tout ce qui est comestible est récupéré, et tout ce qui en a vaguement l''air est testé afin de vérifier si c''est bien le cas : c''est ainsi que les Orcs ont découvert de nombreuses propriétés de plantes, fleurs et champignons.
+S''ils apprécient particulièrement la viande fraîche, ils savent aussi pêcher poissons et crustacés, cueillir fruits, légumes et racines, récupérer des oeufs, voire des insectes. Pas question de faire le difficile quand il s''agit de survivre.
+Lorsque les fruits sont trop mûrs pour être consommés, ils sont stockés dans un tonnelet et macèrent pendant 6 à 8 semaines : ils donneront un alcool fort, sucré et très épais, mais qui ne peut probablement pas être avalé par autre chose qu''un Orc, au risque d''en être malade.
+',
+'
+Les rares jours de pluie, le Clan se regroupe afin de conserver la chaleur et partager un repas chaud. Les anciens se lancent dans des contes, fréquemment accompagnés de tambours en peaux tendues et de flûtes en os. L''art s''exprime à travers les tatouages, qui ne sont pas les mêmes selon le Clan. Les Mbali représentent des éléments naturels, comme le soleil, la lune, les étoiles...là où les Penjani aiment à se tatouer des grands symboles tribaux sur le corps, pour impressionner leurs adversaires...et les Tinashe, eux, représentent des crânes, des os, ou autre figure morbide inspirant la crainte.
+',
+'
+Les Orcs apprécient les concours de force. Bras de fer, un genre de sumo consistant à faire sortir son adversaire d''un cercle tracé dans le sol, lutte à mains nues...
+On peut aussi jouer aux osselets pour tester ses réflexes, ou faire des parties de dés gravés dans des os.
+'
+),
 -- #endregion orcs - 5 - last
 
 COMMIT;
