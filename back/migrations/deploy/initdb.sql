@@ -1,0 +1,74 @@
+-- Deploy radamir:initdb to pg
+
+BEGIN;
+
+CREATE TABLE "user" (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	username VARCHAR(255) NOT NULL UNIQUE,
+	email VARCHAR(255) NOT NULL UNIQUE,
+	"password" VARCHAR(255) NOT NULL,
+	is_admin BOOLEAN NOT NULL
+);
+
+CREATE TABLE campaign (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	campaign_name VARCHAR(255) NOT NULL UNIQUE,
+	"description" TEXT NOT NULL,
+	created_at TIMESTAMPTZ DEFAULT NOW(),
+	"user_id" INT NOT NULL REFERENCES "user"(id)
+);
+
+CREATE TABLE campaign_has_players (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	campaign_id INT NOT NULL REFERENCES campaign(id),
+	"user_id" INT NOT NULL REFERENCES "user"(id)
+);
+
+CREATE TABLE note (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	content TEXT NOT NULL,
+	is_private BOOLEAN NOT NULL,
+	campaign_id INT NOT NULL REFERENCES campaign(id),
+	"user_id" INT NOT NULL REFERENCES "user"(id)
+);
+
+CREATE TABLE wiki (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	title VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE "block" (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	title VARCHAR(255),
+	content TEXT NOT NULL
+);
+
+CREATE TABLE wiki_has_blocks (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	wiki_id INT NOT NULL REFERENCES wiki(id),
+	block_id INT NOT NULL REFERENCES block(id)
+);
+
+CREATE TABLE region (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	region TEXT NOT NULL UNIQUE,
+	"geography" TEXT NOT NULL,
+	architecture TEXT NOT NULL,
+	"language" TEXT NOT NULL,
+	currency TEXT NOT NULL,
+	leader TEXT NOT NULL,
+	religion TEXT NOT NULL,
+	caste TEXT NOT NULL,
+	"name" TEXT NOT NULL,
+	justice TEXT NOT NULL,
+	mage TEXT NOT NULL,
+	outfit TEXT NOT NULL,
+	lifestyle TEXT NOT NULL,
+	treatment TEXT NOT NULL,
+	movement TEXT NOT NULL,
+	nutrition TEXT NOT NULL,
+	art TEXT NOT NULL,
+	entertainment TEXT NOT NULL
+);
+
+COMMIT;
