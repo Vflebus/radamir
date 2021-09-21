@@ -52,6 +52,7 @@ CREATE TABLE wiki_has_blocks (
 CREATE TABLE region (
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	region TEXT NOT NULL UNIQUE,
+	history TEXT NOT NULL,
 	"geography" TEXT NOT NULL,
 	architecture TEXT NOT NULL,
 	"language" TEXT NOT NULL,
