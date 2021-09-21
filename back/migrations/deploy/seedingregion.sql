@@ -82,10 +82,81 @@ Il existe enfin une forme de théâtre, où les Elfes Noirs sont masqués, et in
 ',
 '
 Les cartes à collectionner des humains ont fait leur bout de chemin jusqu''au Domaine de Vanna, de même que nombre de jeux de société en bois. Les cerfs-volants sont très appréciés, de même que les jeux d''adresse, et des compétitions sont parfois organisées lors de festivals d''été.
-',
+'
 ),
 -- elfes noirs end
-(),
+( 
+'
+Feidlimid
+',
+'
+À l''origine, plusieurs tribus d''elfes vivaient dans les Bois de Feidlimid, se partageant le vaste territoire. Des conflits territoriaux existaient, mais une tribu en particulier, très aggressive, voulait imposer sa loi à toutes les autres et les dominer. Les tribus se sont unies pour l''affronter, et la maîtrise de l''enchantement d''armes et d''armures pour la guerre a été la cause de beaucoup de sang versé, mais également de nombreux arbres abattus et de nombreuses créatures tuées. Les aggresseurs chassés des bois, les tribus restantes se sont unies et ont renoncé à l''enchantement, se concentrant sur la guérison de la forêt et l''harmonie entre ses habitants.
+Aujourd''hui, les elfes sylvains sont un peuple prospère et mystérieux, qui tire son épanouissement dans le contact avec la nature et la protection de son environnement.
+', 
+'
+Au Nord du Royaume de Kervollen s''étendent les majestueuses forêts du Bois de Feidlimid, terres ancestrales des elfes sylvains. Le climat est doux et clément, et la végétation s''étend à perte de vue jusqu''aux confins du continent, entrecoupées seulement de quelques monts rocheux, de lacs et de rivières. Les bois sont épais, n''étant pas du tout entretenus, les Elfes vivant en harmonie avec la nature.
+À l''Ouest cependant, à la frontière avec l''Empire de Karnaclok, les terres ont été partiellement déboisées et la repousse des arbres est devenue difficile. Ce problème est source de tensions croissantes avec les Nains.
+À l''Est, le Ravin de Drustan est une frontière physique avec les terres des Elfes Noirs. Profond d''une vingtaine de mètres, il marque clairement la limite des Bois de Feidlimid.
+Au Nord, les forêts donnent sur des plages de sable fin, où aucun peuple n''a jugé bon de tenter d''installer un port...
+',
+'
+Les rares voyageurs qui ont eu la chance de pénétrer dans les forêts elfiques et de rencontrer ce peuple si mystérieux parlent d''un arbre gigantesque, dominant toute la canopée, sur lequel les elfes se sont installés au fur et à mesure des âges. Les habitations construites en bois sont réparties tout autour de l''écorce, et reliées entre elles par de grands escaliers et ponts suspendus. Des cavités ont été aménagées afin de permettre aux lucioles de s''y installer, et d''éclairer la nuit. Dans les plus hautes cimes, on trouve de nombreux nids d''hippogriffes, qui s''y sont installés et peuvent accepter de servir de montures volantes.
+Quelques postes d''observations ou de chasse sont aménagés dans les plus grands arbres, leurs larges cimes permettant de s''y installer confortablement, et il s''agit principalement d''aménager un peu de confort, avec de quoi s''asseoir, dormir, se protéger de la pluie et cuisiner.
+',
+'
+Les elfes sylvains parlent l''elfique, une lange ancienne et complexe, très chantante à l''oreille, mais difficile à apprendre. À l''écrit, les nombreux caractères nécessitent une grande précision, car deux mots peuvent paraître similaires, mais la nuance est importante.
+',
+'
+Au sein du peuple elfe, il n''existe pas de monnaies. Chacun a son rôle à jouer au sein de la société, et en retour, la société le nourrira, l''habillera et le protégera.
+Les quelques elfes intéressés par des échanges commerciaux avec les humains ont surtout fait du troc, principalement de la nourriture et des épices, mais aussi et surtout des jeux de société et de cartes.
+',
+'
+Les elfes sont dirigés par un conseil princier. Chacun des trois princes représente un aspect de la société elfique, aussi retrouve-t-on un Prince Druide, un Prince Artisan, et un Prince Chasseur.
+Nuallan, le Prince Chasseur, est avisé, mais froid et taciturne. Il s''assure que ses hommes soient formés aux arts de la chasse, n''abattent que ce qui est nécessaire ou représente une menace, et le fassent toujours avec respect. Les chasseurs étant aussi des guerriers, Nuallan les mènera au combat si cela est nécessaire, afin de protéger son peuple et le Bois.
+Cynbel, le Prince Artisan, est passionné et vif d''esprit. Responsable de ceux qui choisissent la voie de la création, il s''assure que son peuple ne manque de rien, et que les procédés de fabrication respectent la nature et l''environnement. Il se montre assez belliqueux depuis quelques années, les Nains sabotant tout ce qu''il essaye d''accomplir par leur attitude désinvolte.
+Enfin Suibhne, le Prince Druide, a de l''humour et de la répartie. D''un naturel calme, il observe les choses avant de prendre une décision. Il dirige les druides elfes, qui ont pour charge de veiller à l''harmonie et l''équilibre entre le peuple et la forêt, et dont les sorts de guérisons sont parmi les plus puissants de Radamir.
+Les princes elfiques sont nommés parmi leurs pairs au sein de la caste, lorsque le précédent est mort, ou devenu trop vieux pour les mener. Les candidats exposent leurs arguments et des discussions s''en suivent jusqu''à ce qu''un nouveau prince soit élu à la majorité.
+',
+'
+Les elfes vénèrent Jalenos, le Dieu Cerf, protecteur des étendues sauvages et de la vie. Boadicea est sa Marquée, et marche parmi le peuple elfique, lui venant en aide lors des parties de chasse. Dans de nombreuses demeures, sur les bords des fenêtres, on trouve une petit figurine de cerf sculptée en bois, et un petit autel où y faire offrande de graines, que les oiseaux viendront picorer.
+',
+'
+La société elfique est portée sur l''égalité et l''entraide, et chacun a son rôle à jouer. Lorsqu''un elfe atteint l''âge adulte, vers ses 20 ans, il doit choisir la caste qu''il souhaite intégrer, parmi les chasseurs, les druides ou les artisans. Ses envies seront sondées, son potentiel testé, et un maître pourra lui être attribué selon son choix. Il peut arriver qu''un individu change de caste, mais le fait est assez rare, les elfes prenant leur temps pour savoir vers quelle voie se diriger.
+',
+'
+Les noms elfiques sont inspirés irl du celtique. On nomme son prénom ainsi que la caste à laquelle on appartient. Ex : "Je suis Luigsech, des Artisans".
+',
+'
+En cas de conflit, le dialogue est toujours privilégié. On essaye de trouver la source du problème et comment le résoudre, quitte à prendre du temps pour trouver une solution durable. Si le crime commis est grave, on organise le procès de l''elfe, afin de juger s''il peut rester parmi eux ou doit quitter l''arbre et partir.
+',
+'
+Les mots de pouvoirs des elfes sont gardés précieusement par ce peuple, héritage d''un temps où ils étaient désunis en plusieurs tribus. Autrefois, ils enchantaient armes et armures, mais on dit ce savoir perdu lorsqu''ils se sont regroupés en un seul peuple. Ceux qui sont dotés de l''Étincelle sont nommés Druides, et ont à charge de veiller à l''équilibre et à l''harmonie entre les elfes et la nature. Leurs sorts de soins sont très puissants, mais ils peuvent également communiquer avec les animaux, ou faire se mouvoir les arbres et les plantes pour qu''elles se défendent.
+',
+'
+Les Elfes sylvains portent très peu de bijoux ou de piercings. La plupart en revanche se peignent le visage et le corps avec du henné, indiquant ainsi leur appartenance à leur caste et leur âge. Les vêtements sont traditionnellement verts et d''origine végétale, aidant les elfes à se camoufler dans leur milieu forestier.
+',
+'
+On connaît des baumes et des onguents pour l''hygiène, on fait attention à sa peau, à ses cheveux, à ses dents, et surtout à ses oreilles, et on prend de façon régulière des bains dans les rivières ou les lacs des environs.
+',
+'
+Les Druides sont passés maîtres en la matière, et leurs soins sont réputés sur tout Radamir. On dit qu''ils peuvent réassembler au corps un membre perdu récemment, ou qu''ils peuvent ramener à la vie quelqu''un de mortellement blessé tant qu''il lui reste un tout dernier souffle. C''est cet art miraculeux qui a souvent poussé les humains à venir à leur rencontre, et nombre de légendes parlent de proches sauvés par la magie des elfes.
+Pour les maux de tous les jours, les elfes connaissent également nombre de plantes aux vertus multiples.
+',
+'
+Les hippogriffes ne se laissent chevaucher que par un seul cavalier toute leur vie, le lien se créant dès l''éclosion de l''œuf jusqu''à la mort de l''animal.
+Les cerfs sont également chevauchés s''ils l''acceptent, et dans certains rares cas, de grands loups peuvent être montés. On ne leur impose ni selles, ni rênes, car on favorise la communion des esprits à la domination de l''un ou l''autre.
+',
+'
+On mange principalement fruits, légumes et racines, que l''on sait cuisiner sous bien des formes. La viande est également au menu mais on ne mange que les animaux que les druides permettent de chasser, afin de réguler une population trop nombreuse, ou parce que la bête représente un danger.
+',
+'
+La musique tient une grande place au sein de la société elfique, et tous ou presque savent jouer d''un instrument ou chanter. Lors des fêtes, chacun se joint au choeur et essaye d''atteindre l''harmonie collective.
+Les elfes peignent l''intérieur de leurs habitations au moyen d''argiles colorées, représentant des moments heureux vécus avec leur famille, qui subsistent ainsi de génération en génération.
+',
+'
+Le commerce avec les humains leur a apporté les jeux de cartes et de plateaux, dont les elfes sont très friands. Ils apprécient également les belles histoires d''aventure et d''amitié, et ont des jouets en bois qu''ils se lancent d''un arbre à un autre afin d''aiguiser leurs réflexes et leur agilité.
+'
+),
 -- elfes sylvains end
 (),
 -- humains end
