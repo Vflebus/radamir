@@ -157,7 +157,7 @@ Les elfes peignent l''intérieur de leurs habitations au moyen d''argiles color�
 Le commerce avec les humains leur a apporté les jeux de cartes et de plateaux, dont les elfes sont très friands. Ils apprécient également les belles histoires d''aventure et d''amitié, et ont des jouets en bois qu''ils se lancent d''un arbre à un autre afin d''aiguiser leurs réflexes et leur agilité.
 '
 ),
--- elfes sylvains end
+-- #endregion elfes sylvains - 2
 (
 '
 Kervollen
@@ -240,10 +240,74 @@ Il y a davantage d''artisans que d''artistes, mais il en existe tout de même : 
 Les jeux de cartes, les jeux à boire, les jeux de dés sont appréciés parmi les masses. Les enfants apprennent à lire en bas âge, et peuvent de fait continuer en grandissant, la littérature est donc appréciée en passe-temps. Lors des fêtes, on organise des tournois de tir à la corde, ou d''autres jeux de foire.
 '
 ),
--- humains end
-(),
--- nains end
+-- #endregion humains - 3
+(
+'
+L''histoire de l''Empire Nain commence avec celle du Premier Forgeron : le premier nain qui forgea quelque chose, et entama ainsi la marche de son peuple vers une recherche perpetuelle de progrès technologique. Une grande partie de la culture naine est basée sur la curiosité scientifique et cette envie d''améliorer son environnement. "Y''a moyen d''améliorer ça" est une phrase que tout nain a déjà prononcé au moins une centaine de fois dans sa vie.
+Leur vaste ville mécanique sous la montagne se développant, les Nains ont conquis le reste de leur territoire grâce aux chemins de fer et alimenté leurs machines en déboisant les forêts alentours.
+Alliés aux humains de longue date, avec qui ils aiment à commercer, les Nains les ont rejoints lors de la Grande Guerre opposant leur alliance aux peaux-vertes, et leur technologie militaire a fait des miracles face aux envahisseurs.
+Néanmoins, cette volonté d''amélioration à outrance n''est pas sans conséquences ni dangers, et les Nains doivent faire face au dépérissement progressif de leur environnement écologique.
+',
+'
+Le territoire de l''Empire de Karnaclok s''étend à l''Ouest du Royaume de Kervollen. Il s''agit principalement de plateaux rocheux, où s''étendent des grands lacs, rivières et cascades, ainsi qu''une gigantesque montagne enneigée, abritant la ville principale des Nains : Karnaclok. Une frontière maritime à l''Ouest est peu exploitable car les hautes falaises bordant l''océan empêchent d''y installer un port de pêche ou de commerce. Au Nord cependant, se trouve le principal port de Mikaveg et la carrière de pierres, pierres qui voyagent jusqu''au Sud des terres humaines.
+Les forêts de conifères qui autrefois prosperaient ont cependant été pour la plupart déboisées, afin de récupérer le bois indispensable au fonctionnement des machines naines.
+',
+'
+Les nains sont férus de technologie et construisent rapidement. Leur ville principale, Karnaclok, est un chef-d''oeuvre d''architecture moderne au coeur de la montagne. Les demeures sont très carrées, en acier et ont un aspect très mécanique, elles sont chauffées par tout un système de tuyaux qui relâchent constamment de la vapeur, de sorte que la ville est souvent enfumée.
+En extérieur, les quelques habitations naines sont bâties sur le même modèle, et tranchent nettement avec leur environnement montagnard.
+',
+'
+Outre le commun, les Nains parlent le nanique, leur langue natale. Très chantante, cette langue est aussi très riche, et un mot peut avoir de nombreuses significations. L''écriture du nanique se fait à partir de runes qui ne veulent pas dire la même chose selon la façon dont on les associe.
+',
+'
+Les Nains ont une monnaie unique, en or et frappée du sceau d''un engrenage. L''or n''étant pas une ressource difficile à récupérer on n''a pas vu l''intérêt de se servir d''un autre métal.
+En commerce avec les humains, on peut également régler un gros achat au moyen de lingots d''or, ou de pierres précieuses.
+',
+'
+Officiellement, à la tête de l''Empire se trouve l''Empereur Dagda le Vif, qui a 167 ans (un Nain vit en moyenne jusqu''à 150 ans). Sénile, il n''a guère plus qu''un rôle d''apparat, les nains se dirigeant officieusement vers un système de gouvernance démocratique avec l''organisation d''élections. Plusieurs partis politiques émergent, dont deux d''entre eux rencontrent un vif engouement : Connall le Fier, qui a le soutien des Mécamages, et cherche à ralentir l''expansion de la technologie, et Fearghas le Rusé, qui a le soutien des Technoprêtres, et cherche au contraire à l''accélerer.
+',
+'
+Les Nains ne prient plus de divinité depuis plusieurs générations, et les quelques temples extérieurs à Karnaclok sont en ruines. En revanche, s''il y a bien une chose en laquelle les Nains semblent croire, c''est en la technologie et au progrès. Les Technoprêtres sont une philosophie plus qu''une religion, vouée à la logique et à l''intellect, qui encourage à se débarasser des émotions et sentiments, jugés trop instables et indignes de confiance, pour se focaliser sur l''intellect. Depuis quelques années, elle encourage également la mécanisation, un procédé visant à remplacer des parties du corps jugées défectueuses, par des prothèses mécaniques plus performantes et adaptées.
+',
+'
+L''Empereur et sa famille sont traditionnellement considérés avec respect : ils sont les descendants du Premier Forgeron, le tout premier nain à avoir jamais forgé quelque chose.
+Le peuple se divise surtout par son activité : les forgerons ont leur quartier, de même que les mineurs, les ingénieurs, les commerçants, les soldats, les mécamages et enfin les technoprêtres.
+',
+'
+Les noms nains sont inspirés IRL de l''irlandais. Un nain a un prénom, donné par ses parents, et se choisit un suffixe à ses vingt ans : "Je suis Muirne le Commode".
+',
+'
+Des textes de lois existent, mais tiennent principalement du bon sens : ne pas tuer, ne pas voler...
+En cas d''infraction, ce sont les soldats qui procèdent à l''arrestation et à l''emprisonnement, avant que le coupable ne comparaisse devant un technoprêtre, garant du raisonnement et de la logique : on lui infligera une peine d''égale mesure à la faute.
+',
+'
+La magie a sa place au sein de la société naine, ne serait-ce que pour les soins : il est fréquent que les expérience naines explosent ou engendrent petits et gros bobos. La magie étant elle aussi au service du progrès, les mécamages expérimentent de la même manière que les ingénieurs, par tâtonnement, avec les conséquences désastreuse que cela peut impliquer.
+',
+'
+Les Nains aiment les vêtements amples avec de nombreuses poches, afin de toujours conserver tout un tas d''outils sur eux. Le tablier de cuir est de mode, ainsi que les lunettes aux verres souvent teintés.
+Les barbes et les cheveux sont décorés de bagues et de bijoux, et on sait percer les oreilles, le nez, le septum, l''arcade, la lèvre et la langue.
+Les tatouages sont fréquents, et on apprécie notamment les tatouages faciaux.
+',
+'
+En dépit d''une technologie avancée et d''un respect pour l''hygiène - les maisons sont souvent équipées de douches et de produits de beauté - les nains ont tendance à travailler dans des conditions rendant difficile de rester propre toute la journée. Des maladies de la peau peuvent être fréquentes, de même que des complications respiratoires, de la surdité ou la perte de la vue avec l''âge.
+',
+'
+L''Empire est parcouru par plusieurs voies de chemin de fer : on peut ainsi parcourir le territoire nain en train à vapeur et couvrir de longues distances rapidement. Les trains sont également utilisés pour faire transiter les arbres importés depuis Kervollen.
+À noter que les soldats disposent de golems et d''engins de sièges, pilotables.
+',
+'
+Les Nains adorent manger, et surtout découvrir de nouvelles saveurs : quelque chose qu''ils partagent avec la plupart des humains. L''importation d''épices est florissant, de même que les viandes et le gibier fort - ils ne sont guère friands de légumes ou de fruits à moins que cela ne soit sous forme d''alcool.
+Ils distillent d''ailleurs un alcool à partir de champignons des mines, qui est réputé être le plus fort de tout Radamir : on le dit capable d''assommer un Orc.
+',
+'
+Les Nains sont productifs lorsqu''il s''agit d''améliorer leur quotidien : l''art et la musique ne font donc pas exception surtout au niveau du matériel. Les peintres bénéficient de pinceaux à peinture rechargeable rattachés à un étui dorsal l''alimentant. Les musiciens disposent surtout de lourds instruments en cuivres reliés à des machines, dans lesquels ils n''ont plus besoin de souffler, ni même de jouer : quelques pressions sur des boutons, et en avant la musique. 
+',
+'
+Manger, boire et dormir sont des distractions en soi, aussi les Nains les pratiquent-ils toujours en quantité. Infatigables travailleurs, les Nains ont néanmoins une passion pour le bomball, un sport très apprécié se déroulant dans une arène : deux équipes de golems mécaniques s''affrontent pour envoyer le plus de balles explosives dans le camp adverse, et tous les coups sont permis.
+'
+),
+-- #endregion nains - 4
 ();
--- orcs end
+-- #endregion orcs - 5 - last
 
 COMMIT;
