@@ -1,5 +1,4 @@
-import Region from "./Region";
-import Other from "./Other";
+import ListItem from "./ListItem";
 
 const Wikis = () => {
   return (
@@ -8,12 +7,12 @@ const Wikis = () => {
       <div className="wikis__regions">
         <h2 className="wikis__regions-title">Régions</h2>
         <ul className="wikis__regions-list">
-          <Region />
+          <ListItem category="regions" route="test-region" name="Test Région" />
         </ul>
       </div>
       <div className="wikis__others">
         <ul className="wikis__others-list">
-          <Other />
+          <ListItem category="others" route="test-others" name="Test Other" />
         </ul>
       </div>
     </div>
