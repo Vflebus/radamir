@@ -13,7 +13,6 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import imageMapResize from './imageMapResizer.js';
-// import scripts from './scripts.js'
 
 const CarteWiki = () => {
 
@@ -35,58 +34,73 @@ const CarteWiki = () => {
         document.getElementById(`info${region}`).classList.toggle(`noDisplay`);
     };
 
+    const fadeMapIn = () => {
+        let map = document.getElementById('carte-radamir');
+        map.classList.remove('appearance');
+    };
+
     const fadeMapOut = (region) => {
-        let targetRegion = document.getElementById(`mouseOver${region}`);
-        document.getElementById('map-container').classList.toggle('darkened');
-        targetRegion.classList.toggle('zindex');
-        targetRegion.classList.toggle(`scaled`);
-        targetRegion.classList.toggle(`scaled${region}`);
-        document.getElementById(`info${region}`).classList.toggle(`noDisplay`);
+        let targets = [document.getElementById('allMaps'), document.getElementById('infoBulleContainer')]
+        targets.forEach(target => {
+            if (!target.style.opacity) {
+                target.style.opacity = 1;
+            }
+            console.log(`fade start...`);
+            let fadeOutEffect = setInterval(function () {
+                if (target.style.opacity < 0) {
+                    clearInterval(fadeOutEffect);
+                    target.remove();
+                }
+                else {
+                    target.style.opacity -= 0.01;
+                }
+            }, 20)
+        })
     };
 
     useEffect(
         () => {
+            fadeMapIn();
             // Event listenner pour la séléction d'une région
-        // document.querySelectorAll('area').forEach(area => {
-        //     area.addEventListener('click', fadeMapOut);
-        // })
-        // Event listenner Karnaclok
-        document.getElementById('region-karnaclok').addEventListener('mouseenter', function (event) {
-            darkenMap('Karnaclok', event);
-        });
-        document.getElementById('region-karnaclok').addEventListener('mouseleave', function () {
-            fullView('Karnaclok');
-        });
-        // Event listenner Kervollen
-        document.getElementById('region-kervollen').addEventListener('mouseenter', function (event) {
-            darkenMap('Kervollen', event);
-        });
-        document.getElementById('region-kervollen').addEventListener('mouseleave', function () {
-            fullView('Kervollen');
-        });
-        // Event listenner Vanna
-        document.getElementById('region-vanna').addEventListener('mouseenter', function (event) {
-            darkenMap('Vanna', event);
-        });
-        document.getElementById('region-vanna').addEventListener('mouseleave', function () {
-            fullView('Vanna');
-        });
-        // Event listenner Feidlimid
-        document.getElementById('region-feidlimid').addEventListener('mouseenter', function (event) {
-            darkenMap('Feidlimid', event);
-        });
-        document.getElementById('region-feidlimid').addEventListener('mouseleave', function () {
-            fullView('Feidlimid');
-        });
-        // Event listenner Droknor
-        document.getElementById('region-droknor').addEventListener('mouseenter', function (event) {
-            darkenMap('Droknor', event);
-        });
-        document.getElementById('region-droknor').addEventListener('mouseleave', function () {
-            fullView('Droknor');
-        });
+            document.querySelectorAll('area').forEach(area => {
+                area.addEventListener('click', fadeMapOut);
+            })
+            // Event listenner Karnaclok
+            document.getElementById('region-karnaclok').addEventListener('mouseenter', function (event) {
+                darkenMap('Karnaclok', event);
+            });
+            document.getElementById('region-karnaclok').addEventListener('mouseleave', function () {
+                fullView('Karnaclok');
+            });
+            // Event listenner Kervollen
+            document.getElementById('region-kervollen').addEventListener('mouseenter', function (event) {
+                darkenMap('Kervollen', event);
+            });
+            document.getElementById('region-kervollen').addEventListener('mouseleave', function () {
+                fullView('Kervollen');
+            });
+            // Event listenner Vanna
+            document.getElementById('region-vanna').addEventListener('mouseenter', function (event) {
+                darkenMap('Vanna', event);
+            });
+            document.getElementById('region-vanna').addEventListener('mouseleave', function () {
+                fullView('Vanna');
+            });
+            // Event listenner Feidlimid
+            document.getElementById('region-feidlimid').addEventListener('mouseenter', function (event) {
+                darkenMap('Feidlimid', event);
+            });
+            document.getElementById('region-feidlimid').addEventListener('mouseleave', function () {
+                fullView('Feidlimid');
+            });
+            // Event listenner Droknor
+            document.getElementById('region-droknor').addEventListener('mouseenter', function (event) {
+                darkenMap('Droknor', event);
+            });
+            document.getElementById('region-droknor').addEventListener('mouseleave', function () {
+                fullView('Droknor');
+            });
             imageMapResize();
-            // scripts.init;
             window.addEventListener('resize', () => {
                 // let resize = imageMapResize();
                 setTimeout(() => {imageMapResize()}, 2000);
@@ -197,16 +211,9 @@ const CarteWiki = () => {
 
                         <div id="map-container">
 
-
-                            {/* <div id="carte-radamir" className="carte-radamir">
-                                <ImageMapper src={carteRadamir} map={regionMaps} height={mapHeight}/>
-                            </div> */}
-
-
-                            <img src={carteRadamir} useMap="#image-map" id="carte-radamir" className="carte-radamir" alt="Carte de Radamir" />
+                            <img src={carteRadamir} useMap="#image-map" id="carte-radamir" className="appearance carte-radamir" alt="Carte de Radamir" />
 
                             <map name="image-map">
-                                <Router>
                                     <Link to="/wiki/karnaclok"><area 
                                         id="region-karnaclok" 
                                         target="" 
@@ -247,7 +254,6 @@ const CarteWiki = () => {
                                         coords="2070,1611,2093,1582,2116,1560,2147,1560,2172,1551,2172,1532,2183,1515,2200,1500,2223,1500,2234,1517,2248,1529,2274,1529,2291,1540,2313,1546,2333,1560,2336,1582,2364,1580,2384,1568,2398,1537,2415,1529,2418,1503,2415,1481,2429,1484,2452,1481,2466,1472,2466,1452,2458,1421,2438,1419,2415,1419,2415,1402,2438,1393,2452,1379,2472,1351,2492,1337,2523,1317,2551,1291,2571,1252,2559,1207,2548,1184,2525,1167,2489,1147,2466,1136,2438,1122,2424,1133,2384,1139,2342,1156,2308,1167,2288,1176,2274,1187,2246,1204,2223,1218,2198,1218,2152,1246,2110,1280,2076,1300,2056,1314,2019,1331,2014,1356,2008,1382,1988,1410,1977,1433,1966,1472,1957,1498,1983,1529,2011,1546,2031,1563,2031,1585"
                                         shape="poly" 
                                     /></Link>
-                                </Router>
                             </map>
                         </div>
         

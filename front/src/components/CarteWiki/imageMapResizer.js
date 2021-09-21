@@ -5,7 +5,6 @@
  */
 
 ;(function() {
-  'use strict'
 
   function scaleImageMap() {
     function resizeMap() {
