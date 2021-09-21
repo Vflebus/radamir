@@ -124,7 +124,7 @@ Les elfes vénèrent Jalenos, le Dieu Cerf, protecteur des étendues sauvages et
 La société elfique est portée sur l''égalité et l''entraide, et chacun a son rôle à jouer. Lorsqu''un elfe atteint l''âge adulte, vers ses 20 ans, il doit choisir la caste qu''il souhaite intégrer, parmi les chasseurs, les druides ou les artisans. Ses envies seront sondées, son potentiel testé, et un maître pourra lui être attribué selon son choix. Il peut arriver qu''un individu change de caste, mais le fait est assez rare, les elfes prenant leur temps pour savoir vers quelle voie se diriger.
 ',
 '
-Les noms elfiques sont inspirés irl du celtique. On nomme son prénom ainsi que la caste à laquelle on appartient. Ex : "Je suis Luigsech, des Artisans".
+Les noms elfiques sont inspirés irl du celtique. On nomme son prénom ainsi que la caste à laquelle on appartient. Ex : ""Je suis Luigsech, des Artisans"".
 ',
 '
 En cas de conflit, le dialogue est toujours privilégié. On essaye de trouver la source du problème et comment le résoudre, quitte à prendre du temps pour trouver une solution durable. Si le crime commis est grave, on organise le procès de l''elfe, afin de juger s''il peut rester parmi eux ou doit quitter l''arbre et partir.
@@ -243,6 +243,9 @@ Les jeux de cartes, les jeux à boire, les jeux de dés sont appréciés parmi l
 -- #endregion humains - 3
 (
 '
+Karnaclok
+',
+'
 L''histoire de l''Empire Nain commence avec celle du Premier Forgeron : le premier nain qui forgea quelque chose, et entama ainsi la marche de son peuple vers une recherche perpetuelle de progrès technologique. Une grande partie de la culture naine est basée sur la curiosité scientifique et cette envie d''améliorer son environnement. "Y''a moyen d''améliorer ça" est une phrase que tout nain a déjà prononcé au moins une centaine de fois dans sa vie.
 Leur vaste ville mécanique sous la montagne se développant, les Nains ont conquis le reste de leur territoire grâce aux chemins de fer et alimenté leurs machines en déboisant les forêts alentours.
 Alliés aux humains de longue date, avec qui ils aiment à commercer, les Nains les ont rejoints lors de la Grande Guerre opposant leur alliance aux peaux-vertes, et leur technologie militaire a fait des miracles face aux envahisseurs.
@@ -290,6 +293,9 @@ Les tatouages sont fréquents, et on apprécie notamment les tatouages faciaux.
 ',
 '
 En dépit d''une technologie avancée et d''un respect pour l''hygiène - les maisons sont souvent équipées de douches et de produits de beauté - les nains ont tendance à travailler dans des conditions rendant difficile de rester propre toute la journée. Des maladies de la peau peuvent être fréquentes, de même que des complications respiratoires, de la surdité ou la perte de la vue avec l''âge.
+',
+'
+Les mécamages sont les premiers secouristes vers qui se tourner en cas de blessure. À force d''expérimentations, la médecine magique s''est considérablement développée, mais reste parfois approximative, et fait bien pâle figure face à la magie curative des Elfes Sylvains.
 ',
 '
 L''Empire est parcouru par plusieurs voies de chemin de fer : on peut ainsi parcourir le territoire nain en train à vapeur et couvrir de longues distances rapidement. Les trains sont également utilisés pour faire transiter les arbres importés depuis Kervollen.
@@ -385,7 +391,7 @@ Les rares jours de pluie, le Clan se regroupe afin de conserver la chaleur et pa
 Les Orcs apprécient les concours de force. Bras de fer, un genre de sumo consistant à faire sortir son adversaire d''un cercle tracé dans le sol, lutte à mains nues...
 On peut aussi jouer aux osselets pour tester ses réflexes, ou faire des parties de dés gravés dans des os.
 '
-),
+);
 -- #endregion orcs - 5 - last
 
 COMMIT;
