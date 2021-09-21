@@ -1,5 +1,7 @@
+import CarteWiki from '../CarteWiki'
+
 const App = () => {
-  return <div>APP</div>;
+  return <CarteWiki />;
 };
 
 export default App;
