@@ -84,7 +84,7 @@ Il existe enfin une forme de théâtre, où les Elfes Noirs sont masqués, et in
 Les cartes à collectionner des humains ont fait leur bout de chemin jusqu''au Domaine de Vanna, de même que nombre de jeux de société en bois. Les cerfs-volants sont très appréciés, de même que les jeux d''adresse, et des compétitions sont parfois organisées lors de festivals d''été.
 '
 ),
--- elfes noirs end
+-- #endregion elfes noirs - 1
 ( 
 '
 Feidlimid
@@ -158,7 +158,88 @@ Le commerce avec les humains leur a apporté les jeux de cartes et de plateaux, 
 '
 ),
 -- elfes sylvains end
-(),
+(
+'
+Kervollen
+', 
+'
+Le Royaume humain de Kervollen est peuplé principalement de fermiers et paysans, d''artisans et de chasseurs, de chevaliers et de mages académiques, vivant dans des villages ou des cités fortifiées, bordés de forêts où rôdent toutes sortes de créatures.
+Le Royaume, en paix avec ses voisins notamment grâce à un commerce florissant, fut le premier touché par l''invasion de peaux-vertes venues du Sud. Il fallut toute la diplomatie humaine pour que leur armée, ralliant les Nains et les Elfes, parviennent à repousser l''envahisseur jusqu''à l''océan.
+Le Royaume fut durement touché par ce qu''on nomma ""la Grande Guerre"", et les conséquences se font encore sentir aujourd''hui : les chevaliers, défenseurs de Kervollen, ne sont plus assez nombreux pour défendre efficacement les terres, les gobelins infestent le Sud, et la corruption gagne peu à peu le siège du pouvoir, entraînant son lot de banditisme et de pauvreté.
+',
+'
+Le Royaume de Kervollen tient une place centrale sur le continent, ce qui a grandement joué dans le rôle de médiateurs et de commerçants des humains. Beaucoup de forêts, donc de bois à disposition, et des lacs et fleuves alimentant la population en eau potable. De nombreuses plaines, le pays est assez ""plat"", ce qui se traduit par la nécessité d''importer de la pierre depuis les carrières naines de Karnaclok.
+Enfin au Sud, une ouverture sur la mer et de nombreux ports, permettant d''acheminer les marchandises d''un bout à l''autre du Royaume, de commercer avec l''étranger, ou de naviguer jusqu''aux confins du monde.
+',
+'
+Au Sud du Royaume, au plus près de la frontière avec les terres sauvages de Drok''Nor, on bâtit principalement en pierre, importée à prix d''or depuis les carrières naines de Karnaclok. Châteaux, fortifications, murs d''enceintes, tours de garde...tout doit être assez solide pour permettre aux occupants de résister à un potentiel nouvel assaut. On vise d''ailleurs principalement à la résistance, sans trop de fioritures inutiles. Simple et basique.
+Au centre des terres, où se trouve la Forteresse-état de Kaelic, hormis les larges murs d''enceintes qui encerclent la ville, et le donjon du Roi, les habitations, maisons comme fermes, sont principalement construites en bois, eu égard à la proximité des nombreuses forêts des alentours.
+',
+'
+Les humains ayant un passif de diplomates et de commerçants, il est fréquent que ce soit leur langue, appelée ""le commun"", qui soit parlée dans presque toutes les contrées. Elle est relativement simple à prononcer et à écrire, ce qui facilite son apprentissage. Les enfants l''apprennent tôt, et la majeure partie de la population est lettrée.
+',
+'
+Les humains ont mis en place un système monétaire à base de pièces de cuivre, d''argent et d''or.
+Dix pièces de cuivre valent une pièce d''argent, et dix pièces d''argent valent une pièce d''or.
+On paye en général avec de l''argent, on fait de la petite monnaie avec du cuivre, et on réserve l''or pour les gros achats.
+',
+'
+Les humains étaient jusqu''à il y a peu dirigés par un Roi dont le nom est entré dans la légende : Toras Lame-d''Argent. Tout à la fois Roi et Chevalier, il a été l''élément fédérateur des armées de toutes races lorsque les légions de peaux-vertes sont passées à l''attaque, unissant sous une même bannière les Nains, Elfes Sylvains, et Elfes Noirs contre les envahisseurs.
+Son règne fut long et prospère, mais sa mort fut soudaine et laissa le royaume dans le désarroi. Son fils, Toras II, n''avait que quatre ans lorsqu''il fut nommé Roi à son tour.
+Il fut nécessaire de mettre une Régence en place, et toute une batterie de ministres et de conseillers se précipitèrent pour venir en aide au jeune souverain.
+Aujourd''hui, Toras II a dix ans et trois conseillers gèrent ses affaires : le Haut-Diplomate Corentin, le Ministre de la Défense Jodoc, et Grand Intendant Malo, qui défendent farouchement leurs places et leurs points de vue sur la gestion du royaume.
+',
+'
+Avant la Grande Guerre, le culte de Canis était la religion principale du Royaume. Divinité canine, Canis prône la fidélité, la loyauté et le courage, trois valeurs qui sont encore aujourd''hui la devise des Chevaliers.
+Son temple se trouve à Rozenn, la ville faisant office de Quartier Général des Chevaliers, et on trouve surtout des petits autels dans les villages et à la croisée des routes.
+Une autre religion est actuellement en plein essor, il s''agit du Culte de l''Extase, dirigé par Sogor le marqué. Loin des valeurs de Canis, jugées trop contraignantes et dépassées, Sogor offre à ses fidèles de croire en un avenir lumineux où chacun profiterait des plaisirs de la vie sans contraintes. Ses prêtres et prêtresses sont dévoués au plaisir sous toutes ses formes, et ses temples se multiplient, depuis la capitale aux villages alentours.
+',
+'
+Le Roi est à la tête du Royaume, et sa royale famille vit avec lui, au Donjon de Kaelic. Le pouvoir est héréditaire, et la lignée de Toras est ancienne.
+Les Chevaliers sont à part : n''importe qui peut rejoindre leur Ordre, à condition de s''engager à vie à respecter leurs préceptes, et à venir en aide à ceux qui le demande. On apprécie la force et l''adresse, mais c''est bien le courage qui est la vertu la plus prisée.
+Le reste de la population, du plus humble paysan au plus influent des ministres, appartient au ""peuple"", et les classes sociales se divisent selon leur fortune.
+',
+'
+Les noms humains sont inspirés du Breton IRL. Plutôt qu''un nom de famille, on a tendance à avoir un prénom, et à donner le lieu de sa naissance : ""Je suis Toras de Kaelic"".
+',
+'
+Autrefois, lorsqu''un méfait était commis, que ce soit dans un village ou à la Forteresse-état, c''était le rôle des chevaliers que de gérer la justice. On discutait avec eux de ce qu''il s''était passé et on s''en remettait à leur sagesse pour que le crime soit puni de façon appropriée.
+Aujourd''hui, les chevaliers en sous-nombre étant principalement sur les routes, c''est la nouvellement formée Milice qui s''occupe des affaires de justice, se référant aux textes de lois que promeut le Ministre de la Justice Jodoc.
+Les peines peuvent aller d''une amende à une peine de prison, ou l''envoi aux galères pour les cas les plus graves. La peine de mort est exceptionnelle, ce serait du gâchis de ressource.
+',
+'
+Il y a une grande académie magique à la forteresse-état de Kaelic, qui forme ceux dotés du don de l''étincelle. Elle est supervisée par le Sorcier Suprême Gwendal. On y apprend les sorts basiques, on y teste les élèves afin de déceler les plus prometteurs, mais surtout les plus débrouillards : il sera fréquent qu''on cherche à envoyer les mages à l''étranger ou en exploration, afin qu''ils retrouvent et ramènent des mots de puissance oubliés.
+Les mages sont très prisés à la cour du Roi, notamment auprès du Haut-Diplomate Corentin, qui voit en eux un moyen de jonction entre les humains et les autres peuples. Il n''est donc pas rare d''en trouver aux postes d''émissaires.
+Ceux qui ont révélé des aptitudes médiocres peuvent au choix rester à l''Académie pour la servir - l''endroit nécessite de l''entretien - ou revenir à une vie civile, leurs dons leur rendant la vie quelque peu plus pratique, la plupart du temps.
+',
+'
+On aime à s''habiller de façon pratique, la population comptant principalement des fermiers, paysans, ou artisans, le travail est souvent salissant. La coquetterie est réservée aux jours de fêtes ou aux grandes occasions, ou bien lorsqu''on ne se salit pas en travaillant : au choix, parce qu''on est riche, ou fainéant.
+Les humains apprécient tout particulièrement les bijoux, l''or et les pierres précieuses. Le commerce avec les Nains est donc florissant eu égard à leurs nombreuses mines, et chaque famille peut se targuer d''avoir au moins un ""trésor"", qu''elle transmettra à ses enfants ou revendra en cas de coup dur.
+On sait percer les oreilles, le nez ou les arcades, et on sait faire des tatouages à l''encre.
+',
+'
+De manière générale, on fait attention à son hygiène. Les familles sont équipés d''un baquet d''eau que l''on fait chauffer, ou bien on se débarbouille à la rivière à la belle saison, le climat étant particulièrement doux.
+On fait attention à ses dents, en mâchant une racine qui pousse en abondance dans le royaume.
+',
+'
+Pour les blessures externes, les mages font office de médecins, d''autant que les sorts de guérisons sont parmi les moins dangereux à apprendre. Les plaies peuvent être refermées et les saignements arrêtés, mais pour un membre cassé ou un objet pointu enfoncé dans un corps, il va falloir procéder manuellement avant d''appliquer le soin.
+Pour tout ce qui est maladie ou poison, ce sont les alchimistes qui seront les plus à même de vendre onguents et potions à base de plantes, du plus humble rebouteux de village au prestigieux commerçant de cité-forteresse.
+',
+'
+Selon où on se rend, on peut se déplacer à pied, en charrette tirée par un oxhino, ou bien à dos de sauride pour les plus fortunés qui en possèdent.
+Il existe aussi grâce aux fleuves tout un réseau de péniches qu''il est possible de prendre pour remonter ou descendre les cours d''eau - mais ces derniers temps, les cours d''eau sont moins bien fréquentés qu''autrefois...
+',
+'
+Au sein d''un foyer, on fait trois repas par jour, principalement à base de légumes et de fruits cultivés sur ses terres ou aux alentours, que l''on mange sous forme de soupe, de ragoûts, cuits ou séchés ; et de viandes issues de fermes ou de poissons issus de la pêche locale. Le gibier est abondant dans les bois aux alentours des cités mais mieux vaut éviter de chasser à proximité des terres elfiques, ou dans les contrées qui abritent encore aujourd''hui des gobelins.
+Dans les villes, tavernes et auberges accueillent une clientèle diversifiée, et ont donc plus de choix - il faut pouvoir également contenter les autres races.
+',
+'
+Il y a davantage d''artisans que d''artistes, mais il en existe tout de même : on apprécie les bardes à la cour, les cirques en ville, les peintres pour les plus fortunés. Le théâtre de rue est populaire, notamment la satire sociale, et il est possible de vivre de son écriture pour peu qu''on ait du talent dans ce domaine.
+',
+'
+Les jeux de cartes, les jeux à boire, les jeux de dés sont appréciés parmi les masses. Les enfants apprennent à lire en bas âge, et peuvent de fait continuer en grandissant, la littérature est donc appréciée en passe-temps. Lors des fêtes, on organise des tournois de tir à la corde, ou d''autres jeux de foire.
+'
+),
 -- humains end
 (),
 -- nains end
