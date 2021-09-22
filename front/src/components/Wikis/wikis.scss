@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap");
 
+// #D4D3B5
+
 * {
   padding: 0;
   margin: 0;
@@ -32,31 +34,24 @@ body {
     text-transform: uppercase;
   }
 
-  &__regions {
-    position: relative;
-    padding: 2rem;
-    margin: 4rem 0 3rem;
-    max-width: 70%;
-    background-color: #f2fedc;
-
-    &-title {
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      padding: 0.5rem 1rem;
-      background-color: #f2fedc;
-    }
-  }
-
+  &__regions,
   &__others {
     padding: 2rem;
     max-width: 70%;
-    background-color: #f2fedc;
-    border-radius: 25px;
+    background-color: #d4d3b5;
+    box-shadow: 0px 0px 40px 30px #d4d3b5;
+
+    &-title {
+      margin-bottom: 1rem;
+    }
 
     &-list {
       justify-content: center;
     }
+  }
+
+  &__regions {
+    margin: 4rem 0 2rem;
   }
 
   ul {
@@ -67,14 +62,30 @@ body {
 
   a {
     display: block;
-    padding: 0.5rem 1rem;
-    border: 1px solid #3b160d;
+    padding: 0.3rem 0.6rem;
     color: #3b160d;
     transition: ease 0.3s;
 
     &:hover {
-      color: #f2fedc;
+      color: #d4d3b5;
       background-color: #3b160d;
+      border-radius: 15px;
+      box-shadow: 0px 0px 10px 10px #3b160d;
+    }
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .wikis {
+    text-align: center;
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__regions,
+    &__others {
+      max-width: 90%;
     }
   }
 }
