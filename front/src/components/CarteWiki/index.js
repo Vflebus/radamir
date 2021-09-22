@@ -39,8 +39,6 @@ const CarteWiki = () => {
         document.getElementById(`info`).textContent = data[regionLowerCase];
         document.getElementById(`info`).classList.toggle(`noDisplay`);
         document.getElementById(`info`).classList.toggle(`zindex`);
-        // document.getElementById(`info${region}`).classList.toggle(`noDisplay`);
-        // document.getElementById(`info${region}`).classList.toggle(`zindex`);
         document.querySelector('.indexLink').classList.add(`noDisplay`);
     }; 
 
@@ -52,8 +50,6 @@ const CarteWiki = () => {
         targetRegion.classList.toggle(`scaled${region}`);
         document.getElementById(`info`).classList.toggle(`noDisplay`);
         document.getElementById(`info`).classList.toggle(`zindex`);
-        // document.getElementById(`info${region}`).classList.toggle(`noDisplay`);
-        // document.getElementById(`info${region}`).classList.toggle(`zindex`);
         document.querySelector('.indexLink').classList.remove(`noDisplay`);
     };
 
@@ -129,13 +125,7 @@ const CarteWiki = () => {
                 setTimeout(() => {imageMapResize()}, 2000);
             });
             document.querySelector('.indexLink').addEventListener('mouseenter', () => {
-                document.getElementById('navText').classList.add('hoveredText');
-            });
-            document.querySelector('.indexLink').addEventListener('mouseenter', () => {
                 document.querySelector('.navArrow').classList.add('navArrowTranslate');
-            });
-            document.querySelector('.indexLink').addEventListener('mouseleave', () => {
-                document.getElementById('navText').classList.remove('hoveredText');
             });
             document.querySelector('.indexLink').addEventListener('mouseleave', () => {
                 document.querySelector('.navArrow').classList.remove('navArrowTranslate');
@@ -153,97 +143,12 @@ const CarteWiki = () => {
                             <p id="navText">Index</p>
                         </Link>
                     </div>
-                    {/* INFOBULLES RÉGIONS */}
                     <aside id="infoBulleContainer">
                         <div className="infoBulle noDisplay" id="info">
                             {/* Historique région */}
                         </div>
-                        <div className="infoBulle noDisplay" id="infoFeidlimid">
-                            <p>
-                                Au Nord du Royaume de Kervollen s'étendent les majestueuses forêts du Bois de Feidlimid, terres
-                                ancestrales des elfes sylvains. Le climat est doux et clément, et la végétation s'étend à perte de
-                                vue jusqu'aux confins du continent, entrecoupées seulement de quelques monts rocheux, de lacs et de
-                                rivières. Les bois sont épais, n'étant pas du tout entretenus, les Elfes vivant en harmonie avec la
-                                nature.
-                            </p>
-                            <p>À l'Ouest cependant, à la frontière avec l'Empire de Karnaclok, les terres ont été partiellement
-                                déboisées et la repousse des arbres est devenue difficile. Ce problème est source de tensions
-                                croissantes avec les Nains.
-                                À l'Est, le Ravin de Drustan est une frontière physique avec les terres des Elfes Noirs. Profond
-                                d'une vingtaine de mètres, il marque clairement la limite des Bois de Feidlimid.
-                                Au Nord, les forêts donnent sur des plages de sable fin, où aucun peuple n'a jugé bon de tenter
-                                d'installer un port...
-                            </p>
-                        </div>
-                        <div className="infoBulle noDisplay" id="infoKarnaclok">
-                            <p>
-                                L'histoire de l'Empire Nain commence avec celle du Premier Forgeron : le premier nain qui forgea quelque
-                                chose, et entama ainsi la marche de son peuple vers une recherche perpetuelle de progrès technologique.
-                                Une grande partie de la culture naine est basée sur la curiosité scientifique et cette envie d'améliorer
-                                son environnement. "Y'a moyen d'améliorer ça" est une phrase que tout nain a déjà prononcé au moins une
-                                centaine de fois dans sa vie.
-                                Leur vaste ville mécanique sous la montagne se développant, les Nains ont conquis le reste de leur
-                                territoire grâce aux chemins de fer et alimenté leurs machines en déboisant les forêts alentours.
-                            </p>
-                            <p>Alliés aux humains de longue date, avec qui ils aiment à commercer, les Nains les ont rejoints lors de la
-                                Grande Guerre opposant leur alliance aux peaux-vertes, et leur technologie militaire a fait des miracles
-                                face aux envahisseurs.
-                                Néanmoins, cette volonté d'amélioration à outrance n'est pas sans conséquences ni dangers, et les Nains
-                                doivent faire face au dépérissement progressif de leur environnement écologique.
-                            </p>
-                        </div>
-                        <div className="infoBulle noDisplay" id="infoVanna">
-                            <p>
-                                À l'origine, les Elfes Noirs n'étaient qu'une seule tribu, Vanna, chassée du Domaine de Feidlimid
-                                lorsqu'elle a essayé de prendre le pouvoir sur toutes les autres. Repoussée à l'Est, elle s'est
-                                développée en cinq villages répartis sur l'entiéreté de leur nouveau territoire, chaque village étant
-                                dirigé par un membre de la Famille Vanna, qui transmet le flambeau à sa descendance.
-                                Moins proche d'une monarchie que d'un régime totalitaire, la population est surtout divisée entre ceux
-                                qui sont en haut et ont le pouvoir, et ceux qui sont en bas, et en subissent les conséquences.
-                            </p>
-                            <p>Réputé aussi bien pour sa ville-casino offrant à tout le continent les plaisirs les plus divers et
-                                variés, que pour ses assassins envoyés en mission sur contrat, le Domaine de Vanna est une région où il
-                                fait bon vivre sous quelques conditions : si on a de l'or, si on a du pouvoir, ou si l'on est un membre
-                                de la Famille, et donc détenteur des deux.
-                            </p>
-                        </div>
-                        <div className="infoBulle noDisplay" id="infoKervollen">
-                            <p>
-                                Le Royaume humain de Kervollen est peuplé principalement de fermiers et paysans, d'artisans et de
-                                chasseurs, de chevaliers et de mages académiques, vivant dans des villages ou des cités fortifiées,
-                                bordés de forêts où rôdent toutes sortes de créatures.
-                                Le Royaume, en paix avec ses voisins notamment grâce à un commerce florissant, fut le premier touché par
-                                l'invasion de peaux-vertes venues du Sud. Il fallut toute la diplomatie humaine pour que leur armée,
-                                ralliant les Nains et les Elfes, parviennent à repousser l'envahisseur jusqu'à l'océan.
-                            </p>
-                            <p>Le Royaume fut durement touché par ce qu'on nomma "la Grande Guerre", et les conséquences se font encore
-                                sentir aujourd'hui : les chevaliers, défenseurs de Kervollen, ne sont plus assez nombreux pour défendre
-                                efficacement les terres, les gobelins infestent le Sud, et la corruption gagne peu à peu le siège du
-                                pouvoir, entraînant son lot de banditisme et de pauvreté.
-                            </p>
-                        </div>
-                        <div className="infoBulle noDisplay" id="infoDroknor">
-                            <p>
-                                L'Île de Drok'nor est la terre natale des Orcs, des créatures de plus de deux mètres et toutes en
-                                muscles. À l'origine, les clans vivaient paisiblement et commerçaient même avec le Royaume de Kervollen
-                                à l'occasion ; ce fut d'autant plus une surprise lorsqu'ils attaquèrent les humains par le Sud.
-                            </p>
-                            <p>
-                                L'attaque fut dévastatrice, les orcs s'étant ralliés aux gobelins, de petites créatures se reproduisant
-                                à une vitesse folle, et aux ogres, des géants de cinq à six mètres, capables de balayer tout sur leur
-                                passage. Mais l'arme la plus terrible de ces "peaux-vertes", était les mots de pouvoirs permettant de
-                                ramener les morts à la vie, et de commander à ces morts-vivants décérébrés. Ainsi, chaque adversaire qui
-                                tombait se relevait pour grossir les rangs de l'armée qui toujours avançait, menée par un Marqué, Katon
-                                le Vorace.
-                            </p>
-                            <p>Parvenu jusqu'aux portes de la capitale, Kaelic, il fallut l'Alliance des Humains, des Elfes et des
-                                Nains, pour abattre Katon et repousser les envahisseurs jusqu'à leur île.
-                                Désormais, les Orcs vivent en autarcie sur Drok'nor, et il est devenu rare d'en croiser sur le
-                                continent, tant la haine de ce peuple est encore vivace chez les autres.
-                            </p>
-                        </div>
                     </aside>
-                    {/* INFOBULLES RÉGIONS */}
+                    
                     {/* FRAGMENTS DE CARTE */}
                     <div id="allMaps">
                             <img src={section_karnaclok} alt="Empire de Karnaclok" id="mouseOverKarnaclok" className="clickThrough region" />
