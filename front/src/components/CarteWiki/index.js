@@ -9,8 +9,9 @@ import section_kervollen from './images/Section_kervollen.png';
 import section_vanna from './images/Section_vanna.png';
 import carteRadamir from './images/CarteRadamir.png'
 import navArrow from './images/flecheNavRouge.png'
+import logo from './images/logo-decoupe.png'
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import imageMapResize from './imageMapResizer.js';
@@ -18,23 +19,12 @@ import data from './data'
 
 const CarteWiki = () => {
 
-    const [historique, setHistorique] = useState();
-
-    
-    const setTextContent = (region) => {
-        let regionLowerCase = region.toLowerCase();
-        setHistorique(data[regionLowerCase]);
-        console.log(data[regionLowerCase]);
-        console.log(historique);
-    };   
-
     const darkenMap = (region) => {
         let targetRegion = document.getElementById(`mouseOver${region}`);
         document.getElementById('map-container').classList.toggle('darkened');
         targetRegion.classList.toggle('zindex');
         targetRegion.classList.toggle(`scaled`);
         targetRegion.classList.toggle(`scaled${region}`);
-        setTextContent(region);
         let regionLowerCase = region.toLowerCase();
         document.getElementById(`info`).textContent = data[regionLowerCase];
         document.getElementById(`info`).classList.toggle(`noDisplay`);
@@ -55,7 +45,11 @@ const CarteWiki = () => {
 
     const fadeMapIn = () => {
         let map = document.getElementById('carte-radamir');
-        map.classList.remove('appearance');
+        setTimeout(() => {map.classList.remove('appearance')}, 400);
+        let logo = document.getElementById('logo');
+        setTimeout(() => {logo.classList.remove('logoAppearance')}, 400);
+        let indexLink = document.querySelector('.indexLink');
+        setTimeout(() => {indexLink.classList.remove('indexLinkAppearance')}, 400);
     };
 
     const fadeMapOut = () => {
@@ -137,8 +131,8 @@ const CarteWiki = () => {
     return (
             <div>
                 <main id="mainContainer">
-                    <div className="indexLink">
-                        <Link to="/wiki/index" className="indexLink">
+                    <div className="indexLink indexLinkAppearance">
+                        <Link to="/wiki/" className="indexLink">
                             <img src={navArrow} alt="flèche de navigation" className="navArrow"></img>
                             <p id="navText">Index</p>
                         </Link>
@@ -214,6 +208,7 @@ const CarteWiki = () => {
                                     />
                                 </Link>
                             </map>
+                            <img src={logo} alt="logo Radamir" className="logo logoAppearance" id="logo"/>
                         </div>
                     </div>
                 </main>
