@@ -1,0 +1,37 @@
+@use "../../styles/vars";
+
+.wiki {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem auto;
+  max-width: 70%;
+  background-color: vars.$light-bg;
+  box-shadow: 0px 0px 40px 30px vars.$light-bg;
+
+  &__title {
+    margin: 1.5rem 0 3rem;
+    font-family: vars.$title-font;
+    text-transform: uppercase;
+    font-size: 2rem;
+  }
+
+  &__page {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 0 4rem;
+    width: 100%;
+  }
+
+  &__category {
+    margin-bottom: 1.5rem;
+
+    &-title {
+      margin-bottom: 0.8rem;
+      font-family: vars.$title-font;
+      font-size: 1.5rem;
+    }
+  }
+}
