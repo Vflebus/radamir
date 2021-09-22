@@ -2,19 +2,18 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Wikis from "../Wikis";
 
+import "./app.scss";
+
 const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/wiki">
           <Wikis />
         </Route>
       </Switch>
     </Router>
   );
 };
-// const App = () => {
-//   return <div>APP</div>;
-// };
 
 export default App;

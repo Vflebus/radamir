@@ -1,24 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap");
-
-// #D4D3B5
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
+@use "../../styles/vars";
 
 body {
   background: url("../../assets/images/bg-carte.png");
-  font-family: "IM Fell English SC", "Times New Roman", Times, serif;
 }
 
 .wikis {
@@ -27,10 +10,11 @@ body {
   align-items: center;
   justify-content: center;
   padding: 4rem;
-  color: #3b160d;
+  color: vars.$main-color;
 
   &__title {
     margin-bottom: 2rem;
+    font-size: 2rem;
     text-transform: uppercase;
   }
 
@@ -38,11 +22,12 @@ body {
   &__others {
     padding: 2rem;
     max-width: 70%;
-    background-color: #d4d3b5;
-    box-shadow: 0px 0px 40px 30px #d4d3b5;
+    background-color: vars.$light-bg;
+    box-shadow: 0px 0px 40px 30px vars.$light-bg;
 
     &-title {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
     }
 
     &-list {
@@ -63,14 +48,14 @@ body {
   a {
     display: block;
     padding: 0.3rem 0.6rem;
-    color: #3b160d;
+    color: vars.$main-color;
     transition: ease 0.3s;
 
     &:hover {
-      color: #d4d3b5;
-      background-color: #3b160d;
+      color: vars.$light-bg;
+      background-color: vars.$main-color;
       border-radius: 15px;
-      box-shadow: 0px 0px 10px 10px #3b160d;
+      box-shadow: 0px 0px 10px 10px vars.$main-color;
     }
   }
 }
@@ -86,6 +71,10 @@ body {
     &__regions,
     &__others {
       max-width: 90%;
+
+      &-title {
+        font-size: 1.3rem;
+      }
     }
   }
 }
