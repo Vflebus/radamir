@@ -1,0 +1,14 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "API pour l'application web Radamir",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev":  "nodemon test.js"
+  },
+  "keywords": [],
+  "author": "Radamir - Team Back - Noam, Boris & Loïc",
+  "license": "ISC"
+}
