@@ -46,7 +46,7 @@ router.get("/campaigns", bController.findAll);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/campaigns/:campaign_name(/^.{0,255}$/gm)`, cController.findByPk);
+router.get(`/campaigns/:campaign_name(/^[^\s.]{1,255}$/gm)`, cController.findByPk);
 
 // GET /wiki
 
@@ -63,7 +63,7 @@ router.get(`/wiki`, dController.findAll);
 // GET /wiki/:title
 
 /**
- * Responds with one campaign in database
+ * Responds with one wiki in database
  * @route GET /wiki/{title}
  * @group Wiki
  * @summary Responds with one wiki in database
@@ -72,7 +72,7 @@ router.get(`/wiki`, dController.findAll);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki/:title(/^.{0,255}$/gm)`, cController.findByPk);
+router.get(`/wiki/:title(/^[^\s.]{1,255}$/gm)`, cController.findByPk);
 
 //#endregion GET
 
