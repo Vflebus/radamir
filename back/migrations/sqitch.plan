@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=radamir
+
+initdb 2021-09-21T12:32:28Z Loicb <loic.bonaventura@gmail.com> # Init database
+seedingregion 2021-09-21T13:42:53Z Loicb <loic.bonaventura@gmail.com> # Seeding region
