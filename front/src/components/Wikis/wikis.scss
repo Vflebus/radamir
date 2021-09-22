@@ -15,6 +15,7 @@ body {
   &__title {
     margin-bottom: 2rem;
     font-size: 2rem;
+    font-weight: bold;
     text-transform: uppercase;
   }
 
@@ -28,6 +29,7 @@ body {
     &-title {
       margin-bottom: 1.5rem;
       font-size: 1.5rem;
+      font-weight: bold;
     }
 
     &-list {
@@ -44,6 +46,7 @@ body {
   a {
     display: block;
     padding: 0.3rem 0.6rem;
+    font-size: 1.1rem;
     color: vars.$main-color;
     transition: ease 0.3s;
 
@@ -56,7 +59,7 @@ body {
   }
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 564px) {
   .wikis {
     text-align: center;
 
@@ -70,6 +73,10 @@ body {
       &-title {
         font-size: 1.3rem;
       }
+    }
+
+    ul {
+      flex-direction: column;
     }
   }
 }
