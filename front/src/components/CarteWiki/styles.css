@@ -121,7 +121,7 @@ p {
 }
 .indexLink {
     position: absolute;
-    left: 1vw;
+    left: .4vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,7 +156,14 @@ a {
     width: 45vw;
 }
 .logoAppearance {
-    bottom: 35%;
-    left: 20%;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
     width: 1059px;
+}
+.menuAppearance {
+    transform: translateY(-200px);
+}
+.menu {
+    transition: transform 3s;
 }

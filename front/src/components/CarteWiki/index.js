@@ -52,6 +52,9 @@ const CarteWiki = () => {
         setTimeout(() => {logo.classList.remove('logoAppearance')}, 400);
         let indexLink = document.querySelector('.indexLink');
         setTimeout(() => {indexLink.classList.remove('indexLinkAppearance')}, 400);
+        setTimeout(() => {document.querySelectorAll('.menu').forEach(element => {
+            element.classList.remove('menuAppearance');
+        })}, 400);
     };
 
     const fadeMapOut = () => {
@@ -155,7 +158,7 @@ const CarteWiki = () => {
                     {/* FRAGMENTS DE CARTE */}
 
                         <div id="map-container">
-                            <Menu />
+                            <Menu className="menuAppearance" />
 
                             <img src={carteRadamir} useMap="#image-map" id="carte-radamir" className="appearance carte-radamir" alt="Carte de Radamir" />
 
