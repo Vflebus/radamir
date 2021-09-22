@@ -1,0 +1,37 @@
+.menu {
+    position: absolute;
+    top: 2vh;
+    right: .4vw;
+    z-index: 12;
+}
+.menuImg, .menu {
+    width: 20vw;
+}
+.noDisplay {
+    opacity: 0%;
+}
+.inactive {
+    display: none;
+}
+.navLinks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+
+    height: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.links {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 2rem;
+    color: #470703;
+    text-shadow: 0px 0px 2px black;
+    z-index: 20;
+}
+.links:hover {
+    text-shadow: 0px 0px 2px white;
+}

@@ -134,9 +134,10 @@ p {
     font-family: 'IM Fell English SC', serif;
     font-size: 3.5rem;
     color: #470703;
-    text-shadow: 0px 0px 20px black;
+    text-shadow: 0px 0px 5px black;
     transition: all 3s;
     width: 15vw;
+    margin-top: -3px;
 }
 a {
     color: black;
