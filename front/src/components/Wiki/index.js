@@ -27,27 +27,41 @@ const regions = [
     geography: "blablabla",
     architecture: "blablabla",
   },
+  {
+    region: "Karnaclok",
+    history: "blablabla",
+    geography: "blablabla",
+    architecture: "blablabla",
+  },
 ];
 
 const Wiki = () => {
   //TODO: use DB with params to fetch all categories
   const { title } = useParams();
 
-  const region = regions.find((el) => title === el.region.toLowerCase());
+  const region = regions.find(
+    (el) => title === el.region.replace(/\W/g, "").toLowerCase()
+  );
 
-  console.log(region);
+  const categories = Object.entries(region)
+    .slice(1)
+    .map(([key, value]) => {
+      return { name: key, content: value };
+    });
 
   return (
     <div className="wiki">
-      <h1 className="wiki__title">{title}</h1>
+      <h1 className="wiki__title">{region.region}</h1>
       <div className="wiki__page">
         <div className="category-container">
-          <WikiCategory />
-          <WikiCategory />
-          <WikiCategory />
+          {categories.map((category) => (
+            <WikiCategory key={category.content} {...category} />
+          ))}
         </div>
         <div className="links-container">
-          <a href="#test">Test</a>
+          {categories.map(({ name }) => (
+            <a href={`#wiki__category-${name.toLowerCase()}`}>{name}</a>
+          ))}
         </div>
       </div>
     </div>

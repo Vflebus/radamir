@@ -10,6 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 4rem;
+  font-family: vars.$title-font;
   color: vars.$main-color;
 
   &__title {
