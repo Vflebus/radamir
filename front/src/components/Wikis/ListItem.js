@@ -1,17 +1,17 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-const ListItem = ({ category, route, name }) => {
+const ListItem = ({ route, name }) => {
   return (
-    <li className={`wikis__${category}-list-item`}>
-      <a href={`/wiki/${route}`} className={`wikis__${category}-link`}>
+    <li>
+      <Link to={`/wiki/${route}`} className="wikis__section-link">
         {name}
-      </a>
+      </Link>
     </li>
   );
 };
 
 ListItem.propTypes = {
-  category: PropTypes.string.isRequired,
   route: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
