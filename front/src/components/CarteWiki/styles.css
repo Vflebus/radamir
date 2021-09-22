@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
-
 main {
     height: 100vh;
     width: 100vw;
@@ -132,7 +130,7 @@ p {
     transform: translate(-10px);
 }
 .indexLink p {
-    margin-top: 55px;
+    font-family: 'IM Fell English SC', serif;
     font-size: 3.5rem;
     color: #470703;
     text-shadow: 0px 0px 20px black;

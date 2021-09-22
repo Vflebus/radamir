@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import '../../styles/index.scss'
 
 import CarteWiki from '../CarteWiki'
 
