@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+
 main {
     height: 100vh;
     width: 100vw;
@@ -56,19 +58,10 @@ area {
     z-index: -1;
 }
 .zindex {
-    z-index: 10;
+    z-index: 30;
 }
 .scaled {
     height: 110vh;
-}
-.scaledFirst {
-    height: 120vh;
-}
-.scaledSecond {
-    height: 130vh;
-}
-.scaledThird {
-    height: 200vh;
 }
 .scaledKarnaclok {
     transform: translate(-48%);
@@ -109,6 +102,7 @@ p {
     top: 5vh;
     left: 5vh;
     z-index: 11;
+    cursor: default;
 }
 .appearance {
     position: relative;    
@@ -117,4 +111,39 @@ p {
     opacity: 5%;
     transform: translateZ(50px);
     z-index: -3;
+}
+.navArrow, .indexLink {
+    z-index: 12;
+    transition: opacity 1.5s;
+}
+.navArrow {
+    width: 3.5vw;
+    margin-right: 2rem;
+    transition: all 0.5s;
+}
+.indexLink {
+    position: absolute;
+    left: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navArrowTranslate {
+    transform: translate(-10px);
+}
+.indexLink p {
+    margin-top: 55px;
+    font-size: 3.5rem;
+    color: #470703;
+    text-shadow: 0px 0px 20px black;
+    transition: all 0.5s;
+    width: 15vw;
+}
+.hoveredText p {
+    text-shadow: 0px 0px 14px white;
+}
+a {
+    color: black;
+    font-family: 'IM Fell English SC', serif;
+    text-decoration: none;
 }

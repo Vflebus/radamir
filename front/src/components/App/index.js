@@ -1,5 +1,4 @@
-import { Route, Switch } from "react-router";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import CarteWiki from '../CarteWiki'
 
@@ -8,7 +7,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path = "/">
-          <div>App !</div>
+          <CarteWiki />
         </Route> 
       </Switch>
     </Router>
