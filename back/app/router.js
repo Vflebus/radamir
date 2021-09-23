@@ -15,7 +15,7 @@ const router = Router();
 /**
  * Responds with the id of the connected user
  * @route GET /profile
- * @group Profile
+ * @group User
  * @summary Responds with the id of the connected user
  * @returns {int} 200 - An integer as id
  * @returns {string} 500 - An error message
@@ -83,11 +83,11 @@ router.get(`/wiki/:title(/^[^\s.]{1,255}$/gm)`, cController.findByPk);
 /**
  * Add a new user in database
  * @route POST /profile
- * @group Profile
+ * @group User
  * @summary Add a new user in database
- * @param {ReqProfileJson.model | Profile.model} object.body.required - Object containing the properties to insert/update an user
- * @returns {Profile.model} 201 - The newly created user
- * @returns {Profile.model} 204 - The updated profile
+ * @param {ReqProfileJson.model | User.model} object.body.required - Object containing the properties to insert/update an user
+ * @returns {User.model} 201 - The newly created user
+ * @returns {User.model} 204 - The updated profile
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  */
