@@ -47,14 +47,14 @@ const CarteWiki = () => {
 
     const fadeMapIn = () => {
         let map = document.getElementById('carte-radamir');
-        setTimeout(() => {map.classList.remove('appearance')}, 400);
+        setTimeout(() => {map.classList.remove('appearance')}, 600);
         let logo = document.getElementById('logo');
-        setTimeout(() => {logo.classList.remove('logoAppearance')}, 400);
+        setTimeout(() => {logo.classList.remove('logoAppearance')}, 600);
         let indexLink = document.querySelector('.indexLink');
-        setTimeout(() => {indexLink.classList.remove('indexLinkAppearance')}, 400);
+        setTimeout(() => {indexLink.classList.remove('indexLinkAppearance')}, 600);
         setTimeout(() => {document.querySelectorAll('.menu').forEach(element => {
             element.classList.remove('menuAppearance');
-        })}, 400);
+        })}, 600);
     };
 
     const fadeMapOut = () => {

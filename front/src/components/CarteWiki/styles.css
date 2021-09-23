@@ -90,7 +90,7 @@ p {
 }
 .infoBulle {
     background-color: rgba(0, 0, 0, .5);
-    width: 15vw;
+    width: 20vw;
     transition-duration: 1.5s;
     transition-property: all;
     color: white;
@@ -99,8 +99,9 @@ p {
     position: absolute;
     top: 5vh;
     left: 5vh;
-    z-index: 11;
+    z-index: 100;
     cursor: default;
+    white-space: pre-wrap;
 }
 .appearance {
     position: relative;    
@@ -115,7 +116,7 @@ p {
     transition: opacity 1.5s;
 }
 .navArrow {
-    width: 3.5vw;
+    width: 2vw;
     margin-right: 2rem;
     transition: all 0.5s;
 }
@@ -134,7 +135,7 @@ p {
     font-family: 'IM Fell English SC', serif;
     font-size: 3.5rem;
     color: #470703;
-    text-shadow: 0px 0px 5px black;
+    /* text-shadow: 0px 0px 5px black; */
     transition: all 3s;
     width: 15vw;
     margin-top: -3px;
