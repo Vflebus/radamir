@@ -1,6 +1,8 @@
 
 # RADAMIR
 
+![Image Radamir map](./images/radamir_map.png)
+
 L'un de mes amis a écrit et développé un univers de Fantasy qui sert de base à nos parties de jeu de rôle. Je souhaiterais donc développer une plateforme permettant d'accéder aux informations sur l'univers (Régions, races, magie, etc), mais également d'améliorer l'expérience de jeu durant une partie.  
 Le projet est entièrement libre ! Il n'y a pas de client, le site étant réalisé à mon initiative et avec l'aval du créateur de l'univers en question.
 
