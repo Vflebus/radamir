@@ -1,6 +1,8 @@
 @use "../../styles/vars";
 
-body {
+.wikiContainer {
+  height: 100vh;
+  width: 100vw;
   background: url("../../assets/images/bg-carte.png");
 }
 
