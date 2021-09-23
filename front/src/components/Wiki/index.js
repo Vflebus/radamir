@@ -10,6 +10,7 @@ const Wiki = () => {
     <div className="wiki">
       <Link to="/wiki" className="to-wiki">
         <img src={arrow} alt="Retour à l'index" />
+        Retour à l'index
       </Link>
       <h1 className="wiki__title">Titre Section</h1>
       <div className="wiki__page">

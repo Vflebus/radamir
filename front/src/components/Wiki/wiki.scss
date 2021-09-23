@@ -58,10 +58,21 @@
     position: absolute;
     top: 5px;
     left: 5px;
-    width: 40px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    color: vars.$main-color;
 
     img {
-      width: 100%;
+      width: 40px;
+      transition: ease 0.5s;
+    }
+
+    &:hover {
+      img {
+        transform: translateX(-10px);
+      }
     }
   }
 }
