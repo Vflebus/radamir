@@ -150,14 +150,14 @@ router.post(`/campaigns/:campaign_name(/^[^\s.]{1,255}$/gm)`, cController.update
  */
 router.post('/wiki', dController.save);
 
-// POST /wiki/:title
+// POST /wiki/:region ? :title je ne sais pas encore
 
 /**
  * Add a new wiki to a region in database
  * @route POST /wiki/{title}
  * @group Wiki
  * @summary Add a new wiki to a region in database
- * @param {string} title - The title of the wiki to update
+ * @param {string} region - The region of the wiki to update
  * @returns {Wiki.model} 201 - The newly created wiki
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
