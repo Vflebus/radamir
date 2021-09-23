@@ -12,6 +12,10 @@
   background-color: vars.$light-bg;
   box-shadow: 0px 0px 40px 30px vars.$light-bg;
 
+  &__select {
+    display: none;
+  }
+
   &__title {
     margin: 1.5rem 0 3rem;
     font-family: vars.$title-font;
@@ -73,6 +77,18 @@
       img {
         transform: translateX(-10px);
       }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .wiki {
+    &__select {
+      display: block;
+    }
+
+    .links-container {
+      display: none;
     }
   }
 }
