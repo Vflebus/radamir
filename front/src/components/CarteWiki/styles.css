@@ -99,7 +99,6 @@ p {
     position: absolute;
     top: 5vh;
     left: 5vh;
-    z-index: 100;
     cursor: default;
     white-space: pre-wrap;
 }
@@ -137,7 +136,6 @@ p {
     color: #470703;
     /* text-shadow: 0px 0px 5px black; */
     transition: all 3s;
-    width: 15vw;
     margin-top: -3px;
 }
 a {
