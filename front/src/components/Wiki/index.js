@@ -1,32 +1,23 @@
-import { useParams } from "react-router-dom";
-
 import WikiCategory from "./WikiCategory";
 
 import "./wiki.scss";
 
-import data from "./data.json";
-
 const Wiki = () => {
-  //TODO: use DB with params to fetch all categories
-  const { title } = useParams();
-
-  const wiki = data.find((el) => title === el.route);
-
   return (
     <div className="wiki">
-      <h1 className="wiki__title">{wiki.title}</h1>
+      <h1 className="wiki__title">Titre Section</h1>
       <div className="wiki__page">
         <div className="category-container">
-          {wiki.categories.map((category) => (
-            <WikiCategory key={category.content} {...category} />
-          ))}
+          <WikiCategory title="Histoire" content="blablabla" />
+          <WikiCategory title="Géographie" content="blablabla" />
+          <WikiCategory title="Architecture" content="blablabla" />
+          <WikiCategory title="Langue" content="blablabla" />
         </div>
         <div className="links-container">
-          {wiki.categories.map(({ title }) => (
-            <a href={`#wiki__category-${title.toLowerCase()}`} key={title}>
-              {title}
-            </a>
-          ))}
+          <a href="#wiki__category-histoire">Histoire</a>
+          <a href="#wiki__category-géographie">Géographie</a>
+          <a href="#wiki__category-architecture">Architecture</a>
+          <a href="#wiki__category-langue">Langue</a>
         </div>
       </div>
     </div>
