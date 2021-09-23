@@ -36,6 +36,21 @@ body {
     &-list {
       justify-content: center;
     }
+
+    &-link {
+      display: block;
+      padding: 0.3rem 0.6rem;
+      font-size: 1.1rem;
+      color: vars.$main-color;
+      border-radius: 15px;
+      transition: ease 0.3s;
+
+      &:hover {
+        color: vars.$light-bg;
+        background-color: vars.$main-color;
+        box-shadow: 0px 0px 5px 3px vars.$main-color;
+      }
+    }
   }
 
   ul {
@@ -44,18 +59,42 @@ body {
     gap: 1rem;
   }
 
-  a {
-    display: block;
-    padding: 0.3rem 0.6rem;
-    font-size: 1.1rem;
+  .to-home {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.7rem;
     color: vars.$main-color;
-    border-radius: 15px;
-    transition: ease 0.3s;
+    transform: translateY(-50%);
+
+    img {
+      width: 40px;
+      transform: rotate(180deg);
+      transition: ease 0.5s;
+    }
 
     &:hover {
-      color: vars.$light-bg;
-      background-color: vars.$main-color;
-      box-shadow: 0px 0px 5px 3px vars.$main-color;
+      img {
+        transform: translateX(10px) rotate(180deg);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wikis {
+    .to-home {
+      position: relative;
+      top: unset;
+      right: unset;
+      font-size: 1.3rem;
+
+      img {
+        width: 20px;
+      }
     }
   }
 }

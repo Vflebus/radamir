@@ -12,6 +12,17 @@
   background-color: vars.$light-bg;
   box-shadow: 0px 0px 40px 30px vars.$light-bg;
 
+  &__select {
+    display: none;
+    padding: 0.3rem;
+    font-family: vars.$title-font;
+    color: vars.$main-color;
+    border: 2px solid vars.$main-color;
+    border-radius: 5px;
+    background-color: vars.$ligther-bg;
+    outline: none;
+  }
+
   &__title {
     margin: 1.5rem 0 3rem;
     font-family: vars.$title-font;
@@ -58,10 +69,69 @@
     position: absolute;
     top: 5px;
     left: 5px;
-    width: 40px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    color: vars.$main-color;
 
     img {
-      width: 100%;
+      width: 40px;
+      transition: ease 0.5s;
+    }
+
+    &:hover {
+      img {
+        transform: translateX(-10px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wiki {
+    .to-wiki {
+      position: relative;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+
+      img {
+        width: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .wiki {
+    text-align: center;
+
+    &__title {
+      margin-bottom: 1.7rem;
+      font-size: 1.5rem;
+    }
+
+    &__select {
+      display: block;
+      margin-bottom: 1.7rem;
+    }
+
+    &__page {
+      padding: 0 1rem;
+    }
+
+    &__category {
+      &-title {
+        font-size: 1.3rem;
+      }
+
+      &-content {
+        text-align: left;
+      }
+    }
+
+    .links-container {
+      display: none;
     }
   }
 }
