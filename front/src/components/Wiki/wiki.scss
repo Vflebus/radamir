@@ -1,6 +1,7 @@
 @use "../../styles/vars";
 
 .wiki {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,5 +52,16 @@
     padding: 0.8rem;
     font-family: vars.$title-font;
     border: 2px solid vars.$main-color;
+  }
+
+  .to-wiki {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+
+    img {
+      width: 100%;
+    }
   }
 }

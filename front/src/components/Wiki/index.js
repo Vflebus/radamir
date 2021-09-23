@@ -1,10 +1,16 @@
+import { Link } from "react-router-dom";
+
 import WikiCategory from "./WikiCategory";
 
+import arrow from "../../assets/images/flecheNavRouge.png";
 import "./wiki.scss";
 
 const Wiki = () => {
   return (
     <div className="wiki">
+      <Link to="/wiki" className="to-wiki">
+        <img src={arrow} alt="Retour à l'index" />
+      </Link>
       <h1 className="wiki__title">Titre Section</h1>
       <div className="wiki__page">
         <div className="category-container">
