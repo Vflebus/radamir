@@ -112,10 +112,22 @@ class Wiki {
         [this.title, this.id]
       );
     } catch (error) {
-      console.log("Erreur interne ou de requête", error);
+      console.log("Erreur interne ou de requête: ", error);
       throw new Error(error.detail ? error.detail : error.message);
     }
   }
+
+	async delete() {
+		try {
+			const { rows } = await client.query(
+				"DELETE FROM wiki WHERE id=$1", 
+				[this.id]				
+			);	
+		} catch (error) {
+			console.log("Erreur interne ou de requête: ", error);
+			throw new Error(error.detail ? error.detail : error.message);
+		}
+	}
 }
 
 module.exports = Wiki;
