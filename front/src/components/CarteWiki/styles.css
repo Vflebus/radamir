@@ -99,6 +99,7 @@ p {
     left: 5vh;
     cursor: default;
     white-space: pre-wrap;
+    font-size: 1.2rem;
 }
 .appearance {
     position: relative;    
