@@ -159,7 +159,7 @@ const CarteWiki = () => {
                     {/* FRAGMENTS DE CARTE */}
 
                         <div id="map-container">
-                            <Menu className="menuAppearance" />
+                            <Menu classes="menuAppearance" />
 
                             <img src={carteRadamir} useMap="#image-map" id="carte-radamir" className="appearance carte-radamir" alt="Carte de Radamir" />
 

@@ -5,27 +5,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
+  padding-top: 4rem;
   font-family: vars.$title-font;
   color: vars.$main-color;
+  transition: opacity 3s;
 
   &__title {
     margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     text-transform: uppercase;
   }
 
   &__section {
     padding: 2.5rem;
-    margin: 3rem 0;
+    margin: 1rem 0;
     max-width: 70%;
-    background-color: vars.$light-bg;
-    box-shadow: 0px 0px 40px 30px vars.$light-bg;
+    // background-color: vars.$light-bg;
+    // box-shadow: 0px 0px 40px 30px vars.$light-bg;
 
     &-title {
+      text-align: center;
       margin-bottom: 1.5rem;
-      font-size: 1.5rem;
+      font-size: 2.5rem;
       font-weight: bold;
     }
 
@@ -41,11 +43,11 @@
       border-radius: 15px;
       transition: ease 0.3s;
 
-      &:hover {
-        color: vars.$light-bg;
-        background-color: vars.$main-color;
-        box-shadow: 0px 0px 5px 3px vars.$main-color;
-      }
+      // &:hover {
+      //   // color: vars.$light-bg;
+      //   background-color: vars.$main-color;
+      //   box-shadow: 0px 0px 5px 3px vars.$main-color;
+      // }
     }
   }
 
@@ -62,14 +64,15 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    font-size: 1.7rem;
+    font-size: 2.8vw;
     color: vars.$main-color;
     transform: translateY(-50%);
 
     img {
-      width: 40px;
+      width: 2vw;
+      margin-left: 15px;
+      transition: all 0.5s;
       transform: rotate(180deg);
-      transition: ease 0.5s;
     }
 
     &:hover {
@@ -78,6 +81,19 @@
       }
     }
   }
+}
+.wikiParchment {
+  width: 20rem;
+}
+.itemContainer {
+  position: relative;
+}
+.itemName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  font-size: 2rem;
 }
 
 @media screen and (max-width: 1024px) {
@@ -104,15 +120,16 @@
     }
 
     &__section {
-      max-width: 90%;
+      // max-width: 90%;
+      margin: 0;
 
       &-title {
         font-size: 1.3rem;
       }
     }
 
-    ul {
-      flex-direction: column;
+    .wikiParchment {
+      width: 15rem;
     }
   }
 }
