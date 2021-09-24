@@ -3,6 +3,7 @@
     top: 2vh;
     right: .4vw;
     z-index: 12;
+    transition: transform 3s;
 }
 .menuImg, .menu {
     width: 20vw;
@@ -27,7 +28,7 @@
 }
 .links {
     font-family: 'IM Fell English SC', serif;
-    font-size: 2rem;
+    font-size: 1.6vw;
     color: #470703;
     text-shadow: 0px 0px 2px black;
     z-index: 20;
