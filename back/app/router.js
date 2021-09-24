@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const aController = require("./controllers/aController"); // TODO remplacer et ajouter les bons controllers
+const wikiController = require("./controllers/wikiController"); 
 const bController = require("./controllers/bController"); // TODO remplacer et ajouter les bons controllers
 const cController = require("./controllers/cController"); // TODO remplacer et ajouter les bons controllers
 const dController = require("./controllers/dController"); // TODO remplacer et ajouter les bons controllers
@@ -58,7 +58,7 @@ router.get(`/campaigns/:campaign_name(/^[^\s.]{1,255}$/gm)`, cController.findByN
  * @returns {Array<Wiki>} 200 - An array of wiki
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki`, dController.findAll);
+router.get(`/wiki`, wikiController.findAll);
 
 // GET /wiki/:title
 
@@ -72,7 +72,7 @@ router.get(`/wiki`, dController.findAll);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki/:title(/^[^\s.]{1,255}$/gm)`, cController.findByTitle);
+router.get(`/wiki/:title(/^[^\s.]{1,255}$/gm)`, wikiController.findByTitle);
 
 //#endregion GET
 
@@ -148,24 +148,7 @@ router.post(`/campaigns/:campaign_name(/^[^\s.]{1,255}$/gm)`, cController.update
  * @returns {string} 400 - A validation error message
  * @returns {string} 409 - A conflict error message 
  */
-router.post('/wiki', dController.save);
-
-// POST /wiki/:title
-
-/**
- * Add a new wiki to a title in database
- * @route POST /wiki/{title}
- * @group Wiki
- * @summary Add a new wiki to a title in database
- * @param {string} title - The title of the wiki to update
- * @returns {Wiki.model} 201 - The newly created wiki
- * @returns {string} 500 - An error message
- * @returns {string} 400 - A validation error message
- * @returns {string} 409 - A conflict error message
- * @returns {string} 401 - An unauthorized error message
- * @returns {string} 404 - A not found error message
- */
-router.post(`/wiki/:title(/^[^\s.]{1,255}$/gm)`, dController.update);
+router.post('/wiki', wikiController.save);
 
 //#endregion POST
 

@@ -6,10 +6,9 @@ UTILISATEUR(id, pseudonyme, email, mot_de_passe, est_admin)
 
 WIKI(id, titre)
 
-BLOC(id, titre, contenu)
+BLOC(id, titre, contenu, #wiki(id))
 
-RÉGION(id, région, géographie, architecture, langue, monnaie, dirigeants, religion, classes_sociales, noms, justice, mages, tenue, hygiène_de_vie, soins, se_déplacer, alimentation, art, divertissements)
+RÉGION(id, région, historique géographie, architecture, langue, monnaie, dirigeants, religion, classes_sociales, noms, justice, mages, tenue, hygiène_de_vie, soins, se_déplacer, alimentation, art, divertissements)
 
 CAMPAGNE_A_DES_JOUEURS(#campagne(id), #utilisateur(id))
-WIKI_A_DES_BLOCS(#wiki(id), #bloc(id))
 
