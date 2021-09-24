@@ -15,30 +15,34 @@ const Member = ({ name, img, github, linkedin }) => {
         <div>
           <ul className="member__links">
             <li className="member__link">
-              <a
-                href={`https://www.github.com/${github}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FontAwesomeIcon
-                  icon={faGithub}
-                  className="member__link-icon"
-                />
-                Github
-              </a>
+              {github && (
+                <a
+                  href={`https://www.github.com/${github}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={faGithub}
+                    className="member__link-icon"
+                  />
+                  Github
+                </a>
+              )}
             </li>
             <li className="member__link">
-              <a
-                href={`https://www.linkedin.com/in/${linkedin}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FontAwesomeIcon
-                  icon={faLinkedin}
-                  className="member__link-icon"
-                />
-                LinkedIn
-              </a>
+              {linkedin && (
+                <a
+                  href={`https://www.linkedin.com/in/${linkedin}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    className="member__link-icon"
+                  />
+                  LinkedIn
+                </a>
+              )}
             </li>
           </ul>
         </div>
