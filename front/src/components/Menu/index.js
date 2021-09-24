@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 
 
-const Menu = () => {
+const Menu = ( {classes} ) => {
 
     const toggleMenu = () => {
         let menuDeplie = document.getElementById('menuDeplie');
@@ -17,16 +17,16 @@ const Menu = () => {
 
     return (
         <div id="menu">
-            <div className="menu inactive" id="menuDeplie">
+            <div className={"menu inactive "+classes} id="menuDeplie">
                 <img src={menuDeplie} alt="menu" className="menuImg" />
                 <div className="navLinks">
-                    <NavLink to="/1" className="links">Lien 1</NavLink>
-                    <NavLink to="/2" className="links">Lien 2</NavLink>
-                    <NavLink to="/3" className="links">Lien 3</NavLink>
-                    <NavLink to="/4" className="links">Lien 4</NavLink>
+                    <NavLink exact to="/" className="links" activeClassName="selected">Accueil</NavLink>
+                    <NavLink to="/wiki" className="links" activeClassName="selected">Lien 2</NavLink>
+                    <NavLink to="/3" className="links" activeClassName="selected">Lien 3</NavLink>
+                    <NavLink to="/4" className="links" activeClassName="selected">Lien 4</NavLink>
                 </div>
             </div>
-            <div className="menu" id="menuPlie">
+            <div className={"menu "+classes} id="menuPlie">
                <img src={menuPlie} alt="menu" className="menuImg" onClick={toggleMenu} />
             </div>
         </div>    

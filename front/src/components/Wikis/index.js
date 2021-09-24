@@ -6,6 +6,7 @@ import Menu from "../Menu";
 import "./wikis.scss";
 
 import arrow from "../../assets/images/flecheNavRouge.png";
+import { useEffect } from "react";
 
 const regions = [
   { name: "Vanna", route: "vanna" },
@@ -21,8 +22,14 @@ const others = [
 ];
 
 const Wikis = () => {
+
+  useEffect(() => {
+    document.querySelector('.wikis').classList.remove('noDisplay');
+  },
+  []);
+
   return (
-        <div className="wikis">
+        <div className="wikis noDisplay">
             <Menu />
             <h1 className="wikis__title">Index du Wiki</h1>
             <Link to="/" className="to-home">
