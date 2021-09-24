@@ -1,12 +1,17 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+import wikiParchment from "./images/wikiParchment.png"
+
 const ListItem = ({ route, name }) => {
   return (
     <li>
-      <Link to={`/wiki/${route}`} className="wikis__section-link">
-        {name}
-      </Link>
+      <div className="itemContainer">
+        <Link to={`/wiki/${route}`} className="wikis__section-link">
+          <img src={wikiParchment} alt="" className="wikiParchment"/>
+          <p className="itemName">{name}</p>
+        </Link>
+      </div>
     </li>
   );
 };

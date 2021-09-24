@@ -17,7 +17,7 @@ const Menu = () => {
 
     return (
         <div id="menu">
-            <div className="menu inactive menuAppearance" id="menuDeplie">
+            <div className="menu inactive" id="menuDeplie">
                 <img src={menuDeplie} alt="menu" className="menuImg" />
                 <div className="navLinks">
                     <NavLink to="/1" className="links">Lien 1</NavLink>
@@ -26,7 +26,7 @@ const Menu = () => {
                     <NavLink to="/4" className="links">Lien 4</NavLink>
                 </div>
             </div>
-            <div className="menu menuAppearance" id="menuPlie">
+            <div className="menu" id="menuPlie">
                <img src={menuPlie} alt="menu" className="menuImg" onClick={toggleMenu} />
             </div>
         </div>    

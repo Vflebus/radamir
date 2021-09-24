@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import WikiSection from "./WikiSection";
+import Menu from "../Menu";
 
 import "./wikis.scss";
 
@@ -14,11 +15,15 @@ const regions = [
   { name: "Drok'nor", route: "droknor" },
 ];
 
-const others = [{ name: "Magie", route: "magie" }];
+const others = [
+  { name: "Magie", route: "magie" },
+  { name: "Dieux", route: "dieux" },
+];
 
 const Wikis = () => {
   return (
         <div className="wikis">
+            <Menu />
             <h1 className="wikis__title">Index du Wiki</h1>
             <Link to="/" className="to-home">
                 Accueil
