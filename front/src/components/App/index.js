@@ -5,6 +5,7 @@ import CarteWiki from "../CarteWiki";
 import Wikis from "../Wikis";
 import Wiki from "../Wiki";
 import About from "../About";
+import Terms from "../Terms";
 
 const App = () => {
   return (
@@ -21,6 +22,9 @@ const App = () => {
         </Route>
         <Route exact path="/about">
           <About />
+        </Route>
+        <Route exact path="/terms">
+          <Terms />
         </Route>
       </Switch>
     </Router>
