@@ -1,0 +1,66 @@
+@use "../../styles/vars";
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  color: vars.$main-color;
+  background: url("../../assets/images/bg-carte.png");
+
+  &__title {
+    margin-bottom: 3rem;
+    font-family: vars.$title-font;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+
+  &__team {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    max-width: 65%;
+
+    .member {
+      &__title {
+        margin-bottom: 0.8rem;
+        font-family: vars.$title-font;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      &__content {
+        display: flex;
+        gap: 0.8rem;
+      }
+
+      &__img {
+        width: 100px;
+        // delete following line when we have pictures
+        font-size: 100px;
+      }
+
+      &__links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        justify-content: center;
+        height: 100%;
+      }
+
+      &__link {
+        font-size: 1.1rem;
+
+        a {
+          font-family: "Times New Roman", Times, serif;
+          color: vars.$main-color;
+        }
+
+        &-icon {
+          margin-right: 0.3rem;
+        }
+      }
+    }
+  }
+}
