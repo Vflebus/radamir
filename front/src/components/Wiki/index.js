@@ -10,7 +10,6 @@ const Wiki = () => {
   const { pathname } = useLocation();
 
   return (  
-    <div className="wikiContainer">
         <div className="wiki">
             <h1 className="wiki__title">Titre Section</h1>
             <Link to="/wiki" className="to-wiki">
@@ -43,7 +42,6 @@ const Wiki = () => {
                 </div>
             </div>
         </div>
-    </div>
   );
 };
 

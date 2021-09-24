@@ -120,7 +120,6 @@ const CarteWiki = () => {
             });
             imageMapResize();
             window.addEventListener('resize', () => {
-                // let resize = imageMapResize();
                 setTimeout(() => {imageMapResize()}, 2000);
             });
             document.querySelector('.indexLink').addEventListener('mouseenter', () => {
@@ -135,6 +134,8 @@ const CarteWiki = () => {
 
     return (
             <div>
+                <div className="landscapeBG"></div>
+                <h1 className="landscapeWarning">Veuillez passer votre téléphone en mode paysage.</h1>
                 <main id="mainContainer">
                     <div className="indexLink indexLinkAppearance">
                         <Link to="/wiki/" className="indexLink">
@@ -158,7 +159,7 @@ const CarteWiki = () => {
                     {/* FRAGMENTS DE CARTE */}
 
                         <div id="map-container">
-                            <Menu className="menuAppearance" />
+                            <Menu classes="menuAppearance" />
 
                             <img src={carteRadamir} useMap="#image-map" id="carte-radamir" className="appearance carte-radamir" alt="Carte de Radamir" />
 
