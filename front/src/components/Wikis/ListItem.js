@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import wikiParchment from "./images/wikiParchment.png"
+import wikiParchment from "../../assets/images/wikiParchment.png"
 
 const ListItem = ({ route, name }) => {
   return (

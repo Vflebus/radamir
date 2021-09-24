@@ -45,10 +45,28 @@
     white-space: pre-wrap;
     line-height: 1.4;
 
+    &-titleItem {
+      position: relative;
+      margin: 5rem;
+      width: 20vw;
+      height: 10vh;
+    }
+
+    &-titleImage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
     &-title {
-      margin-bottom: 0.8rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       font-family: vars.$title-font;
-      font-size: 1.5rem;
+      color: vars.$main-color;
+      font-size: 2rem;
     }
   }
 
