@@ -1,0 +1,52 @@
+@use "../../styles/vars";
+
+.terms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 5rem 0;
+  color: vars.$main-color;
+
+  &__title {
+    margin-bottom: 1rem;
+    font-family: vars.$title-font;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__link {
+    color: vars.$main-color;
+    font-size: 1.2rem;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
+
+  .term {
+    max-width: 70%;
+
+    &__title {
+      font-family: vars.$title-font;
+      font-size: 1.5rem;
+    }
+
+    &__content {
+      line-height: 1.4;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .terms {
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    .term {
+      max-width: 80%;
+    }
+  }
+}

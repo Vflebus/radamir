@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Term = ({ title, content }) => {
   return (
     <div className="term">
@@ -5,6 +7,11 @@ const Term = ({ title, content }) => {
       <p className="term__content">{content}</p>
     </div>
   );
+};
+
+Term.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
 };
 
 export default Term;
