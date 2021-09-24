@@ -1,10 +1,10 @@
 const { Router } = require("express");
 
 const wikiController = require("./controllers/wikiController"); 
-const bController = require("./controllers/bController"); // TODO remplacer et ajouter les bons controllers
+/* const bController = require("./controllers/bController"); // TODO remplacer et ajouter les bons controllers
 const cController = require("./controllers/cController"); // TODO remplacer et ajouter les bons controllers
 const dController = require("./controllers/dController"); // TODO remplacer et ajouter les bons controllers
-const eController = require("./controllers/eController"); // TODO remplacer et ajouter les bons controllers
+const eController = require("./controllers/eController"); // TODO remplacer et ajouter les bons controllers */
 
 const router = Router();
 
@@ -20,7 +20,7 @@ const router = Router();
  * @returns {int} 200 - An integer as id
  * @returns {string} 500 - An error message
  */
-router.get("/profile", aController.findById);
+//router.get("/profile", aController.findById);
 
 // GET /campaigns
 
@@ -32,7 +32,7 @@ router.get("/profile", aController.findById);
  * @returns {Array<Campaign>} 200 - An array of campaigns
  * @returns {string} 500 - An error message
  */
-router.get("/campaigns", bController.findAll);
+//router.get("/campaigns", bController.findAll);
 
 // GET /campaigns/:campaign_name
 
@@ -46,7 +46,7 @@ router.get("/campaigns", bController.findAll);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/campaigns/:campaign_name(/^[^\s.]{1,255}$/gm)`, cController.findByName);
+//router.get(`/campaigns/:campaign_name(/^[^\s.]{1,255}$/gm)`, cController.findByName);
 
 // GET /wiki
 
@@ -90,7 +90,7 @@ router.get(`/wiki/:title(/^[^\s.]{1,255}$/gm)`, wikiController.findByTitle);
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  */
-router.post('/signup', aController.save);
+//router.post('/signup', aController.save);
 
 // POST /signin
 
@@ -103,7 +103,7 @@ router.post('/signup', aController.save);
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  */
-router.post('/signin', aController.findByEmail);
+//router.post('/signin', aController.findByEmail);
 
 // POST /campaigns
 
@@ -118,7 +118,7 @@ router.post('/signin', aController.findByEmail);
  * @returns {string} 409 - A conflict error message
  * @returns {string} 401 - An unauthorized error message
  */
-router.post('/campaigns', bController.save);
+//router.post('/campaigns', bController.save);
 
 // POST /campaigns/:campaign_name
 
@@ -134,7 +134,7 @@ router.post('/campaigns', bController.save);
  * @returns {string} 409 - A conflict error message
  * @returns {string} 401 - An unauthorized error message
  */
-router.post(`/campaigns/:campaign_name(/^[^\s.]{1,255}$/gm)`, cController.update);
+//router.post(`/campaigns/:campaign_name(/^[^\s.]{1,255}$/gm)`, cController.update);
 
 // POST /wiki
 
