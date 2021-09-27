@@ -27,11 +27,11 @@ const Wikis = () => {
   useEffect(() => {
     document.querySelector('.wikis').classList.remove('noDisplay');
     
-    // const fetchData = async () => {
-    //   const res = await radamirAPI.get();
-    //   console.log(res.data);
-    // };
-    // fetchData();
+    const fetchData = async () => {
+      const res = await radamirAPI.get("/wiki");
+      console.log(res.data);
+    };
+    fetchData();
   },
   []);
 
