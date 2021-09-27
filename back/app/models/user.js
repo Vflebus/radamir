@@ -2,8 +2,8 @@ const client = require("../database");
 const bcrypt = require("bcrypt");
 
 class NoUserError extends Error {
-  constructor(userName) {
-    super(`No result for user ${userName}`);
+  constructor(username) {
+    super(`No result for user ${username}`);
   }
 }
 
@@ -132,7 +132,7 @@ class User {
    * @returns {User} The deleted user.
    * @async
    */
-            /* CODE ICI */
+    
   //////////////////////////// TODO DELETE
 
   /**
