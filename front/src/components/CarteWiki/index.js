@@ -47,42 +47,38 @@ const CarteWiki = () => {
 
     const fadeMapIn = () => {
         let map = document.getElementById('carte-radamir');
-        setTimeout(() => {map.classList.remove('appearance')}, 600);
+        setTimeout(() => {map.classList.remove('appearance')}, 300);
         let logo = document.getElementById('logo');
-        setTimeout(() => {logo.classList.remove('logoAppearance')}, 600);
+        setTimeout(() => {logo.classList.remove('logoAppearance')}, 300);
         let indexLink = document.querySelector('.indexLink');
-        setTimeout(() => {indexLink.classList.remove('indexLinkAppearance')}, 600);
+        setTimeout(() => {indexLink.classList.remove('indexLinkAppearance')}, 300);
         setTimeout(() => {document.querySelectorAll('.menu').forEach(element => {
             element.classList.remove('menuAppearance');
         })}, 600);
     };
 
-    const fadeMapOut = () => {
-        let targets = [document.getElementById('allMaps'), document.getElementById('infoBulleContainer')]
-        targets.forEach(target => {
-            if (!target.style.opacity) {
-                target.style.opacity = 1;
-            }
-            console.log(`fade start...`);
-            let fadeOutEffect = setInterval(function () {
-                if (target.style.opacity < 0) {
-                    clearInterval(fadeOutEffect);
-                    target.remove();
-                }
-                else {
-                    target.style.opacity -= 0.01;
-                }
-            }, 20)
-        })
-    };
+    // const fadeMapOut = () => {
+    //     let targets = [document.getElementById('allMaps'), document.getElementById('infoBulleContainer')]
+    //     targets.forEach(target => {
+    //         if (!target.style.opacity) {
+    //             target.style.opacity = 1;
+    //         }
+    //         console.log(`fade start...`);
+    //         let fadeOutEffect = setInterval(function () {
+    //             if (target.style.opacity < 0) {
+    //                 clearInterval(fadeOutEffect);
+    //                 target.remove();
+    //             }
+    //             else {
+    //                 target.style.opacity -= 0.01;
+    //             }
+    //         }, 20)
+    //     })
+    // };
 
     useEffect(
         () => {
             fadeMapIn();
-            // Event listenner pour la séléction d'une région
-            document.querySelectorAll('area').forEach(area => {
-                area.addEventListener('click', fadeMapOut);
-            })
             // Event listenner Karnaclok
             document.getElementById('region-karnaclok').addEventListener('mouseenter', function (event) {
                 darkenMap('Karnaclok', event);
@@ -129,7 +125,6 @@ const CarteWiki = () => {
                 document.querySelector('.navArrow').classList.remove('navArrowTranslate');
             });
         },
-        []
     )
 
     return (

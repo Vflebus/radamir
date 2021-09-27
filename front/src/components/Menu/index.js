@@ -21,9 +21,9 @@ const Menu = ( {classes} ) => {
                 <img src={menuDeplie} alt="menu" className="menuImg" />
                 <div className="navLinks">
                     <NavLink exact to="/" className="links" activeClassName="selected">Accueil</NavLink>
-                    <NavLink to="/wiki" className="links" activeClassName="selected">Lien 2</NavLink>
-                    <NavLink to="/3" className="links" activeClassName="selected">Lien 3</NavLink>
-                    <NavLink to="/4" className="links" activeClassName="selected">Lien 4</NavLink>
+                    <NavLink exact to="/wiki" className="links" activeClassName="selected">Lien 2</NavLink>
+                    <NavLink exact to="/3" className="links" activeClassName="selected">Lien 3</NavLink>
+                    <NavLink exact to="/4" className="links" activeClassName="selected">Lien 4</NavLink>
                 </div>
             </div>
             <div className={"menu "+classes} id="menuPlie">
