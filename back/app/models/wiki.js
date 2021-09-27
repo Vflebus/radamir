@@ -73,7 +73,7 @@ class Wiki {
       if (rows[0]) {
         return new Wiki(rows[0]);
       }
-      throw new NoTitleError;
+      throw new NoTitleError(title);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
