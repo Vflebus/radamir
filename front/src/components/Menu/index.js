@@ -1,10 +1,13 @@
 import { useState, useRef, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import "./style.scss";
 
 import menuPlie from "./images/menuPlie.png";
 import menuDeplie from "./images/menuDeplie.png";
-import { NavLink } from "react-router-dom";
+// import menuMobile from "./images/menuMobile.png";
+import menuMobileBarreDessus from "./images/menuMobileBarreDessus.png";
+import menuMobileBarreDessous from "./images/menuMobileBarreDessous.png";
 
 const Menu = ({ classes }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,38 +24,46 @@ const Menu = ({ classes }) => {
   };
 
   return (
-    <div id="menu">
-      <div
-        className={`menu ${classes} ${isOpen ? "" : "inactive"}`}
-        ref={openMenuRef}
-      >
-        <img src={menuDeplie} alt="menu" className="menuImg" />
-        <div className="navLinks">
-          <NavLink exact to="/" className="links" activeClassName="selected">
-            Accueil
-          </NavLink>
-          <NavLink exact to="/wiki" className="links" activeClassName="selected">
-            Lien 2
-          </NavLink>
-          <NavLink exact to="/3" className="links" activeClassName="selected">
-            Lien 3
-          </NavLink>
-          <NavLink exact to="/4" className="links" activeClassName="selected">
-            Lien 4
-          </NavLink>
+    <div>
+        <div id="menu">
+          <div
+            className={`menu ${classes} ${isOpen ? "" : "inactive"}`}
+            ref={openMenuRef}
+          >
+            <img src={menuDeplie} alt="menu" className="menuImg" />
+            <div className="navLinks">
+              <NavLink exact to="/" className="links" activeClassName="selected">
+                Accueil
+              </NavLink>
+              <NavLink exact to="/wiki" className="links" activeClassName="selected">
+                Wiki
+              </NavLink>
+              <NavLink exact to="/3" className="links" activeClassName="selected">
+                Lien 3
+              </NavLink>
+              <NavLink exact to="/4" className="links" activeClassName="selected">
+                Lien 4
+              </NavLink>
+            </div>
+          </div>
+          <div
+            className={`menu cursorPointer ${classes} ${isOpen ? "noDisplay" : ""}`}
+            ref={closedMenuRef}
+          >
+            <img
+              src={menuPlie}
+              alt="menu"
+              className="menuImg"
+              onClick={toggleMenu}
+            />
+          </div>
         </div>
-      </div>
-      <div
-        className={`menu ${classes} ${isOpen ? "noDisplay" : ""}`}
-        ref={closedMenuRef}
-      >
-        <img
-          src={menuPlie}
-          alt="menu"
-          className="menuImg"
-          onClick={toggleMenu}
-        />
-      </div>
+        <div className="menuMobile">
+            <div className="menuMobileImg" onClick={toggleMenu}>
+                <img src={menuMobileBarreDessus} alt="Ouvrir le menu de navigation" className={`menuMobileImg__barreDessus ${isOpen ? "openedDessus" : ""}`}/>
+                <img src={menuMobileBarreDessous} alt="Ouvrir le menu de navigation" className={`menuMobileImg__barreDessous ${isOpen ? "openedDessous" : ""}`}/>
+            </div>
+        </div>
     </div>
   );
 };

@@ -1,9 +1,19 @@
-.menu {
+.menu, .menuMobile {
     position: absolute;
     top: 2vh;
     right: .4vw;
     z-index: 12;
     transition: transform 3s;
+}
+.menuMobile {
+    display: none;
+    
+    img {
+        width: 15vw;
+    }
+}
+.cursorPointer {
+    cursor: pointer;
 }
 .menuImg, .menu {
     width: 20vw;
@@ -30,25 +40,47 @@
     font-family: 'IM Fell English SC', serif;
     font-size: 1.6vw;
     color: #470703;
-    // text-shadow: 0px 0px 2px black;
     z-index: 20;
 }
 .selected {
     cursor: default;
 }
-// .selected::before {
-//     position: absolute;
-//     right: 95%;
-//     transform: translateY(-25%);
-//     content: "";
-//     // background-color: #fff;
-//     width: 40px;
-//     height: 34px;
-//     background-image: url(./images/quill-resized-inversed.png);
-//     background-size: contain;
-//     background-repeat: no-repeat;
-// }
 .selected::after {
     margin-left: 10px;
-    content: url(./images/quill-resized.png);
+    content: "";
+    width: 1.8vw;
+    height: 1.48vw;
+    background-image: url(./images/quill-resized.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+@media screen and (max-width: 650px) {
+    .menu {
+        display: none;
+    }
+    .menuMobile {
+        display: block;
+    }
+    .menuMobileImg {
+        display: flex;
+        flex-direction: column;
+
+        &__barreDessus {
+            transition: transform 1s;
+        }
+
+        &__barreDessous {
+            transition: transform 1s;
+        }
+
+        .openedDessus {
+            transform: translateY(50%)  rotate(227.5deg);
+        }
+
+        .openedDessous {
+            transform: translateY(-50%)  rotate(132.5deg) translateY(-10%);
+        }
+    }
 }
