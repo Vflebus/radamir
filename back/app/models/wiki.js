@@ -135,7 +135,6 @@ class Wiki {
   /**
    * Delete a wiki from the database.
    * @param {number} id - The id of the wiki to delete.
-   * @returns {Wiki} The deleted wiki.
    * @async
    */
 	async delete() {
