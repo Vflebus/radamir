@@ -1,5 +1,11 @@
 const client = require("../database");
 
+class NoTitleError extends Error {
+  constructor(title) {
+    super(`No result with title: ${title}`);
+  }
+}
+
 /**
  * An entity representing a wiki.
  * @typedef Wiki
@@ -13,6 +19,9 @@ const client = require("../database");
  * @class Wiki
  */
 class Wiki {
+
+  static NoTitleError = NoTitleError;
+
   /**
    * The constructor for the Wiki model.
    * @param {Object} object - A literal object with the properties of the wiki copied into the instance.
@@ -24,15 +33,20 @@ class Wiki {
   }
 
   /**
-   * Fetches all the wikis from the database and region from region
+   * Fetches all the wiki titles from the database and region from region
    * @returns {Array<Wiki>} An array of wikis.
    * @static
    * @async
    */
   static async findAll() {
     try {
-      const { rows } = await client.query(
-        "SELECT table1.title, table2.region FROM table1 AS wiki, table2 AS region"
+      let { rows } = await client.query(
+        `SELECT 
+          jsonb_agg(DISTINCT jsonb_build_object('title', wiki.title))AS resulttitles,
+          jsonb_agg(DISTINCT jsonb_build_object('region', region.region))AS resultregions
+          FROM wiki, region
+        ;`
+
       );
       return rows.map((row) => new Wiki(row));
     } catch (error) {
@@ -44,21 +58,22 @@ class Wiki {
   /**
    * Fetches a single wiki from the database.
    * @param {string} title - The title of the wiki to fetch.
-   * @returns {Wiki|null} A wiki or null if not found.
+   * @returns {Wiki|error} A wiki or error if not found.
    * @static
    * @async
    * @example Wiki.findByTitle('test1234')
+   * @throws {NoTitleError} if no wiki is found with the given title
    */
   static async findByTitle(title) {
     try {
       const { rows } = await client.query(
-        "SELECT title FROM wiki WHERE title=$1",
+        "SELECT * FROM wiki WHERE title=$1",
         [title]
       );
       if (rows[0]) {
         return new Wiki(rows[0]);
       }
-      return null;
+      throw new NoTitleError;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -117,6 +132,12 @@ class Wiki {
     }
   }
 
+  /**
+   * Delete a wiki from the database.
+   * @param {number} id - The id of the wiki to delete.
+   * @returns {Wiki} The deleted wiki.
+   * @async
+   */
 	async delete() {
 		try {
 			const { rows } = await client.query(
