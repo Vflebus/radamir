@@ -7,6 +7,7 @@ import "./wikis.scss";
 
 import arrow from "../../assets/images/flecheNavRouge.png";
 import { useEffect } from "react";
+import radamirAPI from "../../apis/radamirAPI";
 
 const regions = [
   { name: "Vanna", route: "vanna" },
@@ -25,6 +26,12 @@ const Wikis = () => {
 
   useEffect(() => {
     document.querySelector('.wikis').classList.remove('noDisplay');
+    
+    // const fetchData = async () => {
+    //   const res = await radamirAPI.get();
+    //   console.log(res.data);
+    // };
+    // fetchData();
   },
   []);
 
