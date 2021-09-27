@@ -29,16 +29,16 @@ class User {
       this[key] = object[key];
     }
   }
-  
-/**
- * Finds a user by username.
- * @param {string} username - The username of the user.
- * @returns {Promise<User>} A promise that resolves to the user.
- * @throws {NoUserError} If no user is found.
- * @group User
- * @static
- */
-  static async findUser(username) { // TODO ajouter un paramètre pour trouver l'user
+
+  /**
+   * Finds a user by username.
+   * @param {string} username - The username of the user.
+   * @returns {Promise<User>} A promise that resolves to the user.
+   * @throws {NoUserError} If no user is found.
+   * @group User
+   * @static
+   */
+  static async findUser(username) {
     try {
       const { rows } = await client.query(
         `SELECT username, email
@@ -48,7 +48,7 @@ class User {
         [username]
       );
       if (rows[0]) {
-        return new User(rows[0]); 
+        return new User(rows[0]);
       }
       throw new NoUserError(username);
     } catch (error) {
@@ -56,7 +56,7 @@ class User {
       throw new Error(error.detail ? error.detail : error.message);
     }
   }
-  
+
   /**
    * Add a new user to the database
    * @param {string} username
@@ -107,33 +107,39 @@ class User {
    * @param {string} email
    * @param {string} password
    * @async
-   * @
    */
   async update() {
     try {
-        const { rows } = await client.query(
-             `UPDATE user
+      const { rows } = await client.query(
+        `UPDATE user
               SET username=$1,
                   email = $2,
                   password = $3, 
                   WHERE id=$4;`,
-            [this.username, this.email, this.password, this.id]
-        );
+        [this.username, this.email, this.password, this.id]
+      );
     } catch (error) {
       console.log("Erreur interne ou de requête: ", error);
       throw new Error(error.detail ? error.detail : error.message);
     }
   }
-  
-  //////////////////////////// TODO DELETE
-    /**
+
+  /**
    * Delete a user from the database.
    * @param {number} id - The id of the user to delete.
    * @returns {User} The deleted user.
    * @async
    */
-    
-  //////////////////////////// TODO DELETE
+  async delete() {
+    try {
+      const { rows } = await client.query("DELETE FROM user WHERE id=$1", [
+        this.id,
+      ]);
+    } catch (error) {
+      console.log("Erreur interne ou de requête: ", error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
+  }
 
   /**
    * Finds a user by username and password.
@@ -143,29 +149,31 @@ class User {
    * @async
    */
   async login() {
-      try {
-          const { rows } = await client.query(
-              `SELECT *
+    try {
+      const { rows } = await client.query(
+        `SELECT *
               FROM "user"
               WHERE username = $1
               OR email = $2
               ;`,
-              [username, email]
-          )
-          if (rows[0]) {
-              const correctPassword = await bcrypt.compare(this.password, rows[0].password);
-              if (correctPassword) {
-                  return rows[0];
-              }
-              throw new Error('Password incorrect !')
-          }
-          throw new NoUserError(username);
-      } catch (error) {
-          console.log(error);
-          throw new Error(error.detail ? error.detail : error.message);
+        [username, email]
+      );
+      if (rows[0]) {
+        const correctPassword = await bcrypt.compare(
+          this.password,
+          rows[0].password
+        );
+        if (correctPassword) {
+          return rows[0];
+        }
+        throw new Error("Password incorrect !");
       }
+      throw new NoUserError(username);
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
   }
-  
 }
 
 module.exports = User;
