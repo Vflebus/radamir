@@ -72,7 +72,7 @@ router.get(`/wiki`, wikiController.findAll);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki/:title(/^[^\s.]{1,255}$/gm)`, wikiController.findByTitle);
+router.get(`/wiki/:title`, wikiController.findByTitle);
 
 //#endregion GET
 
