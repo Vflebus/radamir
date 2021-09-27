@@ -88,7 +88,7 @@ p {
     width: 20vw;
     transition-duration: 1.5s;
     transition-property: all;
-    color: lightgray;
+    color: #C8AD7F;
     padding: 2rem;
     border: double 1rem #63412a;
     position: absolute;
@@ -123,7 +123,7 @@ p {
     align-items: center;
     transition: all 3s;
 }
-.navArrowTranslate {
+.indexLink:hover .navArrow {
     transform: translate(-10px);
 }
 .indexLink p {

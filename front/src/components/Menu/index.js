@@ -31,13 +31,13 @@ const Menu = ({ classes }) => {
           <NavLink exact to="/" className="links" activeClassName="selected">
             Accueil
           </NavLink>
-          <NavLink to="/wiki" className="links" activeClassName="selected">
+          <NavLink exact to="/wiki" className="links" activeClassName="selected">
             Lien 2
           </NavLink>
-          <NavLink to="/3" className="links" activeClassName="selected">
+          <NavLink exact to="/3" className="links" activeClassName="selected">
             Lien 3
           </NavLink>
-          <NavLink to="/4" className="links" activeClassName="selected">
+          <NavLink exact to="/4" className="links" activeClassName="selected">
             Lien 4
           </NavLink>
         </div>
