@@ -59,9 +59,24 @@ const Menu = ({ classes }) => {
           </div>
         </div>
         <div className="menuMobile">
-            <div className="menuMobileImg" onClick={toggleMenu}>
-                <img src={menuMobileBarreDessus} alt="Ouvrir le menu de navigation" className={`menuMobileImg__barreDessus ${isOpen ? "openedDessus" : ""}`}/>
-                <img src={menuMobileBarreDessous} alt="Ouvrir le menu de navigation" className={`menuMobileImg__barreDessous ${isOpen ? "openedDessous" : ""}`}/>
+            <div className={`menuMobileToggle ${isOpen ? "boxShadow" : ""}`} onClick={toggleMenu}>
+                <img src={menuMobileBarreDessus} alt="Ouvrir le menu de navigation" className={`menuMobileToggle__barreDessus ${isOpen ? "openedDessus" : ""}`}/>
+                <img src={menuMobileBarreDessous} alt="Ouvrir le menu de navigation" className={`menuMobileToggle__barreDessous ${isOpen ? "openedDessous" : ""}`}/>
+            </div>
+            <img src={menuDeplie} alt="" className={`navLinksMobile__img ${isOpen ? "" : "displayNone"}`} />
+            <div className={`navLinksMobile ${isOpen ? "" : "displayNone"}`}>
+                <NavLink exact to="/" className="links" activeClassName="selected">
+                    Accueil
+                </NavLink>
+                <NavLink exact to="/wiki" className="links" activeClassName="selected">
+                    Wiki
+                </NavLink>
+                <NavLink exact to="/3" className="links" activeClassName="selected">
+                    Lien 3
+                </NavLink>
+                <NavLink exact to="/4" className="links" activeClassName="selected">
+                    Lien 4
+                </NavLink>
             </div>
         </div>
     </div>
