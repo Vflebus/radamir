@@ -14,10 +14,8 @@ const wikiController = {
 	
 	findByTitle: async (request, response) => {
 		try {
-			const wikiTitle = await Wiki.findByTitle();
-			if (wikiTitle) {
-				response.json(wikiTitle);
-			}
+			const wikiTitle = await Wiki.findByTitle(request.params.title);
+			response.json(wikiTitle);
 		} catch (error) {
 			console.error(error);
 			response.status(500).json(error.message);
