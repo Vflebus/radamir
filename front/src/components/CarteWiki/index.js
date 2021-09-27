@@ -13,13 +13,16 @@ import logo from './images/logo-decoupe.png'
 
 import Menu from '../Menu';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import imageMapResize from './imageMapResizer.js';
 import data from './data'
 
 const CarteWiki = () => {
+    const mapRef = useRef();
+    const logoRef = useRef();
+    const indexLinkRef = useRef();
 
     const darkenMap = (region) => {
         let targetRegion = document.getElementById(`mouseOver${region}`);
@@ -46,15 +49,12 @@ const CarteWiki = () => {
     };
 
     const fadeMapIn = () => {
-        let map = document.getElementById('carte-radamir');
-        setTimeout(() => {map.classList.remove('appearance')}, 300);
-        let logo = document.getElementById('logo');
-        setTimeout(() => {logo.classList.remove('logoAppearance')}, 300);
-        let indexLink = document.querySelector('.indexLink');
-        setTimeout(() => {indexLink.classList.remove('indexLinkAppearance')}, 300);
-        setTimeout(() => {document.querySelectorAll('.menu').forEach(element => {
-            element.classList.remove('menuAppearance');
-        })}, 600);
+        setTimeout(() => {mapRef.current.classList.remove('appearance')}, 300);
+        setTimeout(() => {logoRef.current.classList.remove('logoAppearance')}, 300);
+        setTimeout(() => {indexLinkRef.current.classList.remove('indexLinkAppearance')}, 300);
+        // setTimeout(() => {document.querySelectorAll('.menu').forEach(element => {
+        //     element.classList.remove('menuAppearance');
+        // })}, 600);
     };
 
     // const fadeMapOut = () => {
@@ -132,7 +132,7 @@ const CarteWiki = () => {
                 <div className="landscapeBG"></div>
                 <h1 className="landscapeWarning">Veuillez passer votre téléphone en mode paysage.</h1>
                 <main id="mainContainer">
-                    <div className="indexLink indexLinkAppearance">
+                    <div className="indexLink indexLinkAppearance" ref={indexLinkRef}>
                         <Link to="/wiki/" className="indexLink">
                             <img src={navArrow} alt="flèche de navigation" className="navArrow"></img>
                             <p id="navText">Index</p>
@@ -156,7 +156,7 @@ const CarteWiki = () => {
                         <div id="map-container">
                             <Menu classes="menuAppearance" />
 
-                            <img src={carteRadamir} useMap="#image-map" id="carte-radamir" className="appearance carte-radamir" alt="Carte de Radamir" />
+                            <img src={carteRadamir} useMap="#image-map" ref={mapRef} id="carte-radamir" className="appearance carte-radamir" alt="Carte de Radamir" />
 
                             <map name="image-map">
                                 <Link to="/wiki/karnaclok">
@@ -210,7 +210,7 @@ const CarteWiki = () => {
                                     />
                                 </Link>
                             </map>
-                            <img src={logo} alt="logo Radamir" className="logo logoAppearance" id="logo"/>
+                            <img src={logo} alt="logo Radamir" className="logo logoAppearance" id="logo" ref={logoRef} />
                         </div>
                     </div>
                 </main>
