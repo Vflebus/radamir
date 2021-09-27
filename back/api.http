@@ -19,4 +19,4 @@ GET {{baseUrl}}/wiki
 
 ### Get one wiki
 
-GET  {{baseUrl}}/wiki/test1234
+GET  {{baseUrl}}/wiki/abs
