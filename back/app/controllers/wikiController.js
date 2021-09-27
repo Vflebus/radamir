@@ -60,7 +60,8 @@ const wikiController = {
 			await Wiki.delete();
 			response.status(request.body.id ? 204 : 200).json(wiki);
 		} catch (error) {
-			
+			console.error(error);
+			response.status(500).json(error.message);
 		}
 	}
 };

@@ -152,6 +152,20 @@ router.post('/wiki', wikiController.save);
 
 //#endregion POST
 
+
+//#region PATCH
+
+/* ICI FAIRE ROUTES PATCH (drive routes_finales) */
+
+//#endregion PATCH
+
+
+//#region DELETE
+
+/* ICI FAIRE ROUTES DELETE (drive routes_finales) */
+
+//#endregion DELETE
+
 router.use((_, response) => response.status(404).json("Endpoint not found"));
 
 module.exports = router;
