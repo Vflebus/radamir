@@ -1,5 +1,5 @@
 .menu, .menuMobileToggle {
-    position: absolute;
+    position: fixed;
     top: 2vh;
     right: .4vw;
     z-index: 12;
@@ -67,7 +67,7 @@
         content: unset;
     }
     .navLinksMobile {
-        position: absolute;
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -40%);
@@ -78,7 +78,7 @@
         transition: opacity 1s;
 
         &__img {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);

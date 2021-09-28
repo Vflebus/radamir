@@ -39,11 +39,10 @@ const Wiki = () => {
                     </div>
                     <div className="links-container">
                         <ul>
-                            <li><ScrollLink to="wiki__category-histoire" className="categorySelector" offset={-300} spy={true} smooth={true} >Histoire</ScrollLink></li>
-                            <li><ScrollLink to="wiki__category-géographie" className="categorySelector" offset={-300} spy={true} smooth={true}>géographie</ScrollLink></li>
-                            <li><ScrollLink to="wiki__category-architecture" className="categorySelector" offset={-300} spy={true} smooth={true}>architecture</ScrollLink></li>
-                            <li><ScrollLink to="wiki__category-langue" className="categorySelector" offset={-300} spy={true} smooth={true}>langue</ScrollLink></li>
-            
+                            <li><ScrollLink to="wiki__category-histoire" className="categorySelector" offset={-700} spy={true} smooth={true} >Histoire</ScrollLink></li>
+                            <li><ScrollLink to="wiki__category-géographie" className="categorySelector" offset={-700} spy={true} smooth={true}>Géographie</ScrollLink></li>
+                            <li><ScrollLink to="wiki__category-architecture" className="categorySelector" offset={-700} spy={true} smooth={true}>Architecture</ScrollLink></li>
+                            <li><ScrollLink to="wiki__category-langue" className="categorySelector" offset={-700} spy={true} smooth={true}>Langue</ScrollLink></li>
                         </ul>
                     </div>
                 </div>
