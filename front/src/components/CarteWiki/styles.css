@@ -23,7 +23,7 @@ area {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(./images/bg-carte.png);
+    background-image: url(./images/bg-carte.webp);
     background-size: cover;
     transition-duration: 1.5s;
     transition-property: all;
@@ -193,6 +193,11 @@ a {
 }
 @media (orientation: landscape) {
     .landscapeBG, .landscapeWarning {
+        display: none;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .infoBulle {
         display: none;
     }
 }

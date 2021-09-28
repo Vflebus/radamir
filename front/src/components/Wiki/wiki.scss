@@ -42,7 +42,7 @@
   }
 
   &__category {
-    margin-bottom: 3rem;
+    margin-bottom: 5vh;
     white-space: pre-wrap;
     line-height: 1.4;
 
@@ -51,6 +51,7 @@
       // left: 50%;
       // transform: translateX(-50%);
       width: 22vw;
+      max-width: 300px;
     }
 
     &-titleImage {
@@ -82,12 +83,12 @@
     text-align: start;
 
     li {
-      margin-bottom: 5rem;
+      margin-bottom: 5vh;
     }
 
     .categorySelector {
       color: vars.$main-color;
-      font-size: 2rem;
+      font-size: 2vw;
       margin-bottom: 5rem;
       cursor: pointer;
     }
@@ -98,10 +99,6 @@
       content: url(../../assets/images/circle.png);
     }
 
-    .active {
-      font-size: 2.5rem;
-    } 
-    
     .active::before {
       position: relative;
       top: 8px;
@@ -135,6 +132,8 @@
 @media screen and (max-width: 1024px) {
   .wiki {
 
+    max-width: 80%;
+
     .to-wiki {
       position: relative;
       margin-bottom: 1.5rem;
@@ -143,6 +142,11 @@
       img {
         width: 20px;
       }
+    }
+
+    &__select {
+      display: block;
+      margin-bottom: 1.7rem;
     }
 
     &__category {
@@ -158,6 +162,10 @@
         left: 0;
       }
     }
+
+    .links-container {
+      display: none;
+    }
   }
 }
 
@@ -168,11 +176,6 @@
     &__title {
       margin-bottom: 1.7rem;
       font-size: 2rem;
-    }
-
-    &__select {
-      display: block;
-      margin-bottom: 1.7rem;
     }
 
     &__page {
@@ -187,10 +190,6 @@
       &-content {
         text-align: left;
       }
-    }
-
-    .links-container {
-      display: none;
     }
   }
 }
