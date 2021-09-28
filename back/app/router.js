@@ -1,4 +1,4 @@
-const { Router } = require("express");
+const { Router, response } = require("express");
 
 const wikiController = require("./controllers/wikiController"); 
 /* const bController = require("./controllers/bController"); // TODO remplacer et ajouter les bons controllers
@@ -20,7 +20,7 @@ const router = Router();
  * @returns {int} 200 - An integer as id
  * @returns {string} 500 - An error message
  */
-//router.get("/profile", aController.findById);
+router.get("/profile", userController.findUser);
 
 // GET /campaigns
 
@@ -90,7 +90,7 @@ router.get(`/wiki/:title`, wikiController.findByTitle);
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  */
-//router.post('/signup', aController.save);
+router.post('/signup', userController.save);
 
 // POST /signin
 
@@ -103,7 +103,7 @@ router.get(`/wiki/:title`, wikiController.findByTitle);
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  */
-//router.post('/signin', aController.findByEmail);
+router.post('/signin', userController.login);
 
 // POST /campaigns
 
@@ -152,19 +152,107 @@ router.post('/wiki', wikiController.save);
 
 //#endregion POST
 
-
 //#region PATCH
 
-/* ICI FAIRE ROUTES PATCH (drive routes_finales) */
+/**
+ * Update a user in database
+ * @route PATCH /profile
+ * @group User
+ * @summary Update a user in databse
+ * @returns {User.model} 204 - The updated profile
+ * @returns {string} 500 - An error message
+ * @returns {string} 400 - A validation error message
+ * @returns {string} 401 - An unauthorized error message
+ * @returns {string} 404 - A not found error message
+ */
+router.patch('/profile', userController.update);
+
+/**
+ * Update a wiki in database
+ * @route PATCH /wiki/:title
+ * @group Wiki
+ * @summary Update a wiki in database
+ * @param {string} title - The title of the wiki to update
+ * @returns {Wiki.model} 200 - The updated wiki
+ * @returns {string} 500 - An error message
+ * @returns {string} 400 - A validation error message
+ * @returns {string} 404 - A not found error message
+ */
+router.patch('/wiki/:title', wikiController.update);
+
+/**
+ * Update a campaign in database
+ * @route PATCH /campaigns/:campaign_name
+ * @group Campaigns
+ * @summary Update a campaign in database
+ * @param {string} campaign_name - The name of the campaign to update
+ * @returns {Campaign.model} 200 - The updated campaign
+ * @returns {string} 500 - An error message
+ * @returns {string} 400 - A validation error message
+ * @returns {string} 404 - A not found error message
+ */
+router.patch('/campaigns/:campaign_name', cController.update);
 
 //#endregion PATCH
 
 
 //#region DELETE
 
-/* ICI FAIRE ROUTES DELETE (drive routes_finales) */
+/**
+ * Delete a user in db
+ * @route DELETE /profile
+ * @group User
+ * @summary Delete a user in db
+ * @param {int} id - the id of the user to delete
+ * @returns {string} - 200 User is deleted
+ * @returns {string} - 204 User not found
+ * @returns {string} - 500 An error message
+ */
+router.delete(`/profile`, userController.delete);
 
-//#endregion DELETE
+/**
+ * @route DELETE /wiki/:title
+ * @group Wiki
+ * @summary Delete a wiki in db
+ * @param {int} id - the id of the wiki to delete
+ * @returns {string} - 200 Wiki is deleted
+ * @returns {string} - 204 Wiki not found
+ * @returns {string} - 500 An error message
+ */
+router.delete(`/wiki/:title`, wikiController.delete);
+
+/**
+ * @route DELETE /campaign
+ * @group Campaign
+ * @summary Delete a campaign in db
+ * @param {int} id - The id of the campaign to delete
+ * @returns {string} - 200 Campaign is deleted
+ * @returns {string} - 204 Campaign not found
+ * @returns {string} - 500 An error message
+ */
+router.delete(`/campaign`, campaignsController.deleteCampaign);
+
+/**
+ * @route DELETE /campaign/:campaign_name
+ * @group Campaign
+ * @summary Delete a note from the campaign notes list
+ * @param {int} id - The id of the note to delete
+ * @returns {string} - 200 Note is deleted
+ * @returns {string} - 204 Note not found
+ * @returns {string} - 500 An error message
+ */
+router.delete(`/campaign/:campaign_name`, campaignsController.deleteNote);
+
+/**
+ * @route DELETE /campaign/:campaign_name
+ * @group Campaign
+ * @summary Campaign creator can delete a player from the campaign players list
+ * @param {int} id - The id of the player to delete
+ * @returns {string} - 200 Player is deleted
+ * @returns {string} - 204 Player not found
+ * @returns {string} - 500 An error message
+ */
+router.delete(`/campaigns/:campaign_name`, campaignsContoller.deletePlayer);
 
 router.use((_, response) => response.status(404).json("Endpoint not found"));
 
