@@ -129,24 +129,24 @@
         z-index: -100;
         opacity: 0;
     }
+
+    @media (orientation: landscape) {
+        .navLinksMobile__img {
+            width: unset;
+            height: 90vh;
+        }
+        .links {
+            font-size: 8vh;
+        }
+        .menuMobileToggle {
+            margin-top: 5vh;
+            width: 15vh;
+        }
+    }
 }
 
 @media screen and (max-width: 470px) {
     .navLinksMobile__img {
         width: 100vw;
-    }
-}
-
-@media (orientation: landscape) {
-    .navLinksMobile__img {
-        width: unset;
-        height: 90vh;
-    }
-    .links {
-        font-size: 8vh;
-    }
-    .menuMobileToggle {
-        margin-top: 5vh;
-        width: 15vh;
     }
 }
