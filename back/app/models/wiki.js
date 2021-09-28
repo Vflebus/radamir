@@ -1,8 +1,8 @@
 const client = require("../database");
 
 class NoTitleError extends Error {
-  constructor(title) {
-    super(`No result with title: ${title}`);
+  constructor(slug) {
+    super(`No result with title: ${slug}`);
   }
 }
 
@@ -42,8 +42,8 @@ class Wiki {
     try {
       let { rows } = await client.query(
         `SELECT 
-          jsonb_agg(DISTINCT jsonb_build_object('title', wiki.title))AS resulttitles,
-          jsonb_agg(DISTINCT jsonb_build_object('region', region.region))AS resultregions
+          jsonb_agg(DISTINCT jsonb_build_object('slug', wiki.slug))AS resulttitles,
+          jsonb_agg(DISTINCT jsonb_build_object('slug', region.slug))AS resultregions
           FROM wiki, region
         ;`
 
@@ -64,16 +64,16 @@ class Wiki {
    * @example Wiki.findByTitle('test1234')
    * @throws {NoTitleError} if no wiki is found with the given title
    */
-  static async findByTitle(title) {
+  static async findByTitle(slug) {
     try {
       const { rows } = await client.query(
-        "SELECT * FROM wiki WHERE title=$1",
-        [title]
+        "SELECT slug FROM wiki WHERE slug=$1",
+        [slug]
       );
       if (rows[0]) {
         return new Wiki(rows[0]);
       }
-      throw new NoTitleError(title);
+      throw new NoTitleError(slug);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);

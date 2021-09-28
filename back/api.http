@@ -15,8 +15,8 @@ GET {{baseUrl}}/campaigns/test1234
 
 ### Get the wiki
 
-GET {{baseUrl}}/wiki
+GET {{baseUrl}}/wiki/salut
 
 ### Get one wiki
 
-GET  {{baseUrl}}/wiki/abs
+GET  {{baseUrl}}/wiki/region
