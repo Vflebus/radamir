@@ -117,7 +117,6 @@ class Wiki {
   /**
    * Update a wiki in the database.
    * @param {string} title - The title of the wiki to update.
-   * @returns {Wiki} The updated wiki.
    * @async
    */
   async update() {
@@ -135,7 +134,6 @@ class Wiki {
   /**
    * Delete a wiki from the database.
    * @param {number} id - The id of the wiki to delete.
-   * @returns {Wiki} The deleted wiki.
    * @async
    */
 	async delete() {
