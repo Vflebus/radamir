@@ -1,6 +1,7 @@
 const initialState = {
   regions: [],
   others: [],
+  loading: true,
 };
 
 const reducer = (state = initialState, action = {}) => {

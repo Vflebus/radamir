@@ -1,4 +1,3 @@
-// import {useState} from "react";
 import { Link } from "react-router-dom";
 
 import WikiSection from "./WikiSection";
@@ -8,7 +7,6 @@ import "./wikis.scss";
 
 import arrow from "../../assets/images/flecheNavRouge.png";
 import { useEffect } from "react";
-// import radamirAPI from "../../apis/radamirAPI";
 
 const regions = [
   { name: "Vanna", route: "vanna" },
@@ -24,18 +22,10 @@ const others = [
 ];
 
 const Wikis = () => {
-  // const [regions, setRegions] = useState([]);
-  // const [others, setOthers] = useState([]);
 
   useEffect(() => {
     document.querySelector('.wikis').classList.remove('noDisplay');
-    
-    // const fetchData = async () => {
-    //   const res = await radamirAPI.get("/wiki");
-    //   console.log(res.data);
-    // };
-    // fetchData();
-  },
+    },
   []);
 
   return (
