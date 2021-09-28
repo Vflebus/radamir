@@ -1,0 +1,12 @@
+@use "vars";
+@use "reset";
+
+html {
+  font-family: serif;
+}
+body {
+  background: url("../assets/images/bg-carte.png");
+}
+.noDisplay {
+    opacity: 0%;
+}

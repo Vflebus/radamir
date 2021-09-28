@@ -1,0 +1,130 @@
+@use "../../styles/vars";
+
+.wikis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem;
+  font-family: vars.$title-font;
+  color: vars.$main-color;
+  transition: opacity 3s;
+
+  &__title {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__section {
+    padding: 2.5rem;
+    margin: 1rem 0;
+    max-width: 70%;
+    // background-color: vars.$light-bg;
+    // box-shadow: 0px 0px 40px 30px vars.$light-bg;
+
+    &-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    &-list {
+      justify-content: center;
+    }
+
+    &-link {
+      display: block;
+      padding: 0.3rem 0.6rem;
+      font-size: 1.1rem;
+      color: vars.$main-color;
+      border-radius: 15px;
+      transition: ease 0.3s;
+
+      // &:hover {
+      //   // color: vars.$light-bg;
+      //   background-color: vars.$main-color;
+      //   box-shadow: 0px 0px 5px 3px vars.$main-color;
+      // }
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .to-home {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.8vw;
+    color: vars.$main-color;
+    transform: translateY(-50%);
+
+    img {
+      width: 2vw;
+      margin-left: 15px;
+      transition: all 0.5s;
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      img {
+        transform: translateX(10px) rotate(180deg);
+      }
+    }
+  }
+}
+.wikiParchment {
+  width: 20rem;
+}
+.itemContainer {
+  position: relative;
+}
+.itemName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .wikis {
+    .to-home {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 564px) {
+  .wikis {
+    text-align: center;
+
+    &__title {
+      font-size: 1.5rem;
+      margin-bottom: unset;
+    }
+
+    &__section {
+      // max-width: 90%;
+      padding-top: 2rem;
+      margin: 0;
+
+      &-title {
+        font-size: 1.3rem;
+      }
+    }
+
+    .wikiParchment {
+      width: 15rem;
+    }
+  }
+}

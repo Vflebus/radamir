@@ -1,0 +1,196 @@
+@use "../../styles/vars";
+
+.wiki {
+  position: relative;
+  top: 4rem;
+  left: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 50%;
+  color: vars.$main-color;
+
+  &__select {
+    display: none;
+    padding: 0.3rem;
+    font-family: vars.$title-font;
+    color: vars.$main-color;
+    border: 2px solid vars.$main-color;
+    border-radius: 5px;
+    background-color: vars.$ligther-bg;
+    outline: none;
+  }
+
+  &__title {
+    text-align: center;
+    margin: 1.5rem 0 6rem;
+    font-family: vars.$title-font;
+    text-transform: uppercase;
+    font-size: 4rem;
+  }
+
+  &__page {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 0 4rem;
+    width: 100%;
+    font-size: 1.4rem;
+  }
+
+  &__category {
+    margin-bottom: 3rem;
+    white-space: pre-wrap;
+    line-height: 1.4;
+
+    &-titleItem {
+      position: relative;
+      // left: 50%;
+      // transform: translateX(-50%);
+      width: 22vw;
+    }
+
+    &-titleImage {
+      width: 100%;
+    }
+
+    &-title {
+      position: absolute;
+      top: 35%;
+      left: 18%;
+      // transform: translateX(-50%);
+      font-family: vars.$title-font;
+      color: vars.$main-color;
+      font-size: 2rem;
+    }
+  }
+
+  .category-container {
+    flex: 85%;
+    margin-bottom: 6rem;
+  }
+
+  .links-container {
+    position: fixed;
+    top: 40%;
+    transform: translateY(-50%);
+    left: 5px;
+    height: 50vh;
+    text-align: start;
+
+    li {
+      margin-bottom: 5rem;
+    }
+
+    .categorySelector {
+      color: vars.$main-color;
+      font-size: 2rem;
+      margin-bottom: 5rem;
+      cursor: pointer;
+    }
+
+    .categorySelector::before {
+      position: relative;
+      top: 8px;
+      content: url(../../assets/images/circle.png);
+    }
+
+    .active {
+      font-size: 2.5rem;
+    } 
+    
+    .active::before {
+      position: relative;
+      top: 8px;
+      content: url(../../assets/images/tickedCircle.png);
+    }
+  }
+
+  .to-wiki {
+    position: fixed;
+    top: 50%;
+    left: 5px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    color: vars.$main-color;
+
+    img {
+      width: 40px;
+      transition: ease 0.5s;
+    }
+
+    &:hover {
+      img {
+        transform: translateX(-10px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wiki {
+
+    .to-wiki {
+      position: relative;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+
+      img {
+        width: 20px;
+      }
+    }
+
+    &__category {
+
+      &-titleImage {
+        display: none;
+      
+      }
+
+      &-title {
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .wiki {
+    text-align: center;
+
+    &__title {
+      margin-bottom: 1.7rem;
+      font-size: 2rem;
+    }
+
+    &__select {
+      display: block;
+      margin-bottom: 1.7rem;
+    }
+
+    &__page {
+      padding: 0 1rem;
+    }
+
+    &__category {
+      &-title {
+        text-align: start;
+      }
+
+      &-content {
+        text-align: left;
+      }
+    }
+
+    .links-container {
+      display: none;
+    }
+  }
+}

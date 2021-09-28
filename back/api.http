@@ -1,0 +1,22 @@
+@baseUrl=http://localhost:3333/v1
+@host=http://localhost:3333
+
+### Get the user 
+
+GET {{baseUrl}}/profile
+
+### Get all campaigns
+
+GET {{baseUrl}}/campaigns
+
+### Get one campaign
+
+GET {{baseUrl}}/campaigns/test1234
+
+### Get the wiki
+
+GET {{baseUrl}}/wiki/salut
+
+### Get one wiki
+
+GET  {{baseUrl}}/wiki/region
