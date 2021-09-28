@@ -109,17 +109,22 @@
     
             .openedDessus {
                 transform: translateY(50%)  rotate(227.5deg);
-                filter: brightness(1.5);
+                filter: brightness(2.5);
             }
     
             .openedDessous {
                 transform: translateY(-50%)  rotate(132.5deg) translateY(-10%);
-                filter: brightness(1.5);
+                filter: brightness(2.5);
             }
         }
-        .boxShadow {
-            box-shadow: 0 0 0 2000px rgba( 0, 0, 0, 0.8);
-            background-color: rgba(0, 0, 0, 0.8);
+        .boxShadow::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200vw;
+            height: 200vh;
+            background-color: rgba( 0, 0, 0, 0.8);
         }
         .displayNone {
             z-index: -100;
