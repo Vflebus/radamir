@@ -1,10 +1,10 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
 
 import WikiCategory from "./WikiCategory";
 import Menu from "../Menu"
 
-import arrow from "../../assets/images/flecheNavRouge.png";
+// import arrow from "../../assets/images/flecheNavRouge.png";
 import "./wiki.scss";
 
 const Wiki = () => {

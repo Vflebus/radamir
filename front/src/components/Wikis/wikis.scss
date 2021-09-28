@@ -99,14 +99,7 @@
 @media screen and (max-width: 1024px) {
   .wikis {
     .to-home {
-      position: relative;
-      top: unset;
-      right: unset;
-      font-size: 1.3rem;
-
-      img {
-        width: 20px;
-      }
+      display: none;
     }
   }
 }
@@ -117,10 +110,12 @@
 
     &__title {
       font-size: 1.5rem;
+      margin-bottom: unset;
     }
 
     &__section {
       // max-width: 90%;
+      padding-top: 2rem;
       margin: 0;
 
       &-title {
