@@ -2,8 +2,9 @@
 
 BEGIN;
 
-INSERT INTO region ("region", "history", "geography", "architecture", "language", "currency", "leader", "religion", "caste", "name", "justice", "mage", "outfit", "lifestyle", "treatment", "movement", "nutrition", "art", "entertainment")
+INSERT INTO region ("slug", "title", "history", "geography", "architecture", "language", "currency", "leader", "religion", "caste", "name", "justice", "mage", "outfit", "lifestyle", "treatment", "movement", "nutrition", "art", "entertainment")
 VALUES (
+'vanna',
 '
 Vanna
 ', 
@@ -86,6 +87,7 @@ Les cartes à collectionner des humains ont fait leur bout de chemin jusqu''au D
 ),
 -- #endregion elfes noirs - 1
 ( 
+'feidlimid',
 '
 Feidlimid
 ',
@@ -159,6 +161,7 @@ Le commerce avec les humains leur a apporté les jeux de cartes et de plateaux, 
 ),
 -- #endregion elfes sylvains - 2
 (
+'kervollen',
 '
 Kervollen
 ', 
@@ -242,6 +245,7 @@ Les jeux de cartes, les jeux à boire, les jeux de dés sont appréciés parmi l
 ),
 -- #endregion humains - 3
 (
+'karnaclock',
 '
 Karnaclok
 ',
@@ -314,6 +318,7 @@ Manger, boire et dormir sont des distractions en soi, aussi les Nains les pratiq
 ),
 -- #endregion nains - 4
 (
+'droknor',
 '
 Drok''nor
 ', 

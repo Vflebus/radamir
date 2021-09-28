@@ -1,9 +1,15 @@
-.menu {
+.menu, .menuMobileToggle {
     position: absolute;
     top: 2vh;
     right: .4vw;
     z-index: 12;
     transition: transform 3s;
+}
+.menuMobile {
+    display: none;
+}
+.cursorPointer {
+    cursor: pointer;
 }
 .menuImg, .menu {
     width: 20vw;
@@ -30,25 +36,117 @@
     font-family: 'IM Fell English SC', serif;
     font-size: 1.6vw;
     color: #470703;
-    // text-shadow: 0px 0px 2px black;
     z-index: 20;
 }
 .selected {
     cursor: default;
 }
-// .selected::before {
-//     position: absolute;
-//     right: 95%;
-//     transform: translateY(-25%);
-//     content: "";
-//     // background-color: #fff;
-//     width: 40px;
-//     height: 34px;
-//     background-image: url(./images/quill-resized-inversed.png);
-//     background-size: contain;
-//     background-repeat: no-repeat;
-// }
 .selected::after {
     margin-left: 10px;
-    content: url(./images/quill-resized.png);
+    content: "";
+    width: 1.8vw;
+    height: 1.48vw;
+    background-image: url(./images/quill-resized.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+@media screen and (max-width: 1500px) {
+    .wikis {
+        transition: all 1s;
+    }
+    .menu {
+        display: none;
+    }
+    .menuMobile {
+        display: block;
+        transition: all 2s;
+    }
+    .selected::after {
+        content: unset;
+    }
+    .navLinksMobile {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        z-index: 100;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        transition: opacity 1s;
+
+        &__img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+            width: 60vw;
+            transition: opacity 1s, box-shadow 1s, background-color 1s;
+        }
+    }
+    .links {
+        font-size: 8vw;
+        margin-bottom: 1rem;
+        // transition: all 1s;
+    }
+    .menuMobileToggle {
+        display: flex;
+        flex-direction: column;
+        // transition: box-shadow 1s, background-color 1s;
+        width: 15vw; 
+
+        &__barreDessus {
+            transition: transform 1s;
+        }
+
+        &__barreDessous {
+            transition: transform 1s;
+        }
+
+        .openedDessus {
+            transform: translateY(50%)  rotate(227.5deg);
+            filter: brightness(2.5);
+        }
+
+        .openedDessous {
+            transform: translateY(-50%)  rotate(132.5deg) translateY(-10%);
+            filter: brightness(2.5);
+        }
+    }
+    .boxShadow::before {
+        content: "";
+        position: absolute;
+        top: -500px;
+        right: -50%;
+        width: 700vw;
+        height: 700vh;
+        background-color: rgba( 0, 0, 0, 0.8);
+    }
+    .displayNone {
+        z-index: -100;
+        opacity: 0;
+    }
+
+    @media (orientation: landscape) {
+        .navLinksMobile__img {
+            width: unset;
+            height: 90vh;
+        }
+        .links {
+            font-size: 8vh;
+        }
+        .menuMobileToggle {
+            margin-top: 5vh;
+            width: 15vh;
+        }
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .navLinksMobile__img {
+        width: 100vw;
+    }
 }
