@@ -105,7 +105,7 @@ const CarteWiki = () => {
                         </Link>
                     </div>
                     <aside id="infoBulleContainer">
-                        <div className="infoBulle noDisplay" id="info" ref={infoRef}>
+                        <div className="infoBulle noDisplay clickThrough" id="info" ref={infoRef}>
                             {/* Historique région */}
                         </div>
                     </aside>

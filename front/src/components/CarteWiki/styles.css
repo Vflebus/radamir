@@ -97,6 +97,7 @@ p {
     cursor: default;
     white-space: pre-wrap;
     font-size: 1.2rem;
+    z-index: 400;
 }
 .appearance {
     position: relative;    
@@ -144,7 +145,7 @@ a {
 .logo {
     position: absolute;
     transition: all 3s;
-    z-index: 30;
+    z-index: 10;
     left: 10vw;
     bottom: 2vh;
     width: 45vw;
@@ -197,7 +198,7 @@ a {
         display: none;
     }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1500px) {
     .infoBulle {
         display: none;
     }
