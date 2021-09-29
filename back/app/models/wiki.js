@@ -23,7 +23,7 @@ class Wiki {
   static NoTitleError = NoTitleError;
 
   /**
-   * The constructor for the Wiki model.
+   * The constructor for the Wiki model
    * @param {Object} object - A literal object with the properties of the wiki copied into the instance.
    */
   constructor(object = {}) {
@@ -34,7 +34,7 @@ class Wiki {
 
   /**
    * Fetches all the wiki titles from the database and region from region
-   * @returns {Array<Wiki>} An array of wikis.
+   * @returns {Array<Wiki>} An array of wikis
    * @static
    * @async
    */

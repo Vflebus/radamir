@@ -16,7 +16,7 @@ const userController = {
     save: async (request, response) => {
         try {
             const user = new User(request.body);
-            await user.save();
+            await User.save();
             response.status(request.body.id ? 204 : 201).json(user);
         } catch (error) {
             console.error(error);	
@@ -30,7 +30,7 @@ const userController = {
                 request.params.username, 
                 request.params.email,
                 request.params.password, 
-                requestrequest.body
+                request.params.body
                 );
             await User.update();
 			response.status(request.body.id ? 204 : 202).json(user);
