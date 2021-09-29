@@ -96,7 +96,7 @@
         display: flex;
         flex-direction: column;
         // transition: box-shadow 1s, background-color 1s;
-        width: 15vw; 
+        width: 15vw;
 
         &__barreDessus {
             transition: transform 1s;
@@ -131,17 +131,20 @@
     }
 
     @media (orientation: landscape) {
-        .navLinksMobile__img {
-            width: unset;
-            height: 90vh;
+        @media screen and (max-height: 500px) {
+            .navLinksMobile__img {
+                width: unset;
+                height: 90vh;
+            }
+            .links {
+                font-size: 8vh;
+            }
+            .menuMobileToggle {
+                margin-top: 5vh;
+                width: 15vh;
+            }
         }
-        .links {
-            font-size: 8vh;
-        }
-        .menuMobileToggle {
-            margin-top: 5vh;
-            width: 15vh;
-        }
+        
     }
 }
 
