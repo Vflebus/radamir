@@ -148,6 +148,7 @@ a {
     left: 10vw;
     bottom: 2vh;
     width: 45vw;
+    max-width: 800px;
 }
 .logoAppearance {
     bottom: 50%;
