@@ -1,27 +1,11 @@
 const client = require("../database");
 
-/*
-/campaigns -> GET, POST, DELETE
-               ^----^------^--------> GET Recup la liste des campagnes, 
-                                      POST Envoi d'une nouvelle campagne, 
-                                      DELETE Supprimer une campagne (MJ)
-
-/campaigns/:campaign_name −> GET, POST, PATCH, DELETE
-                              ^----^------^------^--------> GET Recup une campagne, les notes (publiques/privées), 
-                                                            POST Envoi d'une nouvelle note / Ajout d'un nouveau joueur (MJ),
-                                                            PATCH Modifier une note / Modifier description de la campagne (MJ),
-                                                            DELETE Supprimer une note / Supression d'un joueur (MJ)
-
-*/
-
 class NoCampaignError extends Error {
   constructor(campaign) {
     super(`No result with campaign: ${campaign}`);
     this.code = 404;
   }
 }
-
-// class NoNoteError extends Error { }
 
 /**
  * An entity representing a campaign
@@ -120,7 +104,7 @@ class Campaign {
    * Adds or updates a campaign in database
    * @async
    * @returns {Campaign} The campaign inserted or updated
-   * @throws {Error} If the request is failed
+   * @throws {Error} If the request failed
    */
   async save() {
     /* try {
@@ -165,9 +149,10 @@ class Campaign {
    */
   async delete() {
     try {
-        const { rows } = await client.query(
-            "DELETE FROM campaign WHERE id = $1;",
-            [this.id]);
+      const { rows } = await client.query(
+        "DELETE FROM campaign WHERE id = $1;",
+        [this.id]
+      );
     } catch (error) {
       console.error(error);
       throw new Error(error.detail ? error.detail : error.message);
