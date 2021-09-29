@@ -3,7 +3,6 @@
     top: 2vh;
     right: .4vw;
     z-index: 12;
-    transition: transform 3s;
 }
 .menuMobile {
     display: none;
@@ -67,24 +66,24 @@
         content: unset;
     }
     .navLinksMobile {
-        position: fixed;
-        top: 50%;
+        position: absolute;
+        top: 50vh;
         left: 50%;
         transform: translate(-50%, -40%);
         z-index: 100;
         text-align: center;
         display: flex;
         flex-direction: column;
-        transition: opacity 1s;
+        // transition: opacity 1s;
 
         &__img {
-            position: fixed;
-            top: 50%;
+            position: absolute;
+            top: 50vh;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 50;
             width: 60vw;
-            transition: opacity 1s, box-shadow 1s, background-color 1s;
+            // transition: opacity 1s, box-shadow 1s, background-color 1s;
         }
     }
     .links {
@@ -97,12 +96,9 @@
         flex-direction: column;
         // transition: box-shadow 1s, background-color 1s;
         width: 15vw;
-        max-width: 100px;
+        z-index: 80;
 
-        &__barreDessus {
-            transition: transform 1s;
-        }
-
+        &__barreDessus,
         &__barreDessous {
             transition: transform 1s;
         }
@@ -125,6 +121,7 @@
         width: 700vw;
         height: 700vh;
         background-color: rgba( 0, 0, 0, 0.8);
+        z-index: 50;
     }
     .displayNone {
         z-index: -100;

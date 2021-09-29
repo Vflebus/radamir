@@ -1,4 +1,6 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
 import "../../styles/index.scss";
 
 import CarteWiki from "../CarteWiki";
@@ -7,10 +9,24 @@ import Wiki from "../Wiki";
 import About from "../About";
 import Terms from "../Terms";
 
+import logo from "../../assets/images/logo-decoupe.png";
+
 const App = () => {
+  const location = useLocation();
+  const loading = false;
+
+  if (loading) {
+    return <img
+                src={logo}
+                alt="logo Radamir"
+                className="logo loading"
+                id="logo"
+            />
+  }
+
   return (
-    <Router>
-      <Switch>
+    <AnimatePresence exitBeforeEnter>
+      <Switch location={location} key={location.pathname}>
         <Route exact path="/">
           <CarteWiki />
         </Route>
@@ -27,7 +43,7 @@ const App = () => {
           <Terms />
         </Route>
       </Switch>
-    </Router>
+    </AnimatePresence>
   );
 };
 

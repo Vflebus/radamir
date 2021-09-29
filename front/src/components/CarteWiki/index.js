@@ -11,17 +11,32 @@ import carteRadamir from './images/CarteRadamir.png'
 import navArrow from './images/flecheNavRouge.png'
 import logo from './images/logo-decoupe.png'
 
-import Menu from '../Menu';
-
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
+
+import Menu from "../Menu";
 
 import imageMapResize from './imageMapResizer.js';
 import data from './data'
 
+const pageVariants = {
+    in: {
+      x: 0,
+      opacity: 1
+    },
+    out: {
+      x: "100vw",
+      opacity: 0
+    }
+};
+
+const pageTransitions = {
+    transition: "linear",
+    duration: 1
+};
+
 const CarteWiki = () => {
-    const mapRef = useRef();
-    const logoRef = useRef();
     const indexLinkRef = useRef();
     const mapContainerRef = useRef();
     const infoRef = useRef();
@@ -55,37 +70,8 @@ const CarteWiki = () => {
         indexLinkRef.current.classList.remove(`noDisplay`);
     };
 
-    const fadeMapIn = () => {
-        setTimeout(() => {mapRef.current.classList.remove('appearance')}, 300);
-        setTimeout(() => {logoRef.current.classList.remove('logoAppearance')}, 300);
-        setTimeout(() => {indexLinkRef.current.classList.remove('indexLinkAppearance')}, 300);
-        // setTimeout(() => {document.querySelectorAll('.menu').forEach(element => {
-        //     element.classList.remove('menuAppearance');
-        // })}, 600);
-    };
-
-    // const fadeMapOut = () => {
-    //     let targets = [document.getElementById('allMaps'), document.getElementById('infoBulleContainer')]
-    //     targets.forEach(target => {
-    //         if (!target.style.opacity) {
-    //             target.style.opacity = 1;
-    //         }
-    //         console.log(`fade start...`);
-    //         let fadeOutEffect = setInterval(function () {
-    //             if (target.style.opacity < 0) {
-    //                 clearInterval(fadeOutEffect);
-    //                 target.remove();
-    //             }
-    //             else {
-    //                 target.style.opacity -= 0.01;
-    //             }
-    //         }, 20)
-    //     })
-    // };
-
     useEffect(
         () => {
-            fadeMapIn();
             imageMapResize();
             window.addEventListener('resize', () => {
                 setTimeout(() => {imageMapResize()}, 2000);
@@ -94,16 +80,28 @@ const CarteWiki = () => {
     )
 
     return (
-            <div>
+            <motion.div
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransitions}
+            >
                 <div className="landscapeBG"></div>
                 <h1 className="landscapeWarning">Veuillez passer votre téléphone en mode paysage.</h1>
                 <main id="mainContainer">
-                    <div className="indexLink indexLinkAppearance" ref={indexLinkRef}>
+                    <motion.div
+                        className="indexLink"
+                        ref={indexLinkRef}
+                        initial={{ x: -300 }}
+                        animate={{ x: 0 }}
+                        transition={{ ease: "linear", duration: 0.5 }}
+                    >
                         <Link to="/wiki/" className="indexLink">
                             <img src={navArrow} alt="flèche de navigation" className="navArrow"></img>
                             <p id="navText">Index</p>
                         </Link>
-                    </div>
+                    </motion.div>
                     <aside id="infoBulleContainer">
                         <div className="infoBulle noDisplay clickThrough" id="info" ref={infoRef}>
                             {/* Historique région */}
@@ -120,9 +118,18 @@ const CarteWiki = () => {
                     {/* FRAGMENTS DE CARTE */}
 
                         <div id="map-container" ref={mapContainerRef}>
-                            <Menu classes="menuAppearance" />
+                            <Menu />
 
-                            <img src={carteRadamir} useMap="#image-map" ref={mapRef} id="carte-radamir" className="appearance carte-radamir" alt="Carte de Radamir" />
+                            <motion.img
+                                src={carteRadamir}
+                                useMap="#image-map"
+                                id="carte-radamir"
+                                className="appearance carte-radamir"
+                                alt="Carte de Radamir"
+                                initial={{ opacity: 0, zIndex: -3, y: 50 }}
+                                animate={{ opacity: 1, zIndex: 1, y: 0 }}
+                                transition={{ ease: "linear", duration: 0.75 }}
+                            />
 
                             <map name="image-map">
                                 <Link to="/wiki/karnaclok">
@@ -186,11 +193,19 @@ const CarteWiki = () => {
                                     />
                                 </Link>
                             </map>
-                            <img src={logo} alt="logo Radamir" className="logo logoAppearance" id="logo" ref={logoRef} />
+                            <motion.img
+                                src={logo}
+                                alt="logo Radamir"
+                                className="logo"
+                                id="logo"
+                                animate={{ width: "45vw", x: "-20vw", y: "33vh" }}
+                                initial={{ width: "1059px", x: 0, y: 0 }}
+                                transition={{ ease: "easeInOut", duration: 1.75 }}
+                            />
                         </div>
                     </div>
                 </main>
-            </div>
+            </motion.div>
     )
 }
 

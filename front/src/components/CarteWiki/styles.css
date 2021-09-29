@@ -99,14 +99,6 @@ p {
     font-size: 1.2rem;
     z-index: 400;
 }
-.appearance {
-    position: relative;    
-    top: 10vh;
-    left: 50%;
-    opacity: 5%;
-    transform: translateZ(50px);
-    z-index: -3;
-}
 .navArrow, .indexLink {
     z-index: 12;
     transition: opacity 1.5s;
@@ -139,26 +131,17 @@ a {
     font-family: 'IM Fell English SC', serif;
     text-decoration: none;
 }
-.indexLinkAppearance {
-   transform: translateX(-300px);
-}
 .logo {
     position: absolute;
-    transition: all 3s;
-    z-index: 10;
+    /* width: 45vw;
     left: 10vw;
     bottom: 2vh;
-    width: 45vw;
-    max-width: 800px;
+    z-index: 30; */
 }
-.logoAppearance {
-    bottom: 50%;
+.loading {
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 50%);
-    width: 1059px;
-}
-.menuAppearance {
-    transform: translateY(-200px);
+    transform: translate(-50%, -50%);
 }
 @media (orientation: portrait) {
     #mainContainer {
@@ -171,9 +154,9 @@ a {
         text-align: center;
         width: 100%;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 35vh;
+        /* left: 50%; */
+        /* transform: translate(-50%, -50%); */
         animation: blinking 3s linear infinite;
     }
     @keyframes blinking {
@@ -182,13 +165,12 @@ a {
         }
     }
     .landscapeBG {
-        content: "";
         width: 100vw;
         height: 100vh;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        /* top: 50%;
+        left: 50%; */
+        /* transform: translate(-50%, -50%); */
         background: url(./images/bg-carte.png);
         filter: brightness(20%);
     }

@@ -1,17 +1,58 @@
 import { useLocation } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
+import { motion } from "framer-motion";
 
 import WikiCategory from "./WikiCategory";
-import Menu from "../Menu"
+import Menu from "../Menu";
 
 // import arrow from "../../assets/images/flecheNavRouge.png";
 import "./wiki.scss";
 
+const pageVariants = {
+    in: {
+      y: 0,
+      opacity: 1
+    },
+    out: {
+      y: "100vh",
+      opacity: 0
+    }
+};
+
+const pageTransitions = {
+    transition: "linear",
+    duration: 1
+};
+  
+  
 const Wiki = () => {
   const { pathname } = useLocation();
 
-  return (  
-        <div>
+  return (
+      <>
+        <motion.div
+            className="links-container"
+            initial="out"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransitions}
+        >
+            <ul>
+                <li><ScrollLink to="wiki__category-histoire" className="categorySelector" offset={-300} spy={true} smooth={true} >Histoire</ScrollLink></li>
+                <li><ScrollLink to="wiki__category-géographie" className="categorySelector" offset={-300} spy={true} smooth={true}>géographie</ScrollLink></li>
+                <li><ScrollLink to="wiki__category-architecture" className="categorySelector" offset={-300} spy={true} smooth={true}>architecture</ScrollLink></li>
+                <li><ScrollLink to="wiki__category-langue" className="categorySelector" offset={-300} spy={true} smooth={true}>langue</ScrollLink></li>
+            </ul>
+        </motion.div>
+
+        <motion.div
+            initial="out"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransitions}
+        >
             <Menu />
             <div className="wiki">
                 <h1 className="wiki__title">Titre Section</h1>
@@ -37,17 +78,10 @@ const Wiki = () => {
                         <WikiCategory title="Architecture" content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum molestiae vitae illo sit dolorem saepe aliquam eligendi vero quibusdam facere! Tenetur accusamus fugit odio incidunt nobis veniam minus repudiandae quidem necessitatibus sit ducimus sapiente quaerat, eos rem repellat quibusdam delectus iste nam esse ab earum amet ipsa, molestiae id? Quidem recusandae quis, repellat ipsum suscipit praesentium facilis vel at ut molestiae quam dolores ab odio, ratione, enim aperiam voluptas minima vero rem maiores! Sequi ratione et asperiores amet! A minima inventore alias facilis deserunt ipsam? Itaque ipsam, tempore nesciunt doloremque deserunt blanditiis esse enim! Quod quas nostrum aspernatur praesentium. Voluptate repellendus officia blanditiis perspiciatis libero quasi dolore aliquid ut placeat provident quia voluptatibus dolores ad molestias, esse iure maxime ea inventore quis soluta nam. Cumque ut quas ducimus nam a, minus tempore sed est provident voluptatibus itaque molestiae dolorum aperiam culpa consectetur eos ad nobis debitis! Ipsum perspiciatis tempora dolor animi, nostrum non impedit enim asperiores aspernatur dolorum dicta amet eaque itaque quam placeat quas fugit iure aut sequi? Accusamus expedita exercitationem ipsam unde iure perferendis distinctio ut, vero debitis. Distinctio quam, libero, minus esse animi est sunt nesciunt pariatur tempore expedita commodi quasi dicta repellendus quod nobis in nostrum?" />
                         <WikiCategory title="Langue" content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum molestiae vitae illo sit dolorem saepe aliquam eligendi vero quibusdam facere! Tenetur accusamus fugit odio incidunt nobis veniam minus repudiandae quidem necessitatibus sit ducimus sapiente quaerat, eos rem repellat quibusdam delectus iste nam esse ab earum amet ipsa, molestiae id? Quidem recusandae quis, repellat ipsum suscipit praesentium facilis vel at ut molestiae quam dolores ab odio, ratione, enim aperiam voluptas minima vero rem maiores! Sequi ratione et asperiores amet! A minima inventore alias facilis deserunt ipsam? Itaque ipsam, tempore nesciunt doloremque deserunt blanditiis esse enim! Quod quas nostrum aspernatur praesentium. Voluptate repellendus officia blanditiis perspiciatis libero quasi dolore aliquid ut placeat provident quia voluptatibus dolores ad molestias, esse iure maxime ea inventore quis soluta nam. Cumque ut quas ducimus nam a, minus tempore sed est provident voluptatibus itaque molestiae dolorum aperiam culpa consectetur eos ad nobis debitis! Ipsum perspiciatis tempora dolor animi, nostrum non impedit enim asperiores aspernatur dolorum dicta amet eaque itaque quam placeat quas fugit iure aut sequi? Accusamus expedita exercitationem ipsam unde iure perferendis distinctio ut, vero debitis. Distinctio quam, libero, minus esse animi est sunt nesciunt pariatur tempore expedita commodi quasi dicta repellendus quod nobis in nostrum?" />
                     </div>
-                    <div className="links-container">
-                        <ul>
-                            <li><ScrollLink to="wiki__category-histoire" className="categorySelector" offset={-700} spy={true} smooth={true} >Histoire</ScrollLink></li>
-                            <li><ScrollLink to="wiki__category-géographie" className="categorySelector" offset={-700} spy={true} smooth={true}>Géographie</ScrollLink></li>
-                            <li><ScrollLink to="wiki__category-architecture" className="categorySelector" offset={-700} spy={true} smooth={true}>Architecture</ScrollLink></li>
-                            <li><ScrollLink to="wiki__category-langue" className="categorySelector" offset={-700} spy={true} smooth={true}>Langue</ScrollLink></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
+      </>
   );
 };
 
