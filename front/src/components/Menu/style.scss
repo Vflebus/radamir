@@ -97,6 +97,7 @@
         flex-direction: column;
         // transition: box-shadow 1s, background-color 1s;
         width: 15vw;
+        max-width: 100px;
 
         &__barreDessus {
             transition: transform 1s;
@@ -144,7 +145,6 @@
                 width: 15vh;
             }
         }
-        
     }
 }
 
