@@ -35,7 +35,9 @@ CREATE TABLE note (
 CREATE TABLE wiki (
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	slug TEXT NOT NULL UNIQUE,
-	title VARCHAR(255) NOT NULL UNIQUE
+	title VARCHAR(255) NOT NULL UNIQUE,
+	full_title TEXT,
+	"type" VARCHAR(255)  NOT NULL
 );
 
 CREATE TABLE "block" (
@@ -43,30 +45,6 @@ CREATE TABLE "block" (
 	title VARCHAR(255),
 	content TEXT NOT NULL,
 	wiki_id INT NOT NULL REFERENCES wiki(id)
-);
-
-CREATE TABLE region (
-	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	slug TEXT NOT NULL UNIQUE,
-	title TEXT NOT NULL UNIQUE,
-	history TEXT NOT NULL,
-	"geography" TEXT NOT NULL,
-	architecture TEXT NOT NULL,
-	"language" TEXT NOT NULL,
-	currency TEXT NOT NULL,
-	leader TEXT NOT NULL,
-	religion TEXT NOT NULL,
-	caste TEXT NOT NULL,
-	"name" TEXT NOT NULL,
-	justice TEXT NOT NULL,
-	mage TEXT NOT NULL,
-	outfit TEXT NOT NULL,
-	lifestyle TEXT NOT NULL,
-	treatment TEXT NOT NULL,
-	movement TEXT NOT NULL,
-	nutrition TEXT NOT NULL,
-	art TEXT NOT NULL,
-	entertainment TEXT NOT NULL
 );
 
 COMMIT;
