@@ -80,9 +80,6 @@ area {
 .clickThrough {
     pointer-events: none;
 }
-p {
-    margin-top: 1rem;
-}
 .infoBulle {
     background-color: rgba(0, 0, 0, .5);
     width: 20vw;
@@ -125,11 +122,6 @@ p {
     color: #470703;
     transition: all 3s;
     margin-top: -3px;
-}
-a {
-    color: black;
-    font-family: 'IM Fell English SC', serif;
-    text-decoration: none;
 }
 .logo {
     position: absolute;

@@ -8,6 +8,7 @@ import Wikis from "../Wikis";
 import Wiki from "../Wiki";
 import About from "../About";
 import Terms from "../Terms";
+import MobileWikiPage from "../MobileWikiPage"
 
 import logo from "../../assets/images/logo-decoupe.png";
 
@@ -34,13 +35,17 @@ const App = () => {
           <Wiki />
         </Route>
         <Route exact path="/wiki">
-          <Wikis />
+          {document.body.clientWidth > 1000 && <Wikis />}
+          {document.body.clientWidth <= 1000 && <MobileWikiPage />}
         </Route>
         <Route exact path="/about">
           <About />
         </Route>
         <Route exact path="/terms">
           <Terms />
+        </Route>
+        <Route path="/">
+          <h1>404 !</h1>
         </Route>
       </Switch>
     </AnimatePresence>
