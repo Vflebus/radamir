@@ -1,5 +1,5 @@
 import { Route, Switch, useLocation, Redirect } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import "../../styles/index.scss";
 
@@ -17,16 +17,23 @@ const App = () => {
   const loading = false;
 
   if (loading) {
-    return <img
-                src={logo}
-                alt="logo Radamir"
-                className="logo loading"
-                id="logo"
-            />
+    return (
+        <AnimatePresence exitBeforeEnter>
+          <motion.img
+              src={logo}
+              alt="logo Radamir"
+              className="logo loading"
+              id="logo"
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transitions={{ transition: "linear", duration: 3 }}
+          />
+        </AnimatePresence>
+    )
   }
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
       <Switch location={location} key={location.pathname}>
         <Route exact path="/">
           {document.body.clientWidth > 1000 ? <Redirect to="/carte" /> : <Redirect to="/wiki" />}
@@ -47,7 +54,7 @@ const App = () => {
         <Route exact path="/terms">
           <Terms />
         </Route>
-        <Route path="/">
+        <Route>
           <h1>404 !</h1>
         </Route>
       </Switch>

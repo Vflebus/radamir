@@ -23,18 +23,16 @@ const others = [
 
 const pageVariants = {
   in: {
-    x: 0,
-    scale: 1
+    opacity: 1
   },
   out: {
-    x: "-100vw",
-    scale: 0.8
+    opacity: 0
   }
 };
 
 const pageTransitions = {
   transition: "linear",
-  duration: 1
+  duration: 0.7
 };
 
 const Wikis = () => {

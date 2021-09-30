@@ -125,10 +125,10 @@ area {
 }
 .logo {
     position: absolute;
-    /* width: 45vw;
+    width: 45vw;
     left: 10vw;
     bottom: 2vh;
-    z-index: 30; */
+    z-index: 30;
 }
 .loading {
     top: 50%;
