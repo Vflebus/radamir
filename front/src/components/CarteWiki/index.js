@@ -86,7 +86,8 @@ const CarteWiki = () => {
                 exit="out"
                 variants={pageVariants}
                 transition={pageTransitions}
-            >
+            >   
+                <Menu />
                 <div className="landscapeBG"></div>
                 <h1 className="landscapeWarning">Veuillez passer votre téléphone en mode paysage.</h1>
                 <main id="mainContainer">
