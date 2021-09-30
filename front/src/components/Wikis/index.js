@@ -32,7 +32,7 @@ const pageVariants = {
 
 const pageTransitions = {
   transition: "linear",
-  duration: 0.5
+  duration: 0.7
 };
 
 const Wikis = () => {

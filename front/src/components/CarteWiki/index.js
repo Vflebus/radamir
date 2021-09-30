@@ -31,7 +31,7 @@ const pageVariants = {
 
 const pageTransitions = {
     transition: "linear",
-    duration: 1
+    duration: 2
 };
 
 const CarteWiki = () => {
@@ -92,9 +92,9 @@ const CarteWiki = () => {
                     <motion.div
                         className="indexLink"
                         ref={indexLinkRef}
-                        initial={{ x: -300 }}
-                        animate={{ x: 0 }}
-                        transition={{ ease: "linear", duration: 0.5 }}
+                        // initial={{ x: -300 }}
+                        // animate={{ x: 0 }}
+                        // transition={{ ease: "linear", duration: 0.5 }}
                     >
                         <Link to="/wiki/" className="indexLink">
                             <img src={navArrow} alt="flèche de navigation" className="navArrow"></img>
@@ -125,9 +125,9 @@ const CarteWiki = () => {
                                 id="carte-radamir"
                                 className="appearance carte-radamir"
                                 alt="Carte de Radamir"
-                                initial={{ opacity: 0, zIndex: -3, y: 50 }}
+                                initial={{ opacity: 0, zIndex: -2, y: 25 }}
                                 animate={{ opacity: 1, zIndex: 1, y: 0 }}
-                                transition={{ ease: "linear", duration: 0.75 }}
+                                transition={{ ease: "linear", duration: 0.2 }}
                             />
 
                             <map name="image-map">
@@ -197,9 +197,9 @@ const CarteWiki = () => {
                                 alt="logo Radamir"
                                 className="logo"
                                 id="logo"
-                                animate={{ width: "45vw", x: "-20vw", y: "33vh" }}
-                                initial={{ width: "1059px", x: 0, y: 0 }}
-                                transition={{ ease: "easeInOut", duration: 1.75 }}
+                                // animate={{ width: "45vw", x: "-20vw", y: "33vh" }}
+                                // initial={{ width: "1059px", x: 0, y: 0 }}
+                                // transition={{ ease: "easeInOut", duration: 1.75 }}
                             />
                         </div>
                     </div>

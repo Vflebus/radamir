@@ -1,5 +1,5 @@
 import { Route, Switch, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import "../../styles/index.scss";
 
@@ -18,16 +18,15 @@ const App = () => {
 
   if (loading) {
     return (
-        <AnimatePresence>
-          <img
+        <AnimatePresence exitBeforeEnter>
+          <motion.img
               src={logo}
               alt="logo Radamir"
               className="logo loading"
               id="logo"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opactity: 0 }}
-              transitions={{ transition: "linear", duration: 2 }}
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transitions={{ transition: "linear", duration: 3 }}
           />
         </AnimatePresence>
     )
