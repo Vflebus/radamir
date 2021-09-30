@@ -10,7 +10,7 @@ import About from "../About";
 import Terms from "../Terms";
 import MobileWikiPage from "../MobileWikiPage"
 
-import logo from "../../assets/images/logo-decoupe.png";
+import logo from "../../assets/images/logo-decoupe.webp";
 
 const App = () => {
   const location = useLocation();
