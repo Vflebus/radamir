@@ -119,7 +119,6 @@ const CarteWiki = () => {
                     {/* FRAGMENTS DE CARTE */}
 
                         <div id="map-container" ref={mapContainerRef}>
-                            <Menu />
 
                             <motion.img
                                 src={carteRadamir}
