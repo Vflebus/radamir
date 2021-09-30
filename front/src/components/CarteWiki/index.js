@@ -22,11 +22,9 @@ import data from './data'
 
 const pageVariants = {
     in: {
-      x: 0,
       opacity: 1
     },
     out: {
-      x: "100vw",
       opacity: 0
     }
 };

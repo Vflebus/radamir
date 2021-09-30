@@ -10,11 +10,9 @@ import "./wiki.scss";
 
 const pageVariants = {
     in: {
-      y: 0,
       opacity: 1
     },
     out: {
-      y: "100vh",
       opacity: 0
     }
 };

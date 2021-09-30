@@ -17,16 +17,24 @@ const App = () => {
   const loading = false;
 
   if (loading) {
-    return <img
-                src={logo}
-                alt="logo Radamir"
-                className="logo loading"
-                id="logo"
-            />
+    return (
+        <AnimatePresence>
+          <img
+              src={logo}
+              alt="logo Radamir"
+              className="logo loading"
+              id="logo"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opactity: 0 }}
+              transitions={{ transition: "linear", duration: 2 }}
+          />
+        </AnimatePresence>
+    )
   }
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
       <Switch location={location} key={location.pathname}>
         <Route exact path="/">
           <CarteWiki />
@@ -44,7 +52,7 @@ const App = () => {
         <Route exact path="/terms">
           <Terms />
         </Route>
-        <Route path="/">
+        <Route>
           <h1>404 !</h1>
         </Route>
       </Switch>
