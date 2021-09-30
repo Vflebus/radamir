@@ -27,30 +27,23 @@ const Wiki = () => {
   const { pathname } = useLocation();
 
   return (
-      <>
-        <motion.div
-            className="links-container"
-            initial="out"
-            animate="in"
-            exit="out"
-            variants={pageVariants}
-            transition={pageTransitions}
-        >
+      <motion.div
+        initial="out"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+        transition={pageTransitions}
+      >
+        <div className="links-container">
             <ul>
                 <li><ScrollLink to="wiki__category-histoire" className="categorySelector" offset={-300} spy={true} smooth={true} >Histoire</ScrollLink></li>
                 <li><ScrollLink to="wiki__category-géographie" className="categorySelector" offset={-300} spy={true} smooth={true}>géographie</ScrollLink></li>
                 <li><ScrollLink to="wiki__category-architecture" className="categorySelector" offset={-300} spy={true} smooth={true}>architecture</ScrollLink></li>
                 <li><ScrollLink to="wiki__category-langue" className="categorySelector" offset={-300} spy={true} smooth={true}>langue</ScrollLink></li>
             </ul>
-        </motion.div>
+        </div>
 
-        <motion.div
-            initial="out"
-            animate="in"
-            exit="out"
-            variants={pageVariants}
-            transition={pageTransitions}
-        >
+        <div>
             <Menu />
             <div className="wiki">
                 <h1 className="wiki__title">Titre Section</h1>
@@ -78,8 +71,8 @@ const Wiki = () => {
                     </div>
                 </div>
             </div>
-        </motion.div>
-      </>
+        </div>
+      </motion.div>
   );
 };
 
