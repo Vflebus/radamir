@@ -58,7 +58,7 @@ router.get("/profile", userController.findUser);
  * @returns {Array<Wiki>} 200 - An array of wiki
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki`, wikiController.findAll);
+router.get(`/wiki`, wikiController.getAllWikis);
 
 // GET /wiki/:title
 
@@ -72,7 +72,7 @@ router.get(`/wiki`, wikiController.findAll);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki/:slug`, wikiController.findByTitle);
+// router.get(`/wiki/:slug`, wikiController.findByTitle);
 
 //#endregion GET
 
@@ -148,7 +148,7 @@ router.post('/signin', userController.login);
  * @returns {string} 400 - A validation error message
  * @returns {string} 409 - A conflict error message 
  */
-router.post('/wiki', wikiController.save);
+// router.post('/wiki', wikiController.save);
 
 //#endregion POST
 
@@ -178,7 +178,7 @@ router.patch('/profile', userController.update);
  * @returns {string} 400 - A validation error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/wiki/:slug', wikiController.update);
+// router.patch('/wiki/:slug', wikiController.update);
 
 /**
  * Update a campaign in database

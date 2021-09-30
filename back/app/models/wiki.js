@@ -1,52 +1,65 @@
 const client = require("../database");
 
-class NoTitleError extends Error {
-  constructor(slug) {
-    super(`No result with title: ${slug}`);
+class NoWikiError extends Error {
+  constructor(wiki) {
+    super(`Wiki ${wiki} not found`);
+    this.code = 404;
   }
 }
 
 /**
  * An entity representing a wiki.
  * @typedef Wiki
- * @property {number} id - The id of the wiki.
- * @property {string} title - The title of the wiki.
- * @property {string} slug - The slug of the wiki.
+ * @property {number} id
+ * @property {string} slug
+ * @property {string} title
+ * @property {string} full_title
+ * @property {string} type
  */
 
 /**
  * A model representing a wiki.
  * @class Wiki
  */
+
 class Wiki {
-
-  static NoTitleError = NoTitleError;
+  static NoWikiError = NoWikiError;
 
   /**
-   * The constructor for the Wiki model
-   * @param {Object} object - A literal object with the properties of the wiki copied into the instance.
+   * The constructor for a Wiki.
+   * @constructor
+   * @param {Array} data - An array of data to initialize the Wiki with.
+   * @returns {Wiki} - A Wiki object.
+   * @throws {NoWikiError} - If the wiki does not exist.
    */
-  constructor(object = {}) {
-    for (const key in object) {
-      this[key] = object[key];
+  constructor(...data) {
+    if (data.length === 0) {
+      throw new NoWikiError(data[0]);
     }
+    this.id = data[0];
+    this.title = data[1];
+    this.type = data[2];
+    this.slug = data[3];
+    this.blocks = data[4];
   }
 
   /**
-   * Fetches all the wiki titles from the database and region from region
-   * @returns {Array<Wiki>} An array of wikis
+   * Get a all wikis and their blocks.
    * @static
    * @async
+   * @returns {Array<Wiki>} An array of Wiki objects.
+   * @throws {NoWikiError} If the wiki does not exist.
    */
-  static async findAll() {
+  static async getAllWikis() {
     try {
-      let { rows } = await client.query(
-        `SELECT 
-          jsonb_agg(DISTINCT jsonb_build_object('slug', wiki.slug))AS resulttitles,
-          jsonb_agg(DISTINCT jsonb_build_object('slug', region.slug))AS resultregions
-          FROM wiki, region
-        ;`
-
+      const { rows } = await client.query(
+        `select wiki.id, wiki.title, wiki.type, wiki.slug, json_agg(
+          json_build_object(
+          'id', block.id,
+          'title', block.title,
+          'content', block.content)) AS block 
+          from wiki join block on wiki.id = block.wiki_id
+          GROUP BY wiki.id;`
       );
       return rows.map((row) => new Wiki(row));
     } catch (error) {
@@ -56,97 +69,54 @@ class Wiki {
   }
 
   /**
-   * Fetches a single wiki from the database.
-   * @param {string} title - The title of the wiki to fetch.
-   * @returns {Wiki|error} A wiki or error if not found.
-   * @static
+   * Add or updates an instance of Wiki in database
    * @async
-   * @example Wiki.findByTitle('test1234')
-   * @throws {NoTitleError} if no wiki is found with the given title
-   */
-  static async findByTitle(slug) {
-    try {
-      const { rows } = await client.query(
-        "SELECT slug FROM wiki WHERE slug=$1",
-        [slug]
-      );
-      if (rows[0]) {
-        return new Wiki(rows[0]);
-      }
-      throw new NoTitleError(slug);
-    } catch (error) {
-      console.log(error);
-      throw new Error(error.detail ? error.detail : error.message);
-    }
-  }
-
-  /**
-   * Fetches all the blocks of a wiki from the database.
-   * @returns {Array<Block>} An array of blocks.
-   * @static
-   * @async
-   */
-  static async getBlocks() {
-    try {
-      const { rows } = await client.query(
-        "SELECT table2.title, table2.content, table2.id FROM table1 AS wiki, table2 AS block WHERE table1.id = table2.wiki_id"
-      );
-      return rows.map((row) => new Wiki(row));
-    } catch (error) {
-      console.log(error);
-      throw new Error(error.detail ? error.detail : error.message);
-    }
-  }
-
-  /**
-   * Add a new wiki to the database.
+   * @returns {Wiki} - A Wiki object.
+   * @throws {NoWikiError} - If the wiki does not exist.
+   * @throws {Error} - If the wiki does not exist.
+   *
    */
   async save() {
     try {
-      const { rows } = await client.query(
-        "INSERT INTO wiki (title) VALUES ($1) RETURNING id",
-        [this.title]
-      );
-      this.id = rows[0].id;
+      if (this.id) {
+        await client.query(
+          `
+          SELECT update_wiki($1);`,
+          [this]
+        );
+      } else {
+        const { rows } = await client.query(
+          `
+          SELECT new_wiki($1);`,
+          [this]
+        );
+        this.id = rows[0].id;
+        return this;
+      }
     } catch (error) {
-      console.log("Erreur interne ou de requête: ", error);
+      console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
     }
   }
 
   /**
-   * Update a wiki in the database.
-   * @param {string} title - The title of the wiki to update.
+   * Delete a wiki from database
    * @async
+   * @returns {Wiki} - A Wiki object.
+   * @throws {NoWikiError} - If the wiki does not exist.
+   * @throws {Error} - If the wiki does not exist.
    */
-  async update() {
+  async delete() {
     try {
       const { rows } = await client.query(
-        "UPDATE wiki SET title=$1 WHERE id=$2",
-        [this.title, this.id]
+        `DELETE FROM wiki WHERE id = $1 RETURNING id;`,
+        [this.id]
       );
     } catch (error) {
-      console.log("Erreur interne ou de requête: ", error);
+      console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
     }
   }
-
-  /**
-   * Delete a wiki from the database.
-   * @param {number} id - The id of the wiki to delete.
-   * @async
-   */
-	async delete() {
-		try {
-			const { rows } = await client.query(
-				"DELETE FROM wiki WHERE id=$1", 
-				[this.id]				
-			);	
-		} catch (error) {
-			console.log("Erreur interne ou de requête: ", error);
-			throw new Error(error.detail ? error.detail : error.message);
-		}
-	}
 }
 
 module.exports = Wiki;
