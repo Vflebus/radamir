@@ -35,7 +35,8 @@ const wikiController = {
 	// l'endroit concerné
 	delete: async (request, response) => {
 		try {
-			const wiki = await Wiki.delete(request.params.id);
+			const wiki = new Wiki(request.params.id);
+			await wiki.delete();
 			response.json(wiki);
 		} catch (error) {
 			console.error(error);
