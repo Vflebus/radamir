@@ -23,7 +23,7 @@ area {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(./images/bg-carte.webp);
+    background-image: url(../../assets/images/bg-carte.webp);
     background-size: cover;
     transition-duration: 1.5s;
     transition-property: all;
@@ -163,7 +163,7 @@ area {
         /* top: 50%;
         left: 50%; */
         /* transform: translate(-50%, -50%); */
-        background: url(./images/bg-carte.png);
+        background: url(../../assets/images/bg-carte.webp);
         filter: brightness(20%);
     }
 }

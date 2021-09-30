@@ -1,4 +1,4 @@
-import wikiParchment from "../../assets/images/wikiParchment.png"
+import wikiParchment from "../../assets/images/wikiParchment.webp"
 
 const WikiCategory = ({ title, content }) => {
   return (

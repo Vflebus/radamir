@@ -5,7 +5,7 @@ import Menu from "../Menu";
 
 import "./wikis.scss";
 
-import arrow from "../../assets/images/flecheNavRouge.png";
+import arrow from "../../assets/images/flecheNavRouge.webp";
 import { motion } from "framer-motion";
 
 const regions = [
