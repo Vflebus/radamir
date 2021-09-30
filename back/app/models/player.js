@@ -62,7 +62,7 @@ class Player {
   async delete() {
     try {
         await client.query(
-            `DELETE * FROM campaign_has_player WHERE id = $1;`,
+            `DELETE FROM campaign_has_player WHERE id = $1;`,
             [this.id]
         );
     } catch (error) {

@@ -2,6 +2,6 @@
 
 BEGIN;
 
-TRUNCATE TABLE "block", wiki;
+TRUNCATE TABLE "block", wiki RESTART IDENTITY;
 
 COMMIT;

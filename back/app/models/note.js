@@ -187,7 +187,7 @@ class Note {
    */
   async delete() {
     try {
-      const { rows } = await client.query(`DELETE * FROM note WHERE id = $1;`, [
+      const { rows } = await client.query(`DELETE FROM note WHERE id = $1;`, [
         this.id,
       ]);
     } catch (error) {
@@ -207,7 +207,7 @@ class Note {
     try {
       if (this.is_private) {
         await client.query(
-          `UPDATE note SET is_private = NOT is_private WHERE id = $1`,
+          `UPDATE note SET is_private = NOT is_private WHERE id = $1;`,
           [this.id]
         );
       }
