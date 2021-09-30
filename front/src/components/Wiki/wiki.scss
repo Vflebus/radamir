@@ -1,5 +1,40 @@
 @use "../../styles/vars";
 
+.links-container {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  z-index: 10;
+
+  li {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+  }
+
+  .categorySelector {
+    color: vars.$main-color;
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
+    cursor: pointer;
+  }
+
+  .categorySelector::before {
+    position: relative;
+    top: 8px;
+    content: url(../../assets/images/circle.png);
+  }
+
+  .active {
+    font-size: 2rem;
+  } 
+  
+  .active::before {
+    position: relative;
+    top: 8px;
+    content: url(../../assets/images/tickedCircle.png);
+  }
+}
+
 .wiki {
   position: relative;
   top: 4rem;
@@ -33,16 +68,16 @@
 
   &__page {
     padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 3rem;
+    // display: flex;
+    // justify-content: space-between;
+    // gap: 3rem;
     padding: 0 4rem;
     width: 100%;
     font-size: 1.4rem;
   }
 
   &__category {
-    margin-bottom: 3rem;
+    margin-bottom: 5vh;
     white-space: pre-wrap;
     line-height: 1.4;
 
@@ -51,6 +86,7 @@
       // left: 50%;
       // transform: translateX(-50%);
       width: 22vw;
+      max-width: 300px;
     }
 
     &-titleImage {
@@ -73,76 +109,46 @@
     margin-bottom: 6rem;
   }
 
-  .links-container {
-    position: fixed;
-    top: 40%;
-    transform: translateY(-50%);
-    left: 5px;
-    height: 50vh;
-    text-align: start;
 
-    li {
-      margin-bottom: 5rem;
-    }
+  // .to-wiki {
+  //   position: fixed;
+  //   top: 50%;
+  //   left: 5px;
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 1rem;
+  //   font-size: 1.3rem;
+  //   color: vars.$main-color;
 
-    .categorySelector {
-      color: vars.$main-color;
-      font-size: 2rem;
-      margin-bottom: 5rem;
-      cursor: pointer;
-    }
+  //   img {
+  //     width: 40px;
+  //     transition: ease 0.5s;
+  //   }
 
-    .categorySelector::before {
-      position: relative;
-      top: 8px;
-      content: url(../../assets/images/circle.png);
-    }
-
-    .active {
-      font-size: 2.5rem;
-    } 
-    
-    .active::before {
-      position: relative;
-      top: 8px;
-      content: url(../../assets/images/tickedCircle.png);
-    }
-  }
-
-  .to-wiki {
-    position: fixed;
-    top: 50%;
-    left: 5px;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 1.3rem;
-    color: vars.$main-color;
-
-    img {
-      width: 40px;
-      transition: ease 0.5s;
-    }
-
-    &:hover {
-      img {
-        transform: translateX(-10px);
-      }
-    }
-  }
+  //   &:hover {
+  //     img {
+  //       transform: translateX(-10px);
+  //     }
+  //   }
+  // }
 }
 
 @media screen and (max-width: 1024px) {
   .wiki {
 
-    .to-wiki {
-      position: relative;
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
+    // .to-wiki {
+    //   position: relative;
+    //   margin-bottom: 1.5rem;
+    //   font-size: 1.1rem;
 
-      img {
-        width: 20px;
-      }
+    //   img {
+    //     width: 20px;
+    //   }
+    // }
+
+    &__select {
+      display: block;
+      margin-bottom: 1.7rem;
     }
 
     &__category {
@@ -158,21 +164,25 @@
         left: 0;
       }
     }
+
+    .links-container {
+      display: none;
+    }
   }
 }
 
 @media screen and (max-width: 770px) {
+  .links-container {
+    display: none;
+  }
+
   .wiki {
+    max-width: 80%;
     text-align: center;
 
     &__title {
       margin-bottom: 1.7rem;
       font-size: 2rem;
-    }
-
-    &__select {
-      display: block;
-      margin-bottom: 1.7rem;
     }
 
     &__page {
@@ -187,10 +197,6 @@
       &-content {
         text-align: left;
       }
-    }
-
-    .links-container {
-      display: none;
     }
   }
 }

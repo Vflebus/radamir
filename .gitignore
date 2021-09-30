@@ -1,0 +1,6 @@
+package-lock.json
+node_modules
+.sqitch.conf
+package-lock.json
+back/migrations/dump/
+.env

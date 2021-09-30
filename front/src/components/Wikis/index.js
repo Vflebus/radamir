@@ -6,7 +6,7 @@ import Menu from "../Menu";
 import "./wikis.scss";
 
 import arrow from "../../assets/images/flecheNavRouge.png";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const regions = [
   { name: "Vanna", route: "vanna" },
@@ -21,15 +21,33 @@ const others = [
   { name: "Dieux", route: "dieux" },
 ];
 
+const pageVariants = {
+  in: {
+    x: 0,
+    scale: 1
+  },
+  out: {
+    x: "-100vw",
+    scale: 0.8
+  }
+};
+
+const pageTransitions = {
+  transition: "linear",
+  duration: 1
+};
+
 const Wikis = () => {
 
-  useEffect(() => {
-    document.querySelector('.wikis').classList.remove('noDisplay');
-    },
-  []);
-
   return (
-        <div className="wikis noDisplay">
+        <motion.div
+          className="wikis"
+          initial="out"
+          animate="in"
+          exit="out"
+          variants={pageVariants}
+          transition={pageTransitions}
+        >
             <Menu />
             <h1 className="wikis__title">Index du Wiki</h1>
             <Link to="/" className="to-home">
@@ -38,7 +56,7 @@ const Wikis = () => {
             </Link>
             <WikiSection title="Régions" links={regions} />
             <WikiSection title="Informations Générales" links={others} />
-        </div>
+        </motion.div>
   );
 };
 

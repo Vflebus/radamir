@@ -23,7 +23,7 @@ area {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(./images/bg-carte.png);
+    background-image: url(./images/bg-carte.webp);
     background-size: cover;
     transition-duration: 1.5s;
     transition-property: all;
@@ -80,9 +80,6 @@ area {
 .clickThrough {
     pointer-events: none;
 }
-p {
-    margin-top: 1rem;
-}
 .infoBulle {
     background-color: rgba(0, 0, 0, .5);
     width: 20vw;
@@ -97,14 +94,7 @@ p {
     cursor: default;
     white-space: pre-wrap;
     font-size: 1.2rem;
-}
-.appearance {
-    position: relative;    
-    top: 10vh;
-    left: 50%;
-    opacity: 5%;
-    transform: translateZ(50px);
-    z-index: -3;
+    z-index: 400;
 }
 .navArrow, .indexLink {
     z-index: 12;
@@ -133,30 +123,17 @@ p {
     transition: all 3s;
     margin-top: -3px;
 }
-a {
-    color: black;
-    font-family: 'IM Fell English SC', serif;
-    text-decoration: none;
-}
-.indexLinkAppearance {
-   transform: translateX(-300px);
-}
 .logo {
     position: absolute;
-    transition: all 3s;
-    z-index: 30;
+    /* width: 45vw;
     left: 10vw;
     bottom: 2vh;
-    width: 45vw;
+    z-index: 30; */
 }
-.logoAppearance {
-    bottom: 50%;
+.loading {
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 50%);
-    width: 1059px;
-}
-.menuAppearance {
-    transform: translateY(-200px);
+    transform: translate(-50%, -50%);
 }
 @media (orientation: portrait) {
     #mainContainer {
@@ -169,9 +146,9 @@ a {
         text-align: center;
         width: 100%;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 35vh;
+        /* left: 50%; */
+        /* transform: translate(-50%, -50%); */
         animation: blinking 3s linear infinite;
     }
     @keyframes blinking {
@@ -180,19 +157,23 @@ a {
         }
     }
     .landscapeBG {
-        content: "";
         width: 100vw;
         height: 100vh;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        /* top: 50%;
+        left: 50%; */
+        /* transform: translate(-50%, -50%); */
         background: url(./images/bg-carte.png);
         filter: brightness(20%);
     }
 }
 @media (orientation: landscape) {
     .landscapeBG, .landscapeWarning {
+        display: none;
+    }
+}
+@media screen and (max-width: 1500px) {
+    .infoBulle {
         display: none;
     }
 }

@@ -1,23 +1,15 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import "./style.scss";
 
 import menuPlie from "./images/menuPlie.png";
 import menuDeplie from "./images/menuDeplie.png";
-// import menuMobile from "./images/menuMobile.png";
 import menuMobileBarreDessus from "./images/menuMobileBarreDessus.png";
 import menuMobileBarreDessous from "./images/menuMobileBarreDessous.png";
 
-const Menu = ({ classes }) => {
+const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const openMenuRef = useRef();
-  const closedMenuRef = useRef();
-
-  useEffect(() => {
-    openMenuRef.current.classList.remove("menuAppearance");
-    closedMenuRef.current.classList.remove("menuAppearance");
-  }, [isOpen]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -26,10 +18,7 @@ const Menu = ({ classes }) => {
   return (
     <div>
         <div id="menu">
-          <div
-            className={`menu ${classes} ${isOpen ? "" : "inactive"}`}
-            ref={openMenuRef}
-          >
+          <div className={`menu ${isOpen ? "" : "inactive"}`}>
             <img src={menuDeplie} alt="menu" className="menuImg" />
             <div className="navLinks">
               <NavLink exact to="/" className="links" activeClassName="selected">
@@ -46,10 +35,7 @@ const Menu = ({ classes }) => {
               </NavLink>
             </div>
           </div>
-          <div
-            className={`menu cursorPointer ${classes} ${isOpen ? "noDisplay" : ""}`}
-            ref={closedMenuRef}
-          >
+          <div className={`menu cursorPointer ${isOpen ? "noDisplay" : ""}`}>
             <img
               src={menuPlie}
               alt="menu"
@@ -58,8 +44,8 @@ const Menu = ({ classes }) => {
             />
           </div>
         </div>
-        <div className="menuMobile">
-            <div className={`menuMobileToggle ${isOpen ? "boxShadow" : ""}`} onClick={toggleMenu}>
+        <div className={`menuMobile ${isOpen ? "boxShadow" : ""}`}>
+            <div className="menuMobileToggle" onClick={toggleMenu}>
                 <img src={menuMobileBarreDessus} alt="Ouvrir le menu de navigation" className={`menuMobileToggle__barreDessus ${isOpen ? "openedDessus" : ""}`}/>
                 <img src={menuMobileBarreDessous} alt="Ouvrir le menu de navigation" className={`menuMobileToggle__barreDessous ${isOpen ? "openedDessous" : ""}`}/>
             </div>
@@ -81,10 +67,6 @@ const Menu = ({ classes }) => {
         </div>
     </div>
   );
-};
-
-Menu.defaultProps = {
-  classes: "",
 };
 
 export default Menu;

@@ -1,8 +1,8 @@
 const { Router, response } = require("express");
 
 const wikiController = require("./controllers/wikiController"); 
-/* const bController = require("./controllers/bController"); // TODO remplacer et ajouter les bons controllers
-const cController = require("./controllers/cController"); // TODO remplacer et ajouter les bons controllers
+const userController = require("./controllers/userController");
+/*const cController = require("./controllers/cController"); // TODO remplacer et ajouter les bons controllers
 const dController = require("./controllers/dController"); // TODO remplacer et ajouter les bons controllers
 const eController = require("./controllers/eController"); // TODO remplacer et ajouter les bons controllers */
 
@@ -72,7 +72,7 @@ router.get(`/wiki`, wikiController.findAll);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki/:title`, wikiController.findByTitle);
+router.get(`/wiki/:slug`, wikiController.findByTitle);
 
 //#endregion GET
 
@@ -178,7 +178,7 @@ router.patch('/profile', userController.update);
  * @returns {string} 400 - A validation error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/wiki/:title', wikiController.update);
+router.patch('/wiki/:slug', wikiController.update);
 
 /**
  * Update a campaign in database
@@ -191,7 +191,7 @@ router.patch('/wiki/:title', wikiController.update);
  * @returns {string} 400 - A validation error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/campaigns/:campaign_name', cController.update);
+// router.patch('/campaigns/:campaign_name', cController.update);
 
 //#endregion PATCH
 
@@ -230,7 +230,7 @@ router.delete(`/wiki/:title`, wikiController.delete);
  * @returns {string} - 204 Campaign not found
  * @returns {string} - 500 An error message
  */
-router.delete(`/campaign`, campaignsController.deleteCampaign);
+// router.delete(`/campaign`, campaignsController.deleteCampaign);
 
 /**
  * @route DELETE /campaign/:campaign_name
@@ -241,7 +241,7 @@ router.delete(`/campaign`, campaignsController.deleteCampaign);
  * @returns {string} - 204 Note not found
  * @returns {string} - 500 An error message
  */
-router.delete(`/campaign/:campaign_name`, campaignsController.deleteNote);
+// router.delete(`/campaign/:campaign_name`, campaignsController.deleteNote);
 
 /**
  * @route DELETE /campaign/:campaign_name
@@ -252,7 +252,7 @@ router.delete(`/campaign/:campaign_name`, campaignsController.deleteNote);
  * @returns {string} - 204 Player not found
  * @returns {string} - 500 An error message
  */
-router.delete(`/campaigns/:campaign_name`, campaignsContoller.deletePlayer);
+// router.delete(`/campaigns/:campaign_name`, campaignsContoller.deletePlayer);
 
 router.use((_, response) => response.status(404).json("Endpoint not found"));
 
