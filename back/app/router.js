@@ -72,7 +72,7 @@ router.get(`/wiki`, wikiController.getAllWikis);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-// router.get(`/wiki/:slug`, wikiController.findByTitle);
+router.get(`/wiki/:id`, wikiController.getWikiById);
 
 //#endregion GET
 
@@ -219,7 +219,7 @@ router.delete(`/profile`, userController.delete);
  * @returns {string} - 204 Wiki not found
  * @returns {string} - 500 An error message
  */
-router.delete(`/wiki/:title`, wikiController.delete);
+router.delete(`/wiki/:id`, wikiController.delete);
 
 /**
  * @route DELETE /campaign

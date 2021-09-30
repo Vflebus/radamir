@@ -69,6 +69,29 @@ class Wiki {
   }
 
   /**
+   * Get a wiki by its id
+   * @static
+   * @async
+   * @param {number} id - The id of the wiki to get.
+   * @returns {Wiki} - A Wiki object.
+   * @throws {NoWikiError} - If the wiki does not exist.
+   * @throws {Error} - If the query fails.
+   */
+  static async getWikiById(id) {
+    try {
+      const { rows } = await client.query(
+        "SELECT * FROM wiki WHERE id = $1", [id]);
+      if (rows.length === 0) {
+        throw new NoWikiError(id);
+      }
+      return new Wiki(rows[0]);
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
+  }
+        
+  /**
    * Add or updates an instance of Wiki in database
    * @async
    * @returns {Wiki} - A Wiki object.
@@ -76,7 +99,7 @@ class Wiki {
    * @throws {Error} - If the wiki does not exist.
    *
    */
-  async save() {
+   async save() {
     try {
       if (this.id) {
         await client.query(
@@ -99,24 +122,33 @@ class Wiki {
     }
   }
 
+//DELETE FROM wiki WHERE id = $1 RETURNING *
+
+//l'endroit concerné
   /**
-   * Delete a wiki from database
+   * Delete an instance of Wiki from database
    * @async
    * @returns {Wiki} - A Wiki object.
    * @throws {NoWikiError} - If the wiki does not exist.
-   * @throws {Error} - If the wiki does not exist.
    */
   async delete() {
     try {
       const { rows } = await client.query(
-        `DELETE FROM wiki WHERE id = $1 RETURNING id;`,
+        `
+        DELETE FROM wiki WHERE id = $1 RETURNING *;`,
         [this.id]
       );
+      if (rows.length === 0) {
+        throw new NoWikiError(this.id);
+      }
+      return new Wiki(rows[0]);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
     }
   }
+
 }
+      
 
 module.exports = Wiki;
