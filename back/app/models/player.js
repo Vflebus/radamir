@@ -47,8 +47,7 @@ class Player {
       if (this.id) console.log("Le joueur fait déja partie de cette campagne");
       else {
         const { rows } = await client.query(
-          `
-                  SELECT new_campaign_has_player($1) AS id`,
+          `SELECT new_campaign_has_player($1) AS id`,
           [this]
         );
         this.id = rows[0].id;
@@ -60,11 +59,10 @@ class Player {
     }
   }
 
-  //TODO : DELETE
   async delete() {
     try {
-        const { rows} = await client.query(
-            "DELETE FROM campaign_has_player WHERE id = $1;",
+        await client.query(
+            `DELETE * FROM campaign_has_player WHERE id = $1;`,
             [this.id]
         );
     } catch (error) {
