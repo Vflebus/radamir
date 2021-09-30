@@ -1,7 +1,10 @@
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 
 import Menu from "../Menu";
 import Input from "./Input";
+
+import { signUp } from "../../actions/user";
 
 const pageVariants = {
   in: {
@@ -18,6 +21,13 @@ const pageTransitions = {
 };
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signUp());
+  };
+
   return (
     <motion.div
       initial="out"
@@ -30,7 +40,7 @@ const SignUp = () => {
 
       <div className="signup">
         <h1>Inscription</h1>
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={handleSubmit}>
           <Input inputId="username" label="Identifiant" />
           <Input inputId="email" label="Adresse e-mail" type="email" />
           <Input inputId="password" label="Mot de passe" type="password" />

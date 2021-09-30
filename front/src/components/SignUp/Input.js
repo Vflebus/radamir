@@ -12,7 +12,7 @@ const Input = ({ inputId, label, type }) => {
   };
 
   return (
-    <div className="signup__input">
+    <div className="form-field">
       <label htmlFor={inputId}>{label} :</label>
       <input
         value={value}
