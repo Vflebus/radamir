@@ -30,11 +30,12 @@ const SignUp = () => {
 
       <div className="signup">
         <h1>Inscription</h1>
-        <form>
-          <Input forId="username" label="Identifiant" />
-          <Input forId="email" label="Adresse e-mail" type="email" />
-          <Input forId="password" label="Mot de passe" type="password" />
-          <Input forId="passwordConfirm" label="Confirmer mot de passe" type="password" />
+        <form autoComplete="off">
+          <Input inputId="username" label="Identifiant" />
+          <Input inputId="email" label="Adresse e-mail" type="email" />
+          <Input inputId="password" label="Mot de passe" type="password" />
+          <Input inputId="passwordConfirm" label="Confirmer mot de passe" type="password" />
+          <button type="submit">Inscription</button>
         </form>
       </div>
     </motion.div>
