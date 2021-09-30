@@ -8,7 +8,8 @@ import Wikis from "../Wikis";
 import Wiki from "../Wiki";
 import About from "../About";
 import Terms from "../Terms";
-import MobileWikiPage from "../MobileWikiPage"
+import MobileWikiPage from "../MobileWikiPage";
+import SignUp from "../SignUp";
 
 import logo from "../../assets/images/logo-decoupe.webp";
 
@@ -53,6 +54,9 @@ const App = () => {
         </Route>
         <Route exact path="/terms">
           <Terms />
+        </Route>
+        <Route exact path="/signup">
+          <SignUp />
         </Route>
         <Route>
           <h1>404 !</h1>
