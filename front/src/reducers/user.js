@@ -1,4 +1,4 @@
-import { SET_INPUT } from "../actions/user";
+import { SET_INPUT, CONNECT_USER, LOGOUT } from "../actions/user";
 
 const initialState = {
   logged: false,
@@ -15,6 +15,23 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.fieldname]: action.value
       };
+
+    case CONNECT_USER:
+      return {
+        ...state,
+        username: action.data,
+        logged: true,
+        email: "",
+        password: "",
+        passwordConfirm: ""
+      };
+
+    case LOGOUT:
+      return {
+        ...state,
+        logged: false,
+        username: null
+      }
 
     default:
       return state;
