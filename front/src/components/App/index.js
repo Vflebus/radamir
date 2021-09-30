@@ -1,4 +1,4 @@
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import "../../styles/index.scss";
@@ -29,6 +29,9 @@ const App = () => {
     <AnimatePresence exitBeforeEnter>
       <Switch location={location} key={location.pathname}>
         <Route exact path="/">
+          {document.body.clientWidth > 1000 ? <Redirect to="/carte" /> : <Redirect to="/wiki" />}
+        </Route>
+        <Route exact path="/carte">
           <CarteWiki />
         </Route>
         <Route exact path="/wiki/:title">

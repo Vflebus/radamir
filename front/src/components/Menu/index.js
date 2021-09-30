@@ -21,8 +21,8 @@ const Menu = () => {
           <div className={`menu ${isOpen ? "" : "inactive"}`}>
             <img src={menuDeplie} alt="menu" className="menuImg" />
             <div className="navLinks">
-              <NavLink exact to="/" className="links" activeClassName="selected">
-                Accueil
+              <NavLink exact to="/carte" className="links" activeClassName="selected">
+                Carte du Monde
               </NavLink>
               <NavLink exact to="/wiki" className="links" activeClassName="selected">
                 Wiki
@@ -51,8 +51,8 @@ const Menu = () => {
             </div>
             <img src={menuDeplie} alt="" className={`navLinksMobile__img ${isOpen ? "" : "displayNone"}`} />
             <div className={`navLinksMobile ${isOpen ? "" : "displayNone"}`}>
-                <NavLink exact to="/" className="links" activeClassName="selected">
-                    Accueil
+                <NavLink exact to="/carte" className="links" activeClassName="selected">
+                    Carte du Monde
                 </NavLink>
                 <NavLink exact to="/wiki" className="links" activeClassName="selected">
                     Wiki
