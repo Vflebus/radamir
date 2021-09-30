@@ -21,7 +21,7 @@
   .categorySelector::before {
     position: relative;
     top: 8px;
-    content: url(../../assets/images/circle.png);
+    content: url(../../assets/images/circle.webp);
   }
 
   .active {
@@ -31,7 +31,7 @@
   .active::before {
     position: relative;
     top: 8px;
-    content: url(../../assets/images/tickedCircle.png);
+    content: url(../../assets/images/tickedCircle.webp);
   }
 }
 

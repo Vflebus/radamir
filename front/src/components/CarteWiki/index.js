@@ -2,14 +2,14 @@
 
 import './styles.css'
 
-import section_droknor from './images/Section_droknor.png';
-import section_feidlimid from './images/Section_feidlimid.png';
-import section_karnaclok from './images/Section_karnaclok.png';
-import section_kervollen from './images/Section_kervollen.png';
-import section_vanna from './images/Section_vanna.png';
-import carteRadamir from './images/CarteRadamir.png'
-import navArrow from './images/flecheNavRouge.png'
-import logo from './images/logo-decoupe.png'
+import section_droknor from '../../assets/images/Section_droknor.webp';
+import section_feidlimid from '../../assets/images/Section_feidlimid.webp';
+import section_karnaclok from '../../assets/images/Section_karnaclok.webp';
+import section_kervollen from '../../assets/images/Section_kervollen.webp';
+import section_vanna from '../../assets/images/Section_vanna.webp';
+import carteRadamir from '../../assets/images/CarteRadamir.webp'
+import navArrow from '../../assets/images/flecheNavRouge.webp'
+import logo from '../../assets/images/logo-decoupe.webp'
 
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';

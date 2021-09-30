@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom";
 
 import "./style.scss";
 
-import menuPlie from "./images/menuPlie.png";
-import menuDeplie from "./images/menuDeplie.png";
-import menuMobileBarreDessus from "./images/menuMobileBarreDessus.png";
-import menuMobileBarreDessous from "./images/menuMobileBarreDessous.png";
+import menuPlie from "../../assets/images/menuPlie.webp";
+import menuDeplie from "../../assets/images/menuDeplie.webp";
+import menuMobileBarreDessus from "../../assets/images/menuMobileBarreDessus.webp";
+import menuMobileBarreDessous from "../../assets/images/menuMobileBarreDessous.webp";
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
