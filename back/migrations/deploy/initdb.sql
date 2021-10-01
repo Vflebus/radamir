@@ -15,21 +15,21 @@ CREATE TABLE campaign (
 	campaign_name VARCHAR(255) NOT NULL UNIQUE,
 	"description" TEXT NOT NULL,
 	created_at TIMESTAMPTZ DEFAULT NOW(),
-	"user_id" INT NOT NULL REFERENCES "user"(id)
+	"user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 CREATE TABLE campaign_has_players (
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	campaign_id INT NOT NULL REFERENCES campaign(id),
-	"user_id" INT NOT NULL REFERENCES "user"(id)
+	campaign_id INT NOT NULL REFERENCES campaign(id) ON DELETE CASCADE,
+	"user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 CREATE TABLE note (
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	content TEXT NOT NULL,
 	is_private BOOLEAN NOT NULL,
-	campaign_id INT NOT NULL REFERENCES campaign(id),
-	"user_id" INT NOT NULL REFERENCES "user"(id)
+	campaign_id INT NOT NULL REFERENCES campaign(id) ON DELETE CASCADE,
+	"user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 CREATE TABLE wiki (
@@ -44,7 +44,7 @@ CREATE TABLE "block" (
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	title VARCHAR(255),
 	content TEXT NOT NULL,
-	wiki_id INT NOT NULL REFERENCES wiki(id)
+	wiki_id INT NOT NULL REFERENCES wiki(id) ON DELETE CASCADE
 );
 
 COMMIT;

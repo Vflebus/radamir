@@ -2,9 +2,9 @@ const Wiki = require('../models/wiki');
 
 const wikiController = {
 	
-	findAll: async (_, response) => {
+	getAllWikis: async (_, response) => {
 		try {
-			const wikiPages = await Wiki.findAll();
+			const wikiPages = await Wiki.getAllWikis();
 			response.json(wikiPages);
 		} catch (error) {
 			console.error(error);
@@ -12,58 +12,37 @@ const wikiController = {
 		}
 	}, 
 	
-	findByTitle: async (request, response) => {
-		try {
-			const wikiTitle = await Wiki.findByTitle(request.params.slug);
-			response.json(wikiTitle);
-		} catch (error) {
-			console.error(error);
-			response.status(500).json(error.message);
-		}
-	},
-
-	getBlocks: async (_, response) => {
-		try {
-			const blocks = await Wiki.getBlocks();
-			response.json(blocks);	
-		} catch (error) {
-			console.error(error);
-			response.status(500).json(error.message);
-		}
-	},
-
 	save: async (request, response) => {
 		try {
-			const wiki = new Wiki(request.body);
-			await wiki.save();			
-			response.status(request.body.id ? 204 : 201).json(wiki);
-		} catch (error) {
-			console.error(error);	
-			response.status(500).json(error.message);
-		}
-	},
-
-	update: async (request, response) => {
-		try {
-			const wiki = new Wiki(request.body);
-			await wiki.update();
-			response.status(request.body.id ? 204 : 202).json(wiki);
+			const wiki = await Wiki.save(request.body);
+			response.json(wiki);
 		} catch (error) {
 			console.error(error);
 			response.status(500).json(error.message);
 		}
 	},
 
+	getWikiById: async (request, response) => {
+		try {
+			const wiki = await Wiki.getWikiById(request.params.id);
+			response.json(wiki);
+		} catch (error) {
+			console.error(error);
+			response.status(500).json(error.message);
+		}
+	},
+
+	// l'endroit concerné
 	delete: async (request, response) => {
 		try {
-			const wiki = new Wiki(request.body);
-			await Wiki.delete();
-			response.status(request.body.id ? 204 : 200).json(wiki);
+			const wiki = new Wiki(request.params.id);
+			await wiki.delete();
+			response.json(wiki);
 		} catch (error) {
 			console.error(error);
 			response.status(500).json(error.message);
 		}
-	}
-};
+	},
+}
 
 module.exports = wikiController;

@@ -53,7 +53,7 @@ router.get(`/campaigns/:campaign_name`, campaignController.getOneCampaign);
  * @returns {Array<Wiki>} 200 - An array of wiki
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki`, wikiController.findAll);
+router.get(`/wiki`, wikiController.getAllWikis);
 
 /**
  * Responds with one wiki in database
@@ -65,7 +65,7 @@ router.get(`/wiki`, wikiController.findAll);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki/:slug`, wikiController.findByTitle);
+router.get(`/wiki/:id`, wikiController.getWikiById);
 
 //#endregion GET
 
@@ -141,7 +141,7 @@ router.post('/player/:campaign_name', playerController.save)
  * @returns {string} 400 - A validation error message
  * @returns {string} 409 - A conflict error message 
  */
-router.post('/wiki', wikiController.save);
+// router.post('/wiki', wikiController.save);
 
 //#endregion POST
 
@@ -171,7 +171,7 @@ router.patch('/profile', userController.update);
  * @returns {string} 400 - A validation error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/wiki/:slug', wikiController.update);
+// router.patch('/wiki/:slug', wikiController.update);
 
 /**
  * Update a campaign in database
@@ -212,7 +212,7 @@ router.delete('/profile', userController.delete);
  * @returns {string} - 204 Wiki not found
  * @returns {string} - 500 An error message
  */
-router.delete('/wiki/:title', wikiController.delete);
+router.delete(`/wiki/:id`, wikiController.delete);
 
 /**
  * @route DELETE /campaign/:campaign_name
