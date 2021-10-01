@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import ConnectionModal from "../ConnectionModal";
+
+import { logout } from "../../actions/user";
 
 import "./style.scss";
 
@@ -12,6 +14,7 @@ import menuMobileBarreDessus from "../../assets/images/menuMobileBarreDessus.web
 import menuMobileBarreDessous from "../../assets/images/menuMobileBarreDessous.webp";
 
 const Menu = () => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isLogged = useSelector(({user}) => user.logged);
@@ -32,12 +35,17 @@ const Menu = () => {
               <NavLink exact to="/wiki" className="links" activeClassName="selected">
                 Wiki
               </NavLink>
+              {isLogged && (
+                <button className="links menu-button" onClick={() => dispatch(logout())}>
+                  Déconnexion
+                </button>
+              )}
               {!isLogged && (
                 <>
                   <NavLink exact to="/signup" className="links" activeClassName="selected">
                     Inscription
                   </NavLink>
-                  <button className="links connection" onClick={() => setIsModalOpen(true)}>
+                  <button className="links menu-button" onClick={() => setIsModalOpen(true)}>
                     Connexion
                   </button>
                 </>
