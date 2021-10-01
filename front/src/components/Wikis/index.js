@@ -8,18 +8,7 @@ import "./wikis.scss";
 import arrow from "../../assets/images/flecheNavRouge.webp";
 import { motion } from "framer-motion";
 
-const regions = [
-  { name: "Vanna", route: "vanna" },
-  { name: "Feidlimid", route: "feidlimid" },
-  { name: "Kervollen", route: "kervollen" },
-  { name: "Karnaclok", route: "karnaclok" },
-  { name: "Drok'nor", route: "droknor" },
-];
-
-const others = [
-  { name: "Magie", route: "magie" },
-  { name: "Dieux", route: "dieux" },
-];
+import data from "../../data-example.json";
 
 const pageVariants = {
   in: {
@@ -36,6 +25,8 @@ const pageTransitions = {
 };
 
 const Wikis = () => {
+  const testRegions = data.filter((el) => el.id.type === "region");
+  const testOthers = data.filter((el) => el.id.type === "other");
 
   return (
         <motion.div
@@ -52,8 +43,8 @@ const Wikis = () => {
                 Accueil
                 <img src={arrow} alt="Retour à l'accueil" />
             </Link>
-            <WikiSection title="Régions" links={regions} />
-            <WikiSection title="Informations Générales" links={others} />
+            <WikiSection header="Régions" links={testRegions} />
+            <WikiSection header="Informations Générales" links={testOthers} />
         </motion.div>
   );
 };
