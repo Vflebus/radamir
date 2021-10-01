@@ -22,18 +22,16 @@ import data from './data'
 
 const pageVariants = {
     in: {
-      x: 0,
       opacity: 1
     },
     out: {
-      x: "100vw",
       opacity: 0
     }
 };
 
 const pageTransitions = {
     transition: "linear",
-    duration: 1
+    duration: 2
 };
 
 const CarteWiki = () => {
@@ -91,18 +89,12 @@ const CarteWiki = () => {
                 <div className="landscapeBG"></div>
                 <h1 className="landscapeWarning">Veuillez passer votre téléphone en mode paysage.</h1>
                 <main id="mainContainer">
-                    <motion.div
-                        className="indexLink"
-                        ref={indexLinkRef}
-                        initial={{ x: -300 }}
-                        animate={{ x: 0 }}
-                        transition={{ ease: "linear", duration: 0.5 }}
-                    >
+                    <div className="indexLink" ref={indexLinkRef}>
                         <Link to="/wiki/" className="indexLink">
                             <img src={navArrow} alt="flèche de navigation" className="navArrow"></img>
                             <p id="navText">Index</p>
                         </Link>
-                    </motion.div>
+                    </div>
                     <aside id="infoBulleContainer">
                         <div className="infoBulle noDisplay clickThrough" id="info" ref={infoRef}>
                             {/* Historique région */}
@@ -119,7 +111,6 @@ const CarteWiki = () => {
                     {/* FRAGMENTS DE CARTE */}
 
                         <div id="map-container" ref={mapContainerRef}>
-                            <Menu />
 
                             <motion.img
                                 src={carteRadamir}
@@ -127,9 +118,9 @@ const CarteWiki = () => {
                                 id="carte-radamir"
                                 className="appearance carte-radamir"
                                 alt="Carte de Radamir"
-                                initial={{ opacity: 0, zIndex: -3, y: 50 }}
+                                initial={{ opacity: 0, zIndex: -2, y: 25 }}
                                 animate={{ opacity: 1, zIndex: 1, y: 0 }}
-                                transition={{ ease: "linear", duration: 0.75 }}
+                                transition={{ ease: "linear", duration: 0.2 }}
                             />
 
                             <map name="image-map">
@@ -194,14 +185,11 @@ const CarteWiki = () => {
                                     />
                                 </Link>
                             </map>
-                            <motion.img
+                            <img
                                 src={logo}
                                 alt="logo Radamir"
                                 className="logo"
                                 id="logo"
-                                animate={{ width: "45vw", x: "-20vw", y: "33vh" }}
-                                initial={{ width: "1059px", x: 0, y: 0 }}
-                                transition={{ ease: "easeInOut", duration: 1.75 }}
                             />
                         </div>
                     </div>
