@@ -10,8 +10,10 @@ import About from "../About";
 import Terms from "../Terms";
 import MobileWikiPage from "../MobileWikiPage";
 import SignUp from "../SignUp";
-
+import Page404 from "../Page404";
+import CampaignList from "../CampaignList";
 import logo from "../../assets/images/logo-decoupe.webp";
+import Menu from "../Menu";
 
 const App = () => {
   const location = useLocation();
@@ -35,6 +37,7 @@ const App = () => {
 
   return (
     <AnimatePresence>
+      <Menu />
       <Switch location={location} key={location.pathname}>
         <Route exact path="/">
           {document.body.clientWidth > 1000 ? <Redirect to="/carte" /> : <Redirect to="/wiki" />}
@@ -58,8 +61,11 @@ const App = () => {
         <Route exact path="/signup">
           <SignUp />
         </Route>
+        <Route exact path="/campagnes">
+          <CampaignList />
+        </Route>
         <Route>
-          <h1>404 !</h1>
+          <Page404 />
         </Route>
       </Switch>
     </AnimatePresence>
