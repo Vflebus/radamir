@@ -11,7 +11,7 @@ GET {{baseUrl}}/campaigns
 
 ### Get one campaign
 
-GET {{baseUrl}}/campaigns/test1234
+GET {{baseUrl}}/campaigns/2
 
 ### Get the wiki
 
@@ -23,12 +23,12 @@ DELETE  {{baseUrl}}/wiki/{*}
 
 ### Update or New wiki
 
-POST {{baseUrl}}/wiki
-
+PATCH {{baseUrl}}/wiki/4
 Content-Type: application/json
+
 {   
-    "slug": 'lol',
-    "title": 'prout',
-    "full_title": 'peut être vide',
-    "type": 'region'
+    "slug": "lol",
+    "title": "prout",
+    "full_title": "peut être vide",
+    "type": "region"
 }

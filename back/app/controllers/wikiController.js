@@ -15,8 +15,8 @@ const wikiController = {
 	save: async (request, response) => {
 		try {
 			const wiki = new Wiki(request.body);
-			await wiki.save();
-			response.json(wiki);
+			const saveWiki = await wiki.save();
+			response.json(saveWiki);
 		} catch (error) {
 			console.error(error);
 			response.status(500).json(error.message);

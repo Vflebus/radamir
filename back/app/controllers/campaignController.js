@@ -14,7 +14,7 @@ const campaignController = {
 
     getOneCampaign: async (request, response) => {
         try {
-            const campaign = await Campaign.getOneCampaign(request.params.campaign_name); 
+            const campaign = await Campaign.getOneCampaign(request.params.id); 
 			response.json(campaign);
         } catch (error) {
 			console.error(error);

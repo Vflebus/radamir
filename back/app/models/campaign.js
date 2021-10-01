@@ -37,9 +37,9 @@ class Campaign {
    * @throws {NoCampaignError} If the campaign doesn't exist
    * @throws {Error} If the campaign already exists
    */
-  constructor(campaign_name, description, id, user_id, created_at) {
-    for (let key in arguments) {
-      this[key] = arguments[key];
+  constructor(...data) {
+    for (let key in data) {
+      this[key] = data[key];
     }
   }
 
@@ -55,13 +55,7 @@ class Campaign {
       let { rows } = await client.query("SELECT * FROM campaign;");
       return rows.map(
         (row) =>
-          new Campaign(
-            row.campaign_name,
-            row.description,
-            row.id,
-            row.user_id,
-            row.created_at
-          )
+          new Campaign(row)
       );
     } catch (error) {
       console.log(error);
@@ -78,27 +72,21 @@ class Campaign {
    * @throws {NoCampaignError} If the campaign doesn't exist
    * @throws {Error} If the request is failed
    */
-  static async getOneCampaign(campaign_name) {
+   static async getOneCampaign(id) {
     try {
       let { rows } = await client.query(
-        "SELECT * FROM campaign WHERE campaign_name = $1",
-        [campaign_name]
+        "SELECT * FROM campaign WHERE id = $1",
+        [id]
       );
-      if (rows.length === 0) {
-        throw new NoCampaignError(campaign_name);
-      }
-      return new Campaign(
-        rows[0].campaign_name,
-        rows[0].description,
-        rows[0].id,
-        rows[0].user_id,
-        rows[0].created_at
-      );
+        if (rows.length === 0) {
+            throw new NoCampaignError(id);
+        }
+        return new Campaign(rows[0]);
     } catch (error) {
-      console.log(error);
-      throw new Error(error.detail ? error.detail : error.message);
+        console.log(error);
+        throw new Error(error.detail ? error.detail : error.message);
     }
-  }
+    }
 
   /**
    * Adds or updates a campaign in database

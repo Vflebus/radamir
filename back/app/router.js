@@ -13,7 +13,6 @@ const router = Router();
 // GET /profile
 
 /**
- * Responds with the id of the connected user
  * @route GET /profile
  * @group User
  * @summary Responds with the id of the connected user
@@ -22,8 +21,14 @@ const router = Router();
  */
 router.get("/profile", userController.findUser);
 
+// ! TODO
 /**
- * Responds with all campaigns in database
+ * @route GET /
+ * @group User
+ * @summary ????? userController.getInfos c quoi ?
+ */
+
+/**
  * @route GET /campaigns
  * @group Campaigns
  * @summary Responds with all campaigns in database
@@ -33,19 +38,17 @@ router.get("/profile", userController.findUser);
 router.get("/campaigns", campaignController.getAllCampaigns);
 
 /**
- * Responds with one campaign in database
  * @route GET /campaigns/{campaign_name}
  * @group Campaigns
  * @summary Responds with one campaign in database
- * @param {string} campaign_name - The name of the campaign to fetch
+ * @param {number} id - The name of the campaign to fetch
  * @returns {string} 200 - A single campaign identified by its name
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/campaigns/:campaign_name`, campaignController.getOneCampaign);
+router.get(`/campaigns/:id`, campaignController.getOneCampaign);
 
 /**
- * Responds with all informations from wiki in the database
  * @route GET /wiki
  * @group Wiki
  * @summary Responds with all informations from wiki in the database
@@ -55,7 +58,6 @@ router.get(`/campaigns/:campaign_name`, campaignController.getOneCampaign);
 router.get(`/wiki`, wikiController.getAllWikis);
 
 /**
- * Responds with one wiki in database
  * @route GET /wiki/{title}
  * @group Wiki
  * @summary Responds with one wiki in database
@@ -66,6 +68,50 @@ router.get(`/wiki`, wikiController.getAllWikis);
  */
 router.get(`/wiki/:id`, wikiController.getWikiById);
 
+/**
+ * @route GET /player-public-notes/{id}
+ * @group Note
+ * @summary Responds the list of public notes related to a campaign and owned by this user
+ * @param {number} id - The id of the campaign
+ * @returns {array<Note>} 200 - An array of notes
+ * @returns {string} 404 - An error message
+ * @returns {string} 500 - An error message
+ */
+router.get(`/player-public-notes/:id`, noteController.getPlayerPublicNotes);
+
+/**
+ * @route GET /public-notes/{id}
+ * @group Note
+ * @summary Responds the list of public notes related to a campaign and not owned by this user
+ * @param {number} id - The id of the campaign
+ * @returns {array<Note>} 200 - An array of notes
+ * @returns {string} 404 - An error message
+ * @returns {string} 500 - An error message
+ */
+ router.get(`/public-notes/:id`, noteController.getPublicNotes);
+
+
+/**
+ * @route GET /private-notes/{id}
+ * @group Note
+ * @summary Responds the list of private notes related to a campaign and not owned by this user
+ * @param {number} id - The id of the campaign
+ * @returns {array<Note>} 200 - An array of notes
+ * @returns {string} 404 - An error message
+ * @returns {string} 500 - An error message
+ */
+ router.get(`/private-notes/:id`, noteController.getPrivateNotes);
+
+ /**
+  * @route GET /players/{id}
+  * @groupe Player
+  * @summary Responds the list of players added to this campaign
+  * @param {number} id - The id of the campaign
+  * @returns {array<Player>} 200 - An array of players
+  * @returns {string} 404 - An error message
+  * @returns {string} 500 - An error message
+  */
+  router.get(`/players/:id`, playerController.findParty);
 //#endregion GET
 
 //#region POST
@@ -216,14 +262,25 @@ router.delete(`/campaign/:campaign_name`, campaignController.delete);
 
 /**
  * @route DELETE /note/:campaign_name
- * @group Player
- * @summary Campaign creator can delete a player from the campaign players list
- * @param {int} id - The id of the player to delete
+ * @group Note
+ * @summary Campaign creator can delete a note from the campaign
+ * @param {int} id - The id of the player to note
  * @returns {string} - 200 Player is deleted
  * @returns {string} - 204 Player not found
  * @returns {string} - 500 An error message
  */
 router.delete(`/note/:campaign_name`, noteController.delete);
+
+/**
+ * @route DELETE /player/:campaign_name
+ * @group Player
+ * @summary Campaign creator can remove a player from his campaign
+ * @param {int} - The id of the campaign
+ * @returns {string} - 200 player is deleted
+ * @returns {string} - 204 player not found
+ * @returns {string} - 500 An error message
+ */
+router.delete(`/player/:campaign_name`, playerController.delete);
 
 //#endregion DELETE
 
