@@ -1,4 +1,3 @@
-import Menu from "../Menu";
 import Category from "./Category";
 
 import "./style.scss"
@@ -25,7 +24,6 @@ let datas = [
 const MobileWikiPage = () => {
     return (
         <div className="mobileWikiPage">
-            <Menu />
             <h1>Radamir</h1>
             <div className="mobileWikiPage__allCategories">
                 {datas.map(data => <Category title={data.title} intro={data.intro} />)}

@@ -46,7 +46,6 @@ const Wikis = () => {
           variants={pageVariants}
           transition={pageTransitions}
         >
-            <Menu />
             <h1 className="wikis__title">Index du Wiki</h1>
             <Link to="/" className="to-home">
                 Accueil

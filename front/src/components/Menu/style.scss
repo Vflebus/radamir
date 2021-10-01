@@ -34,6 +34,7 @@
 .links {
     font-family: 'IM Fell English SC', serif;
     font-size: 1.6vw;
+    text-align: center;
     color: #470703;
     z-index: 20;
 }
@@ -116,10 +117,10 @@
     .boxShadow::before {
         content: "";
         position: absolute;
-        top: -500px;
-        right: -50%;
-        width: 700vw;
-        height: 700vh;
+        top: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
         background-color: rgba( 0, 0, 0, 0.8);
         z-index: 50;
     }

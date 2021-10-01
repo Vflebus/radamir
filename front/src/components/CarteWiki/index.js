@@ -15,8 +15,6 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 
-import Menu from "../Menu";
-
 import imageMapResize from './imageMapResizer.js';
 import data from './data'
 
@@ -85,7 +83,7 @@ const CarteWiki = () => {
                 variants={pageVariants}
                 transition={pageTransitions}
             >   
-                <Menu />
+                {/* <Menu /> */}
                 <div className="landscapeBG"></div>
                 <h1 className="landscapeWarning">Veuillez passer votre téléphone en mode paysage.</h1>
                 <main id="mainContainer">

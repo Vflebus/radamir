@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 
-import Menu from "../Menu";
 import Input from "./Input";
 
 import { signUp } from "../../actions/user";
@@ -36,7 +35,6 @@ const SignUp = () => {
       variants={pageVariants}
       transition={pageTransitions}
     >
-      <Menu />
 
       <div className="signup">
         <h1>Inscription</h1>
