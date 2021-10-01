@@ -19,4 +19,16 @@ GET {{baseUrl}}/wiki
 
 ### Get one wiki
 
-GET  {{baseUrl}}/wiki/karnaclock
+DELETE  {{baseUrl}}/wiki/{*}
+
+### Update or New wiki
+
+POST {{baseUrl}}/wiki
+
+Content-Type: application/json
+{   
+    "slug": 'lol',
+    "title": 'prout',
+    "full_title": 'peut être vide',
+    "type": 'region'
+}

@@ -38,7 +38,7 @@ $$ LANGUAGE SQL STRICT;
 
 CREATE  FUNCTION new_block(VARCHAR(255), TEXT, INT) RETURNS INT AS $$
     INSERT INTO "block"("title", "content", "wiki_id")
-    VALUES($1, $2, $3,) RETURNING id;
+    VALUES($1, $2, $3) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_block(TEXT, INT) RETURNS void AS $$

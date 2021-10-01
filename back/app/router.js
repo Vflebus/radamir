@@ -5,7 +5,6 @@ const userController = require("./controllers/userController");
 const campaignController = require("./controllers/campaignController");
 const noteController = require("./controllers/noteController");
 const playerController = require("./controllers/playerController");
-const Player = require("./models/player");
 
 const router = Router();
 
@@ -95,10 +94,10 @@ router.post('/signup', userController.save);
 router.post('/signin', userController.login);
 
 /**
- * Add a new campaign in database
+ * Add a new campaign in database or update it
  * @route POST /campaigns
  * @group Campaigns
- * @summary Add a new campaign in database
+ * @summary Add a new campaign in database or update an existing one
  * @returns {Campaign.model} 201 - The newly created campaign
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
@@ -141,7 +140,7 @@ router.post('/player/:campaign_name', playerController.save)
  * @returns {string} 400 - A validation error message
  * @returns {string} 409 - A conflict error message 
  */
-// router.post('/wiki', wikiController.save);
+router.post('/wiki', wikiController.save);
 
 //#endregion POST
 
@@ -160,18 +159,8 @@ router.post('/player/:campaign_name', playerController.save)
  */
 router.patch('/profile', userController.update);
 
-/**
- * Update a wiki in database
- * @route PATCH /wiki/:title
- * @group Wiki
- * @summary Update a wiki in database
- * @param {string} title - The title of the wiki to update
- * @returns {Wiki.model} 200 - The updated wiki
- * @returns {string} 500 - An error message
- * @returns {string} 400 - A validation error message
- * @returns {string} 404 - A not found error message
- */
-// router.patch('/wiki/:slug', wikiController.update);
+// ! TODO JSDOC 
+router.patch('/wiki/:id', wikiController.save);
 
 /**
  * Update a campaign in database
@@ -234,7 +223,9 @@ router.delete(`/campaign/:campaign_name`, campaignController.delete);
  * @returns {string} - 204 Player not found
  * @returns {string} - 500 An error message
  */
-// router.delete(`/campaigns/:campaign_name`, campaignsContoller.deletePlayer);
+router.delete(`/note/:campaign_name`, noteController.delete);
+
+//#endregion DELETE
 
 router.use((_, response) => response.status(404).json("Endpoint not found"));
 

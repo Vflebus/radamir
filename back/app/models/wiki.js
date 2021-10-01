@@ -102,19 +102,17 @@ class Wiki {
    async save() {
     try {
       if (this.id) {
-        await client.query(
+        const { rows } = await client.query(
           `
-          SELECT update_wiki($1);`,
-          [this]
-        );
+          SELECT update_wiki($1, $2, $3 ,$4);`,
+          [this.slug, this.title, this.full_title, this.type]);
+        return new Wiki(rows[0]);
       } else {
         const { rows } = await client.query(
           `
-          SELECT new_wiki($1);`,
-          [this]
-        );
-        this.id = rows[0].id;
-        return this;
+          SELECT new_wiki($1,$2,$3,$4)`,
+          [this.slug, this.title, this.full_title, this.type]);
+        return new Wiki(rows[0]);
       }
     } catch (error) {
       console.log(error);
