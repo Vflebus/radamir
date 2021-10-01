@@ -28,11 +28,11 @@ class Campaign {
   /**
    * The constructor for the Campaign model
    * @constructor
+   * @param {number} id - The id of the campaign
    * @param {string} campaign_name - The name of the campaign
    * @param {string} description - The description of the campaign
-   * @param {number} id - The id of the campaign
-   * @param {string} user_id - The id of the user who created the campaign
    * @param {Date} created_at - The date of creation of the campaign
+   * @param {string} user_id - The id of the user who created the campaign
    * @returns {Campaign} The created campaign
    * @throws {NoCampaignError} If the campaign doesn't exist
    * @throws {Error} If the campaign already exists
