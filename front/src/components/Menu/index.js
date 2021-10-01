@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import ConnectionModal from "../ConnectionModal";
+
+import { logout } from "../../actions/user";
 
 import "./style.scss";
 
@@ -9,7 +14,10 @@ import menuMobileBarreDessus from "../../assets/images/menuMobileBarreDessus.web
 import menuMobileBarreDessous from "../../assets/images/menuMobileBarreDessous.webp";
 
 const Menu = () => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isLogged = useSelector(({user}) => user.logged);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -27,12 +35,22 @@ const Menu = () => {
               <NavLink exact to="/wiki" className="links" activeClassName="selected">
                 Wiki
               </NavLink>
-              <NavLink exact to="/signup" className="links" activeClassName="selected">
-                Inscription
-              </NavLink>
-              <NavLink exact to="/4" className="links" activeClassName="selected">
-                Lien 4
-              </NavLink>
+              {isLogged && (
+                <button className="links menu-button" onClick={() => dispatch(logout())}>
+                  Déconnexion
+                </button>
+              )}
+              {!isLogged && (
+                <>
+                  <NavLink exact to="/signup" className="links" activeClassName="selected">
+                    Inscription
+                  </NavLink>
+                  <button className="links menu-button" onClick={() => setIsModalOpen(true)}>
+                    Connexion
+                  </button>
+                </>
+              )}
+              <ConnectionModal open={isModalOpen}  onClose={() => setIsModalOpen(false)} />
             </div>
           </div>
           <div className={`menu cursorPointer ${isOpen ? "noDisplay" : ""}`}>
