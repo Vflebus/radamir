@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import ConnectionModal from "../ConnectionModal";
+
 import "./style.scss";
 
 import menuPlie from "../../assets/images/menuPlie.webp";
@@ -10,6 +12,7 @@ import menuMobileBarreDessous from "../../assets/images/menuMobileBarreDessous.w
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -30,9 +33,10 @@ const Menu = () => {
               <NavLink exact to="/signup" className="links" activeClassName="selected">
                 Inscription
               </NavLink>
-              <NavLink exact to="/4" className="links" activeClassName="selected">
-                Lien 4
-              </NavLink>
+              <button className="links" onClick={() => setIsModalOpen(true)}>
+                Connexion
+              </button>
+              <ConnectionModal open={isModalOpen}  onClose={() => setIsModalOpen(false)} />
             </div>
           </div>
           <div className={`menu cursorPointer ${isOpen ? "noDisplay" : ""}`}>
