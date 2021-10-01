@@ -14,9 +14,10 @@ const wikiController = {
 	
 	save: async (request, response) => {
 		try {
-			const wiki = new Wiki(request.body);
-			const saveWiki = await wiki.save();
-			response.json(saveWiki);
+			const data = {...request.body, ...request.params}
+			const wiki = new Wiki(data);
+			await wiki.save();
+			response.json(wiki);
 		} catch (error) {
 			console.error(error);
 			response.status(500).json(error.message);
@@ -36,9 +37,9 @@ const wikiController = {
 	// l'endroit concerné
 	delete: async (request, response) => {
 		try {
-			const wiki = new Wiki(request.params.id);
-			await wiki.delete();
-			response.json(wiki);
+			const wiki = new Wiki(request.params);
+			const result = await wiki.delete();
+			response.json(result);
 		} catch (error) {
 			console.error(error);
 			response.status(500).json(error.message);

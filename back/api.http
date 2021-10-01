@@ -19,16 +19,16 @@ GET {{baseUrl}}/wiki
 
 ### Get one wiki
 
-DELETE  {{baseUrl}}/wiki/{*}
+DELETE  {{baseUrl}}/wiki/4
 
 ### Update or New wiki
 
-PATCH {{baseUrl}}/wiki/4
+PATCH {{baseUrl}}/wiki/8
 Content-Type: application/json
 
 {   
-    "slug": "lol",
-    "title": "prout",
-    "full_title": "peut être vide",
+    "slug": "A",
+    "title": "B",
+    "full_title": "C",
     "type": "region"
 }

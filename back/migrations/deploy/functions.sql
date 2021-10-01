@@ -30,8 +30,8 @@ CREATE FUNCTION new_wiki(TEXT, VARCHAR(255), TEXT, VARCHAR(255)) RETURNS INT AS 
 	RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_wiki(TEXT, VARCHAR(255), TEXT, VARCHAR(255)) RETURNS void AS $$
-	UPDATE "wiki" SET "slug"=$1, "title"=$2, "full_title"=$3, "type"=$4
+CREATE FUNCTION update_wiki(TEXT, VARCHAR(255), TEXT, VARCHAR(255), INT) RETURNS void AS $$
+	UPDATE "wiki" SET "slug"=$1, "title"=$2, "full_title"=$3, "type"=$4 WHERE id = $5
 $$ LANGUAGE SQL STRICT;
 
 -- block
