@@ -59,6 +59,7 @@ class User {
 
   /**
    * Add a new user to the database
+   * @async
    * @param {string} username
    * @param {string} email
    * @param {string} password

@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import ConnectionModal from "../ConnectionModal";
+
+import { logout } from "../../actions/user";
 
 import "./style.scss";
 
@@ -9,7 +14,10 @@ import menuMobileBarreDessus from "../../assets/images/menuMobileBarreDessus.web
 import menuMobileBarreDessous from "../../assets/images/menuMobileBarreDessous.webp";
 
 const Menu = () => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isLogged = useSelector(({user}) => user.logged);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -21,18 +29,28 @@ const Menu = () => {
           <div className={`menu ${isOpen ? "" : "inactive"}`}>
             <img src={menuDeplie} alt="menu" className="menuImg" />
             <div className="navLinks">
-              <NavLink exact to="/" className="links" activeClassName="selected">
-                Accueil
+              <NavLink exact to="/carte" className="links" activeClassName="selected">
+                Carte du Monde
               </NavLink>
               <NavLink exact to="/wiki" className="links" activeClassName="selected">
                 Wiki
               </NavLink>
-              <NavLink exact to="/3" className="links" activeClassName="selected">
-                Lien 3
-              </NavLink>
-              <NavLink exact to="/4" className="links" activeClassName="selected">
-                Lien 4
-              </NavLink>
+              {isLogged && (
+                <button className="links menu-button" onClick={() => dispatch(logout())}>
+                  Déconnexion
+                </button>
+              )}
+              {!isLogged && (
+                <>
+                  <NavLink exact to="/signup" className="links" activeClassName="selected">
+                    Inscription
+                  </NavLink>
+                  <button className="links menu-button" onClick={() => setIsModalOpen(true)}>
+                    Connexion
+                  </button>
+                </>
+              )}
+              <ConnectionModal open={isModalOpen}  onClose={() => setIsModalOpen(false)} />
             </div>
           </div>
           <div className={`menu cursorPointer ${isOpen ? "noDisplay" : ""}`}>
@@ -51,8 +69,8 @@ const Menu = () => {
             </div>
             <img src={menuDeplie} alt="" className={`navLinksMobile__img ${isOpen ? "" : "displayNone"}`} />
             <div className={`navLinksMobile ${isOpen ? "" : "displayNone"}`}>
-                <NavLink exact to="/" className="links" activeClassName="selected">
-                    Accueil
+                <NavLink exact to="/carte" className="links" activeClassName="selected">
+                    Carte du Monde
                 </NavLink>
                 <NavLink exact to="/wiki" className="links" activeClassName="selected">
                     Wiki

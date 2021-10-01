@@ -50,7 +50,7 @@ area {
     left: 50%;
     transform: translateX(-50%);
     height: 100vh;
-    transition-duration: 1.5s;
+    transition-duration: 0.75s;
     z-index: -1;
 }
 .zindex {
@@ -125,10 +125,10 @@ area {
 }
 .logo {
     position: absolute;
-    /* width: 45vw;
+    width: 45vw;
     left: 10vw;
     bottom: 2vh;
-    z-index: 30; */
+    z-index: 30;
 }
 .loading {
     top: 50%;
@@ -174,6 +174,6 @@ area {
 }
 @media screen and (max-width: 1500px) {
     .infoBulle {
-        display: none;
+        /* display: none; */
     }
 }

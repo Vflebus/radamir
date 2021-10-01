@@ -2,9 +2,16 @@ const Player = require('../models/player');
 
 const playerController = {
 
-/*     findOne: async (request, response) => {
 
-    }, */ //besoin de find One ?
+    findParty: async (request, response) => {
+        try {
+            const party = await Player.findParty(request.params.campaign_name);
+            response.json(party);
+        } catch (error) {
+            console.error(error);	
+			response.status(500).json(error.message);
+        }
+    },
 
     save: async (request, response) => {
         try {

@@ -2,10 +2,21 @@ const Note = require("../models/note");
 
 const noteController = {
   //get public notes that are related to a campaign
+  getPlayerPublicNotes: async (request, response) => {
+    try {
+      const { campaign_id } = request.params;
+      const notes = await Note.getPublicNotes(campaign_id);
+      response.json(notes);
+    } catch (error) {
+      console.error(error);
+      response.status(500).json(error.message);
+    }
+  },
+
   getPublicNotes: async (request, response) => {
     try {
-      const { campaign_id } = req.params;
-      const notes = await Note.getPublicNotes(campaign_id);
+      const { campaign_id, user_id } = request.params;
+      const notes = await Note.getPublicNotes(campaign_id, user_id);
       response.json(notes);
     } catch (error) {
       console.error(error);
@@ -19,7 +30,7 @@ const noteController = {
 
   getPrivateNotes: async (request, response) => {
     try {
-      const { campaign_id, user_id } = req.params;
+      const { campaign_id, user_id } = request.params;
       const notes = await Note.getPrivateNotes(campaign_id, user_id);
       response.json(notes);
     } catch (error) {
@@ -53,6 +64,17 @@ const noteController = {
       response.status(500).json(error.message);
     }
   },
+
+  toggleIsPrivate: async (request, response) => {
+    try {
+      const note = new Note(request.body);
+      await Note.makePrivate();
+      response.status(request.body.id ? 204 : 202).json(note);
+    } catch (error) {
+			console.error(error);
+			response.status(500).json(error.message);
+		}
+  }
 };
 
 module.exports = noteController;
