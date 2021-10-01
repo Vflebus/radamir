@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
 import Menu from "../Menu";
 
 import imageMapResize from './imageMapResizer.js';
-import data from './data'
+import data from "../../data-example.json";
 
 const pageVariants = {
     in: {
@@ -39,6 +39,8 @@ const CarteWiki = () => {
     const mapContainerRef = useRef();
     const infoRef = useRef();
 
+    const regions = data.filter(({ id: { type }}) => type === "region");
+
     const darkenMap = (region) => {
         mapContainerRef.current.classList.toggle('darkened');
 
@@ -47,7 +49,10 @@ const CarteWiki = () => {
         targetRegion.classList.toggle(`scaled`);
         targetRegion.classList.toggle(`scaled${region}`);
 
-        infoRef.current.textContent = data[region.toLowerCase()];
+        const { id: { blocks }} = regions.find(({ id: { slug }}) => region.toLowerCase() === slug);
+        const { content } = blocks.find(({ title }) => title === "Historique");
+
+        infoRef.current.textContent = content;
         infoRef.current.classList.toggle(`noDisplay`);
         infoRef.current.classList.toggle(`zindex`);
 

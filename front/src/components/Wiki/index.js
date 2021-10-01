@@ -28,8 +28,7 @@ const Wiki = () => {
   const { pathname } = useLocation();
   const { title } = useParams();
 
-  const { id: { blocks }} = data.find(({ id }) => id.slug === title);
-  console.log(blocks);
+  const { id } = data.find(({ id }) => id.slug === title);
 
   return (
       <motion.div
@@ -41,7 +40,7 @@ const Wiki = () => {
       >
         <div className="links-container">
             <ul>
-                {blocks.map(({ id, title }) => {
+                {id.blocks.map(({ id, title }) => {
                     return <li key={id}>
                                 <ScrollLink
                                     to={`wiki__category-${title.toLowerCase()}`}
@@ -60,7 +59,7 @@ const Wiki = () => {
         <div>
             <Menu />
             <div className="wiki">
-                <h1 className="wiki__title">Titre Section</h1>
+                <h1 className="wiki__title">{id.title}</h1>
                 {/* <Link to="/wiki" className="to-wiki">
                     <img src={arrow} alt="Retour à l'index" />
                     Retour à l'index
@@ -71,13 +70,13 @@ const Wiki = () => {
                     onChange={(e) => window.location.assign(pathname + e.target.value)}
                 >
                     <option value="#">-- Sélectionnez une option --</option>
-                    {blocks.map(({id, title}) => {
+                    {id.blocks.map(({id, title}) => {
                         return <option key={id} value={`#wiki__category-${title.toLowerCase()}`}>{title}</option>;
                     })}
                 </select>
                 <div className="wiki__page">
                     <div className="category-container">
-                        {blocks.map(({id, title, content}) => {
+                        {id.blocks.map(({id, title, content}) => {
                             return <WikiCategory key={id} title={title} content={content} />;
                         })}
                     </div>
