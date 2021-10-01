@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import ConnectionModal from "../ConnectionModal";
 
@@ -13,6 +14,7 @@ import menuMobileBarreDessous from "../../assets/images/menuMobileBarreDessous.w
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isLogged = useSelector(({user}) => user.logged);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -30,12 +32,16 @@ const Menu = () => {
               <NavLink exact to="/wiki" className="links" activeClassName="selected">
                 Wiki
               </NavLink>
-              <NavLink exact to="/signup" className="links" activeClassName="selected">
-                Inscription
-              </NavLink>
-              <button className="links" onClick={() => setIsModalOpen(true)}>
-                Connexion
-              </button>
+              {!isLogged && (
+                <>
+                  <NavLink exact to="/signup" className="links" activeClassName="selected">
+                    Inscription
+                  </NavLink>
+                  <button className="links connection" onClick={() => setIsModalOpen(true)}>
+                    Connexion
+                  </button>
+                </>
+              )}
               <ConnectionModal open={isModalOpen}  onClose={() => setIsModalOpen(false)} />
             </div>
           </div>
