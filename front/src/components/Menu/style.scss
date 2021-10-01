@@ -40,6 +40,12 @@
 .selected {
     cursor: default;
 }
+.menu-button {
+    background-color: unset;
+    padding: unset;
+    border: unset;
+    text-align: left;
+}
 .selected::after {
     margin-left: 10px;
     content: "";

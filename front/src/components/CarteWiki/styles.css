@@ -50,7 +50,7 @@ area {
     left: 50%;
     transform: translateX(-50%);
     height: 100vh;
-    transition-duration: 1.5s;
+    transition-duration: 0.75s;
     z-index: -1;
 }
 .zindex {
