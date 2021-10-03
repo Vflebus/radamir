@@ -8,7 +8,7 @@ VALUES($1, $2, $3, $4) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_campaign(TEXT, INT) RETURNS void AS $$
-UPDATE "campaign" SET "description" = $1 WHERE id = $2;
+    UPDATE "campaign" SET "description" = $1 WHERE id = $2;
 $$ LANGUAGE SQL STRICT;
 
 -- notes new & update
@@ -18,7 +18,7 @@ CREATE FUNCTION new_note(TEXT, BOOLEAN, INT, INT) RETURNS INT AS $$
 $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_note(TEXT, INT) RETURNS void AS $$
-UPDATE "note" SET "content" = $1 WHERE id = $2;
+    UPDATE "note" SET "content" = $1 WHERE id = $2;
 $$ LANGUAGE SQL STRICT;
 
 
