@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import WikiSection from "./WikiSection";
-import Menu from "../Menu";
 
 import "./wikis.scss";
 
