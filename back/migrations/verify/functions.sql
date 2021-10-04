@@ -2,6 +2,7 @@
 
 BEGIN;
 
--- XXX Add verifications here.
+SELECT new_campaign('truc', 'machin', '', 1);
+SELECT new_campaign('truc', 'machin', '', 1);
 
 ROLLBACK;

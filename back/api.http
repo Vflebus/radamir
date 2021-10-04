@@ -11,7 +11,7 @@ GET {{baseUrl}}/campaigns
 
 ### Get one campaign
 
-GET {{baseUrl}}/campaigns/test1234
+GET {{baseUrl}}/campaigns/2
 
 ### Get the wiki
 
@@ -19,4 +19,16 @@ GET {{baseUrl}}/wiki
 
 ### Get one wiki
 
-GET  {{baseUrl}}/wiki/karnaclock
+DELETE  {{baseUrl}}/wiki/4
+
+### Update or New wiki
+
+PATCH {{baseUrl}}/wiki/8
+Content-Type: application/json
+
+{   
+    "slug": "A",
+    "title": "B",
+    "full_title": "C",
+    "type": "region"
+}

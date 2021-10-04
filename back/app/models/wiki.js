@@ -32,15 +32,17 @@ class Wiki {
    * @returns {Wiki} - A Wiki object.
    * @throws {NoWikiError} - If the wiki does not exist.
    */
-  constructor(...data) {
+   constructor(data) {
     if (data.length === 0) {
       throw new NoWikiError(data[0]);
     }
-    this.id = data[0];
-    this.title = data[1];
-    this.type = data[2];
-    this.slug = data[3];
-    this.blocks = data[4];
+    for (const prop in data)
+      this[prop] = data[prop]
+    // this.id = data[0];
+    // this.title = data[1];
+    // this.type = data[2];
+    // this.slug = data[3];
+    // this.blocks = data[4];
   }
 
   /**
@@ -104,17 +106,15 @@ class Wiki {
       if (this.id) {
         await client.query(
           `
-          SELECT update_wiki($1);`,
-          [this]
-        );
+          SELECT update_wiki($1, $2, $3 ,$4, $5);`,
+          [this.slug, this.title, this.full_title, this.type, this.id]);    
+
       } else {
         const { rows } = await client.query(
           `
-          SELECT new_wiki($1);`,
-          [this]
-        );
-        this.id = rows[0].id;
-        return this;
+          SELECT new_wiki($1,$2,$3,$4) AS id;`,
+          [this.slug, this.title, this.full_title, this.type]);
+          this.id = rows[0].id;
       }
     } catch (error) {
       console.log(error);
