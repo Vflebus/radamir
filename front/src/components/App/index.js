@@ -14,6 +14,7 @@ import MobileWikiPage from "../MobileWikiPage";
 import SignUp from "../SignUp";
 import Page404 from "../Page404";
 import CampaignList from "../CampaignList";
+import UserProfile from "../UserProfile";
 
 import { fetchWikis } from "../../actions/wikis";
 
@@ -73,6 +74,9 @@ const App = () => {
         </Route>
         <Route exact path="/campagnes">
           <CampaignList />
+        </Route>
+        <Route exact path="/profile">
+          <UserProfile />
         </Route>
         <Route>
           <Page404 />
