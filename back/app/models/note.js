@@ -90,16 +90,7 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return rows.map(
-        (row) =>
-          new Note(
-            row.content,
-            row.is_private,
-            row.campaign_id,
-            row.user_id,
-            row.id
-          )
-      );
+      return new Note(rows[0]);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -119,7 +110,7 @@ class Note {
     try {
       let { rows } = await client.query(
         `
-                SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = true;`,
+                SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = true`,
         [campaign_id, user_id]
       );
       if (rows.length === 0) {

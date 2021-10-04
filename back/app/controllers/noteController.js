@@ -14,8 +14,7 @@ const noteController = {
 
   getPublicNotes: async (request, response) => {
     try {
-      const { campaign_id, user_id } = request.params;
-      const notes = await Note.getPublicNotes(campaign_id, user_id);
+      const notes = await Note.getPublicNotes(request.params.campaign_id, request.params.user_id);
       response.json(notes);
     } catch (error) {
       console.error(error);
@@ -29,8 +28,7 @@ const noteController = {
 
   getPrivateNotes: async (request, response) => {
     try {
-      const { campaign_id, user_id } = request.params;
-      const notes = await Note.getPrivateNotes(campaign_id, user_id);
+      const notes = await Note.getPublicNotes(request.params.campaign_id, request.params.user_id);
       response.json(notes);
     } catch (error) {
       console.error(error);

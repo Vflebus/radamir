@@ -88,7 +88,7 @@ router.get(`/player-public-notes/:campaign_id/:user_id`, noteController.getPlaye
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
- router.get(`/public-notes/:id`, noteController.getPublicNotes);
+ router.get(`/public-notes/:campaign_id/:user_id`, noteController.getPublicNotes);
 
 
 /**
@@ -100,7 +100,7 @@ router.get(`/player-public-notes/:campaign_id/:user_id`, noteController.getPlaye
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
- router.get(`/private-notes/:id`, noteController.getPrivateNotes);
+ router.get(`/private-notes/:campaign_id/:user_id`, noteController.getPrivateNotes);
 
  /**
   * @route GET /players/{id}

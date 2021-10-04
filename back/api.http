@@ -15,15 +15,15 @@ GET {{baseUrl}}/campaigns/1
 
 ### Get player public notes
 
-GET {{baseUrl}}/player-public-notes/1
+GET {{baseUrl}}/player-public-notes/1/1
 
 ### Get non-player public notes
 
-
+GET {{baseUrl}}/public-notes/1/1
 
 ### Get player private notes
 
-GET {{baseUrl}}
+GET {{baseUrl}}/private-notes/1/2
 
 ### Get the wiki
 
@@ -59,7 +59,7 @@ Content-Type: application/json
 
 ### Create a note
 
-POST {{baseUrl}}/note/1/1
+POST {{baseUrl}}/note/1
 Content-Type: application/json
 
 {
