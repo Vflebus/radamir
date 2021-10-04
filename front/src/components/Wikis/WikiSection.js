@@ -7,7 +7,7 @@ const WikiSection = ({ header, links }) => {
     <div className="wikis__section">
       <h2 className="wikis__section-title">{header}</h2>
       <ul className="wikis__section-list">
-        {links.map(({ id: { title, slug, id }}) => {
+        {links.map(({ title, slug, id }) => {
           return <ListItem key={id} route={slug} name={title} />;
         })}
       </ul>
@@ -19,11 +19,9 @@ WikiSection.propTypes = {
   header: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        slug: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-      })
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     })
   ).isRequired,
 };

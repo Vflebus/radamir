@@ -25,8 +25,8 @@ const pageTransitions = {
 };
 
 const Wikis = () => {
-  const testRegions = data.filter((el) => el.id.type === "region");
-  const testOthers = data.filter((el) => el.id.type === "other");
+  const regions = data.filter((el) => el.type === "region");
+  const others = data.filter((el) => el.type === "other");
 
   return (
         <motion.div
@@ -43,8 +43,8 @@ const Wikis = () => {
                 Accueil
                 <img src={arrow} alt="Retour à l'accueil" />
             </Link>
-            <WikiSection header="Régions" links={testRegions} />
-            <WikiSection header="Informations Générales" links={testOthers} />
+            <WikiSection header="Régions" links={regions} />
+            <WikiSection header="Informations Générales" links={others} />
         </motion.div>
   );
 };
