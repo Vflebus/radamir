@@ -28,7 +28,7 @@ const noteController = {
 
   getPrivateNotes: async (request, response) => {
     try {
-      const notes = await Note.getPublicNotes(request.params.campaign_id, request.params.user_id);
+      const notes = await Note.getPrivateNotes(request.params.campaign_id, request.params.user_id);
       response.json(notes);
     } catch (error) {
       console.error(error);
@@ -38,7 +38,7 @@ const noteController = {
 
   save: async (request, response) => {
     try {
-      const data = {...request.body, ...request.params}
+      const data = {...request.body, ...request.params};
       const note = new Note(data);
       await note.save();
       response.status(request.body.id ? 204 : 201).json(note);

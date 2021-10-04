@@ -164,7 +164,7 @@ router.post('/campaigns', campaignController.save);
  * @returns {string} 409 - A conflict error message
  * @returns {string} 401 - An unauthorized error message
  */
-router.post(`/note/:id`, noteController.save);
+router.post(`/note/:campaign_id`, noteController.save);
 
 /**
  * Add a player

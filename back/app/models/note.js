@@ -63,7 +63,7 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return new Note(rows[0]);
+      return new Note(rows);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -90,7 +90,7 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return new Note(rows[0]);
+      return new Note(rows);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -116,16 +116,7 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return rows.map(
-        (row) =>
-          new Note(
-            row.content,
-            row.is_private,
-            row.campaign_id,
-            row.user_id,
-            row.id
-          )
-      );
+      return new Note(rows);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -148,8 +139,8 @@ class Note {
         ]);
       } else {
         const { rows } = await client.query(
-          `SELECT new_note($1) AS id`, //c quoi déja ici AS id ?
-          [this]
+          `SELECT new_note($1, $2, $3, $4) AS id`,
+          [this.content, this.is_private, this.campaign_id, this.user_id]
         );
         this.id = rows[0].id;
         return this;
