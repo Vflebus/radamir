@@ -36,9 +36,14 @@ const Menu = () => {
                 Wiki
               </NavLink>
               {isLogged && (
-                <button className="links menu-button" onClick={() => dispatch(logout())}>
-                  Déconnexion
-                </button>
+                <>
+                  <NavLink exact to="/profile" className="links" activeClassName="selected">
+                    Mon Compte
+                  </NavLink>              
+                  <button className="links menu-button" onClick={() => dispatch(logout())}>
+                    Déconnexion
+                  </button>
+                </>
               )}
               {!isLogged && (
                 <>

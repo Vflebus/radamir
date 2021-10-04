@@ -1,4 +1,20 @@
 {
+  "user": [
+    {
+      "id": 1,
+      "username": "Blistoufe",
+      "email": "blistoufe@gmail.com",
+      "password": "azerty",
+      "is_admin": false
+    },
+    {
+      "id": 2,
+      "username": "Admin",
+      "email": "admin@radamir.com",
+      "password": "admin1234",
+      "is_admin": true
+    }
+  ],
   "wiki": [
     {
       "id": 1,
