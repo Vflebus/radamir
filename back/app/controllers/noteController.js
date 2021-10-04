@@ -54,9 +54,9 @@ const noteController = {
 
   delete: async (request, response) => {
     try {
-      const note = new Note(request.body);
-      await Note.delete();
-      response.status(request.body.id ? 204 : 200).json(note);
+			const note = new Note(request.params);
+			const result = await note.delete();
+			response.status(200).json(result);
     } catch (error) {
       console.error(error);
       response.status(500).json(error.message);

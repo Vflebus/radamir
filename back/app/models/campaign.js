@@ -107,8 +107,8 @@ class Campaign {
       } else {
         const { rows } = await client.query(
           `
-            SELECT new_campaign($1, $2, $3, $4) AS id`,
-            [this.campaign_name, this.description, this.created_at, this.user_id]
+            SELECT new_campaign($1, $2, $3) AS id`,
+            [this.campaign_name, this.description, this.user_id]
         );
         this.id = rows[0].id;
       }

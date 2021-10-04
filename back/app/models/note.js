@@ -165,6 +165,7 @@ class Note {
       const { rows } = await client.query(`DELETE FROM note WHERE id = $1;`, [
         this.id,
       ]);
+      return (rows[0]);
     } catch (error) {
       console.error(error);
       throw new Error(error.detail ? error.detail : error.message);
