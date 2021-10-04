@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -22,6 +22,10 @@ const Menu = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const onModalClose = useCallback(() => {
+    setIsModalOpen(false);
+  },[]);
 
   return (
     <div>
@@ -55,7 +59,7 @@ const Menu = () => {
                   </button>
                 </>
               )}
-              <ConnectionModal open={isModalOpen}  onClose={() => setIsModalOpen(false)} />
+              <ConnectionModal open={isModalOpen}  onClose={onModalClose} />
             </div>
           </div>
           <div className={`menu cursorPointer ${isOpen ? "noDisplay" : ""}`}>

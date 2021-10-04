@@ -29,9 +29,9 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         logged: false,
-        username: null,
-        email: null
-      }
+        username: "",
+        email: ""
+      };
 
     default:
       return state;

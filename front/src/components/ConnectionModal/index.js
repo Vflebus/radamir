@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import FormField from "../FormField";
 
@@ -9,6 +11,13 @@ import "./connectionModal.scss";
 
 const ConnectionModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { logged } = useSelector(({ user }) => user);
+
+  useEffect(() => {
+    onClose();
+    if (logged) return history.push("/");
+  }, [logged, onClose, history]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
