@@ -15,29 +15,15 @@ const userController = {
 
     save: async (request, response) => {
         try {
-            const user = new User(request.body);
-            await User.save();
-            response.status(request.body.id ? 204 : 201).json(user);
+
+            const data = {...request.body, ...request.params}
+            const user = new User(data);
+            await user.save();
+            response.status(200).json(user);
         } catch (error) {
             console.error(error);	
 			response.status(500).json(error.message);
         }
-    },
-
-    update: async (request, response) => {
-        try {
-            const user = new User(
-                request.params.username, 
-                request.params.email,
-                request.params.password, 
-                request.params.body
-                );
-            await User.update();
-			response.status(request.body.id ? 204 : 202).json(user);
-        } catch (error) {
-			console.error(error);
-			response.status(500).json(error.message);
-		}
     },
 
 	delete: async (request, response) => {

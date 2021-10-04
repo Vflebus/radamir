@@ -23,7 +23,7 @@ GET {{baseUrl}}/public-notes/1/1
 
 ### Get player private notes
 
-GET {{baseUrl}}/private-notes/1/1
+GET {{baseUrl}}/private-notes/1/2
 
 ### Get the wiki
 
@@ -68,6 +68,21 @@ Content-Type: application/json
     "user_id": 1
 }
 
+### Create a user
+
+POST {{baseUrl}}/signup
+Content-Type: application/json
+
+{
+    "username": "BoboNonoLolo",
+    "email": "BoboNonoLolo@utherland.ru",
+    "password": "2bdaae7efb6f33421ab7fa7d47a4ab4d7dfa6bcde21525b777537448d2941d5a1d5a7fd0830d22a9f5d7d67e4f"
+    }
+
 ### Delete a note
 
 DELETE {{baseUrl}}/note/1
+
+### Get a user by its id
+
+GET {{baseUrl}}/profile/1

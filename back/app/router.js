@@ -19,7 +19,7 @@ const router = Router();
  * @returns {int} 200 - An integer as id
  * @returns {string} 500 - An error message
  */
-router.get("/profile", userController.findUser);
+router.get("/profile/:user_id", userController.findUser);
 
 // ! TODO
 /**
@@ -203,7 +203,7 @@ router.post('/wiki', wikiController.save);
  * @returns {string} 401 - An unauthorized error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/profile', userController.update);
+router.patch('/profile', userController.save);
 
 // ! TODO JSDOC 
 router.patch('/wiki/:id', wikiController.save);

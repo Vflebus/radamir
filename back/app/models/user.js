@@ -24,10 +24,12 @@ class NoUserError extends Error {
 class User {
   static NoUserError = NoUserError;
 
-  constructor(object = {}) {
-    for (const key in object) {
-      this[key] = object[key];
+  constructor(data) {
+    if (data.length === 0) {
+      throw new NoUserError(data[0]);
     }
+    for (const prop in data)
+    this[prop] = data[prop]
   }
 
   /**
@@ -71,24 +73,15 @@ class User {
     try {
       if (this.id) {
         await client.query(
-          `UPDATE "user"
-                        SET
-                        username = $1,
-                        email = $2,
-                        password = $3, 
-                        is_admin = $4,
-                        WHERE id = $5
-                        ;`,
-          [this.username, this.email, this.password, this.is_admin, this.id]
-        );
+          `
+          SELECT update_user($1, $2, $3, $4)`,
+          [this.username, this.email, this.password, this.id]);
       } else {
         const password = await bcrypt.hash(this.password, 10);
         const { rows } = await client.query(
-          `INSERT INTO "user" (username, email, password, is_admin)
-                        VALUES ($1, $2, $3, $4, $5)
-                        RETURNING id
-                        `,
-          [this.username, this.email, this.password, this.is_admin]
+          `
+          SELECT new_user($1, $2, $3) AS id`,
+          [this.username, this.email, password]
         );
         this.id = rows[0].id;
         return this;
@@ -99,29 +92,6 @@ class User {
         throw new Error(error.detail);
       }
       throw error;
-    }
-  }
-
-  /**
-   * Edit user password, username and email
-   * @param {string} username
-   * @param {string} email
-   * @param {string} password
-   * @async
-   */
-  async update() {
-    try {
-      const { rows } = await client.query(
-        `UPDATE "user"
-              SET username=$1,
-                  email = $2,
-                  password = $3, 
-                  WHERE id=$4;`,
-        [this.username, this.email, this.password, this.id]
-      );
-    } catch (error) {
-      console.log("Erreur interne ou de requête: ", error);
-      throw new Error(error.detail ? error.detail : error.message);
     }
   }
 

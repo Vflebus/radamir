@@ -2,13 +2,26 @@
 
 BEGIN;
 
+-- campaign new & update
+
 CREATE FUNCTION new_campaign(VARCHAR(255), TEXT, INT) RETURNS INT AS $$
 	INSERT INTO "campaign"("campaign_name", "description", "user_id") 
 VALUES($1, $2, $3) RETURNING id;
-$$ LANGUAGE SQL;
+$$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_campaign(TEXT, INT) RETURNS void AS $$
     UPDATE "campaign" SET "description" = $1 WHERE id = $2;
+$$ LANGUAGE SQL STRICT;
+
+-- user new & update
+
+CREATE FUNCTION new_user(VARCHAR(255), VARCHAR(255), VARCHAR(255)) RETURNS INT AS $$
+    INSERT INTO "user"("username", "email", "password")
+VALUES($1, $2, $3) RETURNING id;
+$$ LANGUAGE SQL STRICT;
+
+CREATE FUNCTION update_user(VARCHAR(255), VARCHAR(255), VARCHAR(255)) RETURNS void AS $$
+    UPDATE "user" SET "username" = $1, "email" = $2, "password" = $3 WHERE id = $4;
 $$ LANGUAGE SQL STRICT;
 
 -- notes new & update
