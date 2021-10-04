@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import wikiParchment from "../../assets/images/wikiParchment.webp"
 
 const WikiCategory = ({ title, content }) => {
@@ -10,6 +12,11 @@ const WikiCategory = ({ title, content }) => {
       <p className="wiki__category-content">{content}</p>
     </div>
   );
+};
+
+WikiCategory.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired
 };
 
 export default WikiCategory;

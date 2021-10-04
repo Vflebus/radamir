@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
 
 import "../../styles/index.scss";
 
@@ -12,12 +14,20 @@ import MobileWikiPage from "../MobileWikiPage";
 import SignUp from "../SignUp";
 import Page404 from "../Page404";
 import CampaignList from "../CampaignList";
+
+import { fetchWikis } from "../../actions/wikis";
+
 import logo from "../../assets/images/logo-decoupe.webp";
 import Menu from "../Menu";
 
 const App = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
-  const loading = false;
+  const { loading } = useSelector(({ wikis }) => wikis);
+
+  useEffect(() => {
+    dispatch(fetchWikis());
+  }, [dispatch]);
 
   if (loading) {
     return (
