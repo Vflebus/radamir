@@ -2,13 +2,13 @@ import PropTypes from "prop-types";
 
 import ListItem from "./ListItem";
 
-const WikiSection = ({ title, links }) => {
+const WikiSection = ({ header, links }) => {
   return (
     <div className="wikis__section">
-      <h2 className="wikis__section-title">{title}</h2>
+      <h2 className="wikis__section-title">{header}</h2>
       <ul className="wikis__section-list">
-        {links.map(({ name, route }) => {
-          return <ListItem key={route} route={route} name={name} />;
+        {links.map(({ title, slug, id }) => {
+          return <ListItem key={id} route={slug} name={title} />;
         })}
       </ul>
     </div>
@@ -16,11 +16,12 @@ const WikiSection = ({ title, links }) => {
 };
 
 WikiSection.propTypes = {
-  title: PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      route: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     })
   ).isRequired,
 };
