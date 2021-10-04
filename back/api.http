@@ -23,7 +23,7 @@ GET {{baseUrl}}/public-notes/1/1
 
 ### Get player private notes
 
-GET {{baseUrl}}/private-notes/1/2
+GET {{baseUrl}}/private-notes/1/1
 
 ### Get the wiki
 
@@ -51,9 +51,8 @@ POST {{baseUrl}}/campaigns
 Content-Type: application/json
 
 {
-    "campaign_name": "SUPER TEST 2",
+    "campaign_name": "SUPER TEST 3",
     "description": "DIAMS SUPER LOL",
-    "created_at": null,
     "user_id": 1
 }
 
@@ -68,3 +67,7 @@ Content-Type: application/json
     "campaign_id": 1,
     "user_id": 2
 }
+
+### Delete a note
+
+DELETE {{baseUrl}}/note/

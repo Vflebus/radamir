@@ -269,7 +269,7 @@ router.delete(`/campaigns/:id`, campaignController.delete);
  * @returns {string} - 204 Player not found
  * @returns {string} - 500 An error message
  */
-router.delete(`/note/:id`, noteController.delete);
+router.delete(`/note/:campaign_id`, noteController.delete);
 
 /**
  * @route DELETE /player/:campaign_name
