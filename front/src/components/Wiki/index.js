@@ -1,13 +1,12 @@
 import { useLocation, useParams } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 import WikiCategory from "./WikiCategory";
 import Menu from "../Menu";
 
 import "./wiki.scss";
-
-import data from "../../data-example.json";
 
 const pageVariants = {
     in: {
@@ -28,7 +27,8 @@ const Wiki = () => {
   const { pathname } = useLocation();
   const { title } = useParams();
 
-  const wiki = data.find(({ slug }) => slug === title);
+  const { list } = useSelector(({ wikis }) => wikis);
+  const wiki = list.find(({ slug }) => slug === title);
 
   return (
       <motion.div
@@ -40,7 +40,7 @@ const Wiki = () => {
       >
         <div className="links-container">
             <ul>
-                {wiki.blocks.map(({ id, title }) => {
+                {wiki.block.map(({ id, title }) => {
                     return <li key={id}>
                                 <ScrollLink
                                     to={`wiki__category-${title.toLowerCase()}`}
@@ -70,13 +70,13 @@ const Wiki = () => {
                     onChange={(e) => window.location.assign(pathname + e.target.value)}
                 >
                     <option value="#">-- Sélectionnez une option --</option>
-                    {wiki.blocks.map(({id, title}) => {
+                    {wiki.block.map(({id, title}) => {
                         return <option key={id} value={`#wiki__category-${title.toLowerCase()}`}>{title}</option>;
                     })}
                 </select>
                 <div className="wiki__page">
                     <div className="category-container">
-                        {wiki.blocks.map(({id, title, content}) => {
+                        {wiki.block.map(({id, title, content}) => {
                             return <WikiCategory key={id} title={title} content={content} />;
                         })}
                     </div>

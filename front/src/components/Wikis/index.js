@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import WikiSection from "./WikiSection";
 import Menu from "../Menu";
@@ -7,8 +8,6 @@ import "./wikis.scss";
 
 import arrow from "../../assets/images/flecheNavRouge.webp";
 import { motion } from "framer-motion";
-
-import data from "../../data-example.json";
 
 const pageVariants = {
   in: {
@@ -25,8 +24,9 @@ const pageTransitions = {
 };
 
 const Wikis = () => {
-  const regions = data.filter((el) => el.type === "region");
-  const others = data.filter((el) => el.type === "other");
+  const { list } = useSelector(({ wikis }) => wikis);
+  const regions = list.filter(({ type }) => type === "region");
+  const others = list.filter(({ type }) => type === "other");
 
   return (
         <motion.div

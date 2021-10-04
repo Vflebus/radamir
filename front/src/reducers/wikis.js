@@ -1,8 +1,7 @@
 import { SAVE_WIKIS } from "../actions/wikis";
 
 const initialState = {
-  regions: [],
-  others: [],
+  list: [],
   loading: true,
 };
 
@@ -11,8 +10,7 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_WIKIS:
       return {
         ...state,
-        regions: action.wikis.filter(({ type }) => type === "region"),
-        others: action.wikis.filter(({ type }) => type === "other"),
+        list: action.wikis,
         loading: false
       }
 

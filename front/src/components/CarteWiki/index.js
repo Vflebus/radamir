@@ -14,11 +14,11 @@ import logo from '../../assets/images/logo-decoupe.webp'
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
+import { useSelector } from 'react-redux';
 
 import Menu from "../Menu";
 
 import imageMapResize from './imageMapResizer.js';
-import data from "../../data-example.json";
 
 const pageVariants = {
     in: {
@@ -39,7 +39,8 @@ const CarteWiki = () => {
     const mapContainerRef = useRef();
     const infoRef = useRef();
 
-    const regions = data.filter(({ type }) => type === "region");
+    const { list } = useSelector(({ wikis }) => wikis);
+    const regions = list.filter(({ type }) => type === "region");
 
     const darkenMap = (region) => {
         mapContainerRef.current.classList.toggle('darkened');
@@ -49,8 +50,8 @@ const CarteWiki = () => {
         targetRegion.classList.toggle(`scaled`);
         targetRegion.classList.toggle(`scaled${region}`);
 
-        const { blocks } = regions.find(({ slug }) => region.toLowerCase() === slug);
-        const { content } = blocks.find(({ title }) => title === "Historique");
+        const { block } = regions.find(({ slug }) => region.toLowerCase() === slug);
+        const { content } = block.find(({ title }) => title === "Historique");
 
         infoRef.current.textContent = content;
         infoRef.current.classList.toggle(`noDisplay`);

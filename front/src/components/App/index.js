@@ -20,13 +20,13 @@ import logo from "../../assets/images/logo-decoupe.webp";
 const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const isLoading = useSelector(({ wikis }) => wikis.loading);
+  const { loading } = useSelector(({ wikis }) => wikis);
 
   useEffect(() => {
     dispatch(fetchWikis());
   }, [dispatch]);
 
-  if (isLoading) {
+  if (loading) {
     return (
         <AnimatePresence exitBeforeEnter>
           <motion.img
