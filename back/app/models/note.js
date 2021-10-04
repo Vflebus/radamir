@@ -36,10 +36,12 @@ class Note {
    * @throws {NoNoteError} If the note doesn't exist.
    * @throws {Error} If the request is failed.
    */
-  constructor(content, is_private, campaign_id, user_id, id) {
-    for (let key in arguments) {
-      this[key] = arguments[key];
+  constructor(data) {
+    if (data.length === 0) {
+      throw new NoNoteError(data[0]);
     }
+    for (const prop in data)
+    this[prop] = data[prop]
   }
 
   /**
@@ -61,16 +63,7 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return rows.map(
-        (row) =>
-          new Note(
-            row.content,
-            row.is_private,
-            row.campaign_id,
-            row.user_id,
-            row.id
-          )
-      );
+      return new Note(rows);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -97,16 +90,7 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return rows.map(
-        (row) =>
-          new Note(
-            row.content,
-            row.is_private,
-            row.campaign_id,
-            row.user_id,
-            row.id
-          )
-      );
+      return new Note(rows);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -126,22 +110,13 @@ class Note {
     try {
       let { rows } = await client.query(
         `
-                SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = true;`,
+                SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = true`,
         [campaign_id, user_id]
       );
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return rows.map(
-        (row) =>
-          new Note(
-            row.content,
-            row.is_private,
-            row.campaign_id,
-            row.user_id,
-            row.id
-          )
-      );
+      return new Note(rows);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -164,8 +139,8 @@ class Note {
         ]);
       } else {
         const { rows } = await client.query(
-          `SELECT new_note($1) AS id`, //c quoi déja ici AS id ?
-          [this]
+          `SELECT new_note($1, $2, $3, $4) AS id`,
+          [this.content, this.is_private, this.campaign_id, this.user_id]
         );
         this.id = rows[0].id;
         return this;
@@ -190,6 +165,7 @@ class Note {
       const { rows } = await client.query(`DELETE FROM note WHERE id = $1;`, [
         this.id,
       ]);
+      return (rows[0]);
     } catch (error) {
       console.error(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -217,3 +193,5 @@ class Note {
     }
   }
 }
+
+module.exports = Note;

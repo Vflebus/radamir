@@ -2,10 +2,10 @@
 
 BEGIN;
 
-CREATE FUNCTION new_campaign(VARCHAR(255), TEXT, TIMESTAMPTZ, INT) RETURNS INT AS $$
-	INSERT INTO "campaign"("campaign_name", "description", "created_at", "user_id") 
-VALUES($1, $2, $3, $4) RETURNING id;
-$$ LANGUAGE SQL STRICT;
+CREATE FUNCTION new_campaign(VARCHAR(255), TEXT, INT) RETURNS INT AS $$
+	INSERT INTO "campaign"("campaign_name", "description", "user_id") 
+VALUES($1, $2, $3) RETURNING id;
+$$ LANGUAGE SQL;
 
 CREATE FUNCTION update_campaign(TEXT, INT) RETURNS void AS $$
     UPDATE "campaign" SET "description" = $1 WHERE id = $2;

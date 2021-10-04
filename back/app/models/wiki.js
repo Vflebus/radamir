@@ -122,9 +122,6 @@ class Wiki {
     }
   }
 
-//DELETE FROM wiki WHERE id = $1 RETURNING *
-
-//l'endroit concerné
   /**
    * Delete an instance of Wiki from database
    * @async

@@ -34,7 +34,6 @@ const wikiController = {
 		}
 	},
 
-	// l'endroit concerné
 	delete: async (request, response) => {
 		try {
 			const wiki = new Wiki(request.params);
