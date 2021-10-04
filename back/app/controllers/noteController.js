@@ -4,8 +4,7 @@ const noteController = {
   //get public notes that are related to a campaign
   getPlayerPublicNotes: async (request, response) => {
     try {
-      const { campaign_id } = request.params;
-      const notes = await Note.getPublicNotes(campaign_id);
+      const notes = await Note.getPlayerPublicNotes(request.params.campaign_id, request.params.user_id);
       response.json(notes);
     } catch (error) {
       console.error(error);
@@ -41,8 +40,9 @@ const noteController = {
 
   save: async (request, response) => {
     try {
-      const note = new Note(request.body);
-      await Note.save();
+      const data = {...request.body, ...request.params}
+      const note = new Note(data);
+      await note.save();
       response.status(request.body.id ? 204 : 201).json(note);
     } catch (error) {
       console.error(error);

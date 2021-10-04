@@ -36,10 +36,12 @@ class Note {
    * @throws {NoNoteError} If the note doesn't exist.
    * @throws {Error} If the request is failed.
    */
-  constructor(content, is_private, campaign_id, user_id, id) {
-    for (let key in arguments) {
-      this[key] = arguments[key];
+  constructor(data) {
+    if (data.length === 0) {
+      throw new NoNoteError(data[0]);
     }
+    for (const prop in data)
+    this[prop] = data[prop]
   }
 
   /**
@@ -61,16 +63,7 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return rows.map(
-        (row) =>
-          new Note(
-            row.content,
-            row.is_private,
-            row.campaign_id,
-            row.user_id,
-            row.id
-          )
-      );
+      return new Note(rows[0]);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -217,3 +210,5 @@ class Note {
     }
   }
 }
+
+module.exports = Note;

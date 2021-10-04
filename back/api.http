@@ -11,7 +11,19 @@ GET {{baseUrl}}/campaigns
 
 ### Get one campaign
 
-DELETE {{baseUrl}}/campaigns/1
+GET {{baseUrl}}/campaigns/1
+
+### Get player public notes
+
+GET {{baseUrl}}/player-public-notes/1
+
+### Get non-player public notes
+
+
+
+### Get player private notes
+
+GET {{baseUrl}}
 
 ### Get the wiki
 
@@ -42,5 +54,17 @@ Content-Type: application/json
     "campaign_name": "SUPER TEST",
     "description": "DIAMS SUPER LOL",
     "created_at": null,
+    "user_id": 1
+}
+
+### Create a note
+
+POST {{baseUrl}}/note/1/1
+Content-Type: application/json
+
+{
+    "content": "salusalut c flanders",
+    "is_private": false,
+    "campaign_id": 1,
     "user_id": 1
 }

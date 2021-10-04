@@ -77,7 +77,7 @@ router.get(`/wiki/:id`, wikiController.getWikiById);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/player-public-notes/:id`, noteController.getPlayerPublicNotes);
+router.get(`/player-public-notes/:campaign_id/:user_id`, noteController.getPlayerPublicNotes);
 
 /**
  * @route GET /public-notes/{id}
@@ -154,7 +154,7 @@ router.post('/campaigns', campaignController.save);
 
 /**
  * Add or update a note
- * @route POST /campaigns/{campaign_name}
+ * @route POST /campaigns/{campaign_id}
  * @group Campaigns
  * @summary Add or save a note to a campaign
  * @param {string} campaign_name - The campaign the note is related to
@@ -164,17 +164,17 @@ router.post('/campaigns', campaignController.save);
  * @returns {string} 409 - A conflict error message
  * @returns {string} 401 - An unauthorized error message
  */
-router.post(`/note/:campaign_name`, noteController.save);
+router.post(`/note/:id`, noteController.save);
 
 /**
  * Add a player
- * @route POST /player/:campaign_name
+ * @route POST /player/:campaign_id
  * @group Player
  * @summary Add a player to a campaign
  * @param { string } campaign_name - The name of the campaign the player is added to
  * @returns {Player.model} - The newly created player
  */
-router.post('/player/:campaign_name', playerController.save)
+router.post('/player/:campaign_id', playerController.save)
 
 /**
  * Add a new wiki in database
@@ -269,7 +269,7 @@ router.delete(`/campaigns/:id`, campaignController.delete);
  * @returns {string} - 204 Player not found
  * @returns {string} - 500 An error message
  */
-router.delete(`/note/:campaign_name`, noteController.delete);
+router.delete(`/note/:id`, noteController.delete);
 
 /**
  * @route DELETE /player/:campaign_name
