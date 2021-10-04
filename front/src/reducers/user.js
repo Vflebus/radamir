@@ -1,9 +1,9 @@
 import { SET_INPUT, CONNECT_USER, LOGOUT } from "../actions/user";
 
 const initialState = {
-  logged: false,
-  username: "",
-  email: "",
+  logged: true,
+  username: "Blistoufe",
+  email: "blistoufe@gmail.com",
   password: "",
   passwordConfirm: ""
 }
@@ -30,7 +30,8 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         logged: false,
-        username: null
+        username: null,
+        email: null
       }
 
     default:
