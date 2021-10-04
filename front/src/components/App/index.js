@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
 
 import "../../styles/index.scss";
 
@@ -11,13 +13,20 @@ import Terms from "../Terms";
 import MobileWikiPage from "../MobileWikiPage";
 import SignUp from "../SignUp";
 
+import { fetchWikis } from "../../actions/wikis";
+
 import logo from "../../assets/images/logo-decoupe.webp";
 
 const App = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
-  const loading = false;
+  const isLoading = useSelector(({ wikis }) => wikis.loading);
 
-  if (loading) {
+  useEffect(() => {
+    dispatch(fetchWikis());
+  }, [dispatch]);
+
+  if (isLoading) {
     return (
         <AnimatePresence exitBeforeEnter>
           <motion.img
