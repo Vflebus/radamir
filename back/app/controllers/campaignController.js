@@ -24,9 +24,10 @@ const campaignController = {
 
     save: async (request, response) => {
         try {
-            const campaign = new Campaign(request.body);
-            await Campaign.addCampaign();
-            response.status(request.body.id ? 204 : 201).json(campaign);
+            const data = {...request.body, ...request.params}
+            const campaign = new Campaign(data);
+            await campaign.save();
+            response.json(campaign);
         } catch (error) {
             console.error(error);	
 			response.status(500).json(error.message);
@@ -35,9 +36,9 @@ const campaignController = {
 
     delete: async (request, response) => {
         try {
-			const campaign = new Campaign(request.body);
-			await Campaign.deleteCampaign();
-			response.status(request.body.id ? 204 : 200).json(campaign);
+			const campaign = new Campaign(request.params);
+			const result = await campaign.delete();
+			response.json(result);
 		} catch (error) {
             console.error(error);
 			response.status(500).json(error.message);

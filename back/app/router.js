@@ -219,7 +219,7 @@ router.patch('/wiki/:id', wikiController.save);
  * @returns {string} 400 - A validation error message
  * @returns {string} 404 - A not found error message
  */
-// router.patch('/campaigns/:campaign_name', cController.update);
+router.patch('/campaigns/:id', campaignController.save);
 
 //#endregion PATCH
 
@@ -250,7 +250,7 @@ router.delete('/profile', userController.delete);
 router.delete(`/wiki/:id`, wikiController.delete);
 
 /**
- * @route DELETE /campaign/:campaign_name
+ * @route DELETE /campaigns/:campaign_name
  * @group Campaign
  * @summary Delete a campaign
  * @param {int} id - The id of the campaign to delete
@@ -258,7 +258,7 @@ router.delete(`/wiki/:id`, wikiController.delete);
  * @returns {string} - 204 campaign not found
  * @returns {string} - 500 An error message
  */
-router.delete(`/campaign/:campaign_name`, campaignController.delete);
+router.delete(`/campaigns/:id`, campaignController.delete);
 
 /**
  * @route DELETE /note/:campaign_name

@@ -42,7 +42,7 @@ class User {
     try {
       const { rows } = await client.query(
         `SELECT username, email
-                FROM user
+                FROM "user"
                 WHERE username=$1 
                 ;`,
         [username]
@@ -112,7 +112,7 @@ class User {
   async update() {
     try {
       const { rows } = await client.query(
-        `UPDATE user
+        `UPDATE "user"
               SET username=$1,
                   email = $2,
                   password = $3, 

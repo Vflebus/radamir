@@ -11,7 +11,7 @@ GET {{baseUrl}}/campaigns
 
 ### Get one campaign
 
-GET {{baseUrl}}/campaigns/2
+DELETE {{baseUrl}}/campaigns/1
 
 ### Get the wiki
 
@@ -19,7 +19,7 @@ GET {{baseUrl}}/wiki
 
 ### Get one wiki
 
-DELETE  {{baseUrl}}/wiki/4
+DELETE  {{baseUrl}}/wiki/1
 
 ### Update or New wiki
 
@@ -31,4 +31,16 @@ Content-Type: application/json
     "title": "B",
     "full_title": "C",
     "type": "region"
+}
+
+### Create a new campaign
+
+POST {{baseUrl}}/campaigns
+Content-Type: application/json
+
+{
+    "campaign_name": "SUPER TEST",
+    "description": "DIAMS SUPER LOL",
+    "created_at": null,
+    "user_id": 1
 }
