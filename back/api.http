@@ -95,6 +95,6 @@ Content-Type: application/json
 
 DELETE {{baseUrl}}/note/1
 
-### Get a user by its id
+### Delete a user
 
-GET {{baseUrl}}/profile/1
+DELETE {{baseUrl}}/profile/2

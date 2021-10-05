@@ -99,11 +99,12 @@ class User {
    */
   async delete() {
     try {
-      const { rows } = await client.query("DELETE FROM user WHERE id=$1", [
+      const { rows } = await client.query(`DELETE FROM user WHERE id=$1`, [
         this.id,
       ]);
+      return (rows[0]);
     } catch (error) {
-      console.log("Erreur interne ou de requête: ", error);
+      console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
     }
   }

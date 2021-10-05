@@ -1,5 +1,6 @@
 const User = require('../models/user');
-const jwt = require('../services/jwt')
+const jwt = require('../services/jwt');
+const noteController = require('./noteController');
 
 const userController = {
 
@@ -28,9 +29,9 @@ const userController = {
 
 	delete: async (request, response) => {
 		try {
-			const user = new User(request.body);
-			await User.delete();
-			response.status(request.body.id ? 204 : 200).json(user);
+			const user = new User(request.params);
+            const result = await user.delete();
+			response.status(request.params ? 204 : 200).json(result);
 		} catch (error) {
             console.error(error);
 			response.status(500).json(error.message);
