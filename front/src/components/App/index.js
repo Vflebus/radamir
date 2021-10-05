@@ -25,6 +25,7 @@ const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { loading } = useSelector(({ wikis }) => wikis);
+  const { logged } = useSelector(({ user }) => user);
 
   useEffect(() => {
     dispatch(fetchWikis());
@@ -75,9 +76,11 @@ const App = () => {
         <Route exact path="/campagnes">
           <CampaignList />
         </Route>
-        <Route exact path="/profile">
-          <UserProfile />
-        </Route>
+        {logged && (
+          <Route exact path="/profile">
+            <UserProfile />
+          </Route>
+        )}
         <Route>
           <Page404 />
         </Route>

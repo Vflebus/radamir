@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
 import FormField from "../FormField";
@@ -21,6 +21,7 @@ const pageTransitions = {
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const { message } = useSelector(({ error }) => error);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,6 +39,11 @@ const SignUp = () => {
 
       <div className="signup">
         <h1>Inscription</h1>
+        {message && (
+          <div className="error">
+            {message}
+          </div>
+        )}
         <form className="signup__form" autoComplete="off" onSubmit={handleSubmit}>
           <FormField inputId="username" label="Identifiant" />
           <FormField inputId="email" label="Adresse e-mail" type="email" />
