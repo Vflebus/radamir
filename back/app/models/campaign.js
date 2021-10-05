@@ -37,10 +37,12 @@ class Campaign {
    * @throws {NoCampaignError} If the campaign doesn't exist
    * @throws {Error} If the campaign already exists
    */
-  constructor(...data) {
-    for (let key in data) {
-      this[key] = data[key];
+  constructor(data) {
+    if (data.length === 0) {
+      throw new NoCampaignError(data[0]);
     }
+    for (const prop in data)
+    this[prop] = data[prop]
   }
 
   /**
@@ -95,33 +97,20 @@ class Campaign {
    * @throws {Error} If the request failed
    */
   async save() {
-    /* try {
-           if (this.id) {
-               await client.query(`
-               UPDATE campaign SET description = $1 WHERE id = $2;`, 
-               [this.description, this.id]);
-           } else {
-               const { rows } = await client.query(`
-               INSERT INTO campaign (campaign_name, description, user_id)
-               VALUES ($1, $2, $3);`,
-               [this.campaign_name, this.description, this.user_id]);
-           }
-       } */
     try {
       if (this.id) {
         await client.query(
           `
-            SELECT update_campaign($1)`,
-          [this]
+            SELECT update_campaign($1, $2);`,
+          [this.description, this.id]
         );
       } else {
         const { rows } = await client.query(
           `
-            SELECT new_campaign($1) AS id`,
-          [this]
+            SELECT new_campaign($1, $2, $3) AS id`,
+            [this.campaign_name, this.description, this.user_id]
         );
         this.id = rows[0].id;
-        return this;
       }
     } catch (error) {
       console.log(error);
@@ -138,9 +127,13 @@ class Campaign {
   async delete() {
     try {
       const { rows } = await client.query(
-        "DELETE FROM campaign WHERE id = $1;",
+        "DELETE FROM campaign WHERE id = $1 RETURNING *;",
         [this.id]
       );
+      if (rows.length === 0) {
+        throw new NoCampaignError(this.id);
+      }
+      return new Campaign(rows[0]);
     } catch (error) {
       console.error(error);
       throw new Error(error.detail ? error.detail : error.message);

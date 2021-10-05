@@ -7,7 +7,7 @@ CREATE TABLE "user" (
 	username VARCHAR(255) NOT NULL UNIQUE,
 	email VARCHAR(255) NOT NULL UNIQUE,
 	"password" VARCHAR(255) NOT NULL,
-	is_admin BOOLEAN NOT NULL
+	is_admin BOOLEAN NOT NULL DEFAULT false
 );
 
 CREATE TABLE campaign (
@@ -27,7 +27,7 @@ CREATE TABLE campaign_has_players (
 CREATE TABLE note (
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	content TEXT NOT NULL,
-	is_private BOOLEAN NOT NULL,
+	is_private BOOLEAN NOT NULL DEFAULT false,
 	campaign_id INT NOT NULL REFERENCES campaign(id) ON DELETE CASCADE,
 	"user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );

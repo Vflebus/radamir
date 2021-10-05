@@ -4,8 +4,7 @@ const noteController = {
   //get public notes that are related to a campaign
   getPlayerPublicNotes: async (request, response) => {
     try {
-      const { campaign_id } = request.params;
-      const notes = await Note.getPublicNotes(campaign_id);
+      const notes = await Note.getPlayerPublicNotes(request.params.campaign_id, request.params.user_id);
       response.json(notes);
     } catch (error) {
       console.error(error);
@@ -15,8 +14,7 @@ const noteController = {
 
   getPublicNotes: async (request, response) => {
     try {
-      const { campaign_id, user_id } = request.params;
-      const notes = await Note.getPublicNotes(campaign_id, user_id);
+      const notes = await Note.getPublicNotes(request.params.campaign_id, request.params.user_id);
       response.json(notes);
     } catch (error) {
       console.error(error);
@@ -30,8 +28,7 @@ const noteController = {
 
   getPrivateNotes: async (request, response) => {
     try {
-      const { campaign_id, user_id } = request.params;
-      const notes = await Note.getPrivateNotes(campaign_id, user_id);
+      const notes = await Note.getPrivateNotes(request.params.campaign_id, request.params.user_id);
       response.json(notes);
     } catch (error) {
       console.error(error);
@@ -41,8 +38,9 @@ const noteController = {
 
   save: async (request, response) => {
     try {
-      const note = new Note(request.body);
-      await Note.save();
+      const data = {...request.body, ...request.params};
+      const note = new Note(data);
+      await note.save();
       response.status(request.body.id ? 204 : 201).json(note);
     } catch (error) {
       console.error(error);
@@ -56,9 +54,9 @@ const noteController = {
 
   delete: async (request, response) => {
     try {
-      const note = new Note(request.body);
-      await Note.delete();
-      response.status(request.body.id ? 204 : 200).json(note);
+			const note = new Note(request.params);
+			const result = await note.delete();
+			response.status(200).json(result);
     } catch (error) {
       console.error(error);
       response.status(500).json(error.message);

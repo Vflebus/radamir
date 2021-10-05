@@ -3,7 +3,7 @@
 
 ### Get the user 
 
-GET {{baseUrl}}/profile
+GET {{baseUrl}}/profile/3
 
 ### Get all campaigns
 
@@ -13,13 +13,25 @@ GET {{baseUrl}}/campaigns
 
 GET {{baseUrl}}/campaigns/2
 
+### Get player public notes
+
+GET {{baseUrl}}/player-public-notes/1/1
+
+### Get non-player public notes
+
+GET {{baseUrl}}/public-notes/1/1
+
+### Get player private notes
+
+GET {{baseUrl}}/private-notes/1/2
+
 ### Get the wiki
 
 GET {{baseUrl}}/wiki
 
 ### Get one wiki
 
-DELETE  {{baseUrl}}/wiki/4
+DELETE  {{baseUrl}}/wiki/1
 
 ### Update or New wiki
 
@@ -32,3 +44,57 @@ Content-Type: application/json
     "full_title": "C",
     "type": "region"
 }
+
+### Create a new campaign
+
+POST {{baseUrl}}/campaigns
+Content-Type: application/json
+
+{
+    "campaign_name": "SUPER TEST 4",
+    "description": "DIAMS SUPER LOL",
+    "user_id": 1
+}
+
+### Create a note
+
+POST {{baseUrl}}/note/1
+Content-Type: application/json
+
+{
+    "content": "salusalut c flanders version 5",
+    "is_private": false,
+    "campaign_id": 1,
+    "user_id": 1
+}
+
+### Create a user
+
+POST {{baseUrl}}/signup
+Content-Type: application/json
+
+{
+    "username": "BoboNonoLolo",
+    "email": "BoboNonoLoloutherlandru",
+    "password": "ABCDEFG"
+}
+
+
+### Update a user
+
+PATCH {{baseUrl}}/profile/3
+Content-Type: application/json
+
+{
+    "username": "BoboNonoLala",
+    "email": "BoboNonoLoloutherlandru",
+    "password": "123476"
+}
+
+### Delete a note
+
+DELETE {{baseUrl}}/note/1
+
+### Get a user by its id
+
+GET {{baseUrl}}/profile/1
