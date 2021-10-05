@@ -70,9 +70,11 @@ const App = () => {
         <Route exact path="/terms">
           <Terms />
         </Route>
-        <Route exact path="/signup">
-          <SignUp />
-        </Route>
+        {!logged && (
+          <Route exact path="/signup">
+            <SignUp />
+          </Route>
+        )}
         <Route exact path="/campagnes">
           <CampaignList />
         </Route>

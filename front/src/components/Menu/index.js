@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import ConnectionModal from "../ConnectionModal";
@@ -15,9 +15,10 @@ import menuMobileBarreDessous from "../../assets/images/menuMobileBarreDessous.w
 
 const Menu = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isLogged = useSelector(({user}) => user.logged);
+  const { logged } = useSelector(({user}) => user);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -25,7 +26,12 @@ const Menu = () => {
 
   const onModalClose = useCallback(() => {
     setIsModalOpen(false);
-  },[]);
+  }, []);
+
+  const onLogout = useCallback(() => {
+    dispatch(logout());
+    history.push("/");
+  }, [dispatch, history]);
 
   return (
     <div>
@@ -39,17 +45,17 @@ const Menu = () => {
               <NavLink exact to="/wiki" className="links" activeClassName="selected">
                 Wiki
               </NavLink>
-              {isLogged && (
+              {logged && (
                 <>
                   <NavLink exact to="/profile" className="links" activeClassName="selected">
                     Mon Compte
                   </NavLink>              
-                  <button className="links menu-button" onClick={() => dispatch(logout())}>
+                  <button className="links menu-button" onClick={onLogout}>
                     Déconnexion
                   </button>
                 </>
               )}
-              {!isLogged && (
+              {!logged && (
                 <>
                   <NavLink exact to="/signup" className="links" activeClassName="selected">
                     Inscription
