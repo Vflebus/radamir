@@ -1,7 +1,8 @@
 import radamirAPI from "../apis/radamirAPI";
-import { SIGN_UP, LOGIN, connectUser } from "../actions/user";
+import { SIGN_UP, LOGIN, connectUser, setInput } from "../actions/user";
+import { setError, clearError } from "../actions/error";
 
-const authMiddleware = (store) => (next) => async (action) => {
+const authMiddleware = (store) => (next) => async (action) => {  
   switch (action.type) {
     case SIGN_UP:
       // TODO:
@@ -9,6 +10,8 @@ const authMiddleware = (store) => (next) => async (action) => {
 
     case LOGIN:
       try {
+        store.dispatch(clearError());
+
         // Placeholder
         const userEmail = store.getState().user.email;
         const userPassword = store.getState().user.password;
@@ -19,7 +22,7 @@ const authMiddleware = (store) => (next) => async (action) => {
           return email === userEmail && password === userPassword
         });
 
-        if (!foundUser) throw Error("Inconnu");
+        if (!foundUser) throw Error("Adresse e-mail ou mot de passe inconnu");
 
         store.dispatch(connectUser(foundUser));
 
@@ -29,7 +32,8 @@ const authMiddleware = (store) => (next) => async (action) => {
 
         // store.dispatch(connectUser(res.data));
       } catch (err) {
-        console.error(err);
+        store.dispatch(setInput("", "password"));
+        store.dispatch(setError(err.message));
       }
       next(action);
       break;

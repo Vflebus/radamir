@@ -15,8 +15,10 @@ const ConnectionModal = ({ open, onClose }) => {
   const { logged } = useSelector(({ user }) => user);
 
   useEffect(() => {
-    onClose();
-    if (logged) return history.push("/");
+    if (logged) {
+      onClose();
+      return history.push("/")
+    };
   }, [logged, onClose, history]);
 
   const handleSubmit = (e) => {

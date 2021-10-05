@@ -5,7 +5,8 @@ const initialState = {
   username: "",
   email: "",
   password: "",
-  passwordConfirm: ""
+  passwordConfirm: "",
+  admin: false
 }
 
 const reducer = (state = initialState, action = {}) => {
