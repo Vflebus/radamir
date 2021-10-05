@@ -35,6 +35,9 @@ const Menu = () => {
               <NavLink exact to="/wiki" className="links" activeClassName="selected">
                 Wiki
               </NavLink>
+              <NavLink exact to="/campagnes" className="links" activeClassName="selected">
+                Campagnes
+              </NavLink>
               {isLogged && (
                 <button className="links menu-button" onClick={() => dispatch(logout())}>
                   Déconnexion
@@ -69,18 +72,30 @@ const Menu = () => {
             </div>
             <img src={menuDeplie} alt="" className={`navLinksMobile__img ${isOpen ? "" : "displayNone"}`} />
             <div className={`navLinksMobile ${isOpen ? "" : "displayNone"}`}>
-                <NavLink exact to="/carte" className="links" activeClassName="selected">
-                    Carte du Monde
-                </NavLink>
-                <NavLink exact to="/wiki" className="links" activeClassName="selected">
-                    Wiki
-                </NavLink>
-                <NavLink exact to="/3" className="links" activeClassName="selected">
-                    Lien 3
-                </NavLink>
-                <NavLink exact to="/4" className="links" activeClassName="selected">
-                    Lien 4
-                </NavLink>
+            <NavLink exact to="/carte" className="links" activeClassName="selected">
+                Carte du Monde
+              </NavLink>
+              <NavLink exact to="/wiki" className="links" activeClassName="selected">
+                Wiki
+              </NavLink>
+              <NavLink exact to="/campagnes" className="links" activeClassName="selected">
+                Campagnes
+              </NavLink>
+              {isLogged && (
+                <button className="links menu-button" onClick={() => dispatch(logout())}>
+                  Déconnexion
+                </button>
+              )}
+              {!isLogged && (
+                <>
+                  <NavLink exact to="/signup" className="links" activeClassName="selected">
+                    Inscription
+                  </NavLink>
+                  <button className="links menu-button" onClick={() => setIsModalOpen(true)}>
+                    Connexion
+                  </button>
+                </>
+              )}
             </div>
         </div>
     </div>
