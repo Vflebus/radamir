@@ -15,12 +15,12 @@ $$ LANGUAGE SQL STRICT;
 
 -- user new & update
 
-CREATE FUNCTION new_user(VARCHAR(255), VARCHAR(255), VARCHAR(255)) RETURNS INT AS $$
+CREATE FUNCTION new_user(TEXT, TEXT, TEXT) RETURNS INT AS $$
     INSERT INTO "user"("username", "email", "password")
 VALUES($1, $2, $3) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_user(VARCHAR(255), VARCHAR(255), VARCHAR(255)) RETURNS void AS $$
+CREATE FUNCTION update_user(TEXT, TEXT, TEXT, INT) RETURNS void AS $$
     UPDATE "user" SET "username" = $1, "email" = $2, "password" = $3 WHERE id = $4;
 $$ LANGUAGE SQL STRICT;
 

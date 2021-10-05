@@ -2,8 +2,8 @@ const client = require("../database");
 const bcrypt = require("bcrypt");
 
 class NoUserError extends Error {
-  constructor(username) {
-    super(`No result for user ${username}`);
+  constructor(id) {
+    super(`No result for user ${id}`);
   }
 }
 
@@ -40,19 +40,14 @@ class User {
    * @group User
    * @static
    */
-  static async findUser(username) {
+  static async findUser(id) {
     try {
       const { rows } = await client.query(
-        `SELECT username, email
-                FROM "user"
-                WHERE username=$1 
-                ;`,
-        [username]
-      );
-      if (rows[0]) {
-        return new User(rows[0]);
+        `SELECT * FROM "user" WHERE id = $1`, [id]);
+      if (rows.length === 0) {
+      throw new NoUserError(id);
       }
-      throw new NoUserError(username);
+      return new User(rows[0])
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -72,10 +67,11 @@ class User {
   async save() {
     try {
       if (this.id) {
+        const password = await bcrypt.hash(this.password, 10);
         await client.query(
           `
           SELECT update_user($1, $2, $3, $4)`,
-          [this.username, this.email, this.password, this.id]);
+          [this.username, this.email, password, this.id]);
       } else {
         const password = await bcrypt.hash(this.password, 10);
         const { rows } = await client.query(

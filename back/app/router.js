@@ -1,4 +1,4 @@
-const { Router, response } = require("express");
+const { Router } = require("express");
 
 const wikiController = require("./controllers/wikiController"); 
 const userController = require("./controllers/userController");
@@ -19,7 +19,7 @@ const router = Router();
  * @returns {int} 200 - An integer as id
  * @returns {string} 500 - An error message
  */
-router.get("/profile/:user_id", userController.findUser);
+router.get("/profile/:id", userController.findUser);
 
 // ! TODO
 /**
@@ -203,7 +203,7 @@ router.post('/wiki', wikiController.save);
  * @returns {string} 401 - An unauthorized error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/profile', userController.save);
+router.patch('/profile/:id', userController.save);
 
 // ! TODO JSDOC 
 router.patch('/wiki/:id', wikiController.save);

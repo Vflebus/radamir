@@ -3,7 +3,7 @@
 
 ### Get the user 
 
-GET {{baseUrl}}/profile
+GET {{baseUrl}}/profile/3
 
 ### Get all campaigns
 
@@ -75,9 +75,21 @@ Content-Type: application/json
 
 {
     "username": "BoboNonoLolo",
-    "email": "BoboNonoLolo@utherland.ru",
-    "password": "2bdaae7efb6f33421ab7fa7d47a4ab4d7dfa6bcde21525b777537448d2941d5a1d5a7fd0830d22a9f5d7d67e4f"
-    }
+    "email": "BoboNonoLoloutherlandru",
+    "password": "ABCDEFG"
+}
+
+
+### Update a user
+
+PATCH {{baseUrl}}/profile/3
+Content-Type: application/json
+
+{
+    "username": "BoboNonoLala",
+    "email": "BoboNonoLoloutherlandru",
+    "password": "123476"
+}
 
 ### Delete a note
 

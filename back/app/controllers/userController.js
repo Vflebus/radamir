@@ -5,7 +5,7 @@ const userController = {
 
     findUser: async (request, response) => {
         try {
-            const user = await User.findUser(request.params.username);
+            const user = await User.findUser(request.params.id);
 			response.json(user);
         } catch (error) {
 			console.error(error);
