@@ -21,8 +21,8 @@ const pageTransitions = {
 
 const UserProfile = () => {
   const dispatch = useDispatch();
-  const { username } = useSelector(({ user }) => user);
-  const { email } = useSelector(({ user }) => user);
+  const { username } = useSelector(({ user }) => user.loggedUser);
+  const { email } = useSelector(({ user }) => user.loggedUser);
 
   const handleSubmit = (e) => {
     e.preventDefault();

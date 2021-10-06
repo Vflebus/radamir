@@ -25,7 +25,7 @@ const userMiddleware = (store) => (next) => async (action) => {
           username,
           email,
           password,
-          isAdmin: false
+          is_admin: false
         });
 
         store.dispatch(setInput("", "username"));
@@ -74,12 +74,14 @@ const userMiddleware = (store) => (next) => async (action) => {
 
     case UPDATE_USER:
       try {
-        const { id } = store.getState().user;
+        const { id } = store.getState().user.loggedUser;
+        const loggedUsername = store.getState().user.loggedUser.username;
+        const loggedEmail = store.getState().user.loggedUser.email;
         const { username, email } = store.getState().user;
 
         const res = await radamirAPI.patch(`/user/${id}`, {
-          username,
-          email
+          username: (username ? username : loggedUsername),
+          email : (email ? email : loggedEmail)
         }, {
           headers: { "Content-Type": "application/json" }
         });
@@ -93,7 +95,7 @@ const userMiddleware = (store) => (next) => async (action) => {
 
     case DELETE_USER:
       try {
-        const { id } = store.getState().user;
+        const { id } = store.getState().user.loggedUser;
 
         await radamirAPI.delete(`/user/${id}`);
 
