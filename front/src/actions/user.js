@@ -30,3 +30,8 @@ export const UPDATE_USER = "UPDATE_USER";
 export const updateUser = () => ({
   type: UPDATE_USER,
 });
+
+export const DELETE_USER = "DELETE_USER";
+export const deleteUser = () => ({
+  type: DELETE_USER
+});

@@ -3,8 +3,10 @@ import {
   SIGN_UP,
   LOGIN,
   UPDATE_USER,
+  DELETE_USER,
   connectUser,
-  setInput
+  setInput,
+  logout
 } from "../actions/user";
 import { setError, clearError } from "../actions/error";
 import history from "../history";
@@ -83,6 +85,21 @@ const userMiddleware = (store) => (next) => async (action) => {
         });
        
         store.dispatch(connectUser(res.data));
+      } catch (err) {
+        console.log(err);
+      }
+      next(action);
+      break;
+
+    case DELETE_USER:
+      try {
+        const { id } = store.getState().user;
+
+        await radamirAPI.delete(`/user/${id}`);
+
+        store.dispatch(logout());
+
+        history.push("/");
       } catch (err) {
         console.log(err);
       }

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ProfileCategory from "./ProfileCategory";
 
-import { updateUser } from "../../actions/user";
+import { updateUser, deleteUser } from "../../actions/user";
 
 const pageVariants = {
   in: {
@@ -27,6 +27,10 @@ const UserProfile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateUser());
+  };
+
+  const onDelete = () => {
+    dispatch(deleteUser());
   };
 
   return (
@@ -54,6 +58,7 @@ const UserProfile = () => {
             type="email"
           />
           <button type="submit">Modifier</button>
+          <button type="button" onClick={onDelete}>Supprimer utilisateur</button>
         </form>
       </div>
     </motion.div>

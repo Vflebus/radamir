@@ -13,13 +13,6 @@
       "email": "admin@radamir.com",
       "password": "admin1234",
       "is_admin": true
-    },
-    {
-      "username": "test",
-      "email": "test@gmail.com",
-      "password": "1234",
-      "is_admin": false,
-      "id": 3
     }
   ],
   "wiki": [
