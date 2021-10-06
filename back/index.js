@@ -7,6 +7,8 @@ const app = express();
 
 const port = process.env.PORT || 3333;
 
+const expressSwagger = require('express-swagger-generator')(app);
+
 app.use(express.json());
 
 app.use('/v1', router);
