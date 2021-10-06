@@ -1,8 +1,6 @@
 const Player = require('../models/player');
 
 const playerController = {
-
-
     findParty: async (request, response) => {
         try {
             const party = await Player.findParty(request.params.campaign_name);
@@ -17,7 +15,7 @@ const playerController = {
         try {
             const player = new Player(request.body);
             await Player.save();
-            response.status(request.body.id ? 204 : 201).json(player);    //les codes http peuvent changer ici ?
+            response.status(request.body.id ? 204 : 201).json(player); 
         } catch (error) {
             console.error(error);	
 			response.status(500).json(error.message);

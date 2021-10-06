@@ -99,10 +99,13 @@ class User {
    */
   async delete() {
     try {
-      const { rows } = await client.query(`DELETE FROM user WHERE id=$1`, [
-        this.id,
-      ]);
-      return (rows[0]);
+      const { rows } = await client.query(`DELETE FROM "user" WHERE id = $1 RETURNING id, username, email`, 
+      [this.id,]
+      );
+      if (rows.length === 0) {
+        throw new NoUserError(this.id);
+      }
+      return rows[0];
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -121,10 +124,8 @@ class User {
       const { rows } = await client.query(
         `SELECT *
               FROM "user"
-              WHERE username = $1
-              OR email = $2
-              ;`,
-        [username, email]
+              WHERE email = $1;`,
+        [this.email]
       );
       if (rows[0]) {
         const correctPassword = await bcrypt.compare(
@@ -136,7 +137,7 @@ class User {
         }
         throw new Error("Password incorrect !");
       }
-      throw new NoUserError(username);
+      throw new NoUserError(email);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);

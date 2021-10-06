@@ -1,7 +1,6 @@
 const Note = require("../models/note");
 
 const noteController = {
-  //get public notes that are related to a campaign
   getPlayerPublicNotes: async (request, response) => {
     try {
       const notes = await Note.getPlayerPublicNotes(request.params.campaign_id, request.params.user_id);
@@ -21,10 +20,6 @@ const noteController = {
       response.status(500).json(error.message);
     }
   },
-  // /campaigns/:campaign_name/notes
-
-  // SELECT * FROM note WHERE campaign_id = $1 AND is_private = false;
-  // SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = true;
 
   getPrivateNotes: async (request, response) => {
     try {
@@ -47,10 +42,6 @@ const noteController = {
       response.status(500).json(error.message);
     }
   },
-
-  /* update: async (request, response) => {
-        a faire ? save s'occupe de l'update aussi du coup ?
-    }, */
 
   delete: async (request, response) => {
     try {
