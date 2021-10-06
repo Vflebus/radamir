@@ -18,7 +18,7 @@
       "username": "test",
       "email": "test@gmail.com",
       "password": "1234",
-      "isAdmin": false,
+      "is_admin": false,
       "id": 3
     }
   ],

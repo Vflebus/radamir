@@ -6,7 +6,8 @@ const initialState = {
   email: "",
   password: "",
   passwordConfirm: "",
-  admin: false
+  is_admin: false,
+  id: null
 }
 
 const reducer = (state = initialState, action = {}) => {
@@ -23,6 +24,7 @@ const reducer = (state = initialState, action = {}) => {
         logged: true,
         username: action.data.username,
         email: action.data.email,
+        id: action.data.id,
         password: "",
       };
 
@@ -31,7 +33,8 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         logged: false,
         username: "",
-        email: ""
+        email: "",
+        id: null
       };
 
     default:

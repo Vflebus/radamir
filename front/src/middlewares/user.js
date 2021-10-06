@@ -1,9 +1,15 @@
 import radamirAPI from "../apis/radamirAPI";
-import { SIGN_UP, LOGIN, connectUser, setInput } from "../actions/user";
+import {
+  SIGN_UP,
+  LOGIN,
+  UPDATE_USER,
+  connectUser,
+  setInput
+} from "../actions/user";
 import { setError, clearError } from "../actions/error";
 import history from "../history";
 
-const authMiddleware = (store) => (next) => async (action) => {  
+const userMiddleware = (store) => (next) => async (action) => {  
   switch (action.type) {
     case SIGN_UP:
       try {
@@ -64,10 +70,29 @@ const authMiddleware = (store) => (next) => async (action) => {
       next(action);
       break;
 
+    case UPDATE_USER:
+      try {
+        const { id } = store.getState().user;
+        const { username, email } = store.getState().user;
+
+        const res = await radamirAPI.patch(`/user/${id}`, {
+          username,
+          email
+        }, {
+          headers: { "Content-Type": "application/json" }
+        });
+       
+        store.dispatch(connectUser(res.data));
+      } catch (err) {
+        console.log(err);
+      }
+      next(action);
+      break;
+
     default:
       next(action);
       break;
   }
 };
 
-export default authMiddleware;
+export default userMiddleware;

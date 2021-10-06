@@ -25,3 +25,8 @@ export const LOGOUT = "LOGOUT";
 export const logout = () => ({
   type: LOGOUT
 });
+
+export const UPDATE_USER = "UPDATE_USER";
+export const updateUser = () => ({
+  type: UPDATE_USER,
+});

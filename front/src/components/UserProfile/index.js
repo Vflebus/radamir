@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import ProfileCategory from "./ProfileCategory";
+
+import { updateUser } from "../../actions/user";
 
 const pageVariants = {
   in: {
@@ -18,8 +20,14 @@ const pageTransitions = {
 };
 
 const UserProfile = () => {
+  const dispatch = useDispatch();
   const { username } = useSelector(({ user }) => user);
   const { email } = useSelector(({ user }) => user);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateUser());
+  };
 
   return (
     <motion.div
@@ -31,7 +39,7 @@ const UserProfile = () => {
     >
       <div className="profile">
         <h1 className="profile__title">Compte de {username}</h1>
-        <form className="profile__infos">
+        <form className="profile__infos" onSubmit={handleSubmit}>
           <ProfileCategory
             title="Pseudonyme"
             content={username}
