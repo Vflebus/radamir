@@ -1,5 +1,6 @@
 const User = require('../models/user');
-const jwt = require('../services/jwt')
+const jwt = require('../services/jwt');
+const noteController = require('./noteController');
 
 const userController = {
 
@@ -28,9 +29,9 @@ const userController = {
 
 	delete: async (request, response) => {
 		try {
-			const user = new User(request.body);
-			await User.delete();
-			response.status(request.body.id ? 204 : 200).json(user);
+			const user = new User(request.params);
+            const result = await user.delete();
+			response.json(result);
 		} catch (error) {
             console.error(error);
 			response.status(500).json(error.message);
@@ -39,9 +40,14 @@ const userController = {
 
     login: async (request, response) => {
         try {
-            const user = await new User(request.body).login();
-            response.setHeader('Authorization', jwt.generateToken(user.id));
-            response.status(200).json(user);
+            const data = {...request.body};
+            const user = new User(data);
+            await user.login();
+            // response.setHeader('Authorization', jwt.generateToken(user.id));
+            response.json({
+                username: user.username,
+                email: user.email
+            });
         } catch (error) {
             console.log(error);
             response.status(500).json(error.message);

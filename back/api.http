@@ -74,27 +74,38 @@ POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
-    "username": "BoboNonoLolo",
-    "email": "BoboNonoLoloutherlandru",
-    "password": "ABCDEFG"
+    "username": "MICHAEL",
+    "email": "mikamika@truc.com",
+    "password": "SUPERSECRET"
 }
 
 
 ### Update a user
 
-PATCH {{baseUrl}}/profile/3
+PATCH {{baseUrl}}/profile/17
 Content-Type: application/json
 
 {
-    "username": "BoboNonoLala",
-    "email": "BoboNonoLoloutherlandru",
-    "password": "123476"
+    "username": "MICHAEL",
+    "email": "mikaamika@truc.com",
+    "password": "12348526"
 }
 
 ### Delete a note
 
 DELETE {{baseUrl}}/note/1
 
-### Get a user by its id
+### Delete a user
 
-GET {{baseUrl}}/profile/1
+DELETE {{baseUrl}}/profile/17
+
+### Login user
+
+POST {{baseUrl}}/signin
+Content-Type: application/json
+
+{
+    "username": "MICHAEL",
+    "email": "mikamika@truc.com",
+    "password": "SUPERSECRET"
+}

@@ -236,7 +236,7 @@ router.patch('/campaigns/:id', campaignController.save);
  * @returns {string} - 204 User not found
  * @returns {string} - 500 An error message
  */
-router.delete('/profile', userController.delete);
+router.delete('/profile/:id', userController.delete);
 
 /**
  * @route DELETE /wiki/:title
