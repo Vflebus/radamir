@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useCallback } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import ConnectionModal from "../ConnectionModal";
 
-import { logout } from "../../actions/user";
+import { logout, setInput } from "../../actions/user";
+import { clearError } from "../../actions/error";
 
 import "./style.scss";
 
@@ -15,13 +16,26 @@ import menuMobileBarreDessous from "../../assets/images/menuMobileBarreDessous.w
 
 const Menu = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isLogged = useSelector(({user}) => user.logged);
+  const { logged } = useSelector(({user}) => user);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const onModalClose = useCallback(() => {
+    dispatch(setInput("", "email"));
+    dispatch(setInput("", "password"));
+    dispatch(clearError());
+    setIsModalOpen(false);
+  }, [dispatch]);
+
+  const onLogout = useCallback(() => {
+    dispatch(logout());
+    history.push("/");
+  }, [dispatch, history]);
 
   return (
     <div>
@@ -38,12 +52,17 @@ const Menu = () => {
               <NavLink exact to="/campagnes" className="links" activeClassName="selected">
                 Campagnes
               </NavLink>
-              {isLogged && (
-                <button className="links menu-button" onClick={() => dispatch(logout())}>
-                  Déconnexion
-                </button>
+              {logged && (
+                <>
+                  <NavLink exact to="/profile" className="links" activeClassName="selected">
+                    Mon Compte
+                  </NavLink>              
+                  <button className="links menu-button" onClick={onLogout}>
+                    Déconnexion
+                  </button>
+                </>
               )}
-              {!isLogged && (
+              {!logged && (
                 <>
                   <NavLink exact to="/signup" className="links" activeClassName="selected">
                     Inscription
@@ -53,7 +72,7 @@ const Menu = () => {
                   </button>
                 </>
               )}
-              <ConnectionModal open={isModalOpen}  onClose={() => setIsModalOpen(false)} />
+              <ConnectionModal open={isModalOpen}  onClose={onModalClose} />
             </div>
           </div>
           <div className={`menu cursorPointer ${isOpen ? "noDisplay" : ""}`}>
@@ -72,7 +91,7 @@ const Menu = () => {
             </div>
             <img src={menuDeplie} alt="" className={`navLinksMobile__img ${isOpen ? "" : "displayNone"}`} />
             <div className={`navLinksMobile ${isOpen ? "" : "displayNone"}`}>
-            <NavLink exact to="/carte" className="links" activeClassName="selected">
+              <NavLink exact to="/carte" className="links" activeClassName="selected">
                 Carte du Monde
               </NavLink>
               <NavLink exact to="/wiki" className="links" activeClassName="selected">
@@ -81,12 +100,17 @@ const Menu = () => {
               <NavLink exact to="/campagnes" className="links" activeClassName="selected">
                 Campagnes
               </NavLink>
-              {isLogged && (
-                <button className="links menu-button" onClick={() => dispatch(logout())}>
-                  Déconnexion
-                </button>
+              {logged && (
+                <>
+                  <NavLink exact to="/profile" className="links" activeClassName="selected">
+                    Mon Compte
+                  </NavLink>              
+                  <button className="links menu-button" onClick={onLogout}>
+                    Déconnexion
+                  </button>
+                </>              
               )}
-              {!isLogged && (
+              {!logged && (
                 <>
                   <NavLink exact to="/signup" className="links" activeClassName="selected">
                     Inscription

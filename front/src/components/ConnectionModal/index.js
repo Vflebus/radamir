@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import FormField from "../FormField";
 
@@ -9,6 +11,16 @@ import "./connectionModal.scss";
 
 const ConnectionModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { logged } = useSelector(({ user }) => user);
+  const { message } = useSelector(({ error }) => error);
+
+  useEffect(() => {
+    if (logged) {
+      onClose();
+      return history.push("/")
+    };
+  }, [logged, onClose, history]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +34,9 @@ const ConnectionModal = ({ open, onClose }) => {
       <div className="modal-overlay" onClick={onClose}></div>
       <div className="connection">
         <h2>Connexion</h2>
+        {message && (
+          <div className="error">{message}</div>
+        )}
         <form className="connection__form" onSubmit={handleSubmit}>
           <FormField inputId="email" label="Adresse e-mail" type="email" />
           <FormField inputId="password" label="Mot de passe" type="password" />

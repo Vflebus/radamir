@@ -14,6 +14,7 @@ import MobileWikiPage from "../MobileWikiPage";
 import SignUp from "../SignUp";
 import Page404 from "../Page404";
 import CampaignList from "../CampaignList";
+import UserProfile from "../UserProfile";
 
 import { fetchWikis } from "../../actions/wikis";
 
@@ -24,6 +25,7 @@ const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { loading } = useSelector(({ wikis }) => wikis);
+  const { logged } = useSelector(({ user }) => user);
 
   useEffect(() => {
     dispatch(fetchWikis());
@@ -68,12 +70,19 @@ const App = () => {
         <Route exact path="/terms">
           <Terms />
         </Route>
-        <Route exact path="/signup">
-          <SignUp />
-        </Route>
+        {!logged && (
+          <Route exact path="/signup">
+            <SignUp />
+          </Route>
+        )}
         <Route exact path="/campagnes">
           <CampaignList />
         </Route>
+        {logged && (
+          <Route exact path="/profile">
+            <UserProfile />
+          </Route>
+        )}
         <Route>
           <Page404 />
         </Route>
