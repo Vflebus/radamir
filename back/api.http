@@ -3,7 +3,7 @@
 
 ### Get the user 
 
-GET {{baseUrl}}/profile/3
+GET {{baseUrl}}/profile/1
 
 ### Get all campaigns
 
@@ -82,13 +82,11 @@ Content-Type: application/json
 
 ### Update a user
 
-PATCH {{baseUrl}}/profile/17
+PATCH {{baseUrl}}/profile/1
 Content-Type: application/json
 
 {
-    "username": "MICHAEL",
-    "email": "mikaamika@truc.com",
-    "password": "12348526"
+    "email": "kjleghkrfhgerh@11111.com"
 }
 
 ### Delete a note
@@ -97,7 +95,7 @@ DELETE {{baseUrl}}/note/1
 
 ### Delete a user
 
-DELETE {{baseUrl}}/profile/17
+DELETE {{baseUrl}}/profile/1
 
 ### Login user
 

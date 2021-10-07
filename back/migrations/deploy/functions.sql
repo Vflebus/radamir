@@ -21,7 +21,7 @@ VALUES($1, $2, $3) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_user(TEXT, TEXT, TEXT, INT) RETURNS void AS $$
-    UPDATE "user" SET "username" = $1, "email" = $2, "password" = $3 WHERE id = $4;
+    UPDATE "user" SET "username" = COALESCE($1, "username"), "email" = COALESCE($2, "email"), "password" = COALESCE($3, "password") WHERE id = $4;
 $$ LANGUAGE SQL STRICT;
 
 -- notes new & update

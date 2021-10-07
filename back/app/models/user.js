@@ -67,11 +67,13 @@ class User {
   async save() {
     try {
       if (this.id) {
-        const password = await bcrypt.hash(this.password, 10);
-        await client.query(
+        if (this.password) {
+          await bcrypt.hash(this.password, 10);
+        }
+          await client.query(
           `
           SELECT update_user($1, $2, $3, $4)`,
-          [this.username, this.email, password, this.id]);
+          [this.username, this.email, this.password, this.id]);
       } else {
         const password = await bcrypt.hash(this.password, 10);
         const { rows } = await client.query(
