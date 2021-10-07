@@ -29,13 +29,9 @@ const userMiddleware = (store) => (next) => async (action) => {
 
         store.dispatch(setInput("", "username"));
         store.dispatch(setInput("", "email"));
-        store.dispatch(setInput("", "password"));
-        store.dispatch(setInput("", "passwordConfirm"));
 
         history.push("/");
       } catch (err) {
-        store.dispatch(setInput("", "password"));
-        store.dispatch(setInput("", "passwordConfirm"));
         store.dispatch(setError(err.message));
       }
       break;

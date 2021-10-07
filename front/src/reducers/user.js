@@ -1,4 +1,9 @@
-import { SET_INPUT, CONNECT_USER, LOGOUT } from "../actions/user";
+import { 
+  SET_INPUT,
+  SIGN_UP,
+  CONNECT_USER,
+  LOGOUT
+} from "../actions/user";
 
 const initialState = {
   logged: false,
@@ -17,6 +22,13 @@ const reducer = (state = initialState, action = {}) => {
         [action.fieldname]: action.value
       };
 
+    case SIGN_UP:
+      return {
+        ...state,
+        password: "",
+        passwordConfirm: ""
+      };
+
     case CONNECT_USER:
       return {
         ...state,
@@ -24,8 +36,8 @@ const reducer = (state = initialState, action = {}) => {
         loggedUser: {
           username: action.data.username,
           email: action.data.email,
-          // id: action.data.id,
-          // is_admin: action.data.is_admin
+          id: action.data.id,
+          is_admin: action.data.is_admin
         },
         username: "",
         email: "",
