@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   logged: false,
-  loggedUser: null,
+  loggedUser: {},
   username: "",
   email: "",
   password: "",
@@ -48,7 +48,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         logged: false,
-        loggedUser: null
+        loggedUser: {}
       };
 
     default:
