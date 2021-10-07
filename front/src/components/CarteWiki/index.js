@@ -64,7 +64,7 @@ const CarteWiki = () => {
         () => {
             imageMapResize();
             window.addEventListener('resize', () => {
-                setTimeout(() => {imageMapResize()}, 2000);
+                setTimeout(() => {imageMapResize()}, 750);
             });
         },
     )
