@@ -19,13 +19,12 @@ const userMiddleware = (store) => (next) => async (action) => {
 
         const { username, email, password, passwordConfirm } = store.getState().user;
   
-        if (password !== passwordConfirm) throw Error("Mots de passe différents");
+        if (password !== passwordConfirm) throw Error("Veuillez entrer le même mot de passe");
   
-        await radamirAPI.post("/user", {
+        await radamirAPI.post("/signup", {
           username,
           email,
-          password,
-          is_admin: false
+          password
         });
 
         store.dispatch(setInput("", "username"));
@@ -34,7 +33,6 @@ const userMiddleware = (store) => (next) => async (action) => {
         store.dispatch(setInput("", "passwordConfirm"));
 
         history.push("/");
-        // TODO:
       } catch (err) {
         store.dispatch(setInput("", "password"));
         store.dispatch(setInput("", "passwordConfirm"));
@@ -46,28 +44,14 @@ const userMiddleware = (store) => (next) => async (action) => {
       try {
         store.dispatch(clearError());
 
-        // Placeholder
-        const userEmail = store.getState().user.email;
-        const userPassword = store.getState().user.password;
+        const { email, password } = store.getState().user;
 
-        const res = await radamirAPI.get("/user");
+        const res = await radamirAPI.post("/signin", { email, password });
 
-        const foundUser = res.data.find(({ email, password }) => {
-          return email === userEmail && password === userPassword
-        });
-
-        if (!foundUser) throw Error("Adresse e-mail ou mot de passe inconnu");
-
-        store.dispatch(connectUser(foundUser));
-
-        // TODO: update following lines with correct api
-
-        // const res = await radamirAPI.post("/signin", { email, password });
-
-        // store.dispatch(connectUser(res.data));
+        store.dispatch(connectUser(res.data));
       } catch (err) {
         store.dispatch(setInput("", "password"));
-        store.dispatch(setError(err.message));
+        store.dispatch(setError("Une erreur est survenue"));
       }
       next(action);
       break;
@@ -79,11 +63,9 @@ const userMiddleware = (store) => (next) => async (action) => {
         const loggedEmail = store.getState().user.loggedUser.email;
         const { username, email } = store.getState().user;
 
-        const res = await radamirAPI.patch(`/user/${id}`, {
+        const res = await radamirAPI.patch(`/profile/${id}`, {
           username: (username ? username : loggedUsername),
           email : (email ? email : loggedEmail)
-        }, {
-          headers: { "Content-Type": "application/json" }
         });
        
         store.dispatch(connectUser(res.data));
@@ -97,7 +79,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       try {
         const { id } = store.getState().user.loggedUser;
 
-        await radamirAPI.delete(`/user/${id}`);
+        await radamirAPI.delete(`/profile/${id}`);
 
         store.dispatch(logout());
 
