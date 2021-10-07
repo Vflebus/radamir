@@ -19,7 +19,7 @@ const userMiddleware = (store) => (next) => async (action) => {
 
         const { username, email, password, passwordConfirm } = store.getState().user;
   
-        if (password !== passwordConfirm) throw Error("Veuillez entrer le même mot de passe");
+        if (password !== passwordConfirm) throw new Error("Veuillez entrer le même mot de passe");
   
         await radamirAPI.post("/signup", {
           username,

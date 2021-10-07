@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ConnectionModal from "../ConnectionModal";
 
 import { logout, setInput } from "../../actions/user";
+import { clearError } from "../../actions/error";
 
 import "./style.scss";
 
@@ -26,6 +27,8 @@ const Menu = () => {
 
   const onModalClose = useCallback(() => {
     dispatch(setInput("", "email"));
+    dispatch(setInput("", "password"));
+    dispatch(clearError());
     setIsModalOpen(false);
   }, [dispatch]);
 
