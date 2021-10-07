@@ -1,6 +1,5 @@
 import { 
   SET_INPUT,
-  SIGN_UP,
   CONNECT_USER,
   LOGOUT
 } from "../actions/user";
@@ -20,13 +19,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.fieldname]: action.value
-      };
-
-    case SIGN_UP:
-      return {
-        ...state,
-        password: "",
-        passwordConfirm: ""
       };
 
     case CONNECT_USER:

@@ -29,9 +29,13 @@ const userMiddleware = (store) => (next) => async (action) => {
 
         store.dispatch(setInput("", "username"));
         store.dispatch(setInput("", "email"));
+        store.dispatch(setInput("", "password"));
+        store.dispatch(setInput("", "passwordConfirm"));
 
         history.push("/");
       } catch (err) {
+        store.dispatch(setInput("", "password"));
+        store.dispatch(setInput("", "passwordConfirm"));
         store.dispatch(setError(err.message));
       }
       break;
@@ -63,7 +67,7 @@ const userMiddleware = (store) => (next) => async (action) => {
           username: (username ? username : loggedUsername),
           email : (email ? email : loggedEmail)
         });
-       
+
         store.dispatch(connectUser(res.data));
       } catch (err) {
         console.log(err);
