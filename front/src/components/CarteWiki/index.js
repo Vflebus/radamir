@@ -73,7 +73,7 @@ const CarteWiki = () => {
             <MotionWrapper>   
                 {/* <Menu /> */}
                 <div className="landscapeBG"></div>
-                <h1 className="landscapeWarning">Veuillez passer votre téléphone en mode paysage.</h1>
+                <h1 className="landscapeWarning">Veuillez passer en mode paysage.</h1>
                 <main id="mainContainer">
                     <div className="indexLink" ref={indexLinkRef}>
                         <Link to="/wiki/" className="indexLink">

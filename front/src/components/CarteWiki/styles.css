@@ -42,8 +42,9 @@ area {
     transition-duration: 3s;
 }
 .carte-radamir {
-    position: absolute;
-    top: 0;
+    /* position: absolute;
+    top: 0; */
+    align-self: center;
 }
 .region {
     position: absolute; 
@@ -60,18 +61,23 @@ area {
     height: 110vh;
 }
 .scaledKarnaclok {
+    align-self: center;
     transform: translate(-48%);
 }
 .scaledKervollen {
+    align-self: center;
     transform: translate(-50%);
 }
 .scaledVanna {
+    align-self: center;
     transform: translate(-52%);
 }
 .scaledFeidlimid {
+    align-self: center;
     transform: translate(-50%, 1%);
 }
 .scaledDroknor {
+    align-self: center;
     transform: translate(-52%, -2%);
 }
 .darkened {
@@ -135,11 +141,15 @@ area {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-@media (orientation: portrait) {
+.landscapeWarning {
+    display: none;
+}
+@media screen and (max-width: 470px) {
     #mainContainer {
         display: none;
     }
     .landscapeWarning {
+        display: block;
         font-family: 'IM Fell English SC', serif;
         font-size: 3rem;
         color: white;
@@ -172,8 +182,8 @@ area {
         display: none;
     }
 }
-@media screen and (max-width: 1500px) {
+/* @media screen and (max-width: 1500px) {
     .infoBulle {
-        /* display: none; */
+        display: none;
     }
-}
+} */
