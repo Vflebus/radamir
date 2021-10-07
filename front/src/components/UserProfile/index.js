@@ -1,23 +1,9 @@
-import { motion } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 
 import ProfileCategory from "./ProfileCategory";
+import MotionWrapper from "../MotionWrapper";
 
 import { updateUser, deleteUser } from "../../actions/user";
-
-const pageVariants = {
-  in: {
-    opacity: 1
-  },
-  out: {
-    opacity: 0
-  }
-};
-
-const pageTransitions = {
-  transition: "linear",
-  duration: 1
-};
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -34,13 +20,7 @@ const UserProfile = () => {
   };
 
   return (
-    <motion.div
-    initial="out"
-    animate="in"
-    exit="out"
-    variants={pageVariants}
-    transition={pageTransitions}
-    >
+    <MotionWrapper>
       <div className="profile">
         <h1 className="profile__title">Compte de {username}</h1>
         <form className="profile__infos" onSubmit={handleSubmit}>
@@ -61,7 +41,7 @@ const UserProfile = () => {
           <button type="button" onClick={onDelete}>Supprimer utilisateur</button>
         </form>
       </div>
-    </motion.div>
+    </MotionWrapper>
   );
 };
 
