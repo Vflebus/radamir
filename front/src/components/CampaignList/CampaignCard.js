@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import plank from "../../assets/images/plank.png"
+import wikiParchment from "../../assets/images/wikiParchment.webp"
 
 const CampaignCard = () => {
     return (
