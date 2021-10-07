@@ -18,4 +18,10 @@ DROP FUNCTION IF EXISTS update_note;
 DROP FUNCTION IF EXISTS new_campaign;
 DROP FUNCTION IF EXISTS update_campaign;
 
+
+-- User
+
+DROP FUNCTION IF EXISTS new_user;
+DROP FUNCTION IF EXISTS update_user;
+
 COMMIT;
