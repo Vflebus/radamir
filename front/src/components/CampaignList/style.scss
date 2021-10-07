@@ -74,17 +74,20 @@
 
             &:hover {
                 z-index: 600;
-                &::before {
-                    content: "";
-                    position: fixed;
-                    top: 0;
-                    right: 0;
-                    width: 100vw;
-                    height: 100vh;
-                    background-color: rgba( 0, 0, 0, 0.8);
-                    pointer-events: none;
-                    z-index: -1;
+                h3 {
+                    text-shadow: 0px 0px 10px white;
                 }
+                // &::before {
+                //     content: "";
+                //     position: fixed;
+                //     top: 0;
+                //     right: 0;
+                //     width: 100vw;
+                //     height: 100vh;
+                //     background-color: rgba( 0, 0, 0, 0.8);
+                //     pointer-events: none;
+                //     z-index: -1;
+                // }
             }
         }
     }
