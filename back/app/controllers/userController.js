@@ -42,11 +42,13 @@ const userController = {
         try {
             const data = {...request.body};
             const user = new User(data);
-            await user.login();
+            const instance = await user.login();
             // response.setHeader('Authorization', jwt.generateToken(user.id));
             response.json({
-                username: user.username,
-                email: user.email
+                id: instance.id,
+                username: instance.username,
+                email: instance.email,
+                is_admin: instance.is_admin
             });
         } catch (error) {
             console.log(error);
