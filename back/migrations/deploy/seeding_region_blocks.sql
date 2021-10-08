@@ -531,7 +531,7 @@ S''il reste parmi les autres clans des Orcs doués de l''Étincelle, la magie, e
 	5
 ),
 (
-	'Vêtements, bijoux, décorations',
+	'Vêtements',
 	'Les Orcs se sont adaptés à leur environnement hostile. Ils supportent très bien les températures élevées comme basses, et leurs tenues sont principalement des peaux de bêtes, trophées de chasse, des crânes et ossements en décoration, et quelques pièces d''armures en fer pour compléter le tout.	Les Orcs apprécient les piercings, en os ou en métal, les bijoux notamment les colliers de crocs, et savent tatouer. Les cheveux se rasent ou se tressent.',
 	5
 ),
