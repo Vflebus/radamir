@@ -55,12 +55,13 @@ class Wiki {
   static async getAllWikis() {
     try {
       const { rows } = await client.query(
-        `select wiki.id, wiki.title, wiki.type, wiki.slug, json_agg(
+        `select wiki.id, wiki.title, wiki.full_title, wiki.type, wiki.slug, json_agg(
           json_build_object(
           'id', block.id,
           'title', block.title,
-          'content', block.content)) AS block 
-          from wiki join block on wiki.id = block.wiki_id
+          'content', block.content)
+          ORDER BY block.id ASC) AS block 
+          from "wiki" join block on wiki.id = block.wiki_id
           GROUP BY wiki.id;`
       );
       return rows.map((row) => new Wiki(row));

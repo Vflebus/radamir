@@ -31,7 +31,7 @@ GET {{baseUrl}}/wiki
 
 ### Get the blocks from one wiki
 
-GET {{baseUrl}}/wiki/7
+GET {{baseUrl}}/wiki/1
 
 ### Create a new campaign
 
@@ -73,8 +73,8 @@ POST {{baseUrl}}/wiki
 Content-Type: application/json
 
 {
-    "slug": "test-jjj",
-    "title": "titre jjjjjj",
+    "slug": "test chevre",
+    "title": "titre chevre",
     "type": "general"
     //"full_title": ""
 }
@@ -97,7 +97,7 @@ Content-Type: application/json
 {
     "title": "titre block",
     "content": "du contenu et encore du contenu",
-    "wiki_id": 1
+    "wiki_id": 7
 }
 
 ### Update or New wiki
