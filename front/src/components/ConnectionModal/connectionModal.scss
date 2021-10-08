@@ -20,23 +20,56 @@
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   color: #C8AD7F;
   border: solid .5rem #63412a;
-  height: 50vh;
+  height: 350px;
 
   &__form, .form-field {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-
   }
 
   h2 {
+    margin-bottom: 1rem;
     font-family: vars.$title-font;
     font-size: 3rem;
+  }
+
+  label {
+    cursor: default;
+    margin-bottom: 0.3rem;
+  }
+
+  input {
+    padding: 0.3rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .connect-user {
+    margin-top: 0.5rem;
+    width: 100%;
+    font-family: vars.$title-font;
+    font-size: 1.2rem;
+    color: vars.$main-color;
+    background-color: vars.$light-bg;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .close-connect {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    color: vars.$light-bg;
   }
 }
 
