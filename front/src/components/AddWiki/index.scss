@@ -1,7 +1,7 @@
 @use "../../styles/vars";
 
 .wiki {
-    &__title {
+    &__title input {
         background-color: rgba(255, 255, 255, 0.2);
         color: vars.$main-color;
         border: none;
@@ -33,6 +33,8 @@
         background-color: rgba(255, 255, 255, 0.2);
         border: none;
         border-radius: 10px;
+        font-family: serif;
+        font-size: 1.4rem;
         width: 100%;
         height: 4rem;
     }

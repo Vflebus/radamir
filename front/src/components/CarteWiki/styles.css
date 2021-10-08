@@ -93,7 +93,7 @@ area {
     transition-property: all;
     color: #C8AD7F;
     padding: 2rem;
-    border: double 1rem #63412a;
+    border: solid 1px #C8AD7F;
     position: absolute;
     top: 5vh;
     left: 5vh;
