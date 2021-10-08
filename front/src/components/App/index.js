@@ -15,7 +15,6 @@ import SignUp from "../SignUp";
 import Page404 from "../Page404";
 import CampaignList from "../CampaignList";
 import UserProfile from "../UserProfile";
-import AddWiki from "../AddWiki";
 
 import { fetchWikis } from "../../actions/wikis";
 
@@ -92,9 +91,6 @@ const App = () => {
             <UserProfile />
           </Route>
         )}
-        <Route exact path="/add-wiki">
-          <AddWiki />
-        </Route>
         <Route>
           <Page404 />
         </Route>
