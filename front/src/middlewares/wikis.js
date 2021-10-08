@@ -9,6 +9,7 @@ import {
   setType
 } from "../actions/wikis";
 import { setError, clearError } from "../actions/error";
+import { cleanTitleSlug } from "../selectors/wikis";
 
 const wikisMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -28,11 +29,7 @@ const wikisMiddleware = (store) => (next) => async (action) => {
 
         const { title, type } = store.getState().wikis;
 
-        const cleanTitle = title.replaceAll(/[^A-zÀ-ü0-9\s_-]/g, "")
-        
-        const slug = cleanTitle
-                      .replaceAll(" ", "-")
-                      .toLowerCase();
+        const { cleanTitle, slug } = cleanTitleSlug(title);
 
         await radamirAPI.post("/wiki", {
           title: cleanTitle,
@@ -54,11 +51,7 @@ const wikisMiddleware = (store) => (next) => async (action) => {
       try {
         const { title } = store.getState().wikis;
 
-        const cleanTitle = title.replaceAll(/[^A-zÀ-ü0-9\s_-]/g, "")
-        
-        const slug = cleanTitle
-                      .replaceAll(" ", "-")
-                      .toLowerCase();
+        const { cleanTitle, slug } = cleanTitleSlug(title);
 
         await radamirAPI.patch(`/wiki/${action.id}`, {
           title: cleanTitle,
