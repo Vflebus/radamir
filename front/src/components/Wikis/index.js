@@ -15,7 +15,7 @@ const Wikis = () => {
   const location = useLocation();
   const { list } = useSelector(({ wikis }) => wikis);
   const regions = list.filter(({ type }) => type === "region");
-  const others = list.filter(({ type }) => type === "other");
+  const general = list.filter(({ type }) => type === "general");
 
   useEffect(() => {
     setIsModalOpen(false);
@@ -33,14 +33,14 @@ const Wikis = () => {
     <MotionWrapper>
         <div className="wikis">
             <h1 className="wikis__title">Index du Wiki</h1>
-            <button onClick={toggleModal}>Ajouter un wiki</button>
+            <button onClick={toggleModal}>+</button>
             <AddWikiModal open={isModalOpen} onClose={onClose} />
             <Link to="/" className="to-home">
                 Accueil
                 <img src={arrow} alt="Retour à l'accueil" />
             </Link>
             <WikiSection header="Régions" links={regions} />
-            <WikiSection header="Informations Générales" links={others} />
+            <WikiSection header="Informations Générales" links={general} />
         </div>
     </MotionWrapper>
   );

@@ -20,3 +20,9 @@ export const setType = (value) => ({
   type: SET_TYPE,
   value
 });
+
+export const CREATE_WIKI = "CREATE_WIKI";
+export const createWiki = (data) => ({
+  type: CREATE_WIKI,
+  data
+});

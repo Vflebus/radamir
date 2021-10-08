@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import { setTitle, setType } from "../../actions/wikis";
+import { setTitle, setType, createWiki } from "../../actions/wikis";
 
 const AddWikiModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ const AddWikiModal = ({ open, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(createWiki());
   };
 
   const handleInputChange = (e) => {
