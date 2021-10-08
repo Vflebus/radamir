@@ -16,21 +16,9 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useSelector } from 'react-redux';
 
+import MotionWrapper from '../MotionWrapper';
+
 import imageMapResize from './imageMapResizer.js';
-
-const pageVariants = {
-    in: {
-      opacity: 1
-    },
-    out: {
-      opacity: 0
-    }
-};
-
-const pageTransitions = {
-    transition: "linear",
-    duration: 2
-};
 
 const CarteWiki = () => {
     const indexLinkRef = useRef();
@@ -76,22 +64,16 @@ const CarteWiki = () => {
         () => {
             imageMapResize();
             window.addEventListener('resize', () => {
-                setTimeout(() => {imageMapResize()}, 2000);
+                setTimeout(() => {imageMapResize()}, 750);
             });
         },
     )
 
     return (
-            <motion.div
-                initial="out"
-                animate="in"
-                exit="out"
-                variants={pageVariants}
-                transition={pageTransitions}
-            >   
+            <MotionWrapper>   
                 {/* <Menu /> */}
                 <div className="landscapeBG"></div>
-                <h1 className="landscapeWarning">Veuillez passer votre téléphone en mode paysage.</h1>
+                <h1 className="landscapeWarning">Veuillez passer en mode paysage.</h1>
                 <main id="mainContainer">
                     <div className="indexLink" ref={indexLinkRef}>
                         <Link to="/wiki/" className="indexLink">
@@ -198,7 +180,7 @@ const CarteWiki = () => {
                         </div>
                     </div>
                 </main>
-            </motion.div>
+            </MotionWrapper>
     )
 }
 

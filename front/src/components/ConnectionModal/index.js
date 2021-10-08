@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import FormField from "../FormField";
 
@@ -40,9 +42,11 @@ const ConnectionModal = ({ open, onClose }) => {
         <form className="connection__form" onSubmit={handleSubmit}>
           <FormField inputId="email" label="Adresse e-mail" type="email" />
           <FormField inputId="password" label="Mot de passe" type="password" />
-          <button type="submit">Se connecter</button>
+          <button type="submit" className="connect-user">Se connecter</button>
         </form>
-          <button onClick={onClose}>Fermer modale</button>
+          <button onClick={onClose} className="close-connect">
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
       </div>
     </>,
     document.querySelector("#modal")

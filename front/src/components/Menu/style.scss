@@ -74,9 +74,10 @@
         content: unset;
     }
     .navLinksMobile {
-        position: absolute;
+        position: fixed;
         top: 50vh;
         left: 50%;
+        width: 210px;
         transform: translate(-50%, -40%);
         z-index: 100;
         text-align: center;
@@ -86,23 +87,24 @@
         // transition: opacity 1s;
 
         &__img {
-            position: absolute;
+            position: fixed;
             top: 50vh;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 50;
-            width: 60vw;
+            width: 425px;
             // transition: opacity 1s, box-shadow 1s, background-color 1s;
         }
     }
     .links {
-        font-size: 8vw;
+        font-size: 2rem;
         margin-bottom: 1rem;
         // transition: all 1s;
     }
     .menuMobileToggle {
         display: flex;
         flex-direction: column;
+        margin-top: 15px;
         // transition: box-shadow 1s, background-color 1s;
         width: 15vw;
         z-index: 80;
@@ -124,11 +126,11 @@
     }
     .boxShadow::before {
         content: "";
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
-        width: 100vw;
-        height: 100vh;
+        left: 0;
+        bottom: 0;
         background-color: rgba( 0, 0, 0, 0.8);
         z-index: 50;
     }
@@ -139,15 +141,11 @@
 
     @media (orientation: landscape) {
         @media screen and (max-height: 500px) {
-            .navLinksMobile__img {
-                width: unset;
-                height: 90vh;
-            }
-            .links {
-                font-size: 8vh;
-            }
+            // .links {
+            //     font-size: 8vh;
+            // }
             .menuMobileToggle {
-                margin-top: 5vh;
+                margin-top: 15px;
                 width: 15vh;
             }
         }
@@ -157,5 +155,13 @@
 @media screen and (max-width: 470px) {
     .navLinksMobile__img {
         width: 100vw;
+    }
+
+    .navLinksMobile {
+        width: 175px;
+    }
+
+    .links {
+        font-size: 1.7rem;
     }
 }

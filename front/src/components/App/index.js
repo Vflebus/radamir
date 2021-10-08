@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,8 +24,17 @@ import Menu from "../Menu";
 const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const [isDesktop, setIsDesktop] = useState(true);
   const { loading } = useSelector(({ wikis }) => wikis);
   const { logged } = useSelector(({ user }) => user);
+
+  const onResize = () => {
+    setIsDesktop(window.innerWidth > 1000);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", onResize);
+  }, []);
 
   useEffect(() => {
     dispatch(fetchWikis());
@@ -52,7 +61,7 @@ const App = () => {
       <Menu />
       <Switch location={location} key={location.pathname}>
         <Route exact path="/">
-          {document.body.clientWidth > 1000 ? <Redirect to="/carte" /> : <Redirect to="/wiki" />}
+          {isDesktop ? <Redirect to="/carte" /> : <Redirect to="/wiki" />}
         </Route>
         <Route exact path="/carte">
           <CarteWiki />
@@ -61,8 +70,7 @@ const App = () => {
           <Wiki />
         </Route>
         <Route exact path="/wiki">
-          {document.body.clientWidth > 1000 && <Wikis />}
-          {document.body.clientWidth <= 1000 && <MobileWikiPage />}
+          {isDesktop ? <Wikis /> : <MobileWikiPage />}
         </Route>
         <Route exact path="/about">
           <About />

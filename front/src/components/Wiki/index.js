@@ -1,27 +1,12 @@
 import { useLocation, useParams } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
-import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
 import WikiCategory from "./WikiCategory";
+import MotionWrapper from "../MotionWrapper";
 
 import "./wiki.scss";
 
-const pageVariants = {
-    in: {
-      opacity: 1
-    },
-    out: {
-      opacity: 0
-    }
-};
-
-const pageTransitions = {
-    transition: "linear",
-    duration: 1
-};
-  
-  
 const Wiki = () => {
   const { pathname } = useLocation();
   const { title } = useParams();
@@ -30,13 +15,7 @@ const Wiki = () => {
   const wiki = list.find(({ slug }) => slug === title);
 
   return (
-      <motion.div
-        initial="out"
-        animate="in"
-        exit="out"
-        variants={pageVariants}
-        transition={pageTransitions}
-      >
+      <MotionWrapper>
         <div className="links-container">
             <ul>
                 {wiki.block.map(({ id, title }) => {
@@ -79,7 +58,7 @@ const Wiki = () => {
                 </div>
             </div>
         </div>
-      </motion.div>
+      </MotionWrapper>
   );
 };
 

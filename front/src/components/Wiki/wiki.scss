@@ -2,13 +2,16 @@
 
 .links-container {
   position: fixed;
-  top: 25px;
+  top: 15px;
   left: 0;
   z-index: 10;
 
   li {
-    margin-bottom: 0.5rem;
     margin-left: 1rem;
+  }
+
+  a {
+    font-family: vars.$title-font;
   }
 
   .categorySelector {
@@ -20,7 +23,7 @@
 
   .categorySelector::before {
     position: relative;
-    top: 8px;
+    top: 11px;
     content: url(../../assets/images/circle.webp);
   }
 

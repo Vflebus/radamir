@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useState, useCallback, useEffect } from "react";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import ConnectionModal from "../ConnectionModal";
@@ -17,9 +17,14 @@ import menuMobileBarreDessous from "../../assets/images/menuMobileBarreDessous.w
 const Menu = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { logged } = useSelector(({user}) => user);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

@@ -1,23 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
 
 import FormField from "../FormField";
+import MotionWrapper from "../MotionWrapper";
 
 import { signUp } from "../../actions/user";
-
-const pageVariants = {
-  in: {
-    opacity: 1
-  },
-  out: {
-    opacity: 0
-  }
-};
-
-const pageTransitions = {
-  transition: "linear",
-  duration: 1
-};
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -29,14 +15,7 @@ const SignUp = () => {
   };
 
   return (
-    <motion.div
-      initial="out"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={pageTransitions}
-    >
-
+    <MotionWrapper>
       <div className="signup">
         <h1>Inscription</h1>
         {message && (
@@ -52,7 +31,7 @@ const SignUp = () => {
           <button type="submit">Inscription</button>
         </form>
       </div>
-    </motion.div>
+    </MotionWrapper>
   );
 };
 
