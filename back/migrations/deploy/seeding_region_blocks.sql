@@ -89,7 +89,7 @@ VALUES
 	1
 ),
 (
-	'Vêtements, bijoux, décorations',
+	'Vêtements',
 	'Les armures des gardes dépendent de leur rang : plus il est élevé et plus elle est somptueuse, le commerce avec les humains et les nains permettant de faire appel aux meilleurs artisans. Les tenues des assassins suivent cette même logique, et de manière générale, l''habillement traduit la richesse et donc le rang social.
 	Les oreilles sont souvent percées et ornées de boucles ou de tiges, de même que les nez, les arcades ou les lèvres. On maîtrise l''art du tatouage, qui est surtout décoratif.
 	Les maisons sont décorées avec soin : les elfes noirs apprécient les richesses, et aiment à parer leurs demeures d''éléments indiquant qu''ils sont fortunés. Plus un bâtiment à d''étages et plus son propriétaire est riche.',
@@ -125,7 +125,7 @@ VALUES
 	1
 ),
 (
-	'Jeux et distractions',
+	'Divertissement',
 	'Les cartes à collectionner des humains ont fait leur bout de chemin jusqu''au Domaine de Vanna, de même que nombre de jeux de société en bois. Les cerfs-volants sont très appréciés, de même que les jeux d''adresse, et des compétitions sont parfois organisées lors de festivals d''été.',
 	1
 ),
@@ -198,7 +198,7 @@ VALUES
 	2
 ),
 (
-	'Vêtements, bijoux, décorations',
+	'Vêtements',
 	'Les Elfes sylvains portent très peu de bijoux ou de piercings. La plupart en revanche se peignent le visage et le corps avec du henné, indiquant ainsi leur appartenance à leur caste et leur âge. Les vêtements sont traditionnellement verts et d''origine végétale, aidant les elfes à se camoufler dans leur milieu forestier.',
 	2
 ),
@@ -231,7 +231,7 @@ VALUES
 	2
 ),
 (
-	'Jeux et divertissements',
+	'Divertissements',
 	'Le commerce avec les humains leur a apporté les jeux de cartes et de plateaux, dont les elfes sont très friands. Ils apprécient également les belles histoires d''aventure et d''amitié, et ont des jouets en bois qu''ils se lancent d''un arbre à un autre afin d''aiguiser leurs réflexes et leur agilité.',
 	2
 ),
@@ -311,7 +311,7 @@ VALUES
 	3
 ),
 (
-	'Vêtements, bijoux, décorations',
+	'Vêtements',
 	'On aime à s''habiller de façon pratique, la population comptant principalement des fermiers, paysans, ou artisans, le travail est souvent salissant. La coquetterie est réservée aux jours de fêtes ou aux grandes occasions, ou bien lorsqu''on ne se salit pas en travaillant : au choix, parce qu''on est riche, ou fainéant.
 	Les humains apprécient tout particulièrement les bijoux, l''or et les pierres précieuses. Le commerce avec les Nains est donc florissant eu égard à leurs nombreuses mines, et chaque famille peut se targuer d''avoir au moins un ""trésor"", qu''elle transmettra à ses enfants ou revendra en cas de coup dur.
 	On sait percer les oreilles, le nez ou les arcades, et on sait faire des tatouages à l''encre.',
@@ -347,7 +347,7 @@ VALUES
 	3
 ),
 (
-	'Jeux et divertissements',
+	'Divertissements',
 	'Les jeux de cartes, les jeux à boire, les jeux de dés sont appréciés parmi les masses. Les enfants apprennent à lire en bas âge, et peuvent de fait continuer en grandissant, la littérature est donc appréciée en passe-temps. Lors des fêtes, on organise des tournois de tir à la corde, ou d''autres jeux de foire.',
 	3
 ),
@@ -419,7 +419,7 @@ n Nain vit en moyenne jusqu''à 150 ans). Sénile, il n''a guère plus qu''un r�
 	4
 ),
 (
-	'Vêtements, bijoux, décorations',
+	'Vêtements',
 	'Les Nains aiment les vêtements amples avec de nombreuses poches, afin de toujours conserver tout un tas d''outils sur eux. Le tablier de cuir est de mode, ainsi que les lunettes aux verres souvent teintés.
 	Les barbes et les cheveux sont décorés de bagues et de bijoux, et on sait percer les oreilles, le nez, le septum, l''arcade, la lèvre et la langue.
 	Les tatouages sont fréquents, et on apprécie notamment les tatouages faciaux.',
@@ -453,7 +453,7 @@ n Nain vit en moyenne jusqu''à 150 ans). Sénile, il n''a guère plus qu''un r�
 	4
 ),
 (
-	'Jeux et divertissements',
+	'Divertissements',
 	'Manger, boire et dormir sont des distractions en soi, aussi les Nains les pratiquent-ils toujours en quantité. Infatigables travailleurs, les Nains ont néanmoins une passion pour le bomball, un sport très apprécié se déroulant dans une arène : deux équipes de golems mécaniques s''affrontent pour envoyer le plus de balles explosives dans le camp adverse, et tous les coups sont permis.',
 	4
 ),
@@ -532,7 +532,7 @@ n Nain vit en moyenne jusqu''à 150 ans). Sénile, il n''a guère plus qu''un r�
 	5
 ),
 (
-	'Vêtements, bijoux, décorations',
+	'Vêtements',
 	'Les Orcs se sont adaptés à leur environnement hostile. Ils supportent très bien les températures élevées comme basses, et leurs tenues sont principalement des peaux de bêtes, trophées de chasse, des crânes et ossements en décoration, et quelques pièces d''armures en fer pour compléter le tout.
 	Les Orcs apprécient les piercings, en os ou en métal, les bijoux notamment les colliers de crocs, et savent tatouer. Les cheveux se rasent ou se tressent.',
 	5
@@ -565,7 +565,7 @@ n Nain vit en moyenne jusqu''à 150 ans). Sénile, il n''a guère plus qu''un r�
 	5
 ),
 (
-	'Jeux et divertissements',
+	'Divertissements',
 	'Les Orcs apprécient les concours de force. Bras de fer, un genre de sumo consistant à faire sortir son adversaire d''un cercle tracé dans le sol, lutte à mains nues...
 	On peut aussi jouer aux osselets pour tester ses réflexes, ou faire des parties de dés gravés dans des os.',
 	5
