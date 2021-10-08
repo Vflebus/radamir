@@ -1,14 +1,15 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useHistory } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
 import { useSelector, useDispatch } from "react-redux";
 
 import WikiBlock from "./WikiBlock";
 import MotionWrapper from "../MotionWrapper";
 
-import { setTitle, updateWiki } from "../../actions/wikis";
+import { setTitle, updateWiki, deleteWiki } from "../../actions/wikis";
 
 const WikiAdmin = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { pathname } = useLocation();
   const { title } = useParams();
 
@@ -25,6 +26,13 @@ const WikiAdmin = () => {
     e.preventDefault();
     dispatch(updateWiki(wiki.id));
   };
+
+  const handleDelete = () => {
+    dispatch(deleteWiki(wiki.id));
+    history.push("/wiki");
+  };
+
+  if (!wiki) return null
 
   return (
     <MotionWrapper>
@@ -85,6 +93,7 @@ const WikiAdmin = () => {
             </div>
           </>
         )}
+        <button type="button" onClick={handleDelete}>Supprimer Wiki</button>
       </div>
     </MotionWrapper>
   );

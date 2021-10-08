@@ -3,6 +3,7 @@ import {
   FETCH_WIKIS,
   CREATE_WIKI,
   UPDATE_WIKI,
+  DELETE_WIKI,
   saveWikis,
   fetchWikis,
   setTitle,
@@ -61,7 +62,18 @@ const wikisMiddleware = (store) => (next) => async (action) => {
         store.dispatch(setTitle(""));
         store.dispatch(fetchWikis());
       } catch (err) {
-        console.log(err);
+        console.error(err);
+      }
+      next(action);
+      break;
+
+    case DELETE_WIKI:
+      try {
+        await radamirAPI.delete(`/wiki/${action.id}`);
+
+        store.dispatch(fetchWikis());
+      } catch (err) {
+        console.error(err);
       }
       next(action);
       break;

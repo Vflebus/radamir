@@ -32,3 +32,9 @@ export const updateWiki = (id) => ({
   type: UPDATE_WIKI,
   id
 });
+
+export const DELETE_WIKI = "DELETE_WIKI";
+export const deleteWiki = (id) => ({
+  type: DELETE_WIKI,
+  id
+});
