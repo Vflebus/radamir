@@ -17,6 +17,7 @@ const Wikis = () => {
     <MotionWrapper>
         <div className="wikis">
             <h1 className="wikis__title">Index du Wiki</h1>
+            <Link to="/add-wiki">Ajouter un wiki</Link>
             <Link to="/" className="to-home">
                 Accueil
                 <img src={arrow} alt="Retour à l'accueil" />

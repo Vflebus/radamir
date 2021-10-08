@@ -1,0 +1,39 @@
+@use "../../styles/vars";
+
+.wiki {
+    &__title {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: vars.$main-color;
+        border: none;
+        border-radius: 10px;
+    }
+    &__category {
+        position: relative;
+        button {
+            position: absolute;
+            right: 0;
+            top: 5%;
+            font-family: vars.$title-font;
+            font-size: 2rem;
+            border: none;
+            background-color: rgba(255, 255, 255, 0);
+        }
+    }
+}     
+
+.category-container {
+    input {
+        width: 13ch;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: vars.$main-color;
+        border: none;
+        border-radius: 10px;
+    }
+    textArea {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+        height: 4rem;
+    }
+}
