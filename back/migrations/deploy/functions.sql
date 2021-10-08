@@ -56,6 +56,6 @@ $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_block(VARCHAR(16), TEXT, INT) RETURNS void AS $$
     UPDATE "block" SET "title" = $1, "content" = $2 WHERE id = $3;
-$$ LANGUAGE SQL STRICT;
+$$ LANGUAGE SQL;
 
 COMMIT;

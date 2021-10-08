@@ -31,7 +31,7 @@ GET {{baseUrl}}/wiki
 
 ### Get the blocks from one wiki
 
-GET {{baseUrl}}/wiki/1
+GET {{baseUrl}}/wiki/7
 
 ### Create a new campaign
 
@@ -73,8 +73,8 @@ POST {{baseUrl}}/wiki
 Content-Type: application/json
 
 {
-    "slug": "test chevre",
-    "title": "titre chevre",
+    "slug": "test mamouth",
+    "title": "titre mamouth",
     "type": "general"
     //"full_title": ""
 }
@@ -97,7 +97,7 @@ Content-Type: application/json
 {
     "title": "titre block",
     "content": "du contenu et encore du contenu",
-    "wiki_id": 7
+    "wiki_id": 9
 }
 
 ### Update or New wiki
@@ -122,11 +122,11 @@ Content-Type: application/json
 
 ### Patch  one block
 
-PATCH {{baseUrl}}/block/91
+PATCH {{baseUrl}}/block/95
 Content-Type: application/json
 
 {
-    "content": "un peu moins de contenu"
+    "title": "nouveau title"
 }
 
 ### Delete a note
@@ -136,3 +136,7 @@ DELETE {{baseUrl}}/note/1
 ### Delete a user
 
 DELETE {{baseUrl}}/profile/1
+
+### Delete one block
+
+

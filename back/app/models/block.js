@@ -41,7 +41,7 @@ class Block {
   async save() {
     try {
       if (this.id) {
-        await client.query(`SELECT update_block($1, $2, $3)`, [
+        await client.query(`SELECT update_block($1, $2, $3);`, [
           this.title,
           this.content,
           this.id,
