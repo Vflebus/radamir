@@ -160,7 +160,7 @@
       "id": 6,
       "title": "Magie",
       "slug": "magie",
-      "type": "other",
+      "type": "general",
       "block": [
         {
           "id": 1,
@@ -173,7 +173,7 @@
       "id": 7,
       "title": "Dieux",
       "slug": "dieux",
-      "type": "other",
+      "type": "general",
       "block": [
         {
           "id": 1,

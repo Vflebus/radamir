@@ -81,6 +81,15 @@
       }
     }
   }
+  button {
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    font-family: vars.$title-font;
+    font-size: 5vw;
+    border: none;
+    background-color: rgba(0, 0, 0, 0 );
+  }
 }
 .wikiParchment {
   width: 20rem;
