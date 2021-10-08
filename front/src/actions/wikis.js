@@ -26,3 +26,9 @@ export const createWiki = (data) => ({
   type: CREATE_WIKI,
   data
 });
+
+export const UPDATE_WIKI = "UPDATE_WIKI";
+export const updateWiki = (id) => ({
+  type: UPDATE_WIKI,
+  id
+});

@@ -2,6 +2,7 @@ import radamirAPI from "../apis/radamirAPI";
 import {
   FETCH_WIKIS,
   CREATE_WIKI,
+  UPDATE_WIKI,
   saveWikis,
   fetchWikis,
   setTitle,
@@ -45,6 +46,29 @@ const wikisMiddleware = (store) => (next) => async (action) => {
       } catch (err) {
         console.error(err);
         store.dispatch(setError(err.message));
+      }
+      next(action);
+      break;
+
+    case UPDATE_WIKI:
+      try {
+        const { title } = store.getState().wikis;
+
+        const cleanTitle = title.replaceAll(/[^A-zÀ-ü0-9\s_-]/g, "")
+        
+        const slug = cleanTitle
+                      .replaceAll(" ", "-")
+                      .toLowerCase();
+
+        await radamirAPI.patch(`/wiki/${action.id}`, {
+          title: cleanTitle,
+          slug
+        });
+
+        store.dispatch(setTitle(""));
+        store.dispatch(fetchWikis());
+      } catch (err) {
+        console.log(err);
       }
       next(action);
       break;

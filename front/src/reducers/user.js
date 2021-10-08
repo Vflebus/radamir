@@ -6,7 +6,10 @@ import {
 
 const initialState = {
   logged: false,
-  loggedUser: {},
+  // change next line with switching to API
+  loggedUser: {
+    is_admin: true
+  },
   username: "",
   email: "",
   password: "",

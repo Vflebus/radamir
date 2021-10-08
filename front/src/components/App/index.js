@@ -15,6 +15,7 @@ import SignUp from "../SignUp";
 import Page404 from "../Page404";
 import CampaignList from "../CampaignList";
 import UserProfile from "../UserProfile";
+import WikiAdmin from "../WikiAdmin";
 
 import { fetchWikis } from "../../actions/wikis";
 
@@ -27,6 +28,7 @@ const App = () => {
   const [isDesktop, setIsDesktop] = useState(true);
   const { loading } = useSelector(({ wikis }) => wikis);
   const { logged } = useSelector(({ user }) => user);
+  const isAdmin = useSelector(({ user: { loggedUser } }) => loggedUser.is_admin);
 
   const onResize = () => {
     setIsDesktop(window.innerWidth > 1000);
@@ -67,7 +69,7 @@ const App = () => {
           <CarteWiki />
         </Route>
         <Route exact path="/wiki/:title">
-          <Wiki />
+          {isAdmin ? <WikiAdmin /> : <Wiki />}
         </Route>
         <Route exact path="/wiki">
           {isDesktop ? <Wikis /> : <MobileWikiPage />}
