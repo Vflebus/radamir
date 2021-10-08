@@ -1,5 +1,12 @@
 import radamirAPI from "../apis/radamirAPI";
-import { FETCH_WIKIS, CREATE_WIKI, saveWikis, fetchWikis } from "../actions/wikis";
+import {
+  FETCH_WIKIS,
+  CREATE_WIKI,
+  saveWikis,
+  fetchWikis,
+  setTitle,
+  setType
+} from "../actions/wikis";
 import { setError, clearError } from "../actions/error";
 
 const wikisMiddleware = (store) => (next) => async (action) => {
@@ -32,6 +39,8 @@ const wikisMiddleware = (store) => (next) => async (action) => {
           slug
         });
 
+        store.dispatch(setTitle(""));
+        store.dispatch(setType("region"));
         store.dispatch(fetchWikis());
       } catch (err) {
         console.error(err);

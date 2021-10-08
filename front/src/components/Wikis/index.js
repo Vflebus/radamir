@@ -1,16 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
 import WikiSection from "./WikiSection";
 import MotionWrapper from "../MotionWrapper";
 import AddWikiModal from "../AddWikiModal";
 
+import { setTitle, setType } from "../../actions/wikis";
+import { clearError } from "../../actions/error";
+
 import "./wikis.scss";
 
 import arrow from "../../assets/images/flecheNavRouge.webp";
 
 const Wikis = () => {
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
   const { list } = useSelector(({ wikis }) => wikis);
@@ -21,19 +25,22 @@ const Wikis = () => {
     setIsModalOpen(false);
   }, [location]);
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
+  const openModal = () => {
+    setIsModalOpen(true);
   };
 
   const onClose = () => {
     setIsModalOpen(false);
+    dispatch(setType("region"));
+    dispatch(setTitle(""));
+    dispatch(clearError());
   };
 
   return (
     <MotionWrapper>
         <div className="wikis">
             <h1 className="wikis__title">Index du Wiki</h1>
-            <button onClick={toggleModal}>+</button>
+            <button onClick={openModal}>+</button>
             <AddWikiModal open={isModalOpen} onClose={onClose} />
             <Link to="/" className="to-home">
                 Accueil

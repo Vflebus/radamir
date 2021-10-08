@@ -9,6 +9,7 @@ const AddWikiModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
   const { title } = useSelector(({ wikis }) => wikis);
   const { type } = useSelector(({ wikis }) => wikis);
+  const { message } = useSelector(({ error }) => error);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,6 +32,9 @@ const AddWikiModal = ({ open, onClose }) => {
       <div className="modal-overlay" onClick={onClose}></div>
       <div className="connection">
         <h2>Créer un Wiki</h2>
+        {message && (
+          <div className="error">{message}</div>
+        )}
         <form className="connection__form" onSubmit={handleSubmit}>
           <div>
             <input type="text" placeholder="Titre" value={title} onChange={handleInputChange} />

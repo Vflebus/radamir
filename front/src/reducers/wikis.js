@@ -1,10 +1,15 @@
-import { SAVE_WIKIS, SET_TITLE, SET_TYPE } from "../actions/wikis";
+import {
+  SAVE_WIKIS,
+  SET_TITLE,
+  SET_TYPE
+} from "../actions/wikis";
 
 const initialState = {
   list: [],
   loading: true,
   title: "",
-  type: "region"
+  type: "region",
+  content: ""
 };
 
 const reducer = (state = initialState, action = {}) => {
