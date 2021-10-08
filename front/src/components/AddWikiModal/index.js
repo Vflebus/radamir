@@ -13,6 +13,7 @@ const AddWikiModal = ({ open, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createWiki());
+    onClose();
   };
 
   const handleInputChange = (e) => {

@@ -1,5 +1,5 @@
 import radamirAPI from "../apis/radamirAPI";
-import { FETCH_WIKIS, CREATE_WIKI, saveWikis } from "../actions/wikis";
+import { FETCH_WIKIS, CREATE_WIKI, saveWikis, fetchWikis } from "../actions/wikis";
 import { setError, clearError } from "../actions/error";
 
 const wikisMiddleware = (store) => (next) => async (action) => {
@@ -17,14 +17,22 @@ const wikisMiddleware = (store) => (next) => async (action) => {
     case CREATE_WIKI:
       try {
         store.dispatch(clearError());
+
         const { title, type } = store.getState().wikis;
+
+        const cleanTitle = title.replaceAll(/[^A-zÀ-ü0-9\s_-]/g, "")
         
-        const slug = title
-                      .replaceAll(/[^a-zA-Z0-9\s_-]/g, "")
+        const slug = cleanTitle
                       .replaceAll(" ", "-")
                       .toLowerCase();
 
-        await radamirAPI.post("/wiki", { title, type, slug });
+        await radamirAPI.post("/wiki", {
+          title: cleanTitle,
+          type,
+          slug
+        });
+
+        store.dispatch(fetchWikis());
       } catch (err) {
         console.error(err);
         store.dispatch(setError(err.message));
