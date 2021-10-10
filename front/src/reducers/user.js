@@ -6,10 +6,8 @@ import {
 
 const initialState = {
   logged: false,
-  // change next line with switching to API
-  loggedUser: {
-    is_admin: true
-  },
+  // set is_admin to true when working with json-server
+  loggedUser: {},
   username: "",
   email: "",
   password: "",
