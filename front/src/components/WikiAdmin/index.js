@@ -1,31 +1,37 @@
+import { useState } from "react";
 import { useLocation, useParams, useHistory } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
 import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 import WikiBlock from "./WikiBlock";
 import MotionWrapper from "../MotionWrapper";
 import CreateBlock from "./CreateBlock";
+import EditWikiModal from "../EditWikiModal";
 
-import { setTitle, updateWiki, deleteWiki } from "../../actions/wikis";
+import { setTitle, deleteWiki } from "../../actions/wikis";
+import { clearError } from "../../actions/error";
 
 const WikiAdmin = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { pathname } = useLocation();
   const { title } = useParams();
+  const [editTitle, setEditOpen] = useState(false);
 
   const { list } = useSelector(({ wikis }) => wikis);
   const wiki = list.find(({ slug }) => slug === title);
 
-  const titleInput = useSelector(({ wikis }) => wikis.title);
-
-  const handleInputChange = (e) => {
-    dispatch(setTitle(e.target.value));
+  const handleOpen = () => {
+    dispatch(setTitle(wiki.title));
+    setEditOpen(true);
   };
 
-  const handleTitleUpdate = (e) => {
-    e.preventDefault();
-    dispatch(updateWiki(wiki.id));
+  const handleClose = () => {
+    setEditOpen(false);
+    dispatch(setTitle(""));
+    dispatch(clearError());
   };
 
   const handleDelete = () => {
@@ -60,15 +66,11 @@ const WikiAdmin = () => {
       )}
 
       <div className="wiki">
-        <form onSubmit={handleTitleUpdate}>
-          <input
-            type="text"
-            placeholder={wiki.title}
-            value={titleInput}
-            onChange={handleInputChange}
-          />
-          <button type="submit">Modifier</button>
-        </form>
+        <h1 className="wiki__title">
+          {wiki.title}
+          <FontAwesomeIcon icon={faEdit} onClick={handleOpen} />
+          <EditWikiModal open={editTitle} onClose={handleClose} wikiId={wiki.id} />
+        </h1>
         {wiki.block && (
           <>
             <select

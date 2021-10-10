@@ -64,12 +64,11 @@
 
   .close-connect {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 10px;
+    right: 10px;
     font-size: 1.5rem;
-    background-color: transparent;
-    border: none;
     color: vars.$light-bg;
+    cursor: pointer;
   }
 }
 

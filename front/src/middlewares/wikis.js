@@ -11,6 +11,7 @@ import {
 } from "../actions/wikis";
 import { setError, clearError } from "../actions/error";
 import { cleanTitleSlug } from "../selectors/wikis";
+import history from "../history";
 
 const wikisMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -61,6 +62,7 @@ const wikisMiddleware = (store) => (next) => async (action) => {
 
         store.dispatch(setTitle(""));
         store.dispatch(fetchWikis());
+        history.push(`/wiki/${slug}`);
       } catch (err) {
         console.error(err);
       }
