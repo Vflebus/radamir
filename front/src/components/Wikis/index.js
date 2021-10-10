@@ -18,6 +18,7 @@ const Wikis = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
   const { list } = useSelector(({ wikis }) => wikis);
+  const { is_admin } = useSelector(({ user: { loggedUser } }) => loggedUser);
   const regions = list.filter(({ type }) => type === "region");
   const general = list.filter(({ type }) => type === "general");
 
@@ -40,8 +41,12 @@ const Wikis = () => {
     <MotionWrapper>
         <div className="wikis">
             <h1 className="wikis__title">Index du Wiki</h1>
-            <button onClick={openModal}>+</button>
-            <AddWikiModal open={isModalOpen} onClose={onClose} />
+            {is_admin && (
+              <>
+                <button onClick={openModal}>+</button>
+                <AddWikiModal open={isModalOpen} onClose={onClose} />
+              </>
+            )}
             <Link to="/" className="to-home">
                 Accueil
                 <img src={arrow} alt="Retour à l'accueil" />
