@@ -8,8 +8,7 @@ const initialState = {
   list: [],
   loading: true,
   title: "",
-  type: "region",
-  content: ""
+  type: "region"
 };
 
 const reducer = (state = initialState, action = {}) => {

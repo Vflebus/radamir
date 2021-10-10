@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import WikiBlock from "./WikiBlock";
 import MotionWrapper from "../MotionWrapper";
+import CreateBlock from "./CreateBlock";
 
 import { setTitle, updateWiki, deleteWiki } from "../../actions/wikis";
 
@@ -93,6 +94,7 @@ const WikiAdmin = () => {
             </div>
           </>
         )}
+        <CreateBlock />
         <button type="button" onClick={handleDelete}>Supprimer Wiki</button>
       </div>
     </MotionWrapper>
