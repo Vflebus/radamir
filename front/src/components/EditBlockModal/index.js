@@ -10,6 +10,8 @@ import {
   updateBlock
 } from "../../actions/blocks";
 
+import "./editBlockModal.scss";
+
 const EditBlockModal = ({ open, onClose, blockId }) => {
   const dispatch = useDispatch();
   const { message } = useSelector(({ error }) => error);
@@ -35,12 +37,12 @@ const EditBlockModal = ({ open, onClose, blockId }) => {
   return createPortal(
     <>
       <div className="modal-overlay" onClick={onClose}></div>
-      <div className="connection">
+      <div className="connection" id="edit-block">
         <h2>Modifier Section</h2>
         {message && (
           <div className="error">{message}</div>
         )}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="connection__form">
           <input
             type="text"
             placeholder="Titre"
@@ -48,11 +50,12 @@ const EditBlockModal = ({ open, onClose, blockId }) => {
             onChange={handleInputChange}
           />
           <textarea
+            className="edit-content"
             placeholder="Contenu de la section"
             value={content}
             onChange={handleTextareaChange}
           />
-          <button type="submit">Modifier section</button>
+          <button type="submit" className="connect-user">Modifier section</button>
         </form>
         <FontAwesomeIcon icon={faTimes} className="close-connect" onClick={onClose} />
       </div>
