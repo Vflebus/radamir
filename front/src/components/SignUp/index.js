@@ -31,7 +31,7 @@ const SignUp = () => {
             <FormField inputId="email" label="Adresse e-mail" type="email" />
             <FormField inputId="password" label="Mot de passe" type="password" />
             <FormField inputId="passwordConfirm" label="Confirmer mot de passe" type="password" />
-            <button type="submit">s'inscrire</button>
+            <button type="submit">S'inscrire</button>
           </form>
         </div>
       </div>
