@@ -18,3 +18,14 @@ form {
   flex-direction: column;
   align-items: center;
 }
+
+.controls-button {
+  margin-left: 0.5rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: ease 0.3s;
+
+  &:hover {
+    color: #C8AD7F;
+  }
+}

@@ -37,7 +37,11 @@ const CreateBlock = ({ wikiId }) => {
         </div>         
       )}
       {!newBlockOpen && (
-        <button type="button" onClick={() => setNewBlockOpen(true)}>
+        <button
+          type="button"
+          className="admin-button"
+          onClick={() => setNewBlockOpen(true)}
+        >
           Créer une section
         </button>
       )}
