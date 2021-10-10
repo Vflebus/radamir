@@ -1,5 +1,6 @@
 import radamirAPI from "../apis/radamirAPI";
 import { CREATE_BLOCK } from "../actions/blocks";
+import { fetchWikis } from "../actions/wikis";
 
 const blocksMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -13,6 +14,8 @@ const blocksMiddleware = (store) => (next) => async (action) => {
           title,
           content
         });
+
+        store.dispatch(fetchWikis());
       } catch (err) {
         console.error(err);
       }
