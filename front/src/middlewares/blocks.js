@@ -5,10 +5,14 @@ const blocksMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
     case CREATE_BLOCK:
       try {
-        // const { title, content } = store.getState().blocks;
+        const { title, content } = store.getState().blocks;
 
         // only for json-server
-        // await radamirAPI.patch(`/wikis/${action.id}`, {});
+        await radamirAPI.post("/block", {
+          wikiId: action.id,
+          title,
+          content
+        });
       } catch (err) {
         console.error(err);
       }
