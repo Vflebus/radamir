@@ -12,6 +12,7 @@ const CreateBlock = ({ wikiId }) => {
   const dispatch = useDispatch();
   const { title } = useSelector(({ blocks }) => blocks);
   const { content } = useSelector(({ blocks }) => blocks);
+  const { message } = useSelector(({ error }) => error);
   const [newBlockOpen, setNewBlockOpen] = useState(false);
 
   const handleCreateBlock = (e) => {
@@ -30,6 +31,11 @@ const CreateBlock = ({ wikiId }) => {
 
   return (
     <div className="wiki__create-block">
+      {message && (
+        <div className="error">
+          {message}
+        </div>         
+      )}
       {!newBlockOpen && (
         <button type="button" onClick={() => setNewBlockOpen(true)}>
           Créer une section
@@ -37,6 +43,7 @@ const CreateBlock = ({ wikiId }) => {
       )}
       {newBlockOpen && (
         <form onSubmit={handleCreateBlock}>
+          <button type="button" onClick={() => setNewBlockOpen(false)}>X</button>
           <input
             type="text"
             placeholder="Titre"
