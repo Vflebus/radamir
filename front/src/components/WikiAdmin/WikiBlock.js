@@ -1,21 +1,22 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+
+import EditBlockModal from "../EditBlockModal";
 
 import {
   deleteBlock,
   setBlockTitle,
   setBlockContent
 } from "../../actions/blocks";
+import { clearError } from "../../actions/error";
 
 import wikiParchment from "../../assets/images/wikiParchment.webp"
 
-const WikiCategory = ({ title, content, blockId }) => {
+const WikiBlock = ({ title, content, blockId }) => {
   const dispatch = useDispatch();
-  const titleEdit = useSelector(({ blocks }) => blocks.title);
-  const contentEdit = useSelector(({ blocks }) => blocks.content);
   const [editOpen, setEditOpen] = useState(false);
 
   const handleOpenEdit = () => {
@@ -25,6 +26,7 @@ const WikiCategory = ({ title, content, blockId }) => {
   };
 
   const handleCloseEdit = () => {
+    dispatch(clearError());
     dispatch(setBlockTitle(""));
     dispatch(setBlockContent(""));
     setEditOpen(false);
@@ -34,14 +36,6 @@ const WikiCategory = ({ title, content, blockId }) => {
     dispatch(deleteBlock(blockId));
   };
 
-  const handleInputChange = (e) => {
-    dispatch(setBlockTitle(e.target.value));
-  };
-
-  const handleTextareaChange = (e) => {
-    dispatch(setBlockContent(e.target.value));
-  };
-
   return (
     <div className="wiki__category" id={`wiki__category-${title.toLowerCase()}`}>
       <div className="wiki__category-titleItem">
@@ -49,35 +43,17 @@ const WikiCategory = ({ title, content, blockId }) => {
         <h2 className="wiki__category-title">{title}</h2>
       </div>
       <p className="wiki__category-content">{content}</p>
-      {editOpen && (
-        <form>
-          <input
-            type="text"
-            placeholder="Titre"
-            value={titleEdit}
-            onChange={handleInputChange}
-          />
-          <textarea
-            placeholder="Contenu de la section"
-            value={contentEdit}
-            onChange={handleTextareaChange}
-          />
-          <button type="submit">Ajouter section</button>
-        </form>
-      )}
-      <FontAwesomeIcon
-        icon={faEdit}
-        onClick={editOpen ? handleCloseEdit : handleOpenEdit}
-      />
+      <FontAwesomeIcon icon={faEdit} onClick={handleOpenEdit} />
+      <EditBlockModal open={editOpen} onClose={handleCloseEdit} />
       <button type="button" onClick={handleDelete}>Supprimer la section</button>
     </div>
   );
 };
 
-WikiCategory.propTypes = {
+WikiBlock.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   blockId: PropTypes.number.isRequired
 };
 
-export default WikiCategory;
+export default WikiBlock;

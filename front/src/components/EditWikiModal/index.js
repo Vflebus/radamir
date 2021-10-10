@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,6 +39,12 @@ const EditWikiModal = ({ open, onClose, wikiId }) => {
     </>,
     document.querySelector("#modal")
   )
+};
+
+EditWikiModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  wikiId: PropTypes.number.isRequired
 };
 
 export default EditWikiModal;

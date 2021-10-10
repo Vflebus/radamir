@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -63,13 +64,16 @@ const AddWikiModal = ({ open, onClose }) => {
           </div>
           <button type="submit" className="connect-user">Confirmer</button>
         </form>
-        <button className="close-connect" onClick={onClose}>
-          <FontAwesomeIcon icon={faTimes} />
-        </button>
+        <FontAwesomeIcon icon={faTimes} className="close-connect" onClick={onClose} />
       </div>
     </>,
     document.querySelector("#modal")
   );
+};
+
+AddWikiModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired
 };
 
 export default AddWikiModal;
