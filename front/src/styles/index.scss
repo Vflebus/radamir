@@ -19,6 +19,16 @@ form {
   align-items: center;
 }
 
+input, 
+textarea {
+  font-family: serif;
+  font-size: 1.1rem;
+}
+
+textarea:focus {
+  outline: none;
+}
+
 .controls-button {
   margin-left: 0.5rem;
   font-size: 1.3rem;

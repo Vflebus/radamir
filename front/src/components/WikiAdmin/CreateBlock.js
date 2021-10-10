@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import {
   setBlockTitle,
@@ -46,8 +48,12 @@ const CreateBlock = ({ wikiId }) => {
         </button>
       )}
       {newBlockOpen && (
-        <form onSubmit={handleCreateBlock}>
-          <button type="button" onClick={() => setNewBlockOpen(false)}>X</button>
+        <form onSubmit={handleCreateBlock} className="create-block">
+          <FontAwesomeIcon
+            icon={faTimes}
+            onClick={() => setNewBlockOpen(false)}
+            className="close-form"
+          />
           <input
             type="text"
             placeholder="Titre"
@@ -59,7 +65,7 @@ const CreateBlock = ({ wikiId }) => {
             value={content}
             onChange={handleTextareaChange}
           />
-          <button type="submit">Ajouter section</button>
+          <button type="submit" className="admin-button">Ajouter section</button>
         </form>
       )}
     </div>

@@ -57,12 +57,6 @@
       "title": "Dieux",
       "slug": "dieux",
       "type": "general"
-    },
-    {
-      "title": "Test",
-      "type": "general",
-      "slug": "test",
-      "id": 8
     }
   ],
   "block": [
@@ -209,12 +203,6 @@
       "title": "Titre 2",
       "content": "Contenu 2",
       "id": 24
-    },
-    {
-      "wikiId": 8,
-      "title": "Titre 3",
-      "content": "Contenu 3",
-      "id": 25
     }
   ]
 }

@@ -1,5 +1,39 @@
 @use "../../styles/vars";
 
+.wiki__create-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+  
+  .create-block {
+    width: 70%;
+  
+    .close-form {
+      align-self: flex-end;
+      margin-bottom: 0.8rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    input,
+    textarea {
+      margin-bottom: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      width: 100%;
+      color: vars.$main-color;
+      background-color: vars.$light-bg;
+      border: none;
+      border-radius: 5px;
+    }
+
+    textarea {
+      height: 100px;
+    }
+  }
+}
+
 .controls {
   position: absolute;
   top: 25px;
