@@ -94,7 +94,7 @@ const WikiAdmin = () => {
             </div>
           </>
         )}
-        <CreateBlock />
+        <CreateBlock wikiId={wiki.id} />
         <button type="button" onClick={handleDelete}>Supprimer Wiki</button>
       </div>
     </MotionWrapper>

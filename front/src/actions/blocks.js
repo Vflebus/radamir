@@ -11,8 +11,9 @@ export const setBlockContent = (value) => ({
 });
 
 export const CREATE_BLOCK = "CREATE_BLOCK";
-export const createBlock = (data) => ({
+export const createBlock = (id, data) => ({
   type: CREATE_BLOCK,
+  id,
   data
 });
 

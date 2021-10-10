@@ -1,9 +1,14 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { setBlockTitle, setBlockContent } from "../../actions/blocks";
+import {
+  setBlockTitle,
+  setBlockContent,
+  createBlock
+} from "../../actions/blocks";
 
-const CreateBlock = () => {
+const CreateBlock = ({ wikiId }) => {
   const dispatch = useDispatch();
   const { title } = useSelector(({ blocks }) => blocks);
   const { content } = useSelector(({ blocks }) => blocks);
@@ -11,6 +16,7 @@ const CreateBlock = () => {
 
   const handleCreateBlock = (e) => {
     e.preventDefault();
+    dispatch(createBlock(wikiId));
     setNewBlockOpen(false);
   };
 
@@ -47,6 +53,10 @@ const CreateBlock = () => {
       )}
     </div>
   );
+};
+
+CreateBlock.propTypes = {
+  wikiId: PropTypes.number.isRequired
 };
 
 export default CreateBlock;
