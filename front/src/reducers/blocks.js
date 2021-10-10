@@ -1,37 +1,31 @@
-import {
-  SAVE_WIKIS,
-  SET_TITLE,
-  SET_TYPE
-} from "../actions/wikis";
+import { SET_BLOCK_TITLE, SET_BLOCK_CONTENT, CREATE_BLOCK  } from "../actions/blocks";
 
 const initialState = {
-  list: [],
-  loading: true,
   title: "",
-  type: "region"
+  content: ""
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case SET_TITLE:
+    case SET_BLOCK_TITLE:
       return {
         ...state,
         title: action.value
       };
 
-    case SET_TYPE:
+    case SET_BLOCK_CONTENT:
       return {
         ...state,
-        type: action.value
-      };
-
-    case SAVE_WIKIS:
-      return {
-        ...state,
-        list: action.wikis,
-        loading: false
+        content: action.value
       }
-
+      
+    case CREATE_BLOCK:
+      return {
+        ...state,
+        title: "",
+        content: ""
+      };
+      
     default:
       return state;
   }

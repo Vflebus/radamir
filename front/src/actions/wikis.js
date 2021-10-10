@@ -21,6 +21,12 @@ export const setType = (value) => ({
   value
 });
 
+export const SET_CONTENT = "SET_CONTENT";
+export const setContent = (value) => ({
+  type: SET_CONTENT,
+  value
+});
+
 export const CREATE_WIKI = "CREATE_WIKI";
 export const createWiki = (data) => ({
   type: CREATE_WIKI,
@@ -36,5 +42,23 @@ export const updateWiki = (id) => ({
 export const DELETE_WIKI = "DELETE_WIKI";
 export const deleteWiki = (id) => ({
   type: DELETE_WIKI,
+  id
+});
+
+export const CREATE_BLOCK = "CREATE_BLOCK";
+export const createBlock = (data) => ({
+  type: CREATE_BLOCK,
+  data
+});
+
+export const UPDATE_BLOCK = "UPDATE_BLOCK";
+export const updateBlock = (id) => ({
+  type: UPDATE_BLOCK,
+  id
+});
+
+export const DELETE_BLOCK = "DELETE_BLOCK";
+export const deleteBlock = (id) => ({
+  type: DELETE_BLOCK,
   id
 });
