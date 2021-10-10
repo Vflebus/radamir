@@ -1,0 +1,24 @@
+@use "../../styles/vars";
+
+.create-wiki {
+  .input-title {
+    margin-bottom: 1rem;
+  }
+  
+  .radio-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    input {
+      padding: unset;
+      margin: 0.5rem 0;
+      width: unset;
+    }
+
+    label {
+      margin: unset;
+      margin-left: 1rem;
+    }
+  }
+}

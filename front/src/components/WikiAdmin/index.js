@@ -13,6 +13,8 @@ import EditWikiModal from "../EditWikiModal";
 import { setTitle, deleteWiki } from "../../actions/wikis";
 import { clearError } from "../../actions/error";
 
+import "./wikiAdmin.scss";
+
 const WikiAdmin = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -68,7 +70,7 @@ const WikiAdmin = () => {
       <div className="wiki">
         <h1 className="wiki__title">
           {wiki.title}
-          <FontAwesomeIcon icon={faEdit} onClick={handleOpen} />
+          <FontAwesomeIcon icon={faEdit} onClick={handleOpen} className="controls-button" />
           <EditWikiModal open={editTitle} onClose={handleClose} wikiId={wiki.id} />
         </h1>
         {wiki.block && (
@@ -97,7 +99,13 @@ const WikiAdmin = () => {
           </>
         )}
         <CreateBlock wikiId={wiki.id} />
-        <button type="button" onClick={handleDelete}>Supprimer Wiki</button>
+        <button
+          type="button"
+          onClick={handleDelete}
+          className="admin-button delete-wiki"
+        >
+          Supprimer Wiki
+        </button>
       </div>
     </MotionWrapper>
   );

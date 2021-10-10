@@ -6,6 +6,8 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { setTitle, setType, createWiki } from "../../actions/wikis";
 
+import "./addWikiModal.scss";
+
 const AddWikiModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
   const { title } = useSelector(({ wikis }) => wikis);
@@ -37,9 +39,15 @@ const AddWikiModal = ({ open, onClose }) => {
           <div className="error">{message}</div>
         )}
         <form className="connection__form" onSubmit={handleSubmit}>
-          <div>
-            <input type="text" placeholder="Titre" value={title} onChange={handleInputChange} />
-            <div>
+          <div className="create-wiki">
+            <input
+              type="text"
+              placeholder="Titre"
+              className="input-title"
+              value={title}
+              onChange={handleInputChange}
+            />
+            <div className="radio-button">
               <input
                 type="radio"
                 id="title"
@@ -50,7 +58,7 @@ const AddWikiModal = ({ open, onClose }) => {
               />
               <label htmlFor="title">Région</label>
             </div>
-            <div>
+            <div className="radio-button">
               <input
                 type="radio"
                 id="general"

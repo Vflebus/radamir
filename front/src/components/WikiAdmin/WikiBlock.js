@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 import EditBlockModal from "../EditBlockModal";
 
@@ -42,10 +42,12 @@ const WikiBlock = ({ title, content, blockId }) => {
         <img src={wikiParchment} alt="" className="wikiParchment wiki__category-titleImage"/>
         <h2 className="wiki__category-title">{title}</h2>
       </div>
+      <div className="controls">
+        <FontAwesomeIcon icon={faEdit} onClick={handleOpenEdit} className="controls-button" />
+        <EditBlockModal open={editOpen} onClose={handleCloseEdit} blockId={blockId} />
+        <FontAwesomeIcon icon={faTrashAlt} onClick={handleDelete} className="controls-button" />
+      </div>
       <p className="wiki__category-content">{content}</p>
-      <FontAwesomeIcon icon={faEdit} onClick={handleOpenEdit} />
-      <EditBlockModal open={editOpen} onClose={handleCloseEdit} blockId={blockId} />
-      <button type="button" onClick={handleDelete}>Supprimer la section</button>
     </div>
   );
 };
