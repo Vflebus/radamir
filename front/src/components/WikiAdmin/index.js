@@ -88,7 +88,7 @@ const WikiAdmin = () => {
             <div className="wiki__page">
               <div className="category-container">
                 {wiki.block.map(({id, title, content}) => {
-                    return <WikiBlock key={id} title={title} content={content} />;
+                    return <WikiBlock key={id} title={title} content={content} blockId={id} />;
                 })}
               </div>
             </div>

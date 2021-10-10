@@ -1,4 +1,4 @@
-import { SET_BLOCK_TITLE, SET_BLOCK_CONTENT  } from "../actions/blocks";
+import { SET_BLOCK_TITLE, SET_BLOCK_CONTENT, CREATE_BLOCK  } from "../actions/blocks";
 
 const initialState = {
   title: "",
@@ -18,6 +18,13 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         content: action.value
       }
+      
+    case CREATE_BLOCK:
+      return {
+        ...state,
+        title: "",
+        content: ""
+      };
       
     default:
       return state;

@@ -1,5 +1,8 @@
 import radamirAPI from "../apis/radamirAPI";
-import { CREATE_BLOCK } from "../actions/blocks";
+import {
+  CREATE_BLOCK,
+  DELETE_BLOCK
+} from "../actions/blocks";
 import { fetchWikis } from "../actions/wikis";
 
 const blocksMiddleware = (store) => (next) => async (action) => {
@@ -14,6 +17,17 @@ const blocksMiddleware = (store) => (next) => async (action) => {
           title,
           content
         });
+
+        store.dispatch(fetchWikis());
+      } catch (err) {
+        console.error(err);
+      }
+      next(action);
+      break;
+
+    case DELETE_BLOCK:
+      try {
+        await radamirAPI.delete(`/block/${action.id}`);
 
         store.dispatch(fetchWikis());
       } catch (err) {
