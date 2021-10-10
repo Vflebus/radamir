@@ -4,9 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import { setBlockTitle, setBlockContent } from "../../actions/blocks";
+import {
+  setBlockTitle,
+  setBlockContent,
+  updateBlock
+} from "../../actions/blocks";
 
-const EditBlockModal = ({ open, onClose }) => {
+const EditBlockModal = ({ open, onClose, blockId }) => {
   const dispatch = useDispatch();
   const { message } = useSelector(({ error }) => error);
   const { title } = useSelector(({ blocks }) => blocks);
@@ -20,6 +24,12 @@ const EditBlockModal = ({ open, onClose }) => {
     dispatch(setBlockContent(e.target.value));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateBlock(blockId));
+    onClose();
+  };
+
   if (!open) return null;
   
   return createPortal(
@@ -30,7 +40,7 @@ const EditBlockModal = ({ open, onClose }) => {
         {message && (
           <div className="error">{message}</div>
         )}
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Titre"
@@ -53,7 +63,8 @@ const EditBlockModal = ({ open, onClose }) => {
 
 EditBlockModal.propTypes = {
   open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  blockId: PropTypes.number.isRequired
 };
 
 export default EditBlockModal;

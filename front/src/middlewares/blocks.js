@@ -1,6 +1,7 @@
 import radamirAPI from "../apis/radamirAPI";
 import {
   CREATE_BLOCK,
+  UPDATE_BLOCK,
   DELETE_BLOCK
 } from "../actions/blocks";
 import { fetchWikis } from "../actions/wikis";
@@ -21,6 +22,26 @@ const blocksMiddleware = (store) => (next) => async (action) => {
           title,
           content
         });
+
+        store.dispatch(fetchWikis());
+      } catch (err) {
+        console.error(err);
+        store.dispatch(setError(err.message));
+      }
+      next(action);
+      break;
+
+    case UPDATE_BLOCK:
+      try {
+        store.dispatch(clearError());
+        const { title, content } = store.getState().blocks;
+
+        if (!title || !content) throw new Error("Veuillez renseigner des informations");
+
+        await radamirAPI.patch(`/block/${action.id}`, {
+          title,
+          content
+        })
 
         store.dispatch(fetchWikis());
       } catch (err) {

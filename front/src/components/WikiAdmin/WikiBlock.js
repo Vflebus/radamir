@@ -44,7 +44,7 @@ const WikiBlock = ({ title, content, blockId }) => {
       </div>
       <p className="wiki__category-content">{content}</p>
       <FontAwesomeIcon icon={faEdit} onClick={handleOpenEdit} />
-      <EditBlockModal open={editOpen} onClose={handleCloseEdit} />
+      <EditBlockModal open={editOpen} onClose={handleCloseEdit} blockId={blockId} />
       <button type="button" onClick={handleDelete}>Supprimer la section</button>
     </div>
   );
