@@ -31,7 +31,7 @@ const App = () => {
   const isAdmin = useSelector(({ user: { loggedUser } }) => loggedUser.is_admin);
 
   const onResize = () => {
-    setIsDesktop(window.innerWidth > 1000);
+    setIsDesktop(window.innerWidth > 1200);
   };
 
   useEffect(() => {
@@ -64,17 +64,29 @@ const App = () => {
       <Menu />
       <Switch location={location} key={location.pathname}>
         <Route exact path="/">
-          {isDesktop ? <Redirect to="/carte" /> : <Redirect to="/wiki" />}
+          <Redirect to={window.innerWidth > 767 ? "/carte" : "/wiki"} />
         </Route>
         <Route exact path="/carte">
           <CarteWiki />
         </Route>
-        <Route exact path="/wiki/:title">
-          {isAdmin ? <WikiAdmin /> : <Wiki />}
-        </Route>
-        <Route exact path="/wiki">
-          {isDesktop ? <Wikis /> : <MobileWikiPage />}
-        </Route>
+        {isAdmin ? (
+          <Route exact path="/wiki/:title">
+            <WikiAdmin />
+          </Route>
+        ) : (
+          <Route exact path="/wiki/:title">
+            <Wiki />
+          </Route>
+        )}
+        {isDesktop ? (
+          <Route exact path="/wiki">
+            <Wikis />
+          </Route>        
+        ) : (
+          <Route exact path="/wiki">
+            <MobileWikiPage />
+          </Route>        
+        )}
         <Route exact path="/about">
           <About />
         </Route>
