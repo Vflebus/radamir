@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 import EditBlockModal from "../EditBlockModal";
+import ConfirmDelete from "../ConfirmDelete";
 
 import {
   deleteBlock,
@@ -18,6 +19,7 @@ import wikiParchment from "../../assets/images/wikiParchment.webp"
 const WikiBlock = ({ title, content, blockId }) => {
   const dispatch = useDispatch();
   const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   const handleOpenEdit = () => {
     dispatch(setBlockTitle(title));
@@ -45,7 +47,13 @@ const WikiBlock = ({ title, content, blockId }) => {
       <div className="controls">
         <FontAwesomeIcon icon={faEdit} onClick={handleOpenEdit} className="controls-button" />
         <EditBlockModal open={editOpen} onClose={handleCloseEdit} blockId={blockId} />
-        <FontAwesomeIcon icon={faTrashAlt} onClick={handleDelete} className="controls-button" />
+        <FontAwesomeIcon icon={faTrashAlt} onClick={() => setDeleteOpen(true)} className="controls-button" />
+        <ConfirmDelete
+          open={deleteOpen}
+          title={title}
+          onDelete={handleDelete}
+          onClose={() => setDeleteOpen(false)}
+        />
       </div>
       <p className="wiki__category-content">{content}</p>
     </div>

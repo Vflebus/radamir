@@ -16,7 +16,7 @@ const Wiki = () => {
 
   return (
       <MotionWrapper>
-        {wiki.block && (
+        {Object.keys(wiki.block[0]).length !== 0 && (
             <div className="links-container">
                 <ul>
                     {wiki.block.map(({ id, title }) => {
@@ -42,7 +42,7 @@ const Wiki = () => {
                 <img src={arrow} alt="Retour à l'index" />
                 Retour à l'index
             </Link> */}
-            {wiki.block && (
+            {Object.keys(wiki.block[0]).length !== 0 && (
                 <>
                     <select
                         name="links"

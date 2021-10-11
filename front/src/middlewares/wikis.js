@@ -42,6 +42,7 @@ const wikisMiddleware = (store) => (next) => async (action) => {
         store.dispatch(setTitle(""));
         store.dispatch(setType("region"));
         store.dispatch(fetchWikis());
+        history.push(`/wiki/${slug}`);
       } catch (err) {
         console.error(err);
         store.dispatch(setError(err.message));

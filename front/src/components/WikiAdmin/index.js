@@ -9,6 +9,7 @@ import WikiBlock from "./WikiBlock";
 import MotionWrapper from "../MotionWrapper";
 import CreateBlock from "./CreateBlock";
 import EditWikiModal from "../EditWikiModal";
+import ConfirmDelete from "../ConfirmDelete";
 
 import { setTitle, deleteWiki } from "../../actions/wikis";
 import { clearError } from "../../actions/error";
@@ -21,6 +22,7 @@ const WikiAdmin = () => {
   const { pathname } = useLocation();
   const { title } = useParams();
   const [editTitle, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   const { list } = useSelector(({ wikis }) => wikis);
   const wiki = list.find(({ slug }) => slug === title);
@@ -45,7 +47,7 @@ const WikiAdmin = () => {
 
   return (
     <MotionWrapper>
-      {wiki.block && (
+      {Object.keys(wiki.block[0]).length !== 0 && (
         <div className="links-container">
           <ul>
             {wiki.block.map(({ id, title }) => {
@@ -73,7 +75,7 @@ const WikiAdmin = () => {
           <FontAwesomeIcon icon={faEdit} onClick={handleOpen} className="controls-button" />
           <EditWikiModal open={editTitle} onClose={handleClose} wikiId={wiki.id} />
         </h1>
-        {wiki.block && (
+        {Object.keys(wiki.block[0]).length !== 0 && (
           <>
             <select
               name="links"
@@ -101,11 +103,17 @@ const WikiAdmin = () => {
         <CreateBlock wikiId={wiki.id} />
         <button
           type="button"
-          onClick={handleDelete}
+          onClick={() => setDeleteOpen(true)}
           className="admin-button delete-wiki"
         >
           Supprimer Wiki
         </button>
+        <ConfirmDelete
+          open={deleteOpen}
+          title={wiki.title}
+          onClose={() => setDeleteOpen(false)}
+          onDelete={handleDelete}
+        />
       </div>
     </MotionWrapper>
   );

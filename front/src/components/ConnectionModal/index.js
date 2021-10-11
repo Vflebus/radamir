@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,15 +14,19 @@ import "./connectionModal.scss";
 const ConnectionModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { pathname } = useLocation();
   const { logged } = useSelector(({ user }) => user);
   const { message } = useSelector(({ error }) => error);
 
   useEffect(() => {
     if (logged) {
       onClose();
-      return history.push("/")
+
+      if (pathname === "/signup") {
+        history.push("/")
+      }
     };
-  }, [logged, onClose, history]);
+  }, [logged, onClose, history, pathname]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
