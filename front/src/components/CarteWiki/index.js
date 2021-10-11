@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-import './styles.css'
+import './styles.scss'
 
 import section_droknor from '../../assets/images/Section_droknor.webp';
 import section_feidlimid from '../../assets/images/Section_feidlimid.webp';
