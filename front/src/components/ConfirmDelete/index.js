@@ -1,7 +1,5 @@
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const ConfirmDelete = ({ open, title, onClose, onDelete }) => {
   if (!open) return null;
@@ -25,7 +23,6 @@ const ConfirmDelete = ({ open, title, onClose, onDelete }) => {
         >
           Annuler
         </button>
-        <FontAwesomeIcon icon={faTimes} className="close-connect" onClick={onClose} />
       </div>
     </>,
     document.querySelector("#modal")
