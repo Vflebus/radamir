@@ -54,12 +54,15 @@ area {
     transition-duration: 0.75s;
     z-index: -1;
 }
-@media screen and (max-width: 1000px) {
-    #carte-radamir, .region {
-        height: unset;
-        width: 150vw;
+@media (orientation: portrait) {
+    @media screen and (max-width: 1000px) {
+        #carte-radamir, .region {
+            height: unset;
+            width: 150vw;
+            max-height: 100vh;
+        }
     }
-}
+}    
 .zindex {
     z-index: 30;
 }
