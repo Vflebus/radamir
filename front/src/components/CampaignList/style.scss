@@ -35,8 +35,7 @@
     }
     .sectionRight {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        align-items: center;
         button {
             display: flex;
             margin-left: 1rem;
@@ -50,10 +49,11 @@
         }
         .campaignsContainer {
             display: flex;
-            flex-direction: column;
+            // flex-direction: column;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
-            width: 52vw;
+            width: 60vw;
             height: 55vh;
             box-sizing: border-box;
             overflow-x: auto;
@@ -62,7 +62,6 @@
                 position: relative;
                 margin: 1rem;
                 max-width: 302px;
-                width: 20vw;
                 
                 img {
                     width: 100%;
@@ -104,15 +103,18 @@
                 width: 50vw;
             }
         }
-        .campaignsContainer {
-            width: 80vw;
-            .card {
-                width: 40vw;
-                h3 {
-                    font-size: 2.5vw;
+        .sectionRight {
+            .campaignsContainer {
+                width: 80vw;
+                .card {
+                    width: 40vw;
+                    h3 {
+                        font-size: 2.5vw;
+                    }
                 }
             }
         }
+        
     }
     @media screen and (max-width: 768px) {
         h1 {
@@ -121,32 +123,34 @@
         .sectionLeft {
             display: none;
         }
-        .campaignsContainer {
-            width: 90vw;
-            height: 80vh;
-            margin-left: unset;
-            align-items: center;
-            margin-top: 15vh;
-            justify-content: start;
-
-            .card {
-                position: relative;
-                margin: 1rem;
-                width: 50vw;
-                h3 {
-                    font-size: 4vw;
-                }
-            }    
+        .sectionRight {
+            .campaignsContainer {
+                width: 90vw;
+                height: 80vh;
+                margin-left: unset;
+                align-items: center;
+                margin-top: 15vh;
+    
+                .card {
+                    position: relative;
+                    margin: 1rem;
+                    width: 50vw;
+                    h3 {
+                        font-size: 4vw;
+                    }
+                }    
+            }
         }
-    }
-    @media screen and (max-width: 425px) {
-        .campaignsContainer {
-            flex-wrap: unset;
-            .card {
-                width: 80vw;
-                h3 {
-                    font-size: 8vw;
-                }            
+        
+        @media screen and (max-width: 425px) {
+            .campaignsContainer {
+                flex-wrap: unset;
+                .card {
+                    width: 100vw;
+                    h3 {
+                        font-size: 8vw;
+                    }            
+                }
             }
         }
     }

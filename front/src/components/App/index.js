@@ -16,6 +16,7 @@ import Page404 from "../Page404";
 import CampaignList from "../CampaignList";
 import UserProfile from "../UserProfile";
 import WikiAdmin from "../WikiAdmin";
+import Campaign from "../Campaign"
 
 import { fetchWikis } from "../../actions/wikis";
 
@@ -101,6 +102,9 @@ const App = () => {
         <Route exact path="/campagnes">
           <CampaignList />
         </Route>
+        <Route exact path="/campagnes/:title">
+          <Campaign />
+        </Route> 
         {logged && (
           <Route exact path="/profile">
             <UserProfile />
