@@ -144,7 +144,7 @@ area {
 .landscapeWarning {
     display: none;
 }
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 767px) {
     #mainContainer {
         display: none;
     }

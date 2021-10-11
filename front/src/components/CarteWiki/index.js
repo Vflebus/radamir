@@ -106,7 +106,7 @@ const CarteWiki = () => {
                                 alt="Carte de Radamir"
                                 initial={{ opacity: 0, zIndex: -2, y: 25 }}
                                 animate={{ opacity: 1, zIndex: 1, y: 0 }}
-                                transition={{ ease: "linear", duration: 0.2 }}
+                                transition={{ ease: "linear", duration: 0.1 }}
                             />
 
                             <map name="image-map">

@@ -12,7 +12,7 @@ const MotionWrapper = ({ children }) => {
 
   const pageTransitions = {
       transition: "linear",
-      duration: 1
+      duration: 0.5
   };
 
   return (
