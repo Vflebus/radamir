@@ -3,23 +3,23 @@ import { motion } from "framer-motion";
 const MotionWrapper = ({ children }) => {
   const pageVariants = {
       in: {
-        opacity: 1
+        opacity: 1,
       },
       out: {
-        opacity: 0
+        opacity: 0,
       }
   };
 
   const pageTransitions = {
       transition: "linear",
-      duration: 0.5
+      duration: 0.75
   };
 
   return (
     <motion.div
         initial="out"
         animate="in"
-        exit="out"
+        // exit="out"
         variants={pageVariants}
         transition={pageTransitions}
     >
