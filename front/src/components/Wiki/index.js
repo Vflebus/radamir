@@ -13,7 +13,6 @@ const Wiki = () => {
   const { title } = useParams();
 
   const { list } = useSelector(({ wikis }) => wikis);
-  console.log(list);
   const wiki = list.find(({ slug }) => slug === title);
 
   if (wiki) {

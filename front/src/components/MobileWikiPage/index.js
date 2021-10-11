@@ -13,7 +13,14 @@ const MobileWikiPage = () => {
             <div className="mobileWikiPage">
                 <h1>Radamir</h1>
                 <div className="mobileWikiPage__allCategories">
-                    {wikis.map(({ id, title, block }) => <Category key={id} title={title} block={block} />)}
+                    {wikis.map(({ id, title, block, slug }) => (
+                        <Category
+                            key={id}
+                            title={title}
+                            block={block}
+                            route={slug}
+                        />
+                    ))}
                 </div>
             </div>
         </MotionWrapper>

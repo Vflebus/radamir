@@ -2,14 +2,14 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Category = ( { title, block }) => {
+const Category = ( { title, block, route }) => {
 
     const [isDeployed, setDeployed] = useState(false)
     const deployCategory = () => {
         setDeployed(!isDeployed);
     }
 
-    const { content } = block.find(({ title }) => title === "Historique");
+    const oneBlock = block.find(({ title }) => title === "Historique");
 
     return (
         <div className="mobileWikiPage__allCategories__categoryContainer">
@@ -18,20 +18,25 @@ const Category = ( { title, block }) => {
                 <button className={isDeployed ? "rotateUp" : ""} onClick={deployCategory}>&#8249;</button>
             </div>
             <div className={isDeployed ? "" : "unDeployed"}>
-                <p className="intro">{content}</p>
-                <Link to={`/wiki/${title.toLowerCase()}`} className="moreButton">En savoir plus</Link>
+                <p className="intro">{oneBlock && oneBlock.content}</p>
+                <Link to={`/wiki/${route}`} className="moreButton">En savoir plus</Link>
             </div>
         </div>
     )
 }
 
+Category.defaultProp = {
+    block: [{}]
+};
+
 Category.propTypes = {
     title: PropTypes.string.isRequired,
     block: PropTypes.arrayOf(
         PropTypes.shape({
-            content: PropTypes.string.isRequired
+            content: PropTypes.string
         })
-    ).isRequired
+    ),
+    route: PropTypes.string.isRequired
 };
 
 export default Category;
