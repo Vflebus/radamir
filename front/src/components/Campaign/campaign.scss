@@ -3,7 +3,7 @@
 .campaign {
     h1 {
         position: absolute;
-        top: 0;
+        top: 2%;
         left: 50%;
         transform: translateX(-50%);
         height: 5rem;
@@ -45,5 +45,64 @@
             }
         }
     }
-    
+    .pageTwo {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        h2 {
+            font-size: 4rem;
+            font-family: vars.$title-font;
+            margin-bottom: 1rem;
+            transform: translate(2rem, 2rem);
+        }
+        .bg2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 135vh;
+            width: 100vw;
+            z-index: -1;
+        }
+        .allNotes {
+            margin-top: 20vh;
+            display: flex;
+            h3 {
+                position: absolute;
+                font-size: 2.5rem;
+                font-family: vars.$title-font;
+                align-self: flex-start;
+                transform: translateY(-7vh);
+            }
+            .noteContainer {
+                position: relative;
+                width: 15rem;
+                transition: transform .5s;
+                img {
+                    width: 100%;
+                }
+                h4 {
+                    font-family: vars.$title-font;
+                    font-size: 1.5rem;
+                    text-align: center;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%)
+                }
+            }
+            .noteContainer:hover{
+                transform: scale(1.2);
+            }
+            .notesPrivees, .notesPubliques {
+                margin-left: 3vw;
+                height: 75vh;
+                width: 30vw;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-start;
+            }
+        }
+    }
 }
