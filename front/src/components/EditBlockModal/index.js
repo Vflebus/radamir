@@ -48,6 +48,7 @@ const EditBlockModal = ({ open, onClose, blockId }) => {
             placeholder="Titre"
             value={title}
             onChange={handleInputChange}
+            maxLength={16}
           />
           <textarea
             className="edit-content"

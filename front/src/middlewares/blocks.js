@@ -16,6 +16,8 @@ const blocksMiddleware = (store) => (next) => async (action) => {
 
         if (!title || !content) throw new Error("Veuillez renseigner des informations");
 
+        if (title.length > 16) throw new Error("Titre trop long");
+
         await radamirAPI.post("/block", {
           wiki_id: action.id,
           title,
@@ -36,6 +38,8 @@ const blocksMiddleware = (store) => (next) => async (action) => {
         const { title, content } = store.getState().blocks;
 
         if (!title || !content) throw new Error("Veuillez renseigner des informations");
+
+        if (title.length > 16) throw new Error("Titre trop long");
 
         await radamirAPI.patch(`/block/${action.id}`, {
           title,

@@ -59,6 +59,7 @@ const CreateBlock = ({ wikiId }) => {
             placeholder="Titre"
             value={title}
             onChange={handleInputChange}
+            maxLength={16}
           />
           <textarea
             placeholder="Contenu de la section"
