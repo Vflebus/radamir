@@ -1,0 +1,4 @@
+{
+  "/wiki": "/wiki?_embed=block",
+  "/wiki/:id": "/wiki/:id?_embed=block"
+}

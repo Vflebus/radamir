@@ -55,12 +55,23 @@ class Wiki {
   static async getAllWikis() {
     try {
       const { rows } = await client.query(
-        `select wiki.id, wiki.title, wiki.type, wiki.slug, json_agg(
+
+/*         `select wiki.id, wiki.title, wiki.full_title, wiki.type, wiki.slug, json_agg(
           json_build_object(
           'id', block.id,
           'title', block.title,
-          'content', block.content)) AS block 
-          from wiki join block on wiki.id = block.wiki_id
+          'content', block.content)
+          ORDER BY block.id ASC) AS block 
+          FROM "wiki" JOIN block on wiki.id = block.wiki_id
+          GROUP BY wiki.id;` */
+
+        `select wiki.id, wiki.title, wiki.full_title, wiki.type, wiki.slug, json_agg(
+          json_build_object(
+          'id', block.id,
+          'title', block.title,
+          'content', block.content)
+          ORDER BY block.id ASC) AS block 
+          FROM "wiki" JOIN block on wiki.id = block.wiki_id
           GROUP BY wiki.id;`
       );
       return rows.map((row) => new Wiki(row));
@@ -79,7 +90,7 @@ class Wiki {
    * @throws {NoWikiError} - If the wiki does not exist.
    * @throws {Error} - If the query fails.
    */
-  static async getWikiById(id) {
+/*   static async getWikiById(id) {
     try {
       const { rows } = await client.query(
         "SELECT * FROM wiki WHERE id = $1", [id]);
@@ -87,6 +98,21 @@ class Wiki {
         throw new NoWikiError(id);
       }
       return new Wiki(rows[0]);
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.detail ? error.detail : error.message);
+    }
+  } */
+
+  //! Si OK changer les commentaires
+  static async getWikiById(id) {
+    try {
+      const { rows } = await client.query(
+        "SELECT * FROM block WHERE wiki_id = $1", [id]);
+      if (rows.length === 0) {
+        throw new NoWikiError(id);
+      }
+      return new Wiki(rows);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -107,14 +133,15 @@ class Wiki {
         await client.query(
           `
           SELECT update_wiki($1, $2, $3 ,$4, $5);`,
-          [this.slug, this.title, this.full_title, this.type, this.id]);    
-
+          [this.slug, this.title, this.type, this.id, this.full_title]);
       } else {
         const { rows } = await client.query(
           `
           SELECT new_wiki($1,$2,$3,$4) AS id;`,
-          [this.slug, this.title, this.full_title, this.type]);
+          [this.slug, this.title, this.type, this.full_title]
+          );
           this.id = rows[0].id;
+          return this;
       }
     } catch (error) {
       console.log(error);

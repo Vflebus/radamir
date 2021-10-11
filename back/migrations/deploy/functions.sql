@@ -38,24 +38,24 @@ $$ LANGUAGE SQL STRICT;
 -- wiki new & update
 
 CREATE FUNCTION new_wiki(TEXT, VARCHAR(255), TEXT, VARCHAR(255)) RETURNS INT AS $$
-	INSERT INTO "wiki"("slug", "title", "full_title", "type")
+	INSERT INTO "wiki"("slug", "title", "type", "full_title")
 	VALUES($1, $2, $3, $4) 
 	RETURNING id;
-$$ LANGUAGE SQL STRICT;
+$$ LANGUAGE SQL;
 
-CREATE FUNCTION update_wiki(TEXT, VARCHAR(255), TEXT, VARCHAR(255), INT) RETURNS void AS $$
-	UPDATE "wiki" SET "slug"=$1, "title"=$2, "full_title"=$3, "type"=$4 WHERE id = $5
-$$ LANGUAGE SQL STRICT;
+CREATE FUNCTION update_wiki(TEXT, VARCHAR(255), TEXT, INT, VARCHAR(255) ) RETURNS void AS $$
+	UPDATE "wiki" SET "slug"=$1, "title"=$2, "type"=$3, "full_title"=$5 WHERE id = $4
+$$ LANGUAGE SQL;
 
 -- block
 
-CREATE  FUNCTION new_block(VARCHAR(255), TEXT, INT) RETURNS INT AS $$
+CREATE  FUNCTION new_block(VARCHAR(16), TEXT, INT) RETURNS INT AS $$
     INSERT INTO "block"("title", "content", "wiki_id")
     VALUES($1, $2, $3) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_block(TEXT, INT) RETURNS void AS $$
-    UPDATE "block" SET "content" = $1 WHERE id = $2;
-$$ LANGUAGE SQL STRICT;
+CREATE FUNCTION update_block(VARCHAR(16), TEXT, INT) RETURNS void AS $$
+    UPDATE "block" SET "title" = $1, "content" = $2 WHERE id = $3;
+$$ LANGUAGE SQL;
 
 COMMIT;

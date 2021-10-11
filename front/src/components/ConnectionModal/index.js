@@ -44,9 +44,9 @@ const ConnectionModal = ({ open, onClose }) => {
           <FormField inputId="password" label="Mot de passe" type="password" />
           <button type="submit" className="connect-user">Se connecter</button>
         </form>
-          <button onClick={onClose} className="close-connect">
+          <span onClick={onClose} className="close-connect">
             <FontAwesomeIcon icon={faTimes} />
-          </button>
+          </span>
       </div>
     </>,
     document.querySelector("#modal")

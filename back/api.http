@@ -29,21 +29,9 @@ GET {{baseUrl}}/private-notes/1/2
 
 GET {{baseUrl}}/wiki
 
-### Get one wiki
+### Get the blocks from one wiki
 
-DELETE  {{baseUrl}}/wiki/1
-
-### Update or New wiki
-
-PATCH {{baseUrl}}/wiki/8
-Content-Type: application/json
-
-{   
-    "slug": "A",
-    "title": "B",
-    "full_title": "C",
-    "type": "region"
-}
+GET {{baseUrl}}/wiki/7
 
 ### Create a new campaign
 
@@ -68,6 +56,29 @@ Content-Type: application/json
     "user_id": 1
 }
 
+### Login user
+
+POST {{baseUrl}}/signin
+Content-Type: application/json
+
+{
+    "username": "MICHAEL",
+    "email": "mikamika@truc.com",
+    "password": "SUPERSECRET"
+}
+
+### Post a wiki
+
+POST {{baseUrl}}/wiki
+Content-Type: application/json
+
+{
+    "slug": "test mamouth",
+    "title": "titre mamouth",
+    "type": "general"
+    //"full_title": ""
+}
+
 ### Create a user
 
 POST {{baseUrl}}/signup
@@ -79,6 +90,26 @@ Content-Type: application/json
     "password": "SUPERSECRET"
 }
 
+### Create a block
+POST {{baseUrl}}/block
+Content-Type: application/json
+
+{
+    "title": "titre block",
+    "content": "du contenu et encore du contenu",
+    "wiki_id": 9
+}
+
+### Update or New wiki
+PATCH {{baseUrl}}/wiki/7
+Content-Type: application/json
+
+{   
+    "slug": "A",
+    "title": "B",
+    "full_title": "saluttttt",
+    "type": "region"
+}
 
 ### Update a user
 
@@ -89,6 +120,15 @@ Content-Type: application/json
     "email": "kjleghkrfhgerh@11111.com"
 }
 
+### Patch  one block
+
+PATCH {{baseUrl}}/block/95
+Content-Type: application/json
+
+{
+    "title": "nouveau title"
+}
+
 ### Delete a note
 
 DELETE {{baseUrl}}/note/1
@@ -97,13 +137,6 @@ DELETE {{baseUrl}}/note/1
 
 DELETE {{baseUrl}}/profile/1
 
-### Login user
+### Delete one block
 
-POST {{baseUrl}}/signin
-Content-Type: application/json
 
-{
-    "username": "MICHAEL",
-    "email": "mikamika@truc.com",
-    "password": "SUPERSECRET"
-}
