@@ -35,6 +35,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    onResize();
     window.addEventListener("resize", onResize);
   }, []);
 
