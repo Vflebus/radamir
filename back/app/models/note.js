@@ -40,8 +40,7 @@ class Note {
     if (data.length === 0) {
       throw new NoNoteError(data[0]);
     }
-    for (const prop in data)
-    this[prop] = data[prop]
+    for (const prop in data) this[prop] = data[prop];
   }
 
   /**
@@ -56,8 +55,7 @@ class Note {
   static async getPlayerPublicNotes(campaign_id, user_id) {
     try {
       let { rows } = await client.query(
-        `
-                SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = false;`,
+        `SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = false;`,
         [campaign_id, user_id]
       );
       if (rows.length === 0) {
@@ -83,8 +81,7 @@ class Note {
   static async getPublicNotes(campaign_id, user_id) {
     try {
       let { rows } = await client.query(
-        `
-                SELECT * FROM note WHERE campaign_id = $1 AND user_id <> $2 AND is_private = false;`,
+        `SELECT * FROM note WHERE campaign_id = $1 AND user_id <> $2 AND is_private = false;`,
         [campaign_id, user_id]
       );
       if (rows.length === 0) {
@@ -109,8 +106,7 @@ class Note {
   static async getPrivateNotes(campaign_id, user_id) {
     try {
       let { rows } = await client.query(
-        `
-                SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = true`,
+        `SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = true`,
         [campaign_id, user_id]
       );
       if (rows.length === 0) {
@@ -133,7 +129,7 @@ class Note {
   async save() {
     try {
       if (this.id) {
-        await client.query(`UPDATE "note" SET content = $1 WHERE id = $2;`, [
+        await client.query(`SELECT update_note($1, $2);`, [
           this.content,
           this.id,
         ]);
@@ -165,7 +161,7 @@ class Note {
       const { rows } = await client.query(`DELETE FROM note WHERE id = $1;`, [
         this.id,
       ]);
-      return (rows[0]);
+      return rows[0];
     } catch (error) {
       console.error(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -178,7 +174,6 @@ class Note {
    * @throws {NoNoteError} If the note was not found
    * @throws {error} If the request has failed
    */
-
   async toggleIsPrivate() {
     try {
       if (this.is_private) {

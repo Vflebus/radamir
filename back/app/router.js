@@ -1,11 +1,10 @@
 const { Router } = require("express");
 
-const wikiController = require("./controllers/wikiController"); 
+const wikiController = require("./controllers/wikiController");
 const userController = require("./controllers/userController");
 const campaignController = require("./controllers/campaignController");
 const noteController = require("./controllers/noteController");
 const playerController = require("./controllers/playerController");
-const Block = require("./models/block");
 const blockController = require("./controllers/blockController");
 
 const router = Router();
@@ -72,7 +71,10 @@ router.get(`/wiki/:id`, wikiController.getWikiById);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/player-public-notes/:campaign_id/:user_id`, noteController.getPlayerPublicNotes);
+router.get(
+  `/player-public-notes/:campaign_id/:user_id`,
+  noteController.getPlayerPublicNotes
+);
 
 /**
  * @route GET /public-notes/{id}
@@ -83,8 +85,10 @@ router.get(`/player-public-notes/:campaign_id/:user_id`, noteController.getPlaye
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
- router.get(`/public-notes/:campaign_id/:user_id`, noteController.getPublicNotes);
-
+router.get(
+  `/public-notes/:campaign_id/:user_id`,
+  noteController.getPublicNotes
+);
 
 /**
  * @route GET /private-notes/{id}
@@ -95,18 +99,21 @@ router.get(`/player-public-notes/:campaign_id/:user_id`, noteController.getPlaye
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
- router.get(`/private-notes/:campaign_id/:user_id`, noteController.getPrivateNotes);
+router.get(
+  `/private-notes/:campaign_id/:user_id`,
+  noteController.getPrivateNotes
+);
 
- /**
-  * @route GET /players/{id}
-  * @groupe Player
-  * @summary Responds the list of players added to this campaign
-  * @param {number} id - The id of the campaign
-  * @returns {array<Player>} 200 - An array of players
-  * @returns {string} 404 - An error message
-  * @returns {string} 500 - An error message
-  */
-  router.get(`/players/:id`, playerController.findParty);
+/**
+ * @route GET /players/{id}
+ * @groupe Player
+ * @summary Responds the list of players added to this campaign
+ * @param {number} id - The id of the campaign
+ * @returns {array<Player>} 200 - An array of players
+ * @returns {string} 404 - An error message
+ * @returns {string} 500 - An error message
+ */
+router.get(`/players/:id`, playerController.findParty);
 //#endregion GET
 
 //#region POST
@@ -121,7 +128,7 @@ router.get(`/player-public-notes/:campaign_id/:user_id`, noteController.getPlaye
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  */
-router.post('/signup', userController.save);
+router.post("/signup", userController.save);
 
 /**
  * @route POST /signin
@@ -131,7 +138,7 @@ router.post('/signup', userController.save);
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  */
-router.post('/signin', userController.login);
+router.post("/signin", userController.login);
 
 /**
  * @route POST /campaigns
@@ -143,7 +150,7 @@ router.post('/signin', userController.login);
  * @returns {string} 409 - A conflict error message
  * @returns {string} 401 - An unauthorized error message
  */
-router.post('/campaigns', campaignController.save);
+router.post("/campaigns", campaignController.save);
 
 /**
  * @route POST /campaigns/{campaign_id}
@@ -156,7 +163,7 @@ router.post('/campaigns', campaignController.save);
  * @returns {string} 409 - A conflict error message
  * @returns {string} 401 - An unauthorized error message
  */
-router.post(`/note/:campaign_id`, noteController.save);
+router.post(`/note`, noteController.save);
 
 /**
  * Add a player
@@ -166,7 +173,7 @@ router.post(`/note/:campaign_id`, noteController.save);
  * @param { string } campaign_name - The name of the campaign the player is added to
  * @returns {Player.model} - The newly created player
  */
-router.post('/player/:campaign_id', playerController.save)
+router.post("/player/:campaign_id", playerController.save);
 
 /**
  * @route POST /wiki
@@ -175,9 +182,9 @@ router.post('/player/:campaign_id', playerController.save)
  * @returns {Wiki.model} 201 - The newly created wiki
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
- * @returns {string} 409 - A conflict error message 
+ * @returns {string} 409 - A conflict error message
  */
-router.post('/wiki', wikiController.save);
+router.post("/wiki", wikiController.save);
 
 /**
  * @route POST /block/:wiki_id
@@ -188,7 +195,7 @@ router.post('/wiki', wikiController.save);
  * @returns {string} 400 - A validation error message
  * @returns {string} 409 - A conflict error message
  */
-router.post('/block', blockController.save);
+router.post("/block", blockController.save);
 
 //#endregion POST
 
@@ -205,7 +212,7 @@ router.post('/block', blockController.save);
  * @returns {string} 401 - An unauthorized error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/profile/:id', userController.save);
+router.patch("/profile/:id", userController.save);
 
 /**
  * @route PATCH /wiki
@@ -217,7 +224,7 @@ router.patch('/profile/:id', userController.save);
  * @returns {string} 401 - An unauthorized error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/wiki/:id', wikiController.save);
+router.patch("/wiki/:id", wikiController.save);
 
 /**
  * Update a campaign in database
@@ -230,11 +237,11 @@ router.patch('/wiki/:id', wikiController.save);
  * @returns {string} 400 - A validation error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/campaigns/:id', campaignController.save);
+router.patch("/campaigns/:id", campaignController.save);
 
 /**
  * Update a block in database
- * @route PACTH /block/id
+ * @route PATCH /block/:id
  * @group Block
  * @summary Update a block in database
  * @param {int} id - The id of the block to update
@@ -243,10 +250,22 @@ router.patch('/campaigns/:id', campaignController.save);
  * @returns {string} 400 - A validation error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/block/:id', blockController.save);
+router.patch("/block/:id", blockController.save);
+
+/**
+ * Update a block in database
+ * @route PATCH /note/:id
+ * @group Note
+ * @summary Update a note in database
+ * @param {int} id - The id of the note to update
+ * @returns {Note.model} 200 - The updated note
+ * @returns {string} 500 - An error message
+ * @returns {string} 400 - A validation error message
+ * @returns {string} 404 - A not found error message
+ */
+router.patch("/note/:id", noteController.save);
 
 //#endregion PATCH
-
 
 //#region DELETE
 
@@ -260,7 +279,7 @@ router.patch('/block/:id', blockController.save);
  * @returns {string} - 204 User not found
  * @returns {string} - 500 An error message
  */
-router.delete('/profile/:id', userController.delete);
+router.delete("/profile/:id", userController.delete);
 
 /**
  * @route DELETE /wiki/:title

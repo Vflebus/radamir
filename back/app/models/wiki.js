@@ -38,11 +38,6 @@ class Wiki {
     }
     for (const prop in data)
       this[prop] = data[prop]
-    // this.id = data[0];
-    // this.title = data[1];
-    // this.type = data[2];
-    // this.slug = data[3];
-    // this.blocks = data[4];
   }
 
   /**
@@ -55,7 +50,6 @@ class Wiki {
   static async getAllWikis() {
     try {
       const { rows } = await client.query(
-
         `select wiki.id, wiki.title, wiki.full_title, wiki.type, wiki.slug, 
           json_agg(json_strip_nulls(
           json_build_object(
@@ -82,21 +76,6 @@ class Wiki {
    * @throws {NoWikiError} - If the wiki does not exist.
    * @throws {Error} - If the query fails.
    */
-/*   static async getWikiById(id) {
-    try {
-      const { rows } = await client.query(
-        "SELECT * FROM wiki WHERE id = $1", [id]);
-      if (rows.length === 0) {
-        throw new NoWikiError(id);
-      }
-      return new Wiki(rows[0]);
-    } catch (error) {
-      console.log(error);
-      throw new Error(error.detail ? error.detail : error.message);
-    }
-  } */
-
-  //! Si OK changer les commentaires
   static async getWikiById(id) {
     try {
       const { rows } = await client.query(

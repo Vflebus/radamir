@@ -5,6 +5,41 @@
 
 GET {{baseUrl}}/profile/1
 
+### Create a user
+
+POST {{baseUrl}}/signup
+Content-Type: application/json
+
+{
+    "username": "TEST",
+    "email": "user@test.com",
+    "password": "password"
+}
+
+### Login user
+
+POST {{baseUrl}}/signin
+Content-Type: application/json
+
+{
+    "username": "TEST",
+    "email": "user@test.com",
+    "password": "password"
+}
+
+### Update a user
+
+PATCH {{baseUrl}}/profile/1
+Content-Type: application/json
+
+{
+    "email": "TEST@test.com"
+}
+
+### Delete a user
+
+DELETE {{baseUrl}}/profile/1
+
 ### Get all campaigns
 
 GET {{baseUrl}}/campaigns
@@ -12,6 +47,17 @@ GET {{baseUrl}}/campaigns
 ### Get one campaign
 
 GET {{baseUrl}}/campaigns/2
+
+### Create a new campaign
+
+POST {{baseUrl}}/campaigns
+Content-Type: application/json
+
+{
+    "campaign_name": "TEST",
+    "description": "TEST2",
+    "user_id": 3
+}
 
 ### Get player public notes
 
@@ -25,6 +71,31 @@ GET {{baseUrl}}/public-notes/1/1
 
 GET {{baseUrl}}/private-notes/1/2
 
+### Create a note
+
+POST {{baseUrl}}/note
+Content-Type: application/json
+
+{
+    "content": "salusalut c flanders version 8",
+    "is_private": false,
+    "campaign_id": 5,
+    "user_id": 3
+}
+
+### Update a note
+
+POST {{baseUrl}}/note/:id
+Content-Type: application/json
+
+{
+    "content": "salusalut c flanders version 9",
+}
+
+### Delete a note
+
+DELETE {{baseUrl}}/note/8
+
 ### Get the wiki
 
 GET {{baseUrl}}/wiki
@@ -33,39 +104,6 @@ GET {{baseUrl}}/wiki
 
 GET {{baseUrl}}/wiki/7
 
-### Create a new campaign
-
-POST {{baseUrl}}/campaigns
-Content-Type: application/json
-
-{
-    "campaign_name": "SUPER TEST 4",
-    "description": "DIAMS SUPER LOL",
-    "user_id": 1
-}
-
-### Create a note
-
-POST {{baseUrl}}/note/1
-Content-Type: application/json
-
-{
-    "content": "salusalut c flanders version 5",
-    "is_private": false,
-    "campaign_id": 1,
-    "user_id": 1
-}
-
-### Login user
-
-POST {{baseUrl}}/signin
-Content-Type: application/json
-
-{
-    "username": "MICHAEL",
-    "email": "mikamika@truc.com",
-    "password": "SUPERSECRET"
-}
 
 ### Post a wiki
 
@@ -73,31 +111,10 @@ POST {{baseUrl}}/wiki
 Content-Type: application/json
 
 {
-    "slug": "test mamouth",
-    "title": "titre mamouth",
+    "slug": "test test2",
+    "title": "titre test",
     "type": "general"
     //"full_title": ""
-}
-
-### Create a user
-
-POST {{baseUrl}}/signup
-Content-Type: application/json
-
-{
-    "username": "MICHAEL",
-    "email": "mikamika@truc.com",
-    "password": "SUPERSECRET"
-}
-
-### Create a block
-POST {{baseUrl}}/block
-Content-Type: application/json
-
-{
-    "title": "titre block",
-    "content": "du contenu et encore du contenu",
-    "wiki_id": 9
 }
 
 ### Update or New wiki
@@ -107,36 +124,30 @@ Content-Type: application/json
 {   
     "slug": "A",
     "title": "B",
-    "full_title": "saluttttt",
+    "full_title": "fulltest",
     "type": "region"
 }
 
-### Update a user
-
-PATCH {{baseUrl}}/profile/1
+### Create a block
+POST {{baseUrl}}/block
 Content-Type: application/json
 
 {
-    "email": "kjleghkrfhgerh@11111.com"
+    "title": "titre block",
+    "content": "du contenu et encore du contenu",
+    "wiki_id": 6
 }
 
 ### Patch  one block
 
-PATCH {{baseUrl}}/block/95
+PATCH {{baseUrl}}/block/91
 Content-Type: application/json
 
 {
-    "title": "nouveau title"
+    "title": "TEST",
+    "content": "TEST2"
 }
-
-### Delete a note
-
-DELETE {{baseUrl}}/note/1
-
-### Delete a user
-
-DELETE {{baseUrl}}/profile/1
 
 ### Delete one block
 
-
+DELETE {{baseUrl}}/block/91

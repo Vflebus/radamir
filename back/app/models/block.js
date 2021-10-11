@@ -55,11 +55,11 @@ class Block {
         return this;
       }
     } catch (error) {
-        console.log(error);
-        if (error.detail) {
-          throw new Error(error.detail);
-        }
-        throw error;
+      console.log(error);
+      if (error.detail) {
+        throw new Error(error.detail);
+      }
+      throw error;
     }
   }
 
@@ -72,13 +72,13 @@ class Block {
   async delete() {
     try {
       const { rows } = await client.query(
-        `DELETE FROM "block" WHERE id = $1 RETURNING id, title`,
+        `DELETE FROM "block" WHERE id = $1 RETURNING *;`,
         [this.id]
       );
       if (rows.length === 0) {
         throw new NoBlockError(this.id);
       }
-      return rows[0];
+      return new Block(rows[0]);
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
