@@ -44,7 +44,7 @@ CREATE FUNCTION new_wiki(TEXT, VARCHAR(255), TEXT, VARCHAR(255)) RETURNS INT AS 
 $$ LANGUAGE SQL;
 
 CREATE FUNCTION update_wiki(TEXT, VARCHAR(255), TEXT, INT, VARCHAR(255) ) RETURNS void AS $$
-	UPDATE "wiki" SET "slug"=$1, "title"=$2, "type"=$3, "full_title"=$5 WHERE id = $4
+	UPDATE "wiki" SET "slug"=$1, "title"=$2, "type" = COALESCE($3, "type"), "full_title"=$5 WHERE id = $4
 $$ LANGUAGE SQL;
 
 -- block
