@@ -41,6 +41,7 @@
 }
 .selected {
     cursor: default;
+    text-decoration: underline;
 }
 .menu-button {
     background-color: unset;
@@ -48,16 +49,16 @@
     border: unset;
     text-align: left;
 }
-.selected::after {
-    margin-left: 10px;
-    content: "";
-    width: 1.8vw;
-    height: 1.48vw;
-    background-image: url(../../assets/images/quill-resized.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
+// .selected::after {
+//     margin-left: 10px;
+//     content: "";
+//     width: 1.8vw;
+//     height: 1.48vw;
+//     background-image: url(../../assets/images/quill-resized.webp);
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     display: inline-block;
+// }
 
 @media screen and (max-width: 1200px) {
     .wikis {
@@ -106,7 +107,7 @@
         flex-direction: column;
         margin-top: 15px;
         // transition: box-shadow 1s, background-color 1s;
-        width: 15vw;
+        width: 10vh;
         z-index: 80;
 
         &__barreDessus,
