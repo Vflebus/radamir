@@ -54,6 +54,12 @@ area {
     transition-duration: 0.75s;
     z-index: -1;
 }
+@media screen and (max-width: 1000px) {
+    #carte-radamir, .region {
+        height: unset;
+        width: 150vw;
+    }
+}
 .zindex {
     z-index: 30;
 }
