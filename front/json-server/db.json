@@ -57,6 +57,12 @@
       "title": "Dieux",
       "slug": "dieux",
       "type": "general"
+    },
+    {
+      "title": "Test",
+      "type": "general",
+      "slug": "test",
+      "id": 8
     }
   ],
   "block": [

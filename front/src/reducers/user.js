@@ -7,7 +7,9 @@ import {
 const initialState = {
   logged: false,
   // set is_admin to true when working with json-server
-  loggedUser: {},
+  loggedUser: {
+    is_admin: true
+  },
   username: "",
   email: "",
   password: "",
