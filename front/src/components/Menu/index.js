@@ -39,8 +39,10 @@ const Menu = () => {
 
   const onLogout = useCallback(() => {
     dispatch(logout());
-    history.push("/");
-  }, [dispatch, history]);
+    if (location.pathname === "/profile") {
+      history.push("/");
+    }
+  }, [dispatch, history, location]);
 
   return (
     <div>
