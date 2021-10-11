@@ -16,9 +16,8 @@ const blocksMiddleware = (store) => (next) => async (action) => {
 
         if (!title || !content) throw new Error("Veuillez renseigner des informations");
 
-        // only for json-server
         await radamirAPI.post("/block", {
-          wikiId: action.id,
+          wiki_id: action.id,
           title,
           content
         });

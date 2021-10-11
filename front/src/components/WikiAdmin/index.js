@@ -47,7 +47,7 @@ const WikiAdmin = () => {
 
   return (
     <MotionWrapper>
-      {wiki.block && (
+      {Object.keys(wiki.block[0]).length !== 0 && (
         <div className="links-container">
           <ul>
             {wiki.block.map(({ id, title }) => {
@@ -75,7 +75,7 @@ const WikiAdmin = () => {
           <FontAwesomeIcon icon={faEdit} onClick={handleOpen} className="controls-button" />
           <EditWikiModal open={editTitle} onClose={handleClose} wikiId={wiki.id} />
         </h1>
-        {wiki.block && (
+        {Object.keys(wiki.block[0]).length !== 0 && (
           <>
             <select
               name="links"
