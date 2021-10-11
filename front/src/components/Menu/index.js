@@ -96,18 +96,18 @@ const Menu = () => {
             </div>
             <img src={menuDeplie} alt="" className={`navLinksMobile__img ${isOpen ? "" : "displayNone"}`} />
             <div className={`navLinksMobile ${isOpen ? "" : "displayNone"}`}>
-              <NavLink exact to="/carte" className="links" activeClassName="selected">
+              <NavLink exact to="/carte" className="links" activeClassName="selected" onClick={toggleMenu}>
                 Carte du Monde
               </NavLink>
-              <NavLink exact to="/wiki" className="links" activeClassName="selected">
+              <NavLink exact to="/wiki" className="links" activeClassName="selected" onClick={toggleMenu}>
                 Wiki
               </NavLink>
-              <NavLink exact to="/campagnes" className="links" activeClassName="selected">
+              <NavLink exact to="/campagnes" className="links" activeClassName="selected" onClick={toggleMenu}>
                 Campagnes
               </NavLink>
               {logged && (
                 <>
-                  <NavLink exact to="/profile" className="links" activeClassName="selected">
+                  <NavLink exact to="/profile" className="links" activeClassName="selected" onClick={toggleMenu}>
                     Mon Compte
                   </NavLink>              
                   <button className="links menu-button" onClick={onLogout}>
