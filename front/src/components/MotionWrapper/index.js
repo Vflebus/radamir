@@ -19,7 +19,6 @@ const MotionWrapper = ({ children }) => {
     <motion.div
         initial="out"
         animate="in"
-        // exit="out"
         variants={pageVariants}
         transition={pageTransitions}
     >
