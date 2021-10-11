@@ -43,7 +43,7 @@ const Wikis = () => {
             <h1 className="wikis__title">Index du Wiki</h1>
             {is_admin && (
               <>
-                <button onClick={openModal}>+</button>
+                <button onClick={openModal}>Créer un wiki</button>
                 <AddWikiModal open={isModalOpen} onClose={onClose} />
               </>
             )}

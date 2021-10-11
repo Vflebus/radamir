@@ -83,10 +83,11 @@
   }
   button {
     position: absolute;
-    top: 10vh;
-    left: 10vw;
+    bottom: 2vh;
+    left: 2vw;
     font-family: vars.$title-font;
-    font-size: 5vw;
+    text-decoration: underline;
+    font-size: 2vw;
     border: none;
     background-color: rgba(0, 0, 0, 0 );
   }
