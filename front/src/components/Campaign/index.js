@@ -35,10 +35,6 @@ const Campaign = () => {
                         <Note />
                         <Note />
                         <Note />
-                        <Note />
-                        <Note />
-                        <Note />
-                        <Note />
                     </section>
                     <section className="notesPubliques">
                         <h3>Publiques</h3>
@@ -47,14 +43,13 @@ const Campaign = () => {
                         <Note />
                         <Note />
                         <Note />
-                        <Note />
-                        <Note />
-                        <Note />
                     </section>
                     <section className="imageDiscord">
+                        <h3>Illustration actuelle</h3>
+                        <img src="https://cdn.discordapp.com/attachments/837830452042661899/897226129709096960/Cennetig_le_Minutieux.jpg" alt="" className="discordImg"/>
+                    </section>
                 </section>
-                    
-                </section>
+                <button className="addNote">Ajouter une nouvelle note</button>
             </section>
         </div>
     )
