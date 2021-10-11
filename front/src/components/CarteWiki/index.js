@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-import './styles.css'
+import './styles.scss'
 
 import section_droknor from '../../assets/images/Section_droknor.webp';
 import section_feidlimid from '../../assets/images/Section_feidlimid.webp';
@@ -74,6 +74,7 @@ const CarteWiki = () => {
                 {/* <Menu /> */}
                 <div className="landscapeBG"></div>
                 <h1 className="landscapeWarning">Veuillez passer en mode paysage.</h1>
+                
                 <main id="mainContainer">
                     <div className="indexLink" ref={indexLinkRef}>
                         <Link to="/wiki/" className="indexLink">
