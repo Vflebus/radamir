@@ -68,7 +68,7 @@
             display: flex;
             h3 {
                 position: absolute;
-                font-size: 2.5rem;
+                font-size: 3rem;
                 font-family: vars.$title-font;
                 align-self: flex-start;
                 transform: translateY(-7vh);
@@ -91,17 +91,17 @@
                 }
             }
             .noteContainer:hover{
-                transform: scale(1.2);
+                transform: scale(1.1);
             }
             .notesPrivees, .notesPubliques {
                 margin-left: 3vw;
-                height: 75vh;
+                height: 72vh;
                 width: 30vw;
                 display: flex;
-                flex-direction: column;
                 flex-wrap: wrap;
                 align-items: center;
                 justify-content: flex-start;
+                overflow-y: auto;
             }
         }
     }
