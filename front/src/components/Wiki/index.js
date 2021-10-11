@@ -6,14 +6,17 @@ import WikiCategory from "./WikiCategory";
 import MotionWrapper from "../MotionWrapper";
 
 import "./wiki.scss";
+import Page404 from "../Page404";
 
 const Wiki = () => {
   const { pathname } = useLocation();
   const { title } = useParams();
 
   const { list } = useSelector(({ wikis }) => wikis);
+  console.log(list);
   const wiki = list.find(({ slug }) => slug === title);
 
+  if (wiki) {
   return (
       <MotionWrapper>
         {Object.keys(wiki.block[0]).length !== 0 && (
@@ -65,7 +68,11 @@ const Wiki = () => {
             )}
         </div>
       </MotionWrapper>
-  );
+  );} else {
+      return (
+          <Page404 />
+      )}
+  
 };
 
 export default Wiki;
