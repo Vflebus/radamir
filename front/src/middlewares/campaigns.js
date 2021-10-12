@@ -1,5 +1,6 @@
 import radamirAPI from "../apis/radamirAPI";
-import { FETCH_CAMPAIGNS, saveCampaigns } from "../actions/campaigns";
+import { FETCH_CAMPAIGNS, CREATE_CAMPAIGN, saveCampaigns, fetchCampaigns } from "../actions/campaigns";
+import { clearError, setError } from "../actions/error";
 
 const campaignsMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -12,6 +13,27 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
         store.dispatch(saveCampaigns(userCampaigns));
       } catch (err) {
         console.error(err);
+      }
+      next(action);
+      break;
+
+    case CREATE_CAMPAIGN:
+      try {
+        store.dispatch(clearError());
+        const { campaign_name, description } = store.getState().campaigns;
+
+        if (!campaign_name || !description) throw new Error("Veuillez renseigner des informations");
+
+        await radamirAPI.post("/campaign", {
+          userId: action.id,
+          campaign_name,
+          description
+        });
+
+        store.dispatch(fetchCampaigns(action.id));
+      } catch (err) {
+        console.error(err);
+        store.dispatch(setError(err));
       }
       next(action);
       break;

@@ -4,24 +4,27 @@ import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import { setCampaignName } from "../../actions/campaigns";
+import { setCampaignInput, createCampaign } from "../../actions/campaigns";
 
 const AddCampaignModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
+  const { id } = useSelector(({ user: { loggedUser } }) => loggedUser)
   const { message } = useSelector(({ error }) => error);
   const { campaign_name } = useSelector(({ campaigns }) => campaigns);
   const { description } = useSelector(({ campaigns }) => campaigns);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(createCampaign(id));
+    onClose();
   };
 
   const handleNameChange = (e) => {
-    dispatch(setCampaignName("campaign_name", e.target.value));
+    dispatch(setCampaignInput("campaign_name", e.target.value));
   };
 
   const handleDescriptionChange = (e) => {
-    dispatch(setCampaignName("description", e.target.value));
+    dispatch(setCampaignInput("description", e.target.value));
   };
 
   if (!open) return null;

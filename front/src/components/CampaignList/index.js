@@ -5,7 +5,7 @@ import CampaignCard from "./CampaignCard";
 import MotionWrapper from "../MotionWrapper";
 import AddCampaignModal from "../AddCampaignModal";
 
-import { setCampaignName } from "../../actions/campaigns";
+import { setCampaignInput } from "../../actions/campaigns";
 
 import "./style.scss"
 
@@ -20,8 +20,8 @@ const CampaignList = () => {
 
     const handleClose = () => {
         setIsModalOpen(false);
-        dispatch(setCampaignName("campaign_name", ""));
-        dispatch(setCampaignName("description", ""));
+        dispatch(setCampaignInput("campaign_name", ""));
+        dispatch(setCampaignInput("description", ""));
     };
 
     return (
