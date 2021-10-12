@@ -63,7 +63,7 @@ const App = () => {
 
   return (
     <AnimatePresence>
-      <Menu />
+      <Menu key="menu" />
       <Switch location={location} key={location.pathname}>
         <Route exact path="/">
           <Redirect to={window.innerWidth > 767 ? "/carte" : "/wiki"} />
@@ -100,22 +100,26 @@ const App = () => {
             <SignUp />
           </Route>
         )}
-        <Route exact path="/campagnes">
-          <CampaignList />
-        </Route>
-        <Route exact path="/campagnes/:title">
-          <Campaign />
-        </Route> 
-        {logged && (
-          <Route exact path="/profile">
-            <UserProfile />
-          </Route>
+        {logged ? (
+          <>
+            <Route exact path="/campagnes/:id">
+              <Campaign />
+            </Route> 
+            <Route exact path="/campagnes">
+              <CampaignList />
+            </Route>
+            <Route exact path="/profile">
+              <UserProfile />
+            </Route>
+          </>
+        ) : (
+          <Redirect to="/" />
         )}
         <Route>
           <Page404 />
         </Route>
       </Switch>
-      <TermsAndAboutLinks />
+      <TermsAndAboutLinks key="footer" />
     </AnimatePresence>
   );
 };
