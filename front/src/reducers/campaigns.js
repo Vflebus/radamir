@@ -2,6 +2,7 @@ import {
   SAVE_CAMPAIGNS,
   SET_CAMPAIGN_INPUT
 } from "../actions/campaigns";
+import { LOGOUT } from "../actions/user";
 
 const initialState = {
   list: [],
@@ -21,6 +22,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.fieldname]: action.value
+      };
+
+    case LOGOUT:
+      return {
+        ...state,
+        list: []
       };
 
     default:

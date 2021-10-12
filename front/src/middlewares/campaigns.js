@@ -1,5 +1,11 @@
 import radamirAPI from "../apis/radamirAPI";
-import { FETCH_CAMPAIGNS, CREATE_CAMPAIGN, saveCampaigns, fetchCampaigns } from "../actions/campaigns";
+import {
+  FETCH_CAMPAIGNS,
+  CREATE_CAMPAIGN,
+  DELETE_CAMPAIGN,
+  saveCampaigns,
+  fetchCampaigns
+} from "../actions/campaigns";
 import { clearError, setError } from "../actions/error";
 
 const campaignsMiddleware = (store) => (next) => async (action) => {
@@ -34,6 +40,17 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
       } catch (err) {
         console.error(err);
         store.dispatch(setError(err));
+      }
+      next(action);
+      break;
+
+    case DELETE_CAMPAIGN:
+      try {
+        await radamirAPI.delete(`/campaign/${action.campaignId}`);
+
+        store.dispatch(fetchCampaigns(action.userId));
+      } catch (err) {
+        console.error(err);
       }
       next(action);
       break;

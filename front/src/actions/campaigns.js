@@ -22,3 +22,16 @@ export const createCampaign = (id) => ({
   type: CREATE_CAMPAIGN,
   id
 });
+
+export const UPDATE_CAMPAIGN = "UPDATE_CAMPAIGN";
+export const updateCampaign = (id) => ({
+  type: UPDATE_CAMPAIGN,
+  id
+});
+
+export const DELETE_CAMPAIGN = "DELETE_CAMPAIGN";
+export const deleteCampaign = (userId, campaignId) => ({
+  type: DELETE_CAMPAIGN,
+  userId,
+  campaignId
+})

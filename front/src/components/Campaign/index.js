@@ -1,5 +1,10 @@
-import { useParams } from "react-router";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useParams, useHistory } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+
+import ConfirmDelete from "../ConfirmDelete";
+
+import { deleteCampaign } from "../../actions/campaigns";
 
 import carte from "../../assets/images/CarteRadamir.png";
 import bg2 from "../../assets/images/bg2.png";
@@ -9,10 +14,19 @@ import "./campaign.scss";
 import Note from "./Note";
 
 const Campaign = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const [deleteOpen, setDeleteOpen] = useState(false);
     const { id } = useParams();
+    const userId = useSelector(({ user: { loggedUser } }) => loggedUser.id);
     const { list } = useSelector(({ campaigns }) => campaigns);
 
     const userCampaign = list.find(campaign => campaign.id === +id);
+
+    const handleDelete = () => {
+        dispatch(deleteCampaign(userId, +id));
+        history.push("/campagnes");
+    };
     
     return (
         <div className="campaign">
@@ -24,6 +38,19 @@ const Campaign = () => {
                 <section className="sectionResume">
                     <h2>Jusqu'ici :</h2>
                     <p>{userCampaign.description}</p>
+                    <button
+                        type="button"
+                        className="admin-button delete-wiki"
+                        onClick={() => setDeleteOpen(true)}
+                    >
+                        Supprimer Campagne
+                    </button>
+                    <ConfirmDelete
+                        open={deleteOpen}
+                        title={userCampaign.campaign_name}
+                        onClose={() => setDeleteOpen(false)}
+                        onDelete={handleDelete}
+                    />
                 </section>
             </section>
             <section className="pageTwo">

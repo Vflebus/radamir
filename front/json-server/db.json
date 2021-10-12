@@ -205,18 +205,5 @@
       "id": 23
     }
   ],
-  "campaign": [
-    {
-      "userId": 1,
-      "campaign_name": "Campagne 1",
-      "description": "Description 1",
-      "id": 1
-    },
-    {
-      "userId": 1,
-      "campaign_name": "Campagne 2",
-      "description": "Description",
-      "id": 2
-    }
-  ]
+  "campaign": []
 }
