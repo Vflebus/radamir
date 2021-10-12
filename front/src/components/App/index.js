@@ -22,6 +22,7 @@ import { fetchWikis } from "../../actions/wikis";
 
 import logo from "../../assets/images/logo-decoupe.webp";
 import Menu from "../Menu";
+import TermsAndAboutLinks from "../TermsAndAboutLinks";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -114,6 +115,7 @@ const App = () => {
           <Page404 />
         </Route>
       </Switch>
+      <TermsAndAboutLinks />
     </AnimatePresence>
   );
 };

@@ -1,0 +1,13 @@
+.uselessNavBar {
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+    
+    ul {
+        display: flex;
+    }
+    
+    &__link {
+        margin-left: 1rem;
+    }
+}
