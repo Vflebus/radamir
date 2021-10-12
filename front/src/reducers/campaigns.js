@@ -1,7 +1,9 @@
 import { SAVE_CAMPAIGNS } from "../actions/campaigns";
 
 const initialState = {
-  list: []
+  list: [],
+  campaign_name: "",
+  description: ""
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -11,7 +13,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         list: action.campaigns
       }
-      
+
     default:
       return state;
   }

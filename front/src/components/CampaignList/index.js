@@ -22,7 +22,7 @@ const CampaignList = () => {
                 <section className="sectionRight">
                     <section className="campaignsContainer">
 
-                        {list.map(({campaign_name, id}) => <CampaignCard name={campaign_name} key={id}/>)}
+                        {list.map(({campaign_name, id}) => <CampaignCard name={campaign_name} campaignId={id} key={id}/>)}
 
                         {/* <CampaignCard name="Campagne 1"/>
                         <CampaignCard name="Campagne 2"/>

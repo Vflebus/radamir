@@ -1,22 +1,25 @@
+import PropTypes from "prop-types";
+
 import { Link } from "react-router-dom";
 
-import { cleanTitleSlug } from "../../selectors/wikis";
-
-import plank from "../../assets/images/plank.png"
+import plank from "../../assets/images/plank.png";
 // import wikiParchment from "../../assets/images/wikiParchment.webp"
 
-const CampaignCard = ( {name} ) => {
-    const { slug } = cleanTitleSlug(name);                  
-                    
+const CampaignCard = ({ name, campaignId }) => {                 
     return (
         <div className="card">
-            <Link to={`/campagnes/${slug}`}>
+            <Link to={`/campagnes/${campaignId}`}>
                 <img src={plank} alt="" className="__image" />
                 <h3>{name}</h3>
                 {/* <button className="link">Accéder à la campagne</button></Link> */}
             </Link>    
         </div>
     )
-}
+};
 
-export default CampaignCard
+CampaignCard.propTypes = {
+    name: PropTypes.string.isRequired,
+    campaignId: PropTypes.number.isRequired
+};
+
+export default CampaignCard;

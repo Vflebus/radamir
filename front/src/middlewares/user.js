@@ -51,10 +51,12 @@ const userMiddleware = (store) => (next) => async (action) => {
         const passwordInput = store.getState().user.password;
 
         const res = await radamirAPI.get("/user");
+        // /json-server login
 
         // const res = await radamirAPI.post("/signin", { email, password });
         // json-server login
         const user = res.data.find(({ email, password }) => (emailInput === email && passwordInput === password));
+        // /json-server login
 
         // change parameter with real API
         store.dispatch(fetchCampaigns(user.id));

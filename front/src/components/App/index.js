@@ -102,7 +102,7 @@ const App = () => {
         )}
         {logged ? (
           <>
-            <Route exact path="/campagnes/:title">
+            <Route exact path="/campagnes/:id">
               <Campaign />
             </Route> 
             <Route exact path="/campagnes">
