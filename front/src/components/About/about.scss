@@ -7,6 +7,7 @@
   background: url("../../assets/images/bg-carte.webp");
 
   .about {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,11 +28,24 @@
       gap: 2.5rem;
 
       .member {
+
+        border: 8px ridge #C8AD7F;
+        background-color: rgba(0,0,0,0.8);
+
         &__title {
           margin-bottom: 0.8rem;
           font-family: vars.$title-font;
-          font-size: 1.5rem;
+          font-size: 1.7rem;
           text-align: center;
+          color: #C8AD7F;
+        }
+
+        &__role {
+          margin-bottom: 0.8rem;
+          font-family: vars.$title-font;
+          font-size: 1.3rem;
+          text-align: center;
+          color: #C8AD7F;
         }
 
         &__content {
@@ -40,9 +54,10 @@
         }
 
         &__img {
-          width: 100px;
+          width: 20rem;
           // delete following line when we have pictures
           font-size: 100px;
+          margin-bottom: 1rem;
         }
 
         &__links {
@@ -50,21 +65,24 @@
           flex-direction: column;
           gap: 0.3rem;
           justify-content: center;
+          text-align: center;
           height: 100%;
+          margin-bottom: 0.8rem;
         }
 
         &__link {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
 
           a {
             font-family: "Times New Roman", Times, serif;
-            color: vars.$main-color;
+            color: #C8AD7F
           }
 
           &-icon {
             margin-right: 0.3rem;
           }
         }
+
       }
     }
   }
