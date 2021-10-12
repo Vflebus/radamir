@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 
+import { cleanTitleSlug } from "../../selectors/wikis";
+
 import plank from "../../assets/images/plank.png"
 // import wikiParchment from "../../assets/images/wikiParchment.webp"
 
 const CampaignCard = ( {name} ) => {
-    const slug = name.replaceAll(/[^A-zÀ-ü0-9\s_-]/g, "")
-                            .replaceAll(" ", "-")
-                            .toLowerCase();
-                    
+    const { slug } = cleanTitleSlug(name);                  
                     
     return (
         <div className="card">

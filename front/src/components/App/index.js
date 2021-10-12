@@ -100,16 +100,20 @@ const App = () => {
             <SignUp />
           </Route>
         )}
-        <Route exact path="/campagnes">
-          <CampaignList />
-        </Route>
-        <Route exact path="/campagnes/:title">
-          <Campaign />
-        </Route> 
-        {logged && (
-          <Route exact path="/profile">
-            <UserProfile />
-          </Route>
+        {logged ? (
+          <>
+            <Route exact path="/campagnes/:title">
+              <Campaign />
+            </Route> 
+            <Route exact path="/campagnes">
+              <CampaignList />
+            </Route>
+            <Route exact path="/profile">
+              <UserProfile />
+            </Route>
+          </>
+        ) : (
+          <Redirect to="/" />
         )}
         <Route>
           <Page404 />

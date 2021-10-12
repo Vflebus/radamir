@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import CampaignCard from "./CampaignCard";
 import MotionWrapper from "../MotionWrapper";
 
@@ -5,9 +7,11 @@ import "./style.scss"
 
 import bgShip from "../../assets/images/bgShip.png"
 
-import data from "./data"
+// import data from "./data"
 
 const CampaignList = () => {
+    const { list } = useSelector(({ campaigns }) => campaigns);
+
     return (
         <MotionWrapper>
             <div className="campaignList">
@@ -18,7 +22,7 @@ const CampaignList = () => {
                 <section className="sectionRight">
                     <section className="campaignsContainer">
 
-                        {data.map(({campaign_name}) => <CampaignCard name={campaign_name} key={campaign_name}/>)}
+                        {list.map(({campaign_name, id}) => <CampaignCard name={campaign_name} key={id}/>)}
 
                         {/* <CampaignCard name="Campagne 1"/>
                         <CampaignCard name="Campagne 2"/>

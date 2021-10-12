@@ -56,11 +56,11 @@ const Menu = () => {
               <NavLink exact to="/wiki" className="links" activeClassName="selected">
                 Wiki
               </NavLink>
-              <NavLink exact to="/campagnes" className="links" activeClassName="selected">
-                Campagnes
-              </NavLink>
               {logged && (
                 <>
+                  <NavLink exact to="/campagnes" className="links" activeClassName="selected">
+                    Campagnes
+                  </NavLink>
                   <NavLink exact to="/profile" className="links" activeClassName="selected">
                     Mon Compte
                   </NavLink>              
