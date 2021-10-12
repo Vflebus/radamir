@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const Member = ({ name, img, github, linkedin }) => {
+const Member = ({ name, img, github, linkedin, role }) => {
   return (
     <div className="member">
       <h2 className="member__title">{name}</h2>
+      <h3>{role}</h3>
       <div className="member__content">
         <FontAwesomeIcon icon={faUser} className="member__img" />
         {/* Replace previous line with following line when we have pictures */}
