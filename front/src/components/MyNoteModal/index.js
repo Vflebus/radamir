@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import "./noteModal.scss"
+// import "./noteModal.scss"
 
 const MyNoteModal = ({ title, content, open, onClose, handleEdit }) => {
 

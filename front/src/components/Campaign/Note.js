@@ -1,8 +1,8 @@
 import { useState } from "react";
 import cadre from "../../assets/images/parchment.png"
-import NoteModal from "./NoteModal";
-import MyNoteModal from "./MyNoteModal";
-import EditNoteModal from "./EditNoteModal";
+import NoteModal from "../NoteModal";
+import MyNoteModal from "../MyNoteModal";
+import EditNoteModal from "../EditNoteModal";
 
 const Note = () => {
 

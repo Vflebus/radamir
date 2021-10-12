@@ -19,4 +19,17 @@ export const SET_CONTENT = "SET_CONTENT";
 export const setContent = (value) => ({
     type: SET_CONTENT,
     value
+});
+
+export const UPDATE_NOTE = "UPDATE_NOTE";
+export const updateNote = (id) => ({
+  type: UPDATE_NOTE,
+  id
+});
+
+export const FETCH_NOTES = "FETCH_NOTES";
+export const fetchNotes = (userId, campaignId) => ({
+  type: FETCH_NOTES,
+  userId,
+  campaignId
 })

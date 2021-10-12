@@ -8,7 +8,7 @@ import "./campaign.scss";
 
 import Note from "./Note";
 import AddNoteModal from "../AddNoteModal"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 
@@ -25,15 +25,16 @@ const Campaign = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => {
         setIsModalOpen(true);
-      };
+    };
     
-      const onClose = () => {
-        setIsModalOpen(false);
-        dispatch(setType("publique"));
-        dispatch(setTitle(""));
-        dispatch(setContent(""));
-        dispatch(clearError());
-      };
+    const onClose = () => {
+      setIsModalOpen(false);
+      dispatch(setType("publique"));
+      dispatch(setTitle(""));
+      dispatch(setContent(""));
+      dispatch(clearError());
+    };
+
 
     return (
         <div className="campaign">
@@ -53,18 +54,9 @@ const Campaign = () => {
                 <section className="allNotes">
                     <section className="notesPrivees">
                         <h3>Privées</h3>
-                        <Note />
-                        <Note />
-                        <Note />
-                        <Note />
                     </section>
                     <section className="notesPubliques">
                         <h3>Publiques</h3>
-                        <Note />
-                        <Note />
-                        <Note />
-                        <Note />
-                        <Note />
                     </section>
                     <section className="imageDiscord">
                         <h3>Illustration actuelle</h3>

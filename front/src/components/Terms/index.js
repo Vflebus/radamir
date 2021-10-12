@@ -16,7 +16,7 @@ const Terms = () => {
           Retour à l'accueil
         </Link>
         {terms.map((term) => (
-          <Term {...term} />
+          <Term {...term} key={term.title}/>
         ))}
       </div>
     </MotionWrapper>

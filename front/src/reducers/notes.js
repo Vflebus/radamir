@@ -6,7 +6,7 @@ import {
   } from "../actions/notes";
   
   const initialState = {
-    list: [],
+    list: {},
     title: "",
     content:"",
     type: "publique"
