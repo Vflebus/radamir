@@ -1,32 +1,37 @@
 [
   {
     "name": "Boris",
-    "img": "",
+    "img": "https://cdn.discordapp.com/attachments/837830117409292351/897241584851103755/complot.png",
     "github": "Greshym",
-    "linkedin": ""
+    "linkedin": "",
+    "role": "Git Master"
   },
   {
     "name": "Loïc",
-    "img": "",
+    "img": "https://cdn.discordapp.com/attachments/837830117409292351/897241584851103755/complot.png",
     "github": "Loic-Bonaventura",
-    "linkedin": "loïc-bonaventura-0557b1a9"
-  },
-  {
-    "name": "Michaël",
-    "img": "",
-    "github": "Michael-Morales",
-    "linkedin": "morales-michael"
+    "linkedin": "loïc-bonaventura-0557b1a9",
+    "role": "Référent technique"
   },
   {
     "name": "Noam",
-    "img": "",
+    "img": "https://cdn.discordapp.com/attachments/837830117409292351/897241584851103755/complot.png",
     "github": "GeneralNZR",
-    "linkedin": "noamzeitoun"
+    "linkedin": "noamzeitoun",
+    "role": "Lead Dev Back"
+  },
+  {
+    "name": "Michaël",
+    "img": "https://cdn.discordapp.com/attachments/837830117409292351/897241584851103755/complot.png",
+    "github": "Michael-Morales",
+    "linkedin": "morales-michael",
+    "role": "Lead Dev Front"
   },
   {
     "name": "Vincent",
-    "img": "",
+    "img": "https://cdn.discordapp.com/attachments/837830117409292351/897241584851103755/complot.png",
     "github": "Vflebus",
-    "linkedin": "vincent-flebus-779440220"
+    "linkedin": "vincent-flebus-779440220",
+    "role": "Product Owner"
   }
 ]
