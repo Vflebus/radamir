@@ -1,13 +1,14 @@
 @use "../../styles/vars";
 
 .mobileWikiPage {
-
+    display: flex;
+    flex-direction: column;
     h1 {
         font-family: vars.$title-font;
         font-size: 20vw;
         color: vars.$main-color;
         margin-left: 5vw;
-        margin-top: 5vh;
+        margin-top: 2vh;
         margin-bottom: 1rem;
     }
 
@@ -69,6 +70,17 @@
 
         }
 
+    }
+    .mobileModalButton {
+        // position: absolute;
+        // top: -2vh;
+        font-family: vars.$title-font;
+        color: vars.$main-color;
+        font-size: 7vw;
+        border: none;
+        background-color: rgba(0, 0, 0, 0 );
+        margin-bottom: 1rem;
+        text-decoration: underline;
     }
 
 }
