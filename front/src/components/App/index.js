@@ -63,7 +63,7 @@ const App = () => {
 
   return (
     <AnimatePresence>
-      <Menu />
+      <Menu key="menu" />
       <Switch location={location} key={location.pathname}>
         <Route exact path="/">
           <Redirect to={window.innerWidth > 767 ? "/carte" : "/wiki"} />
@@ -115,7 +115,7 @@ const App = () => {
           <Page404 />
         </Route>
       </Switch>
-      <TermsAndAboutLinks />
+      <TermsAndAboutLinks key="footer" />
     </AnimatePresence>
   );
 };

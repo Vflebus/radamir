@@ -204,5 +204,19 @@
       "content": "Contenu 1",
       "id": 23
     }
+  ],
+  "campaign": [
+    {
+      "id": 1,
+      "userId": 1,
+      "campaign_name": "Test",
+      "description": "Description"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "campaign_name": "Test test",
+      "description": "Description description"
+    }
   ]
 }

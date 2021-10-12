@@ -9,6 +9,7 @@ import {
   logout
 } from "../actions/user";
 import { setError, clearError } from "../actions/error";
+import { fetchCampaigns } from "../actions/campaigns";
 import history from "../history";
 
 const userMiddleware = (store) => (next) => async (action) => {  
@@ -44,11 +45,20 @@ const userMiddleware = (store) => (next) => async (action) => {
       try {
         store.dispatch(clearError());
 
-        const { email, password } = store.getState().user;
+        // const { email, password } = store.getState().user;
+        // json-server login
+        const emailInput = store.getState().user.email;
+        const passwordInput = store.getState().user.password;
 
-        const res = await radamirAPI.post("/signin", { email, password });
+        const res = await radamirAPI.get("/user");
 
-        store.dispatch(connectUser(res.data));
+        // const res = await radamirAPI.post("/signin", { email, password });
+        // json-server login
+        const user = res.data.find(({ email, password }) => (emailInput === email && passwordInput === password));
+
+        // change parameter with real API
+        store.dispatch(fetchCampaigns(user.id));
+        store.dispatch(connectUser(user));
       } catch (err) {
         store.dispatch(setInput("", "password"));
         store.dispatch(setError("Une erreur est survenue"));
