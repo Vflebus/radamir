@@ -33,6 +33,7 @@ const CampaignList = () => {
                         <CampaignCard name="Campagne 11"/>
                         <CampaignCard name="Campagne 12"/> */}
                     </section>
+                    <button className="addCampaign">Créer une campagne</button>
                 </section>
             </div>
         </MotionWrapper>
