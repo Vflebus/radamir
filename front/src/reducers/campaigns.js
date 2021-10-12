@@ -1,4 +1,7 @@
-import { SAVE_CAMPAIGNS } from "../actions/campaigns";
+import {
+  SAVE_CAMPAIGNS,
+  SET_CAMPAIGN_INPUT
+} from "../actions/campaigns";
 
 const initialState = {
   list: [],
@@ -12,7 +15,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         list: action.campaigns
-      }
+      };
+
+    case SET_CAMPAIGN_INPUT:
+      return {
+        ...state,
+        [action.fieldname]: action.value
+      };
 
     default:
       return state;

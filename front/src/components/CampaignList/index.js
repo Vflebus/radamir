@@ -1,7 +1,11 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import CampaignCard from "./CampaignCard";
 import MotionWrapper from "../MotionWrapper";
+import AddCampaignModal from "../AddCampaignModal";
+
+import { setCampaignName } from "../../actions/campaigns";
 
 import "./style.scss"
 
@@ -10,7 +14,15 @@ import bgShip from "../../assets/images/bgShip.png"
 // import data from "./data"
 
 const CampaignList = () => {
+    const dispatch = useDispatch();
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const { list } = useSelector(({ campaigns }) => campaigns);
+
+    const handleClose = () => {
+        setIsModalOpen(false);
+        dispatch(setCampaignName("campaign_name", ""));
+        dispatch(setCampaignName("description", ""));
+    };
 
     return (
         <MotionWrapper>
@@ -37,7 +49,8 @@ const CampaignList = () => {
                         <CampaignCard name="Campagne 11"/>
                         <CampaignCard name="Campagne 12"/> */}
                     </section>
-                    <button className="addCampaign">Créer une campagne</button>
+                    <button type="button" className="addCampaign" onClick={() => setIsModalOpen(true)}>Créer une campagne</button>
+                    <AddCampaignModal open={isModalOpen} onClose={handleClose} />
                 </section>
             </div>
         </MotionWrapper>

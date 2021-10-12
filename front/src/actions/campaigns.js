@@ -9,3 +9,10 @@ export const saveCampaigns = (campaigns) => ({
   type: SAVE_CAMPAIGNS,
   campaigns
 });
+
+export const SET_CAMPAIGN_INPUT = "SET_CAMPAIGN_INPUT";
+export const setCampaignName = (fieldname, value) => ({
+  type: SET_CAMPAIGN_INPUT,
+  value,
+  fieldname
+})
