@@ -129,14 +129,15 @@ class Note {
   async save() {
     try {
       if (this.id) {
-        await client.query(`SELECT update_note($1, $2);`, [
+        await client.query(`SELECT update_note($1, $2, $3);`, [
+          this.title,
           this.content,
           this.id,
         ]);
       } else {
         const { rows } = await client.query(
-          `SELECT new_note($1, $2, $3, $4) AS id`,
-          [this.content, this.is_private, this.campaign_id, this.user_id]
+          `SELECT new_note($1, $2, $3, $4, $5) AS id`,
+          [this.title, this.content, this.is_private, this.campaign_id, this.user_id]
         );
         this.id = rows[0].id;
         return this;
