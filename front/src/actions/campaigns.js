@@ -24,9 +24,10 @@ export const createCampaign = (id) => ({
 });
 
 export const UPDATE_CAMPAIGN = "UPDATE_CAMPAIGN";
-export const updateCampaign = (id) => ({
+export const updateCampaign = (userId, campaignId) => ({
   type: UPDATE_CAMPAIGN,
-  id
+  userId,
+  campaignId
 });
 
 export const DELETE_CAMPAIGN = "DELETE_CAMPAIGN";
@@ -34,4 +35,4 @@ export const deleteCampaign = (userId, campaignId) => ({
   type: DELETE_CAMPAIGN,
   userId,
   campaignId
-})
+});

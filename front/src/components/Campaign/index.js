@@ -3,8 +3,10 @@ import { useParams, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import ConfirmDelete from "../ConfirmDelete";
+import EditCampaignModal from "../EditCampaignModal";
 
-import { deleteCampaign } from "../../actions/campaigns";
+import { deleteCampaign, setCampaignInput } from "../../actions/campaigns";
+import { clearError } from "../../actions/error";
 
 import carte from "../../assets/images/CarteRadamir.png";
 import bg2 from "../../assets/images/bg2.png";
@@ -17,6 +19,7 @@ const Campaign = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [deleteOpen, setDeleteOpen] = useState(false);
+    const [editOpen, setEditOpen] = useState(false);
     const { id } = useParams();
     const userId = useSelector(({ user: { loggedUser } }) => loggedUser.id);
     const { list } = useSelector(({ campaigns }) => campaigns);
@@ -26,6 +29,19 @@ const Campaign = () => {
     const handleDelete = () => {
         dispatch(deleteCampaign(userId, +id));
         history.push("/campagnes");
+    };
+
+    const handleOpenEdit = () => {
+        dispatch(setCampaignInput("campaign_name", userCampaign.campaign_name));
+        dispatch(setCampaignInput("description", userCampaign.description));
+        setEditOpen(true);
+    };
+
+    const handleCloseEdit = () => {
+        dispatch(clearError());
+        dispatch(setCampaignInput("campaign_name", ""));
+        dispatch(setCampaignInput("description", ""));
+        setEditOpen(false);
     };
     
     return (
@@ -38,6 +54,18 @@ const Campaign = () => {
                 <section className="sectionResume">
                     <h2>Jusqu'ici :</h2>
                     <p>{userCampaign.description}</p>
+                    <button
+                        type="button"
+                        className="admin-button"
+                        onClick={handleOpenEdit}
+                    >
+                        Modifier Campagne
+                    </button>
+                    <EditCampaignModal
+                        open={editOpen}
+                        onClose={handleCloseEdit}
+                        campaignId={+id}
+                    />
                     <button
                         type="button"
                         className="admin-button delete-wiki"

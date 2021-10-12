@@ -3,6 +3,7 @@ import {
   FETCH_CAMPAIGNS,
   CREATE_CAMPAIGN,
   DELETE_CAMPAIGN,
+  UPDATE_CAMPAIGN,
   saveCampaigns,
   fetchCampaigns
 } from "../actions/campaigns";
@@ -39,7 +40,27 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
         store.dispatch(fetchCampaigns(action.id));
       } catch (err) {
         console.error(err);
-        store.dispatch(setError(err));
+        store.dispatch(setError(err.message));
+      }
+      next(action);
+      break;
+
+    case UPDATE_CAMPAIGN:
+      try {
+        store.dispatch(clearError());
+        const { campaign_name, description } = store.getState().campaigns;
+
+        if (!campaign_name || !description) throw new Error("Veuillez renseigner des informations");
+
+        await radamirAPI.patch(`/campaign/${action.campaignId}`, {
+          campaign_name,
+          description
+        });
+
+        store.dispatch(fetchCampaigns(action.userId));
+      } catch (err) {
+        console.error(err);
+        store.dispatch(setError(err.message));
       }
       next(action);
       break;
