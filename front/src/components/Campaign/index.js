@@ -9,11 +9,11 @@ import { deleteCampaign, setCampaignInput } from "../../actions/campaigns";
 import { clearError } from "../../actions/error";
 
 import carte from "../../assets/images/CarteRadamir.png";
-import bg2 from "../../assets/images/bg2.png";
+// import bg2 from "../../assets/images/bg2.png";
 
 import "./campaign.scss";
 
-import Note from "./Note";
+// import Note from "./Note";
 
 const Campaign = () => {
     const dispatch = useDispatch();
@@ -81,7 +81,7 @@ const Campaign = () => {
                     />
                 </section>
             </section>
-            <section className="pageTwo">
+            {/* <section className="pageTwo">
                 <img src={bg2} alt="" className="bg2"/>
                 <h2>Notes</h2>
                 <section className="allNotes">
@@ -106,7 +106,7 @@ const Campaign = () => {
                     </section>
                 </section>
                 <button className="addNote">Ajouter une nouvelle note</button>
-            </section>
+            </section> */}
         </div>
     )
 };

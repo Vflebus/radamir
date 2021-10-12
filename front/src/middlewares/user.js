@@ -45,22 +45,22 @@ const userMiddleware = (store) => (next) => async (action) => {
       try {
         store.dispatch(clearError());
 
-        // const { email, password } = store.getState().user;
+        const { email, password } = store.getState().user;
         // json-server login
-        const emailInput = store.getState().user.email;
-        const passwordInput = store.getState().user.password;
+        // const emailInput = store.getState().user.email;
+        // const passwordInput = store.getState().user.password;
 
-        const res = await radamirAPI.get("/user");
+        // const res = await radamirAPI.get("/user");
         // /json-server login
 
-        // const res = await radamirAPI.post("/signin", { email, password });
+        const res = await radamirAPI.post("/signin", { email, password });
         // json-server login
-        const user = res.data.find(({ email, password }) => (emailInput === email && passwordInput === password));
+        // const user = res.data.find(({ email, password }) => (emailInput === email && passwordInput === password));
         // /json-server login
 
         // change parameter with real API
-        store.dispatch(fetchCampaigns(user.id));
-        store.dispatch(connectUser(user));
+        store.dispatch(fetchCampaigns(res.data.id));
+        store.dispatch(connectUser(res.data));
       } catch (err) {
         store.dispatch(setInput("", "password"));
         store.dispatch(setError("Une erreur est survenue"));

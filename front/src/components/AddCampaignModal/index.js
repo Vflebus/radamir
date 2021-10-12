@@ -6,6 +6,8 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { setCampaignInput, createCampaign } from "../../actions/campaigns";
 
+import "./addCampaignModal.scss";
+
 const AddCampaignModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
   const { id } = useSelector(({ user: { loggedUser } }) => loggedUser)
@@ -32,7 +34,7 @@ const AddCampaignModal = ({ open, onClose }) => {
   return createPortal(
     <>
       <div className="modal-overlay" onClick={onClose}></div>
-      <div className="connection">
+      <div className="connection" id="campaign-create">
         <h2>Créer une campagne</h2>
         {message && (
           <div className="error">{message}</div>
@@ -46,6 +48,7 @@ const AddCampaignModal = ({ open, onClose }) => {
           />
           <textarea
             placeholder="Description de la campagne"
+            className="campaign-description-create"
             value={description}
             onChange={handleDescriptionChange}
           />
