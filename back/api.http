@@ -11,9 +11,9 @@ POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
-    "username": "TEST",
-    "email": "user@test.com",
-    "password": "password"
+    "username": "4",
+    "email": "4@3.com",
+    "password": "4444444"
 }
 
 ### Login user
@@ -54,14 +54,14 @@ POST {{baseUrl}}/campaigns
 Content-Type: application/json
 
 {
-    "campaign_name": "TEST",
-    "description": "TEST2",
-    "user_id": 3
+    "campaign_name": "dhdh",
+    "description": "244",
+    "user_id": 1
 }
 
 ### Get player public notes
 
-GET {{baseUrl}}/player-public-notes/1/1
+GET {{baseUrl}}/player-public-notes/2/1
 
 ### Get non-player public notes
 
@@ -77,19 +77,24 @@ POST {{baseUrl}}/note
 Content-Type: application/json
 
 {
+    "title": "flanders",
     "content": "salusalut c flanders version 8",
     "is_private": false,
-    "campaign_id": 5,
-    "user_id": 3
+    "campaign_id": 2,
+    "user_id": 1
 }
 
 ### Update a note
 
-POST {{baseUrl}}/note/:id
+PATCH {{baseUrl}}/note/1
 Content-Type: application/json
 
 {
-    "content": "salusalut c flanders version 9",
+    "title": "salut",
+    "content": "salusalut c flanders v",
+    "is_private": false,
+    "campaign_id": 2,
+    "user_id": 1
 }
 
 ### Delete a note
