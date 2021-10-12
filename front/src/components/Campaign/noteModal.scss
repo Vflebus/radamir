@@ -1,3 +1,5 @@
+@use "../../styles/vars";
+
 .noteModalContainer { 
   position: fixed;
   top: 50%;
@@ -15,13 +17,34 @@
   color: #C8AD7F;
   border: solid .5rem #C8AD7F;
   height: 85vh;
-  h2 {
-      font-size: 5rem;
-      margin-bottom: 1rem;
+  h2, input {
+    font-family: vars.$title-font;
+    font-size: 5rem;
+    margin-bottom: 1rem;
   }
-  p {
+  input, textarea {
+    padding: 0.3rem 0.5rem;
+    width: 100%;
+    color: #C8AD7F;
+    background-color: rgba( 0, 0, 0, 0.1);
+    border: 1px solid #C8AD7F;
+    border-radius: 5px;
+  }
+  input {
+    text-align: center;
+  }
+  textarea {
+    width: 80%;
+  }
+  p, textarea {
       font-size: 1.5rem;
       height: 70%;
       overflow: auto;
+  }
+  .editIcon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
   }
 }

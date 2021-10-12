@@ -1,14 +1,15 @@
 import { useState } from "react";
 import cadre from "../../assets/images/parchment.png"
 import NoteModal from "./NoteModal";
+import MyNoteModal from "./MyNoteModal";
+import EditNoteModal from "./EditNoteModal";
 
 const Note = () => {
 
+    const isMine = true;
+    const is_private = true;
     const [isOpen, setIsOpen] = useState(false);
-
-    function noScroll() {
-        window.scrollTo(0, 0);
-    }
+    const [isEditOpen, setIsEditOpen] = useState(false);
 
     const openModal = () => {
         setIsOpen(true);
@@ -17,6 +18,12 @@ const Note = () => {
 
     const onClose = () => {
         setIsOpen(false);
+        setIsEditOpen(false);
+    }
+
+    const handleEdit = () => {
+        setIsOpen(false);
+        setIsEditOpen(true);
     }
 
     const title = "Titre de la note"
@@ -28,7 +35,8 @@ const Note = () => {
                 <img src={cadre} alt=""/>
                 <h4>{title}</h4>
             </button>
-            <NoteModal open={isOpen} onClose={onClose} title={title} content={content}/>
+            {isMine ? <MyNoteModal open={isOpen} onClose={onClose} title={title} content={content} handleEdit={handleEdit}/> : <NoteModal open={isOpen} onClose={onClose} title={title} content={content}/>}
+            <EditNoteModal open={isEditOpen} onClose={onClose} previousTitle={title} previousContent={content} is_private={is_private} />
         </>
     )
 };
