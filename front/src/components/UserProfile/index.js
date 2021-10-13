@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import ProfileCategory from "./ProfileCategory";
 import MotionWrapper from "../MotionWrapper";
+import ConfirmDelete from "../ConfirmDelete";
 
 import "./userProfile.scss";
 
@@ -9,6 +12,8 @@ import { updateUser, deleteUser } from "../../actions/user";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const [deleteOpen, setDeleteOpen] = useState(false);
   const { username } = useSelector(({ user }) => user.loggedUser);
   const { email } = useSelector(({ user }) => user.loggedUser);
 
@@ -18,6 +23,7 @@ const UserProfile = () => {
   };
 
   const onDelete = () => {
+    history.push("/");
     dispatch(deleteUser());
   };
 
@@ -41,9 +47,15 @@ const UserProfile = () => {
               type="email"
             />
             <button type="submit">Modifier</button>
-            <button type="button" onClick={onDelete}>
+            <button type="button" onClick={() => setDeleteOpen(true)} className="delete-user">
               Supprimer utilisateur
             </button>
+            <ConfirmDelete
+              open={deleteOpen}
+              title="l'utilisateur"
+              onClose={() => setDeleteOpen(false)}
+              onDelete={onDelete}
+            />
           </form>
         </div>
       </div>

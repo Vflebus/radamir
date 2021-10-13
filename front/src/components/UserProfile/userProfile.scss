@@ -40,7 +40,6 @@
                     font-family: vars.$title-font;
                     font-size: 1.2rem;
                     background-color: rgba( 0, 0, 0, 0.1);
-                    border: 1px solid #C8AD7F;
                     border-radius: 5px;
                     padding: 0.4rem;
                 }
@@ -78,6 +77,10 @@
                     &:hover {
                       color: #C8AD7F;
                       background-color: rgba(200, 173, 127, 0.5);
+                    }
+
+                    &.delete-user {
+                        border: 1px solid #b13120;
                     }
                 }
         }

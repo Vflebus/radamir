@@ -13,9 +13,9 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
     case FETCH_CAMPAIGNS:
       try {
-        const res = await radamirAPI.get("/campaign");
+        const res = await radamirAPI.get("/campaigns");
 
-        const userCampaigns = res.data.filter(({ userId }) => userId === action.id);
+        const userCampaigns = res.data.filter(({ user_id }) => user_id === action.id);
 
         store.dispatch(saveCampaigns(userCampaigns));
       } catch (err) {
@@ -31,8 +31,8 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
 
         if (!campaign_name || !description) throw new Error("Veuillez renseigner des informations");
 
-        await radamirAPI.post("/campaign", {
-          userId: action.id,
+        await radamirAPI.post("/campaigns", {
+          user_id: action.id,
           campaign_name,
           description
         });
@@ -52,7 +52,7 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
 
         if (!campaign_name || !description) throw new Error("Veuillez renseigner des informations");
 
-        await radamirAPI.patch(`/campaign/${action.campaignId}`, {
+        await radamirAPI.patch(`/campaigns/${action.campaignId}`, {
           campaign_name,
           description
         });
@@ -67,7 +67,7 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
 
     case DELETE_CAMPAIGN:
       try {
-        await radamirAPI.delete(`/campaign/${action.campaignId}`);
+        await radamirAPI.delete(`/campaigns/${action.campaignId}`);
 
         store.dispatch(fetchCampaigns(action.userId));
       } catch (err) {
