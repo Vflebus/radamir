@@ -36,3 +36,9 @@ export const saveNotes = (publicsData, myPublicsData, myPrivatesData) => ({
   myPublicsData,
   myPrivatesData
 });
+
+export const UPDATE_NOTE = "UPDATE_NOTE";
+export const updateNote = (id) => ({
+  type: UPDATE_NOTE,
+  id
+})

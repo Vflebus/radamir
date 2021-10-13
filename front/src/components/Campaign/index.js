@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
+import { AnimatePresence, motion } from "framer-motion";
 
 import ConfirmDelete from "../ConfirmDelete";
 import EditCampaignModal from "../EditCampaignModal";
@@ -13,6 +14,7 @@ import { setTitle, setType, setContent, fetchNotes } from "../../actions/notes";
 
 import carte from "../../assets/images/CarteRadamir.png";
 import bg2 from "../../assets/images/bg2.png";
+import logo from "../../assets/images/logo-decoupe.webp";
 
 import "./campaign.scss";
 
@@ -26,6 +28,7 @@ const Campaign = () => {
     const { id } = useParams();
     const userId = useSelector(({ user: { loggedUser } }) => loggedUser.id);
     const { list } = useSelector(({ campaigns }) => campaigns);
+    const { loading } = useSelector(({ notes }) => notes);
 
     const userCampaign = list.find(campaign => campaign.id === +id);
 
@@ -67,6 +70,23 @@ const Campaign = () => {
     const notesList = useSelector(({ notes }) => notes.list);
     console.log(notesList.myPublics);
     console.log(Array.isArray(notesList.myPublics));
+
+
+    if (loading) {
+        return (
+            <AnimatePresence exitBeforeEnter>
+              <motion.img
+                  src={logo}
+                  alt="logo Radamir"
+                  className="logo loading"
+                  id="logo"
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transitions={{ transition: "linear", duration: 3 }}
+              />
+            </AnimatePresence>
+        )
+    }
     
     return (
         <div className="campaign">

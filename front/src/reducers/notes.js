@@ -10,7 +10,8 @@ import {
     list: {},
     title: "",
     content:"",
-    type: "publique"
+    type: "publique",
+    loading: true
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -47,7 +48,8 @@ import {
                 myPublics: action.myPublicsData,
                 myPrivates: action.myPrivatesData,
                 publics: action.publicsData,
-              }
+              },
+              loading: false
             }    
 
       default:
