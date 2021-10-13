@@ -25,7 +25,7 @@ const userMiddleware = (store) => (next) => async (action) => {
   
         await radamirAPI.post("/signup", {
           username,
-          email,
+          email: email.toLowerCase(),
           password
         });
 
@@ -54,7 +54,11 @@ const userMiddleware = (store) => (next) => async (action) => {
         // const res = await radamirAPI.get("/user");
         // json-server login -->
 
-        const res = await radamirAPI.post("/signin", { email, password });
+        const res = await radamirAPI.post("/signin", {
+          email: email.toLowerCase(),
+          password
+        });
+        
         // <-- json-server login
         // const user = res.data.find(({ email, password }) => (emailInput === email && passwordInput === password));
         // json-server login -->
@@ -84,7 +88,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       try {
         const { id } = store.getState().user.loggedUser;
         const loggedUsername = store.getState().user.loggedUser.username;
-        const loggedEmail = store.getState().user.loggedUser.email;
+        const loggedEmail = store.getState().user.loggedUser.email.toLowerCase();
         const { username, email } = store.getState().user;
 
         const res = await radamirAPI.patch(`/profile/${id}`, {
@@ -94,7 +98,6 @@ const userMiddleware = (store) => (next) => async (action) => {
 
         const storedUserStr = localStorage.getItem("user");
         const storedUser = JSON.parse(storedUserStr);
-        console.log(storedUser);
 
         localStorage.setItem("user", JSON.stringify({
           ...storedUser,

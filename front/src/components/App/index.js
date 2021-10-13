@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Switch, useLocation, Redirect } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 
 import "../../styles/index.scss";
@@ -16,12 +16,12 @@ import Page404 from "../Page404";
 import CampaignList from "../CampaignList";
 import UserProfile from "../UserProfile";
 import WikiAdmin from "../WikiAdmin";
-import Campaign from "../Campaign"
+import Campaign from "../Campaign";
+import Loading from "../Loading";
 
 import { fetchWikis } from "../../actions/wikis";
 import { checkConnection } from "../../actions/user";
 
-import logo from "../../assets/images/logo-decoupe.webp";
 import Menu from "../Menu";
 import TermsAndAboutLinks from "../TermsAndAboutLinks";
 
@@ -47,21 +47,7 @@ const App = () => {
     dispatch(fetchWikis());
   }, [dispatch]);
 
-  if (loading) {
-    return (
-        <AnimatePresence exitBeforeEnter>
-          <motion.img
-              src={logo}
-              alt="logo Radamir"
-              className="logo loading"
-              id="logo"
-              initial={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transitions={{ transition: "linear", duration: 3 }}
-          />
-        </AnimatePresence>
-    )
-  }
+  if (loading) return <Loading />;
 
   return (
     <AnimatePresence>

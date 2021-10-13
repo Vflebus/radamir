@@ -5,6 +5,7 @@ import {
 import { LOGOUT } from "../actions/user";
 
 const initialState = {
+  loading: true,
   list: [],
   campaign_name: "",
   description: ""
@@ -15,7 +16,8 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_CAMPAIGNS:
       return {
         ...state,
-        list: action.campaigns
+        list: action.campaigns,
+        loading: false
       };
 
     case SET_CAMPAIGN_INPUT:
