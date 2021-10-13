@@ -7,8 +7,7 @@ import {
   CHECK_CONNECTION,
   connectUser,
   setInput,
-  logout,
-  LOGOUT
+  logout
 } from "../actions/user";
 import { setError, clearError } from "../actions/error";
 import { fetchCampaigns } from "../actions/campaigns";
@@ -109,11 +108,6 @@ const userMiddleware = (store) => (next) => async (action) => {
       next(action);
       break;
 
-    case LOGOUT:
-      window.localStorage.clear();
-      next(action);
-      break;
-
     case CHECK_CONNECTION:
       try {
         const userId = window.localStorage.getItem("userId");
@@ -131,6 +125,7 @@ const userMiddleware = (store) => (next) => async (action) => {
           break;
         }
 
+        store.dispatch(fetchCampaigns(res.data.id));
         store.dispatch(connectUser(res.data));
       } catch (err) {
         console.error(err);
