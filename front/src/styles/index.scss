@@ -5,8 +5,9 @@ html {
   font-family: serif;
 }
 body {
+  position: relative;
   background: url("../assets/images/bg-carte.webp");
-  
+  min-height: 100vh;
   overflow-x: hidden;
 }
 .noDisplay {
