@@ -101,8 +101,8 @@ class Campaign {
       if (this.id) {
         await client.query(
           `
-            SELECT update_campaign($1, $2);`,
-          [this.description, this.id]
+            SELECT update_campaign($1, $2, $3);`,
+          [this.campaign_name, this.description, this.id]
         );
       } else {
         const { rows } = await client.query(
