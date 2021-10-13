@@ -88,12 +88,12 @@ const userMiddleware = (store) => (next) => async (action) => {
       try {
         const { id } = store.getState().user.loggedUser;
         const loggedUsername = store.getState().user.loggedUser.username;
-        const loggedEmail = store.getState().user.loggedUser.email.toLowerCase();
+        const loggedEmail = store.getState().user.loggedUser.email;
         const { username, email } = store.getState().user;
 
         const res = await radamirAPI.patch(`/profile/${id}`, {
           username: (username ? username : loggedUsername),
-          email : (email ? email : loggedEmail)
+          email : (email ? email.toLowerCase() : loggedEmail)
         });
 
         const storedUserStr = localStorage.getItem("user");
