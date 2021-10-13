@@ -69,7 +69,7 @@ GET {{baseUrl}}/public-notes/1/1
 
 ### Get player private notes
 
-GET {{baseUrl}}/private-notes/1/2
+GET {{baseUrl}}/private-notes/2/1
 
 ### Create a note
 
@@ -90,11 +90,7 @@ PATCH {{baseUrl}}/note/1
 Content-Type: application/json
 
 {
-    "title": "salut",
-    "content": "salusalut c flanders v",
-    "is_private": false,
-    "campaign_id": 2,
-    "user_id": 1
+    "is_private": true
 }
 
 ### Delete a note
