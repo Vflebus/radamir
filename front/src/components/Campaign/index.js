@@ -16,7 +16,7 @@ import bg2 from "../../assets/images/bg2.png";
 
 import "./campaign.scss";
 
-// import Note from "./Note";
+import Note from "./Note";
 
 const Campaign = () => {
     const dispatch = useDispatch();
@@ -64,7 +64,9 @@ const Campaign = () => {
         dispatch(fetchNotes(id, userId));
     }, [dispatch, userId, id]);
 
-    const notesList = useSelector(({ notes }) => notes);
+    const notesList = useSelector(({ notes }) => notes.list);
+    console.log(notesList.myPublics);
+    console.log(Array.isArray(notesList.myPublics));
     
     return (
         <div className="campaign">
@@ -108,10 +110,12 @@ const Campaign = () => {
                 <h2>Notes</h2>
                 <section className="allNotes">
                     <section className="notesPrivees">
-                        <h3>Privées</h3>
+                        <h3>Mes notes privées</h3>
+
                     </section>
                     <section className="notesPubliques">
-                        <h3>Publiques</h3>
+                        <h3>Notes du groupe</h3>
+                        {notesList.myPublics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private}/>)}
                     </section>
                     <section className="imageDiscord">
                         <h3>Illustration actuelle</h3>
@@ -119,7 +123,7 @@ const Campaign = () => {
                     </section>
                 </section>
                 <button className="addNote" onClick={openAddModal}>Ajouter une nouvelle note</button>
-                <AddNoteModal open={isAddModalOpen} onClose={onAddModalClose}/>
+                <AddNoteModal open={isAddModalOpen} onClose={onAddModalClose} campaign_id={id}/>
             </section>
         </div>
     )

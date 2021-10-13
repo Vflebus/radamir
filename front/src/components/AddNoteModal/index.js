@@ -8,7 +8,7 @@ import { createNote, setTitle, setType, setContent } from "../../actions/notes";
 
 import "./addNoteModal.scss"
 
-const AddNoteModal = ({ open, onClose }) => {
+const AddNoteModal = ({ open, onClose, campaign_id }) => {
   const dispatch = useDispatch();
   const { title } = useSelector(({ notes }) => notes);
   const { type } = useSelector(({ notes }) => notes);
@@ -17,7 +17,7 @@ const AddNoteModal = ({ open, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createNote());
+    dispatch(createNote(campaign_id));
     onClose();
     console.log('submit');
   };
