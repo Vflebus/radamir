@@ -9,8 +9,8 @@ CREATE FUNCTION new_campaign(VARCHAR(255), TEXT, INT) RETURNS INT AS $$
 VALUES($1, $2, $3) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_campaign(VARCHAR(255), TEXT, INT) RETURNS void AS $$
-    UPDATE "campaign" SET "campaign_name" = $1, "description" = $2 WHERE id = $3;
+CREATE FUNCTION update_campaign(TEXT, INT) RETURNS void AS $$
+    UPDATE "campaign" SET "description" = $1 WHERE id = $2;
 $$ LANGUAGE SQL STRICT;
 
 -- user new & update
@@ -25,14 +25,14 @@ CREATE FUNCTION update_user(TEXT, TEXT, TEXT, INT) RETURNS void AS $$
 $$ LANGUAGE SQL STRICT;
 
 -- notes new & update
-CREATE FUNCTION new_note(TEXT, BOOLEAN, INT, INT) RETURNS INT AS $$
-	INSERT INTO "note"("content", "is_private", "campaign_id", "user_id") 
-    VALUES($1, $2, $3, $4) RETURNING id;
+CREATE FUNCTION new_note(TEXT, TEXT, BOOLEAN, INT, INT) RETURNS INT AS $$
+	INSERT INTO "note"("title", "content", "is_private", "campaign_id", "user_id") 
+    VALUES($1, $2, $3, $4, $5) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_note(TEXT, INT) RETURNS void AS $$
-    UPDATE "note" SET "content" = $1 WHERE id = $2;
-$$ LANGUAGE SQL STRICT;
+CREATE FUNCTION update_note(TEXT, TEXT, INT) RETURNS void AS $$
+    UPDATE "note" SET "title" = COALESCE($1, "title"), "content" = COALESCE($2, "content") WHERE id = $3;
+$$ LANGUAGE SQL;
 
 
 -- wiki new & update
