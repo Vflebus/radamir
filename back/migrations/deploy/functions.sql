@@ -9,8 +9,8 @@ CREATE FUNCTION new_campaign(VARCHAR(255), TEXT, INT) RETURNS INT AS $$
 VALUES($1, $2, $3) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_campaign(VARCHAR(255), TEXT, INT) RETURNS void AS $$
-    UPDATE "campaign" SET "campaign_name" = $1, "description" = $2 WHERE id = $3;
+CREATE FUNCTION update_campaign(TEXT, INT) RETURNS void AS $$
+    UPDATE "campaign" SET "description" = $1 WHERE id = $2;
 $$ LANGUAGE SQL STRICT;
 
 -- user new & update

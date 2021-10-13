@@ -58,15 +58,13 @@
 }
 
 .wiki {
-  position: relative;
-  top: 4rem;
-  left: 0;
-  margin: auto;
+  margin: 4rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   max-width: 50%;
+  height: 100%;
   color: vars.$main-color;
 
   &__select {
@@ -82,25 +80,24 @@
 
   &__title {
     text-align: center;
-    margin: 1.5rem 0 6rem;
+    margin: 1.5rem 0;
     font-family: vars.$title-font;
     text-transform: uppercase;
     font-size: 4rem;
   }
 
   &__page {
-    padding: 2rem;
     // display: flex;
     // justify-content: space-between;
     // gap: 3rem;
-    padding: 0 4rem;
+    padding: 3rem 4rem 0;
     width: 100%;
     font-size: 1.4rem;
   }
 
   &__category {
     position: relative;
-    margin-bottom: 5vh;
+    margin-bottom: 35px;
     white-space: pre-wrap;
     line-height: 1.4;
 
@@ -129,7 +126,7 @@
 
   .category-container {
     flex: 85%;
-    margin-bottom: 6rem;
+    // margin-bottom: 3rem;
   }
 
 

@@ -61,7 +61,11 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return new Note(rows);
+      const notes = [];
+      for (const row in rows) {
+        notes[row] = rows[row];
+      }
+      return notes;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -87,7 +91,14 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return new Note(rows);
+      if (rows.length === 0) {
+        throw new NoNoteError(campaign_id);
+      }
+      const notes = [];
+      for (const row in rows) {
+        notes[row] = rows[row];
+      }
+      return notes;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -112,7 +123,14 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return new Note(rows);
+      if (rows.length === 0) {
+        throw new NoNoteError(campaign_id);
+      }
+      const notes = [];
+      for (const row in rows) {
+        notes[row] = rows[row];
+      }
+      return notes;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
