@@ -74,7 +74,6 @@ const Campaign = () => {
 
     if (loading) {
         return (
-            <AnimatePresence exitBeforeEnter>
               <motion.img
                   src={logo}
                   alt="logo Radamir"
@@ -84,7 +83,6 @@ const Campaign = () => {
                   exit={{ opacity: 0 }}
                   transitions={{ transition: "linear", duration: 3 }}
               />
-            </AnimatePresence>
         )
     }
     
@@ -131,11 +129,12 @@ const Campaign = () => {
                 <section className="allNotes">
                     <section className="notesPrivees">
                         <h3>Mes notes privées</h3>
-
+                        {notesList.myPrivates.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.content}/>)}
                     </section>
                     <section className="notesPubliques">
                         <h3>Notes du groupe</h3>
-                        {notesList.myPublics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private}/>)}
+                        {notesList.myPublics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.content}/>)}
+                        {notesList.publics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.content}/>)}
                     </section>
                     <section className="imageDiscord">
                         <h3>Illustration actuelle</h3>

@@ -9,6 +9,7 @@ import {
   logout
 } from "../actions/user";
 import { setError, clearError } from "../actions/error";
+import { fetchCampaigns } from "../actions/campaigns";
 import history from "../history";
 
 const userMiddleware = (store) => (next) => async (action) => {  
@@ -45,9 +46,20 @@ const userMiddleware = (store) => (next) => async (action) => {
         store.dispatch(clearError());
 
         const { email, password } = store.getState().user;
+        // json-server login
+        // const emailInput = store.getState().user.email;
+        // const passwordInput = store.getState().user.password;
+
+        // const res = await radamirAPI.get("/user");
+        // /json-server login
 
         const res = await radamirAPI.post("/signin", { email, password });
+        // json-server login
+        // const user = res.data.find(({ email, password }) => (emailInput === email && passwordInput === password));
+        // /json-server login
 
+        // change parameter with real API
+        store.dispatch(fetchCampaigns(res.data.id));
         store.dispatch(connectUser(res.data));
       } catch (err) {
         store.dispatch(setInput("", "password"));
@@ -82,8 +94,6 @@ const userMiddleware = (store) => (next) => async (action) => {
         await radamirAPI.delete(`/profile/${id}`);
 
         store.dispatch(logout());
-
-        history.push("/");
       } catch (err) {
         console.log(err);
       }

@@ -16,14 +16,14 @@ const notesMiddleware = (store) => (next) => async (action) => {
 
         case FETCH_NOTES:
             try {
-                // const publics = await radamirAPI.get(`/public-notes/${action.campaign_id}/${action.user_id}`);
-                // const publicsData = publics.data;
-                const myPublics = await radamirAPI.get(`/player-public-notes/${action.campaign_id}/${action.user_id}`);
+                const publics = await radamirAPI.get(`/public-notes/1/${action.user_id}`);
+                const publicsData = publics.data;
+                const myPublics = await radamirAPI.get(`/player-public-notes/1/${action.user_id}`);
                 const myPublicsData = myPublics.data;
-                // const myPrivates = await radamirAPI.get(`/private-notes/${action.campaign_id}/${action.user_id}`);
-                // const myPrivatesData = myPrivates.data;
+                const myPrivates = await radamirAPI.get(`/private-notes/1/${action.user_id}`);
+                const myPrivatesData = myPrivates.data;
 
-                store.dispatch(saveNotes([], myPublicsData, []));
+                store.dispatch(saveNotes(publicsData, myPublicsData, myPrivatesData));
 
             } catch (err) {
                 console.error(err);
