@@ -61,7 +61,11 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return new Note(rows);
+      const notes = [];
+      for (const row in rows) {
+        notes[row] = rows[row];
+      }
+      return notes;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -87,7 +91,14 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return new Note(rows);
+      if (rows.length === 0) {
+        throw new NoNoteError(campaign_id);
+      }
+      const notes = [];
+      for (const row in rows) {
+        notes[row] = rows[row];
+      }
+      return notes;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -112,7 +123,14 @@ class Note {
       if (rows.length === 0) {
         throw new NoNoteError(campaign_id);
       }
-      return new Note(rows);
+      if (rows.length === 0) {
+        throw new NoNoteError(campaign_id);
+      }
+      const notes = [];
+      for (const row in rows) {
+        notes[row] = rows[row];
+      }
+      return notes;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -129,14 +147,15 @@ class Note {
   async save() {
     try {
       if (this.id) {
-        await client.query(`SELECT update_note($1, $2);`, [
+        await client.query(`SELECT update_note($1, $2, $3);`, [
+          this.title,
           this.content,
           this.id,
         ]);
       } else {
         const { rows } = await client.query(
-          `SELECT new_note($1, $2, $3, $4) AS id`,
-          [this.content, this.is_private, this.campaign_id, this.user_id]
+          `SELECT new_note($1, $2, $3, $4, $5) AS id`,
+          [this.title, this.content, this.is_private, this.campaign_id, this.user_id]
         );
         this.id = rows[0].id;
         return this;
