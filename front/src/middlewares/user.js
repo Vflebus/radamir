@@ -86,6 +86,7 @@ const userMiddleware = (store) => (next) => async (action) => {
           email : (email ? email : loggedEmail)
         });
 
+        window.localStorage.setItem("userLogin", res.data.email);
         store.dispatch(connectUser(res.data));
       } catch (err) {
         console.log(err);
