@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import ConfirmDelete from "../ConfirmDelete";
 import EditCampaignModal from "../EditCampaignModal";
+import AddNoteModal from "../AddNoteModal";
 
 import { deleteCampaign, setCampaignInput } from "../../actions/campaigns";
 import { clearError } from "../../actions/error";
 
+import { setTitle, setType, setContent, fetchNotes } from "../../actions/notes";
+
 import carte from "../../assets/images/CarteRadamir.png";
-// import bg2 from "../../assets/images/bg2.png";
+import bg2 from "../../assets/images/bg2.png";
 
 import "./campaign.scss";
 
@@ -43,6 +46,25 @@ const Campaign = () => {
         dispatch(setCampaignInput("description", ""));
         setEditOpen(false);
     };
+
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const openAddModal = () => {
+        setIsAddModalOpen(true);
+    };
+    const onAddModalClose = () => {
+        setIsAddModalOpen(false);
+        dispatch(setType("publique"));
+        dispatch(setTitle(""));
+        dispatch(setContent(""));
+        dispatch(clearError());
+    };
+    
+
+    useEffect (() => {
+        dispatch(fetchNotes(id, userId));
+    }, [dispatch, userId, id]);
+
+    const notesList = useSelector(({ notes }) => notes);
     
     return (
         <div className="campaign">
@@ -81,32 +103,24 @@ const Campaign = () => {
                     />
                 </section>
             </section>
-            {/* <section className="pageTwo">
+            <section className="pageTwo">
                 <img src={bg2} alt="" className="bg2"/>
                 <h2>Notes</h2>
                 <section className="allNotes">
                     <section className="notesPrivees">
                         <h3>Privées</h3>
-                        <Note />
-                        <Note />
-                        <Note />
-                        <Note />
                     </section>
                     <section className="notesPubliques">
                         <h3>Publiques</h3>
-                        <Note />
-                        <Note />
-                        <Note />
-                        <Note />
-                        <Note />
                     </section>
                     <section className="imageDiscord">
                         <h3>Illustration actuelle</h3>
                         <img src="https://cdn.discordapp.com/attachments/837830452042661899/897226129709096960/Cennetig_le_Minutieux.jpg" alt="" className="discordImg"/>
                     </section>
                 </section>
-                <button className="addNote">Ajouter une nouvelle note</button>
-            </section> */}
+                <button className="addNote" onClick={openAddModal}>Ajouter une nouvelle note</button>
+                <AddNoteModal open={isAddModalOpen} onClose={onAddModalClose}/>
+            </section>
         </div>
     )
 };
