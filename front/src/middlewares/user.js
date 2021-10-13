@@ -94,8 +94,6 @@ const userMiddleware = (store) => (next) => async (action) => {
         await radamirAPI.delete(`/profile/${id}`);
 
         store.dispatch(logout());
-
-        history.push("/");
       } catch (err) {
         console.log(err);
       }

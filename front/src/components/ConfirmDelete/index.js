@@ -8,7 +8,7 @@ const ConfirmDelete = ({ open, title, onClose, onDelete }) => {
     <>
       <div className="modal-overlay" onClick={onClose}></div>
       <div className="connection">
-        <h2>Supprimer {title}</h2>
+        <h2>Supprimer {title} ?</h2>
         <button
           type="submit"
           className="admin-button delete-wiki"
