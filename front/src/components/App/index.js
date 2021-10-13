@@ -19,6 +19,7 @@ import WikiAdmin from "../WikiAdmin";
 import Campaign from "../Campaign"
 
 import { fetchWikis } from "../../actions/wikis";
+import { checkConnection } from "../../actions/user";
 
 import logo from "../../assets/images/logo-decoupe.webp";
 import Menu from "../Menu";
@@ -42,6 +43,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    dispatch(checkConnection());
     dispatch(fetchWikis());
   }, [dispatch]);
 

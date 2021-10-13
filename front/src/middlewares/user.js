@@ -4,9 +4,11 @@ import {
   LOGIN,
   UPDATE_USER,
   DELETE_USER,
+  CHECK_CONNECTION,
   connectUser,
   setInput,
-  logout
+  logout,
+  LOGOUT
 } from "../actions/user";
 import { setError, clearError } from "../actions/error";
 import { fetchCampaigns } from "../actions/campaigns";
@@ -46,17 +48,21 @@ const userMiddleware = (store) => (next) => async (action) => {
         store.dispatch(clearError());
 
         const { email, password } = store.getState().user;
-        // json-server login
+        // <-- json-server login
         // const emailInput = store.getState().user.email;
         // const passwordInput = store.getState().user.password;
 
         // const res = await radamirAPI.get("/user");
-        // /json-server login
+        // json-server login -->
 
         const res = await radamirAPI.post("/signin", { email, password });
-        // json-server login
+        // <-- json-server login
         // const user = res.data.find(({ email, password }) => (emailInput === email && passwordInput === password));
-        // /json-server login
+        // json-server login -->
+
+        // Persistent connection
+        window.localStorage.setItem("userLogin", res.data.email);
+        window.localStorage.setItem("userId", res.data.id);
 
         // change parameter with real API
         store.dispatch(fetchCampaigns(res.data.id));
@@ -93,9 +99,40 @@ const userMiddleware = (store) => (next) => async (action) => {
 
         await radamirAPI.delete(`/profile/${id}`);
 
+        window.localStorage.clear();
+
         store.dispatch(logout());
       } catch (err) {
         console.log(err);
+      }
+      next(action);
+      break;
+
+    case LOGOUT:
+      window.localStorage.clear();
+      next(action);
+      break;
+
+    case CHECK_CONNECTION:
+      try {
+        const userId = window.localStorage.getItem("userId");
+        const userLogin = window.localStorage.getItem("userLogin");
+
+        if (!userId && !userLogin) {
+          next(action);
+          break;
+        }
+
+        const res = await radamirAPI.get(`/profile/${userId}`);
+
+        if (res.data.email !== userLogin) {
+          next(action);
+          break;
+        }
+
+        store.dispatch(connectUser(res.data));
+      } catch (err) {
+        console.error(err);
       }
       next(action);
       break;
