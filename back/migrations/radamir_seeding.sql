@@ -9,7 +9,11 @@ VALUES('La quête de Nono', 'Nono le Boss va se lancer dans un périple semé d'
 INSERT INTO "campaign_has_players" ("campaign_id", "user_id")
 VALUES (1, 1);
 
-INSERT INTO "note" ("content", "is_private", "campaign_id", "user_id")
+INSERT INTO "note" ("title", "content", "is_private", "campaign_id", "user_id")
 VALUES
-('On a croisé aleks', false, 1, 1),
-('On a croisé Guillaume Pet Hache de Paix', false, 1, 2);
+('La Croisade', 'On a croisé aleks', false, 1, 1),
+('La seconde croisade', 'On a croisé Guillaume Pet Hache de Paix', false, 1, 2)
+('Note publique d''utilisateur 3', 'son contenu', false, 1, 3)
+('Note privée d''utilisateur 3', 'son contenu', true, 1, 3)
+('Note publique d''utilisateur 1', 'son contenu', false, 1, 3)
+;
