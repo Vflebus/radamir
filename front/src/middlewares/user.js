@@ -60,8 +60,15 @@ const userMiddleware = (store) => (next) => async (action) => {
         // json-server login -->
 
         // Persistent connection
-        window.localStorage.setItem("userLogin", res.data.email);
-        window.localStorage.setItem("userId", res.data.id);
+        const timeToLive = 3 * 60 * 60 * 1000;
+
+        const storedUser = {
+          id: res.data.id,
+          login: res.data.email,
+          expiry: new Date().getTime() + timeToLive
+        };
+
+        localStorage.setItem("user", JSON.stringify(storedUser));
 
         // change parameter with real API
         store.dispatch(fetchCampaigns(res.data.id));
@@ -85,7 +92,15 @@ const userMiddleware = (store) => (next) => async (action) => {
           email : (email ? email : loggedEmail)
         });
 
-        window.localStorage.setItem("userLogin", res.data.email);
+        const storedUserStr = localStorage.getItem("user");
+        const storedUser = JSON.parse(storedUserStr);
+        console.log(storedUser);
+
+        localStorage.setItem("user", JSON.stringify({
+          ...storedUser,
+          login: res.data.email
+        }));
+
         store.dispatch(connectUser(res.data));
       } catch (err) {
         console.log(err);
@@ -99,7 +114,7 @@ const userMiddleware = (store) => (next) => async (action) => {
 
         await radamirAPI.delete(`/profile/${id}`);
 
-        window.localStorage.clear();
+        localStorage.clear();
 
         store.dispatch(logout());
       } catch (err) {
@@ -110,17 +125,26 @@ const userMiddleware = (store) => (next) => async (action) => {
 
     case CHECK_CONNECTION:
       try {
-        const userId = window.localStorage.getItem("userId");
-        const userLogin = window.localStorage.getItem("userLogin");
+        const storedUserStr = localStorage.getItem("user");
 
-        if (!userId && !userLogin) {
+        if (!storedUserStr) {
           next(action);
           break;
         }
 
-        const res = await radamirAPI.get(`/profile/${userId}`);
+        const { id, login, expiry } = JSON.parse(storedUserStr);
+        const now = new Date();
 
-        if (res.data.email !== userLogin) {
+        if (now.getTime() > expiry) {
+          localStorage.clear();
+          next(action);
+          break;
+        }
+
+        const res = await radamirAPI.get(`/profile/${id}`);
+
+        if (res.data.email !== login) {
+          localStorage.clear();
           next(action);
           break;
         }
