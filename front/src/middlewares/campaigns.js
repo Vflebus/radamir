@@ -15,7 +15,8 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
       try {
         const res = await radamirAPI.get("/campaigns");
 
-        const userCampaigns = res.data.filter(({ user_id }) => user_id === action.id);
+        const userCampaigns = res.data
+                                  // .filter(({ user_id }) => user_id === action.id);
 
         store.dispatch(saveCampaigns(userCampaigns));
       } catch (err) {
@@ -48,7 +49,10 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
     case UPDATE_CAMPAIGN:
       try {
         store.dispatch(clearError());
-        const { campaign_name, description } = store.getState().campaigns;
+        const userId = store.getState().user.loggedUser.id
+        const { campaign_name, description, user_id } = store.getState().campaigns;
+
+        // if (userId !== user_id) throw new Error("Vous n'êtes pas autorisé à modifier cette campagne.");
 
         if (!campaign_name || !description) throw new Error("Veuillez renseigner des informations");
 

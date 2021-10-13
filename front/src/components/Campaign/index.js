@@ -25,6 +25,7 @@ const Campaign = () => {
     const { list } = useSelector(({ campaigns }) => campaigns);
 
     const userCampaign = list.find(campaign => campaign.id === +id);
+    const is_author = (userId === userCampaign.user_id);
 
     const handleDelete = () => {
         dispatch(deleteCampaign(userId, +id));
@@ -52,33 +53,38 @@ const Campaign = () => {
                     <img src={carte} alt="" />
                 </section>
                 <section className="sectionResume">
-                    <h2>Jusqu'ici :</h2>
+                    <h2>Résumé de la campagne :</h2>
                     <p>{userCampaign.description}</p>
-                    <button
-                        type="button"
-                        className="admin-button"
-                        onClick={handleOpenEdit}
-                    >
-                        Modifier Campagne
-                    </button>
-                    <EditCampaignModal
-                        open={editOpen}
-                        onClose={handleCloseEdit}
-                        campaignId={+id}
-                    />
-                    <button
-                        type="button"
-                        className="admin-button delete-wiki"
-                        onClick={() => setDeleteOpen(true)}
-                    >
-                        Supprimer Campagne
-                    </button>
-                    <ConfirmDelete
-                        open={deleteOpen}
-                        title={userCampaign.campaign_name}
-                        onClose={() => setDeleteOpen(false)}
-                        onDelete={handleDelete}
-                    />
+                    {
+                        is_author &&
+                        <>
+                            <button
+                                type="button"
+                                className="admin-button"
+                                onClick={handleOpenEdit}
+                            >
+                                Modifier Campagne
+                            </button>
+                            <EditCampaignModal
+                                open={editOpen}
+                                onClose={handleCloseEdit}
+                                campaignId={+id}
+                            />
+                            <button
+                                type="button"
+                                className="admin-button delete-wiki"
+                                onClick={() => setDeleteOpen(true)}
+                            >
+                                Supprimer Campagne
+                            </button>
+                            <ConfirmDelete
+                                open={deleteOpen}
+                                title={userCampaign.campaign_name}
+                                onClose={() => setDeleteOpen(false)}
+                                onDelete={handleDelete}
+                            />
+                        </>
+                    }
                 </section>
             </section>
             {/* <section className="pageTwo">
