@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   list: [],
-  loading: false,
+  loading: true,
   title: "",
   type: "region"
 };

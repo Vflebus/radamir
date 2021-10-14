@@ -29,9 +29,9 @@ const Campaign = () => {
     const userId = useSelector(({ user: { loggedUser } }) => loggedUser.id);
     const { list } = useSelector(({ campaigns }) => campaigns);
     const { loading } = useSelector(({ notes }) => notes);
+    const campaignLoader = useSelector(({ campaigns }) => campaigns.loading);
 
-    const userCampaign = list.find(campaign => campaign.id === +id);
-    const is_author = (userId === userCampaign.user_id);
+    const currentCampaign = list.find(campaign => campaign.id === +id);
 
     const handleDelete = () => {
         dispatch(deleteCampaign(userId, +id));
@@ -39,8 +39,8 @@ const Campaign = () => {
     };
 
     const handleOpenEdit = () => {
-        dispatch(setCampaignInput("campaign_name", userCampaign.campaign_name));
-        dispatch(setCampaignInput("description", userCampaign.description));
+        dispatch(setCampaignInput("campaign_name", currentCampaign.campaign_name));
+        dispatch(setCampaignInput("description", currentCampaign.description));
         setEditOpen(true);
     };
 
@@ -72,7 +72,7 @@ const Campaign = () => {
     const notesList = useSelector(({ notes }) => notes.list);
 
 
-    if (loading) {
+    if (loading || campaignLoader) {
         return (
               <motion.img
                   src={logo}
@@ -86,16 +86,18 @@ const Campaign = () => {
         )
     }
     
+    const is_author = (userId === currentCampaign.user_id);
+    
     return (
         <div className="campaign">
-            <h1>{userCampaign.campaign_name}</h1>
+            <h1>{currentCampaign.campaign_name}</h1>
             <section className="pageOne">
                 <section className="sectionCarte">
                     <img src={carte} alt="" />
                 </section>
                 <section className="sectionResume">
                     <h2>Résumé de la campagne :</h2>
-                    <p>{userCampaign.description}</p>
+                    <p>{currentCampaign.description}</p>
                     {
                         is_author &&
                         <>
@@ -120,7 +122,7 @@ const Campaign = () => {
                             </button>
                             <ConfirmDelete
                                 open={deleteOpen}
-                                title={userCampaign.campaign_name}
+                                title={currentCampaign.campaign_name}
                                 onClose={() => setDeleteOpen(false)}
                                 onDelete={handleDelete}
                             />
@@ -141,10 +143,10 @@ const Campaign = () => {
                         {notesList.myPublics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.id}/>)}
                         {notesList.publics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.id}/>)}
                     </section>
-                    {/* <section className="imageDiscord">
+                    <section className="imageDiscord">
                         <h3>Illustration actuelle</h3>
                         <img src="https://cdn.discordapp.com/attachments/837830452042661899/897226129709096960/Cennetig_le_Minutieux.jpg" alt="" className="discordImg"/>
-                    </section> */}
+                    </section>
                 </section>
                 <button className="addNote" onClick={openAddModal}>Ajouter une nouvelle note</button>
                 <AddNoteModal open={isAddModalOpen} onClose={onAddModalClose} campaign_id={id}/>

@@ -28,10 +28,15 @@ export const logout = () => ({
 
 export const UPDATE_USER = "UPDATE_USER";
 export const updateUser = () => ({
-  type: UPDATE_USER,
+  type: UPDATE_USER
 });
 
 export const DELETE_USER = "DELETE_USER";
 export const deleteUser = () => ({
   type: DELETE_USER
+});
+
+export const CHECK_CONNECTION = "CHECK_CONNECTION";
+export const checkConnection = () => ({
+  type: CHECK_CONNECTION
 });

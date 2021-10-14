@@ -43,7 +43,6 @@ const EditCampaignModal = ({ open, onClose, campaignId }) => {
             placeholder="Titre de la campagne"
             value={campaign_name}
             onChange={handleInputChange}
-            maxLength={16}
           />
           <textarea
             className="edit-content"
