@@ -1,0 +1,21 @@
+
+#noteModal {
+    height: 70vh;
+    .edit-content {
+        margin: 0.8rem 0;
+        padding: 0.3rem 0.5rem;
+        width: 100%;
+        height: 200px;
+        color: #C8AD7F;
+        background-color: rgba( 0, 0, 0, 0.1);
+        border: 1px solid #C8AD7F;
+        border-radius: 5px;
+        resize: none;
+    }
+    .radio-button-container {
+        display: flex;
+        .radio-button {
+            margin-right: 2rem;
+        }
+    }
+}

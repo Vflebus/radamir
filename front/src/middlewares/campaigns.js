@@ -8,11 +8,13 @@ import {
   fetchCampaigns
 } from "../actions/campaigns";
 import { clearError, setError } from "../actions/error";
+import { setLoading } from "../actions/notes";
 
 const campaignsMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
     case FETCH_CAMPAIGNS:
       try {
+        store.dispatch(setLoading());
         const res = await radamirAPI.get("/campaigns");
 
         const userCampaigns = res.data
