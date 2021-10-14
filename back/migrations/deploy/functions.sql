@@ -30,8 +30,8 @@ CREATE FUNCTION new_note(TEXT, TEXT, BOOLEAN, INT, INT) RETURNS INT AS $$
     VALUES($1, $2, $3, $4, $5) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_note(TEXT, TEXT, INT) RETURNS void AS $$
-    UPDATE "note" SET "title" = COALESCE($1, "title"), "content" = COALESCE($2, "content") WHERE id = $3;
+CREATE FUNCTION update_note(TEXT, TEXT, BOOLEAN, INT) RETURNS void AS $$
+    UPDATE "note" SET "title" = COALESCE($1, "title"), "content" = COALESCE($2, "content"), "is_private" = COALESCE($3, "is_private") WHERE id = $4;
 $$ LANGUAGE SQL;
 
 
