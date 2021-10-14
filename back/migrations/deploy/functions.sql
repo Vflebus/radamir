@@ -22,7 +22,7 @@ $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_user(TEXT, TEXT, TEXT, INT) RETURNS void AS $$
     UPDATE "user" SET "username" = COALESCE($1, "username"), "email" = COALESCE($2, "email"), "password" = COALESCE($3, "password") WHERE id = $4;
-$$ LANGUAGE SQL STRICT;
+$$ LANGUAGE SQL;
 
 -- notes new & update
 CREATE FUNCTION new_note(TEXT, TEXT, BOOLEAN, INT, INT) RETURNS INT AS $$
