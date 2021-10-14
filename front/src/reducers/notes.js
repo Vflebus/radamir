@@ -1,3 +1,5 @@
+import { CLEAN_NOTES } from "../actions/notes";
+import { SET_LOADING } from "../actions/notes";
 import {
     CREATE_NOTE,
     SET_TITLE,
@@ -49,8 +51,26 @@ import {
                 myPrivates: action.myPrivatesData,
                 publics: action.publicsData,
               },
-              loading: false
-            }    
+              title: "",
+              content:"",
+              type: "publique",
+              loading: false,
+            }
+
+        case SET_LOADING:
+            return {
+              ...state,
+              loading: true
+            } 
+
+        case CLEAN_NOTES:
+            return {
+              list: {},
+              title: "",
+              content:"",
+              type: "publique",
+              loading: true
+            }
 
       default:
         return state;

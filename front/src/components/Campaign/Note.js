@@ -3,16 +3,18 @@ import cadre from "../../assets/images/parchment.png"
 import NoteModal from "./NoteModal";
 import MyNoteModal from "./MyNoteModal";
 import EditNoteModal from "./EditNoteModal";
+import { useDispatch } from "react-redux";
+import { setContent, setTitle, setType } from "../../actions/notes";
 
 const Note = ({ title, content, note_id, creator_id, campaign_id, user_id, is_private }) => {
 
     const isMine = creator_id === user_id ? true : false;
     const [isOpen, setIsOpen] = useState(false);
     const [isEditOpen, setIsEditOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const openModal = () => {
         setIsOpen(true);
-        console.log (isOpen);
     }
 
     const onClose = () => {
@@ -23,6 +25,11 @@ const Note = ({ title, content, note_id, creator_id, campaign_id, user_id, is_pr
     const handleEdit = () => {
         setIsOpen(false);
         setIsEditOpen(true);
+        console.log(`note: ${note_id} campaign: ${campaign_id}`);
+        dispatch(setTitle(title));
+        const previousType = is_private ? "privee" : "publique";
+        dispatch(setType(previousType));
+        dispatch(setContent(content));
     }
 
     // const title = "Titre de la note"
@@ -35,7 +42,7 @@ const Note = ({ title, content, note_id, creator_id, campaign_id, user_id, is_pr
                 <h4>{title}</h4>
             </button>
             {isMine ? <MyNoteModal open={isOpen} onClose={onClose} title={title} content={content} handleEdit={handleEdit}/> : <NoteModal open={isOpen} onClose={onClose} title={title} content={content}/>}
-            <EditNoteModal open={isEditOpen} onClose={onClose} previousTitle={title} previousContent={content} is_private={is_private} />
+            <EditNoteModal open={isEditOpen} onClose={onClose} note_id={note_id} campaign_id={campaign_id} />
         </>
     )
 };

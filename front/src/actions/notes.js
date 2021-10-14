@@ -38,7 +38,18 @@ export const saveNotes = (publicsData, myPublicsData, myPrivatesData) => ({
 });
 
 export const UPDATE_NOTE = "UPDATE_NOTE";
-export const updateNote = (id) => ({
+export const updateNote = (note_id, campaign_id) => ({
   type: UPDATE_NOTE,
-  id
+  note_id,
+  campaign_id
+})
+
+export const SET_LOADING = "SET_LOADING";
+export const setLoading = () => ({
+  type: SET_LOADING
+})
+
+export const CLEAN_NOTES = "CLEAN_NOTES";
+export const cleanNotes = () => ({
+  type: CLEAN_NOTES
 })

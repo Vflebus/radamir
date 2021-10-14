@@ -4,10 +4,9 @@ import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import { createNote, setTitle, setType, setContent } from "../../actions/notes";
-import { useEffect } from "react";
+import { setTitle, setType, setContent, updateNote } from "../../actions/notes";
 
-const AddNoteModal = ({ open, onClose, previousTitle, previousContent, is_private }) => {
+const EditNoteModal = ({ open, onClose, note_id, campaign_id }) => {
   const dispatch = useDispatch();
   const { title } = useSelector(({ notes }) => notes);
   const { type } = useSelector(({ notes }) => notes);
@@ -16,7 +15,7 @@ const AddNoteModal = ({ open, onClose, previousTitle, previousContent, is_privat
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createNote());
+    dispatch(updateNote( note_id, campaign_id ));
     onClose();
   };
 
@@ -31,13 +30,6 @@ const AddNoteModal = ({ open, onClose, previousTitle, previousContent, is_privat
   const handleTextareaChange = (e) => {
       dispatch(setContent(e.target.value));
   }
-
-  useEffect (() => {
-    dispatch(setTitle(previousTitle));
-    const previousType = is_private ? "privee" : "publique";
-    dispatch(setType(previousType));
-    dispatch(setContent(previousContent));
-  }, []); 
 
   if (!open) return null;
 
@@ -98,9 +90,9 @@ const AddNoteModal = ({ open, onClose, previousTitle, previousContent, is_privat
   );
 };
 
-AddNoteModal.propTypes = {
+EditNoteModal.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired
 };
 
-export default AddNoteModal;
+export default EditNoteModal;

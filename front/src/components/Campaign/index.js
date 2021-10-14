@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import ConfirmDelete from "../ConfirmDelete";
 import EditCampaignModal from "../EditCampaignModal";
@@ -10,7 +10,7 @@ import AddNoteModal from "../AddNoteModal";
 import { deleteCampaign, setCampaignInput } from "../../actions/campaigns";
 import { clearError } from "../../actions/error";
 
-import { setTitle, setType, setContent, fetchNotes } from "../../actions/notes";
+import { setTitle, setType, setContent, fetchNotes, cleanNotes } from "../../actions/notes";
 
 import carte from "../../assets/images/CarteRadamir.png";
 import bg2 from "../../assets/images/bg2.png";
@@ -65,11 +65,10 @@ const Campaign = () => {
 
     useEffect (() => {
         dispatch(fetchNotes(id, userId));
-    }, [dispatch, userId, id]);
+    }, 
+    []);
 
     const notesList = useSelector(({ notes }) => notes.list);
-    console.log(notesList.myPublics);
-    console.log(Array.isArray(notesList.myPublics));
 
 
     if (loading) {
@@ -129,17 +128,17 @@ const Campaign = () => {
                 <section className="allNotes">
                     <section className="notesPrivees">
                         <h3>Mes notes privées</h3>
-                        {notesList.myPrivates.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.content}/>)}
+                        {notesList.myPrivates.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.id}/>)}
                     </section>
                     <section className="notesPubliques">
                         <h3>Notes du groupe</h3>
-                        {notesList.myPublics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.content}/>)}
-                        {notesList.publics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.content}/>)}
+                        {notesList.myPublics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.id}/>)}
+                        {notesList.publics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.id}/>)}
                     </section>
-                    <section className="imageDiscord">
+                    {/* <section className="imageDiscord">
                         <h3>Illustration actuelle</h3>
                         <img src="https://cdn.discordapp.com/attachments/837830452042661899/897226129709096960/Cennetig_le_Minutieux.jpg" alt="" className="discordImg"/>
-                    </section>
+                    </section> */}
                 </section>
                 <button className="addNote" onClick={openAddModal}>Ajouter une nouvelle note</button>
                 <AddNoteModal open={isAddModalOpen} onClose={onAddModalClose} campaign_id={id}/>
