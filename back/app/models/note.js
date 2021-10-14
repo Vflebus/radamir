@@ -58,16 +58,13 @@ class Note {
         `SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = false;`,
         [campaign_id, user_id]
       );
-      if (rows.length === 0) {
-        throw new NoNoteError(campaign_id);
-      }
+      const notes = [];
       if (rows[0]) {
-        const notes = [];
         for (const row in rows) {
           notes[row] = rows[row];
         }
-        return notes;
       }
+      return notes;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -90,19 +87,13 @@ class Note {
         `SELECT * FROM note WHERE campaign_id = $1 AND user_id <> $2 AND is_private = false;`,
         [campaign_id, user_id]
       );
-      if (rows.length === 0) {
-        throw new NoNoteError(campaign_id);
-      }
-      if (rows.length === 0) {
-        throw new NoNoteError(campaign_id);
-      }
+      const notes = [];
       if (rows[0]) {
-        const notes = [];
         for (const row in rows) {
           notes[row] = rows[row];
         }
-        return notes;
       }
+      return notes;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
@@ -124,19 +115,13 @@ class Note {
         `SELECT * FROM note WHERE campaign_id = $1 AND user_id = $2 AND is_private = true`,
         [campaign_id, user_id]
       );
-      if (rows.length === 0) {
-        throw new NoNoteError(campaign_id);
-      }
-      if (rows.length === 0) {
-        throw new NoNoteError(campaign_id);
-      }
+      const notes = [];
       if (rows[0]) {
-        const notes = [];
         for (const row in rows) {
           notes[row] = rows[row];
         }
-        return notes;
       }
+      return notes;
     } catch (error) {
       console.log(error);
       throw new Error(error.detail ? error.detail : error.message);
