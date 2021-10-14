@@ -1,7 +1,6 @@
 export const FETCH_CAMPAIGNS = "FETCH_CAMPAIGNS";
-export const fetchCampaigns = (id) => ({
-  type: FETCH_CAMPAIGNS,
-  id
+export const fetchCampaigns = () => ({
+  type: FETCH_CAMPAIGNS
 });
 
 export const SAVE_CAMPAIGNS = "SAVE_CAMPAIGNS";

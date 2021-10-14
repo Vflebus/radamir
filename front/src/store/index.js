@@ -6,8 +6,15 @@ import wikisMiddleware from "../middlewares/wikis";
 import userMiddleware from "../middlewares/user";
 import blocksMiddleware from "../middlewares/blocks";
 import campaignsMiddleware from "../middlewares/campaigns";
+import notesMiddleware from "../middlewares/notes";
 
-const middlewares = [wikisMiddleware, userMiddleware, blocksMiddleware, campaignsMiddleware];
+const middlewares = [
+  wikisMiddleware,
+  userMiddleware,
+  blocksMiddleware,
+  campaignsMiddleware,
+  notesMiddleware
+];
 
 const store = createStore(
   reducer,
