@@ -6,7 +6,6 @@ import {
     saveNotes,
     setTitle,
     setType,
-    //setContent,
     fetchNotes,
     setLoading,
     cleanNotes,
@@ -37,13 +36,11 @@ const notesMiddleware = (store) => (next) => async (action) => {
 
         case CREATE_NOTE:
             try {
-                console.log('beginning create');
                 store.dispatch(clearError());
                 const { title, type, content } = store.getState().notes;
                 const { id } = store.getState().user.loggedUser;
                 const is_private = (type==="privee");
                 const campaign_id = action.campaign_id
-                console.log(`title: ${title}, content: ${content}, is_private: ${is_private}, campaign_id: ${campaign_id}, id: ${id}`)
 
                 await radamirAPI.post("/note", {
                     title,
@@ -57,7 +54,6 @@ const notesMiddleware = (store) => (next) => async (action) => {
                 store.dispatch(setType("publique"));
                 store.dispatch(setLoading());
                 store.dispatch(fetchNotes(campaign_id, id));
-                console.log('dispatching fetch');
                 
             } catch (err) {
                 console.log(err);
@@ -70,8 +66,6 @@ const notesMiddleware = (store) => (next) => async (action) => {
             try {
                 const { title, type, content } = store.getState().notes;
                 const is_private = (type==="privee");
-                console.log(`update with title: ${title} is_private: ${is_private} content: ${content}`);
-                console.log(`updating note ${action.note_id} in campaign ${action.campaign_id}`);
                 await radamirAPI.patch(`/note/${action.note_id}`, {
                     title,
                     content,
