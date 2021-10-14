@@ -10,6 +10,7 @@ import {
     fetchNotes,
     setLoading,
     cleanNotes,
+    DELETE_NOTE,
   } from "../actions/notes";
   import { setError, clearError } from "../actions/error";
 
@@ -80,6 +81,16 @@ const notesMiddleware = (store) => (next) => async (action) => {
                 store.dispatch(fetchNotes(action.campaign_id, id));
             } catch (err) {
                 console.log(err);
+            };
+            next(action);
+            break;
+
+        case DELETE_NOTE:
+            try {
+                await radamirAPI.delete(`/note/${action.note_id}`)
+                store.dispatch(fetchNotes(action.campaign_id, action.user_id));
+            } catch (err) {
+                console.error(err);
             };
             next(action);
             break;

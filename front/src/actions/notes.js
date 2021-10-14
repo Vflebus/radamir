@@ -53,3 +53,11 @@ export const CLEAN_NOTES = "CLEAN_NOTES";
 export const cleanNotes = () => ({
   type: CLEAN_NOTES
 })
+
+export const DELETE_NOTE = "DELETE_NOTE";
+export const deleteNote = (note_id, campaign_id, user_id) => ({
+  type: DELETE_NOTE,
+  note_id,
+  campaign_id,
+  user_id
+})

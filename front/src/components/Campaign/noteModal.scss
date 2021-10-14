@@ -46,5 +46,13 @@
     top: 1rem;
     right: 1rem;
     font-size: 2rem;
+    cursor: pointer;
+  }
+  .deleteIcon {
+    position: absolute;
+    top: 1rem;
+    right: 4rem;
+    font-size: 2rem;
+    cursor: pointer;
   }
 }
