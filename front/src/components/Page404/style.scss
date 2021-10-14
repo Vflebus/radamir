@@ -1,0 +1,28 @@
+@use "../../styles/vars";
+
+.page404 {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        max-width: 1057px;
+        width: 56vw;
+    }
+
+    p {
+        text-align: center;
+        font-size: 3rem;
+        font-family: vars.$title-font;
+    }
+
+    @media screen and (max-width: 1024px) {
+        img {
+            display: 100%;
+        }
+    }
+}

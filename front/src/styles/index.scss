@@ -5,8 +5,38 @@ html {
   font-family: serif;
 }
 body {
-  background: url("../assets/images/bg-carte.png");
+  position: relative;
+  background: url("../assets/images/bg-carte.webp");
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 .noDisplay {
     opacity: 0%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input, 
+textarea {
+  font-family: serif;
+  font-size: 1.1rem;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.controls-button {
+  margin-left: 0.5rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: ease 0.3s;
+
+  &:hover {
+    color: #C8AD7F;
+  }
 }

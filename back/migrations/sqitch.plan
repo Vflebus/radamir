@@ -2,4 +2,5 @@
 %project=radamir
 
 initdb 2021-09-21T12:32:28Z Loicb <loic.bonaventura@gmail.com> # Init database
-seedingregion 2021-09-21T13:42:53Z Loicb <loic.bonaventura@gmail.com> # Seeding region
+seeding_region_blocks 2021-09-29T06:20:49Z Loicb <loic.bonaventura@gmail.com> # Seeding all the regions blocks in the database so that the wiki is functional
+functions 2021-09-30T12:19:56Z greshym <proboris@protonmail.com> # Add functions to pg

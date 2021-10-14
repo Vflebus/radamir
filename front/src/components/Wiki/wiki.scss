@@ -1,15 +1,70 @@
 @use "../../styles/vars";
 
-.wiki {
-  position: relative;
-  top: 4rem;
+.links-container {
+  position: fixed;
+  top: 15px;
   left: 0;
-  margin: auto;
+  z-index: 10;
+
+  a {
+    font-family: vars.$title-font;
+  }
+
+  .categorySelector {
+    margin-left: 1rem;
+    color: vars.$main-color;
+    font-size: 32px;
+    cursor: pointer;
+  }
+
+  .categorySelector::before {
+    position: relative;
+    top: 11px;
+    content: url(../../assets/images/circle.webp);
+  }
+  
+  .active::before {
+    position: relative;
+    top: 8px;
+    content: url(../../assets/images/tickedCircle.webp);
+  }
+  @media screen and (max-height: 740px) {
+
+    ul {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .categorySelector {
+        font-size: 32px;
+      }
+      @media screen and (max-height: 615px) {
+        .categorySelector {
+          font-size: 5vh;
+        }
+      }
+    }
+    .active {
+      text-decoration: underline;
+    }
+    .categorySelector::before {
+      content: "";
+    }
+    .active::before {
+      content: "";
+    }
+  }
+}
+
+.wiki {
+  margin: 4rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   max-width: 50%;
+  height: 100%;
   color: vars.$main-color;
 
   &__select {
@@ -25,24 +80,24 @@
 
   &__title {
     text-align: center;
-    margin: 1.5rem 0 6rem;
+    margin: 1.5rem 0;
     font-family: vars.$title-font;
     text-transform: uppercase;
     font-size: 4rem;
   }
 
   &__page {
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 3rem;
-    padding: 0 4rem;
+    // display: flex;
+    // justify-content: space-between;
+    // gap: 3rem;
+    padding: 3rem 4rem 0;
     width: 100%;
     font-size: 1.4rem;
   }
 
   &__category {
-    margin-bottom: 3rem;
+    position: relative;
+    margin-bottom: 35px;
     white-space: pre-wrap;
     line-height: 1.4;
 
@@ -51,6 +106,7 @@
       // left: 50%;
       // transform: translateX(-50%);
       width: 22vw;
+      max-width: 320px;
     }
 
     &-titleImage {
@@ -70,79 +126,49 @@
 
   .category-container {
     flex: 85%;
-    margin-bottom: 6rem;
+    // margin-bottom: 3rem;
   }
 
-  .links-container {
-    position: fixed;
-    top: 40%;
-    transform: translateY(-50%);
-    left: 5px;
-    height: 50vh;
-    text-align: start;
 
-    li {
-      margin-bottom: 5rem;
-    }
+  // .to-wiki {
+  //   position: fixed;
+  //   top: 50%;
+  //   left: 5px;
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 1rem;
+  //   font-size: 1.3rem;
+  //   color: vars.$main-color;
 
-    .categorySelector {
-      color: vars.$main-color;
-      font-size: 2rem;
-      margin-bottom: 5rem;
-      cursor: pointer;
-    }
+  //   img {
+  //     width: 40px;
+  //     transition: ease 0.5s;
+  //   }
 
-    .categorySelector::before {
-      position: relative;
-      top: 8px;
-      content: url(../../assets/images/circle.png);
-    }
-
-    .active {
-      font-size: 2.5rem;
-    } 
-    
-    .active::before {
-      position: relative;
-      top: 8px;
-      content: url(../../assets/images/tickedCircle.png);
-    }
-  }
-
-  .to-wiki {
-    position: fixed;
-    top: 50%;
-    left: 5px;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 1.3rem;
-    color: vars.$main-color;
-
-    img {
-      width: 40px;
-      transition: ease 0.5s;
-    }
-
-    &:hover {
-      img {
-        transform: translateX(-10px);
-      }
-    }
-  }
+  //   &:hover {
+  //     img {
+  //       transform: translateX(-10px);
+  //     }
+  //   }
+  // }
 }
 
 @media screen and (max-width: 1024px) {
   .wiki {
 
-    .to-wiki {
-      position: relative;
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
+    // .to-wiki {
+    //   position: relative;
+    //   margin-bottom: 1.5rem;
+    //   font-size: 1.1rem;
 
-      img {
-        width: 20px;
-      }
+    //   img {
+    //     width: 20px;
+    //   }
+    // }
+
+    &__select {
+      display: block;
+      margin-bottom: 1.7rem;
     }
 
     &__category {
@@ -159,20 +185,20 @@
       }
     }
   }
+  .links-container {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 770px) {
+
   .wiki {
+    max-width: 80%;
     text-align: center;
 
     &__title {
       margin-bottom: 1.7rem;
-      font-size: 2rem;
-    }
-
-    &__select {
-      display: block;
-      margin-bottom: 1.7rem;
+      font-size: 2.5rem;
     }
 
     &__page {
@@ -187,10 +213,6 @@
       &-content {
         text-align: left;
       }
-    }
-
-    .links-container {
-      display: none;
     }
   }
 }

@@ -1,0 +1,86 @@
+@use "../../styles/vars";
+
+.mobileWikiPage {
+    display: flex;
+    flex-direction: column;
+    h1 {
+        font-family: vars.$title-font;
+        font-size: 20vw;
+        color: vars.$main-color;
+        margin-left: 5vw;
+        margin-top: 2vh;
+        margin-bottom: 1rem;
+    }
+
+    &__allCategories {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__categoryContainer {
+            position: relative;
+            width: 90vw;
+            background-color: rgba(0, 0, 0, .8);
+            padding: 1rem;
+            border: solid 5px #63412a;
+            margin-bottom: 1rem;
+            color: rgb(228, 203, 135);
+            font-size: 1.2rem;
+
+            &__titleContainer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                // margin-bottom: 1rem;
+
+                h2 {
+                    font-family: vars.$title-font;
+                    font-size: 10vw;
+                }
+
+                Button {
+                    background-color: rgba(0, 0, 0, .0);
+                    color: white;
+                    font-size: 3.5rem;
+                    border: none;
+                    transform: rotate(-90deg);
+                    transition: ease 0.3s;
+                }
+
+                .rotateUp {
+                    transform: rotate(90deg);
+                }
+
+            }
+
+            .unDeployed {
+                display: none;
+            }
+            .intro {
+                margin-bottom: 3.5rem;
+            }
+            .moreButton {
+                position: absolute;
+                bottom: 1vh;
+                right: 1vh;
+                padding: 0.5rem;
+                border: solid 2px #63412a;
+                background-color: rgba(0, 0, 0, .8);
+            }
+
+        }
+
+    }
+    .mobileModalButton {
+        // position: absolute;
+        // top: -2vh;
+        font-family: vars.$title-font;
+        color: vars.$main-color;
+        font-size: 7vw;
+        border: none;
+        background-color: rgba(0, 0, 0, 0 );
+        margin-bottom: 1rem;
+        text-decoration: underline;
+    }
+
+}

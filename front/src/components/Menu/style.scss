@@ -1,9 +1,8 @@
 .menu, .menuMobileToggle {
-    position: absolute;
+    position: fixed;
     top: 2vh;
     right: .4vw;
     z-index: 12;
-    transition: transform 3s;
 }
 .menuMobile {
     display: none;
@@ -31,28 +30,37 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
 }
 .links {
     font-family: 'IM Fell English SC', serif;
     font-size: 1.6vw;
+    text-align: center;
     color: #470703;
     z-index: 20;
 }
 .selected {
     cursor: default;
+    text-decoration: underline;
 }
-.selected::after {
-    margin-left: 10px;
-    content: "";
-    width: 1.8vw;
-    height: 1.48vw;
-    background-image: url(./images/quill-resized.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: inline-block;
+.menu-button {
+    background-color: unset;
+    padding: unset;
+    border: unset;
+    text-align: left;
 }
+// .selected::after {
+//     margin-left: 10px;
+//     content: "";
+//     width: 1.8vw;
+//     height: 1.48vw;
+//     background-image: url(../../assets/images/quill-resized.webp);
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     display: inline-block;
+// }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1200px) {
     .wikis {
         transition: all 1s;
     }
@@ -67,41 +75,42 @@
         content: unset;
     }
     .navLinksMobile {
-        position: absolute;
-        top: 50%;
+        position: fixed;
+        top: 50vh;
         left: 50%;
+        width: 210px;
         transform: translate(-50%, -40%);
         z-index: 100;
         text-align: center;
         display: flex;
         flex-direction: column;
-        transition: opacity 1s;
+        align-items: center;
+        // transition: opacity 1s;
 
         &__img {
-            position: absolute;
-            top: 50%;
+            position: fixed;
+            top: 50vh;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 50;
-            width: 60vw;
-            transition: opacity 1s, box-shadow 1s, background-color 1s;
+            width: 425px;
+            // transition: opacity 1s, box-shadow 1s, background-color 1s;
         }
     }
     .links {
-        font-size: 8vw;
+        font-size: 2rem;
         margin-bottom: 1rem;
         // transition: all 1s;
     }
     .menuMobileToggle {
         display: flex;
         flex-direction: column;
+        margin-top: 15px;
         // transition: box-shadow 1s, background-color 1s;
-        width: 15vw; 
+        width: 10vh;
+        z-index: 80;
 
-        &__barreDessus {
-            transition: transform 1s;
-        }
-
+        &__barreDessus,
         &__barreDessous {
             transition: transform 1s;
         }
@@ -118,12 +127,13 @@
     }
     .boxShadow::before {
         content: "";
-        position: absolute;
-        top: -500px;
-        right: -50%;
-        width: 700vw;
-        height: 700vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
         background-color: rgba( 0, 0, 0, 0.8);
+        z-index: 50;
     }
     .displayNone {
         z-index: -100;
@@ -131,16 +141,14 @@
     }
 
     @media (orientation: landscape) {
-        .navLinksMobile__img {
-            width: unset;
-            height: 90vh;
-        }
-        .links {
-            font-size: 8vh;
-        }
-        .menuMobileToggle {
-            margin-top: 5vh;
-            width: 15vh;
+        @media screen and (max-height: 500px) {
+            // .links {
+            //     font-size: 8vh;
+            // }
+            .menuMobileToggle {
+                margin-top: 15px;
+                width: 15vh;
+            }
         }
     }
 }
@@ -148,5 +156,13 @@
 @media screen and (max-width: 470px) {
     .navLinksMobile__img {
         width: 100vw;
+    }
+
+    .navLinksMobile {
+        width: 175px;
+    }
+
+    .links {
+        font-size: 1.7rem;
     }
 }

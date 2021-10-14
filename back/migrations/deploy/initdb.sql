@@ -7,7 +7,7 @@ CREATE TABLE "user" (
 	username VARCHAR(255) NOT NULL UNIQUE,
 	email VARCHAR(255) NOT NULL UNIQUE,
 	"password" VARCHAR(255) NOT NULL,
-	is_admin BOOLEAN NOT NULL
+	is_admin BOOLEAN NOT NULL DEFAULT false
 );
 
 CREATE TABLE campaign (
@@ -15,58 +15,37 @@ CREATE TABLE campaign (
 	campaign_name VARCHAR(255) NOT NULL UNIQUE,
 	"description" TEXT NOT NULL,
 	created_at TIMESTAMPTZ DEFAULT NOW(),
-	"user_id" INT NOT NULL REFERENCES "user"(id)
+	"user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 CREATE TABLE campaign_has_players (
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	campaign_id INT NOT NULL REFERENCES campaign(id),
-	"user_id" INT NOT NULL REFERENCES "user"(id)
+	campaign_id INT NOT NULL REFERENCES campaign(id) ON DELETE CASCADE,
+	"user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 CREATE TABLE note (
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	title TEXT NOT NULL,
 	content TEXT NOT NULL,
-	is_private BOOLEAN NOT NULL,
-	campaign_id INT NOT NULL REFERENCES campaign(id),
-	"user_id" INT NOT NULL REFERENCES "user"(id)
+	is_private BOOLEAN NOT NULL DEFAULT false,
+	campaign_id INT NOT NULL REFERENCES campaign(id) ON DELETE CASCADE,
+	"user_id" INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 CREATE TABLE wiki (
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	slug TEXT NOT NULL UNIQUE,
-	title VARCHAR(255) NOT NULL UNIQUE
+	title VARCHAR(16) NOT NULL UNIQUE,
+	full_title TEXT,
+	"type" VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE "block" (
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	title VARCHAR(255),
+	title VARCHAR(16) NOT NULL,
 	content TEXT NOT NULL,
-	wiki_id INT NOT NULL REFERENCES wiki(id)
-);
-
-CREATE TABLE region (
-	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	slug TEXT NOT NULL UNIQUE,
-	title TEXT NOT NULL UNIQUE,
-	history TEXT NOT NULL,
-	"geography" TEXT NOT NULL,
-	architecture TEXT NOT NULL,
-	"language" TEXT NOT NULL,
-	currency TEXT NOT NULL,
-	leader TEXT NOT NULL,
-	religion TEXT NOT NULL,
-	caste TEXT NOT NULL,
-	"name" TEXT NOT NULL,
-	justice TEXT NOT NULL,
-	mage TEXT NOT NULL,
-	outfit TEXT NOT NULL,
-	lifestyle TEXT NOT NULL,
-	treatment TEXT NOT NULL,
-	movement TEXT NOT NULL,
-	nutrition TEXT NOT NULL,
-	art TEXT NOT NULL,
-	entertainment TEXT NOT NULL
+	wiki_id INT NOT NULL REFERENCES wiki(id) ON DELETE CASCADE
 );
 
 COMMIT;

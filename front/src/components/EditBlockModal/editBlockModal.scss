@@ -1,0 +1,19 @@
+@use "../../styles/vars";
+
+#edit-block {
+  width: 90%;
+  max-width: 800px;
+  height: 450px;
+
+  .edit-content {
+    margin: 0.8rem 0;
+    padding: 0.3rem 0.5rem;
+    width: 100%;
+    height: 200px;
+    color: #C8AD7F;
+    background-color: rgba( 0, 0, 0, 0.1);
+    border: 1px solid #C8AD7F;
+    border-radius: 5px;
+    resize: none;
+  }
+}

@@ -1,10 +1,11 @@
-const { Router, response } = require("express");
+const { Router } = require("express");
 
-const wikiController = require("./controllers/wikiController"); 
+const wikiController = require("./controllers/wikiController");
 const userController = require("./controllers/userController");
-/*const cController = require("./controllers/cController"); // TODO remplacer et ajouter les bons controllers
-const dController = require("./controllers/dController"); // TODO remplacer et ajouter les bons controllers
-const eController = require("./controllers/eController"); // TODO remplacer et ajouter les bons controllers */
+const campaignController = require("./controllers/campaignController");
+const noteController = require("./controllers/noteController");
+const playerController = require("./controllers/playerController");
+const blockController = require("./controllers/blockController");
 
 const router = Router();
 
@@ -13,72 +14,109 @@ const router = Router();
 // GET /profile
 
 /**
- * Responds with the id of the connected user
  * @route GET /profile
  * @group User
  * @summary Responds with the id of the connected user
  * @returns {int} 200 - An integer as id
  * @returns {string} 500 - An error message
  */
-router.get("/profile", userController.findUser);
-
-// GET /campaigns
+router.get("/profile/:id", userController.findUser);
 
 /**
- * Responds with all campaigns in database
  * @route GET /campaigns
  * @group Campaigns
  * @summary Responds with all campaigns in database
  * @returns {Array<Campaign>} 200 - An array of campaigns
  * @returns {string} 500 - An error message
  */
-//router.get("/campaigns", bController.findAll);
-
-// GET /campaigns/:campaign_name
+router.get("/campaigns", campaignController.getAllCampaigns);
 
 /**
- * Responds with one campaign in database
  * @route GET /campaigns/{campaign_name}
  * @group Campaigns
  * @summary Responds with one campaign in database
- * @param {string} campaign_name - The name of the campaign to fetch
+ * @param {number} id - The name of the campaign to fetch
  * @returns {string} 200 - A single campaign identified by its name
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-//router.get(`/campaigns/:campaign_name(/^[^\s.]{1,255}$/gm)`, cController.findByName);
-
-// GET /wiki
+router.get(`/campaigns/:id`, campaignController.getOneCampaign);
 
 /**
- * Responds with all informations from wiki in the database
  * @route GET /wiki
  * @group Wiki
  * @summary Responds with all informations from wiki in the database
  * @returns {Array<Wiki>} 200 - An array of wiki
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki`, wikiController.findAll);
-
-// GET /wiki/:title
+router.get(`/wiki`, wikiController.getAllWikis);
 
 /**
- * Responds with one wiki in database
  * @route GET /wiki/{title}
  * @group Wiki
- * @summary Responds with one wiki in database
+ * @summary Responds with the blocks in the wiki
  * @param {string} title - The title of the wiki to fetch
  * @returns {string} 200 - A single wiki identified by its title
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-router.get(`/wiki/:slug`, wikiController.findByTitle);
+router.get(`/wiki/:id`, wikiController.getWikiById);
 
+/**
+ * @route GET /player-public-notes/{id}
+ * @group Note
+ * @summary Responds the list of public notes related to a campaign and owned by this user
+ * @param {number} id - The id of the campaign
+ * @returns {array<Note>} 200 - An array of notes
+ * @returns {string} 404 - An error message
+ * @returns {string} 500 - An error message
+ */
+router.get(
+  `/player-public-notes/:campaign_id/:user_id`,
+  noteController.getPlayerPublicNotes
+);
+
+/**
+ * @route GET /public-notes/{id}
+ * @group Note
+ * @summary Responds the list of public notes related to a campaign and not owned by this user
+ * @param {number} id - The id of the campaign
+ * @returns {array<Note>} 200 - An array of notes
+ * @returns {string} 404 - An error message
+ * @returns {string} 500 - An error message
+ */
+router.get(
+  `/public-notes/:campaign_id/:user_id`,
+  noteController.getPublicNotes
+);
+
+/**
+ * @route GET /private-notes/{id}
+ * @group Note
+ * @summary Responds the list of private notes related to a campaign and not owned by this user
+ * @param {number} id - The id of the campaign
+ * @returns {array<Note>} 200 - An array of notes
+ * @returns {string} 404 - An error message
+ * @returns {string} 500 - An error message
+ */
+router.get(
+  `/private-notes/:campaign_id/:user_id`,
+  noteController.getPrivateNotes
+);
+
+/**
+ * @route GET /players/{id}
+ * @groupe Player
+ * @summary Responds the list of players added to this campaign
+ * @param {number} id - The id of the campaign
+ * @returns {array<Player>} 200 - An array of players
+ * @returns {string} 404 - An error message
+ * @returns {string} 500 - An error message
+ */
+router.get(`/players/:id`, playerController.findParty);
 //#endregion GET
 
 //#region POST
-
-// POST /signup
 
 /**
  * Add a new user in database
@@ -90,12 +128,9 @@ router.get(`/wiki/:slug`, wikiController.findByTitle);
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  */
-router.post('/signup', userController.save);
-
-// POST /signin
+router.post("/signup", userController.save);
 
 /**
- * Retrieve connection informations from a user
  * @route POST /signin
  * @group User
  * @summary Retrieve connection informations from a user
@@ -103,52 +138,64 @@ router.post('/signup', userController.save);
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  */
-router.post('/signin', userController.login);
-
-// POST /campaigns
+router.post("/signin", userController.login);
 
 /**
- * Add a new campaign in database
  * @route POST /campaigns
  * @group Campaigns
- * @summary Add a new campaign in database
+ * @summary Add a new campaign in database or update an existing one
  * @returns {Campaign.model} 201 - The newly created campaign
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  * @returns {string} 409 - A conflict error message
  * @returns {string} 401 - An unauthorized error message
  */
-//router.post('/campaigns', bController.save);
-
-// POST /campaigns/:campaign_name
+router.post("/campaigns", campaignController.save);
 
 /**
- * Add a note and/or a new player to a campaign
- * @route POST /campaigns/{campaign_name}
+ * @route POST /campaigns/{campaign_id}
  * @group Campaigns
- * @summary Add a note and/or a new player to a campaign
- * @param {string} campaign_name - The name of the campaign to update
- * @returns {Campaign.model} 201 - The newly created note / added player
+ * @summary Add or update an existing note
+ * @param {string} campaign_name - The campaign the note is related to
+ * @returns {Campaign.model} 201 - The newly created note
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
  * @returns {string} 409 - A conflict error message
  * @returns {string} 401 - An unauthorized error message
  */
-//router.post(`/campaigns/:campaign_name(/^[^\s.]{1,255}$/gm)`, cController.update);
-
-// POST /wiki
+router.post(`/note`, noteController.save);
 
 /**
- * Add a new wiki in database
+ * Add a player
+ * @route POST /player/:campaign_id
+ * @group Player
+ * @summary Add a player to a campaign
+ * @param { string } campaign_name - The name of the campaign the player is added to
+ * @returns {Player.model} - The newly created player
+ */
+router.post("/player/:campaign_id", playerController.save);
+
+/**
  * @route POST /wiki
  * @group Wiki
  * @summary Add a new wiki in database
  * @returns {Wiki.model} 201 - The newly created wiki
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
- * @returns {string} 409 - A conflict error message 
+ * @returns {string} 409 - A conflict error message
  */
-router.post('/wiki', wikiController.save);
+router.post("/wiki", wikiController.save);
+
+/**
+ * @route POST /block/:wiki_id
+ * @group Block
+ * @summary Add a new block in database
+ * @returns {Block.model} 201 - The newly created block
+ * @returns {string} 500 - An error massage
+ * @returns {string} 400 - A validation error message
+ * @returns {string} 409 - A conflict error message
+ */
+router.post("/block", blockController.save);
 
 //#endregion POST
 
@@ -165,20 +212,19 @@ router.post('/wiki', wikiController.save);
  * @returns {string} 401 - An unauthorized error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/profile', userController.update);
+router.patch("/profile/:id", userController.save);
 
 /**
- * Update a wiki in database
- * @route PATCH /wiki/:title
+ * @route PATCH /wiki
  * @group Wiki
  * @summary Update a wiki in database
- * @param {string} title - The title of the wiki to update
- * @returns {Wiki.model} 200 - The updated wiki
+ * @returns {Wiki.model} 204 - The updated wiki
  * @returns {string} 500 - An error message
  * @returns {string} 400 - A validation error message
+ * @returns {string} 401 - An unauthorized error message
  * @returns {string} 404 - A not found error message
  */
-router.patch('/wiki/:slug', wikiController.update);
+router.patch("/wiki/:id", wikiController.save);
 
 /**
  * Update a campaign in database
@@ -191,10 +237,35 @@ router.patch('/wiki/:slug', wikiController.update);
  * @returns {string} 400 - A validation error message
  * @returns {string} 404 - A not found error message
  */
-// router.patch('/campaigns/:campaign_name', cController.update);
+router.patch("/campaigns/:id", campaignController.save);
+
+/**
+ * Update a block in database
+ * @route PATCH /block/:id
+ * @group Block
+ * @summary Update a block in database
+ * @param {int} id - The id of the block to update
+ * @returns {Block.model} 200 - The updated block
+ * @returns {string} 500 - An error message
+ * @returns {string} 400 - A validation error message
+ * @returns {string} 404 - A not found error message
+ */
+router.patch("/block/:id", blockController.save);
+
+/**
+ * Update a block in database
+ * @route PATCH /note/:id
+ * @group Note
+ * @summary Update a note in database
+ * @param {int} id - The id of the note to update
+ * @returns {Note.model} 200 - The updated note
+ * @returns {string} 500 - An error message
+ * @returns {string} 400 - A validation error message
+ * @returns {string} 404 - A not found error message
+ */
+router.patch("/note/:id", noteController.save);
 
 //#endregion PATCH
-
 
 //#region DELETE
 
@@ -203,12 +274,12 @@ router.patch('/wiki/:slug', wikiController.update);
  * @route DELETE /profile
  * @group User
  * @summary Delete a user in db
- * @param {int} id - the id of the user to delete
+ * @param {int} id - The id of the user to delete
  * @returns {string} - 200 User is deleted
  * @returns {string} - 204 User not found
  * @returns {string} - 500 An error message
  */
-router.delete(`/profile`, userController.delete);
+router.delete("/profile/:id", userController.delete);
 
 /**
  * @route DELETE /wiki/:title
@@ -219,40 +290,53 @@ router.delete(`/profile`, userController.delete);
  * @returns {string} - 204 Wiki not found
  * @returns {string} - 500 An error message
  */
-router.delete(`/wiki/:title`, wikiController.delete);
+router.delete(`/wiki/:id`, wikiController.delete);
 
 /**
- * @route DELETE /campaign
+ * @route DELETE /campaigns/:campaign_name
  * @group Campaign
- * @summary Delete a campaign in db
+ * @summary Delete a campaign
  * @param {int} id - The id of the campaign to delete
- * @returns {string} - 200 Campaign is deleted
- * @returns {string} - 204 Campaign not found
+ * @returns {string} - 200 campaign is deleted
+ * @returns {string} - 204 campaign not found
  * @returns {string} - 500 An error message
  */
-// router.delete(`/campaign`, campaignsController.deleteCampaign);
+router.delete(`/campaigns/:id`, campaignController.delete);
 
 /**
- * @route DELETE /campaign/:campaign_name
- * @group Campaign
- * @summary Delete a note from the campaign notes list
- * @param {int} id - The id of the note to delete
- * @returns {string} - 200 Note is deleted
- * @returns {string} - 204 Note not found
- * @returns {string} - 500 An error message
- */
-// router.delete(`/campaign/:campaign_name`, campaignsController.deleteNote);
-
-/**
- * @route DELETE /campaign/:campaign_name
- * @group Campaign
- * @summary Campaign creator can delete a player from the campaign players list
- * @param {int} id - The id of the player to delete
+ * @route DELETE /note/:campaign_name
+ * @group Note
+ * @summary Campaign creator can delete a note from the campaign
+ * @param {int} id - The id of the player to note
  * @returns {string} - 200 Player is deleted
  * @returns {string} - 204 Player not found
  * @returns {string} - 500 An error message
  */
-// router.delete(`/campaigns/:campaign_name`, campaignsContoller.deletePlayer);
+router.delete(`/note/:id`, noteController.delete);
+
+/**
+ * @route DELETE /player/:campaign_name
+ * @group Player
+ * @summary Campaign creator can remove a player from his campaign
+ * @param {int} - The id of the campaign
+ * @returns {string} - 200 player is deleted
+ * @returns {string} - 204 player not found
+ * @returns {string} - 500 An error message
+ */
+router.delete(`/player/:campaign_name`, playerController.delete);
+
+/**
+ * @route DELETE /block/:id
+ * @group Block
+ * @summary Delete a block from database
+ * @param {int} - The id of the block
+ * @returns {string} - 200 block is deleted
+ * @returns {string} - 204 block not found
+ * @returns {string} - 500 An error message
+ */
+router.delete(`/block/:id`, blockController.delete);
+
+//#endregion DELETE
 
 router.use((_, response) => response.status(404).json("Endpoint not found"));
 

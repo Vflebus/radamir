@@ -3,7 +3,42 @@
 
 ### Get the user 
 
-GET {{baseUrl}}/profile
+GET {{baseUrl}}/profile/1
+
+### Create a user
+
+POST {{baseUrl}}/signup
+Content-Type: application/json
+
+{
+    "username": "4",
+    "email": "4@3.com",
+    "password": "4444444"
+}
+
+### Login user
+
+POST {{baseUrl}}/signin
+Content-Type: application/json
+
+{
+    "username": "TEST",
+    "email": "user@test.com",
+    "password": "password"
+}
+
+### Update a user
+
+PATCH {{baseUrl}}/profile/1
+Content-Type: application/json
+
+{
+    "email": "TEST@test.com"
+}
+
+### Delete a user
+
+DELETE {{baseUrl}}/profile/1
 
 ### Get all campaigns
 
@@ -11,12 +46,109 @@ GET {{baseUrl}}/campaigns
 
 ### Get one campaign
 
-GET {{baseUrl}}/campaigns/test1234
+GET {{baseUrl}}/campaigns/2
+
+### Create a new campaign
+
+POST {{baseUrl}}/campaigns
+Content-Type: application/json
+
+{
+    "campaign_name": "dhdh",
+    "description": "244",
+    "user_id": 1
+}
+
+### Get player public notes
+
+GET {{baseUrl}}/player-public-notes/1/1
+
+### Get non-player public notes
+
+GET {{baseUrl}}/public-notes/1/1
+
+### Get player private notes
+
+GET {{baseUrl}}/private-notes/1/1
+
+### Create a note
+
+POST {{baseUrl}}/note
+Content-Type: application/json
+
+{
+    "title": "flanders",
+    "content": "salusalut c flanders version 8",
+    "is_private": false,
+    "campaign_id": 1,
+    "user_id": 1
+}
+
+### Update a note
+
+PATCH {{baseUrl}}/note/2
+Content-Type: application/json
+
+{
+    "is_private": true
+}
+
+### Delete a note
+
+DELETE {{baseUrl}}/note/8
 
 ### Get the wiki
 
-GET {{baseUrl}}/wiki/salut
+GET {{baseUrl}}/wiki
 
-### Get one wiki
+### Get the blocks from one wiki
 
-GET  {{baseUrl}}/wiki/region
+GET {{baseUrl}}/wiki/7
+
+
+### Post a wiki
+
+POST {{baseUrl}}/wiki
+Content-Type: application/json
+
+{
+    "slug": "test test2",
+    "title": "titre test",
+    "type": "general"
+    //"full_title": ""
+}
+
+### Update or New wiki
+PATCH {{baseUrl}}/wiki/7
+Content-Type: application/json
+
+{   
+    "slug": "A",
+    "title": "B",
+    "full_title": "fulltest",
+    "type": "region"
+}
+
+### Create a block
+POST {{baseUrl}}/block
+Content-Type: application/json
+
+{
+    "title": "titre block",
+    "content": "du contenu et encore du contenu",
+    "wiki_id": 6
+}
+
+### Patch  one block
+
+PATCH {{baseUrl}}/block/91
+Content-Type: application/json
+
+{
+    "title": "TEST",
+    "content": "TEST2"
+}
+
+### Delete one block
+
+DELETE {{baseUrl}}/block/91
