@@ -38,6 +38,7 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case LOGOUT:
+      window.localStorage.clear();
       return {
         ...state,
         logged: false,

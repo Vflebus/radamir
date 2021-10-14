@@ -4,6 +4,7 @@ import {
   LOGIN,
   UPDATE_USER,
   DELETE_USER,
+  CHECK_CONNECTION,
   connectUser,
   setInput,
   logout
@@ -24,7 +25,7 @@ const userMiddleware = (store) => (next) => async (action) => {
   
         await radamirAPI.post("/signup", {
           username,
-          email,
+          email: email.toLowerCase(),
           password
         });
 
@@ -46,17 +47,32 @@ const userMiddleware = (store) => (next) => async (action) => {
         store.dispatch(clearError());
 
         const { email, password } = store.getState().user;
-        // json-server login
+        // <-- json-server login
         // const emailInput = store.getState().user.email;
         // const passwordInput = store.getState().user.password;
 
         // const res = await radamirAPI.get("/user");
-        // /json-server login
+        // json-server login -->
 
-        const res = await radamirAPI.post("/signin", { email, password });
-        // json-server login
+        const res = await radamirAPI.post("/signin", {
+          email: email.toLowerCase(),
+          password
+        });
+        
+        // <-- json-server login
         // const user = res.data.find(({ email, password }) => (emailInput === email && passwordInput === password));
-        // /json-server login
+        // json-server login -->
+
+        // Persistent connection
+        const timeToLive = 3 * 60 * 60 * 1000;
+
+        const storedUser = {
+          id: res.data.id,
+          login: res.data.email,
+          expiry: new Date().getTime() + timeToLive
+        };
+
+        localStorage.setItem("user", JSON.stringify(storedUser));
 
         // change parameter with real API
         store.dispatch(fetchCampaigns(res.data.id));
@@ -77,8 +93,16 @@ const userMiddleware = (store) => (next) => async (action) => {
 
         const res = await radamirAPI.patch(`/profile/${id}`, {
           username: (username ? username : loggedUsername),
-          email : (email ? email : loggedEmail)
+          email : (email ? email.toLowerCase() : loggedEmail)
         });
+
+        const storedUserStr = localStorage.getItem("user");
+        const storedUser = JSON.parse(storedUserStr);
+
+        localStorage.setItem("user", JSON.stringify({
+          ...storedUser,
+          login: res.data.email
+        }));
 
         store.dispatch(connectUser(res.data));
       } catch (err) {
@@ -93,9 +117,45 @@ const userMiddleware = (store) => (next) => async (action) => {
 
         await radamirAPI.delete(`/profile/${id}`);
 
+        localStorage.clear();
+
         store.dispatch(logout());
       } catch (err) {
         console.log(err);
+      }
+      next(action);
+      break;
+
+    case CHECK_CONNECTION:
+      try {
+        const storedUserStr = localStorage.getItem("user");
+
+        if (!storedUserStr) {
+          next(action);
+          break;
+        }
+
+        const { id, login, expiry } = JSON.parse(storedUserStr);
+        const now = new Date();
+
+        if (now.getTime() > expiry) {
+          localStorage.clear();
+          next(action);
+          break;
+        }
+
+        const res = await radamirAPI.get(`/profile/${id}`);
+
+        if (res.data.email !== login) {
+          localStorage.clear();
+          next(action);
+          break;
+        }
+
+        store.dispatch(fetchCampaigns(res.data.id));
+        store.dispatch(connectUser(res.data));
+      } catch (err) {
+        console.error(err);
       }
       next(action);
       break;
