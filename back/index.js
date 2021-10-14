@@ -33,4 +33,4 @@ client.on("messageCreate", (message) => {
     discordBot(message);
 });
   
-  client.login(token);
+client.login(token);
