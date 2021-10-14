@@ -15,7 +15,7 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
       try {
         const res = await radamirAPI.get("/campaigns");
 
-        const userCampaigns = res.data.filter(({ user_id }) => user_id === action.id);
+        const userCampaigns = res.data
 
         store.dispatch(saveCampaigns(userCampaigns));
       } catch (err) {
@@ -37,7 +37,7 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
           description
         });
 
-        store.dispatch(fetchCampaigns(action.id));
+        store.dispatch(fetchCampaigns());
       } catch (err) {
         console.error(err);
         store.dispatch(setError(err.message));
@@ -57,7 +57,7 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
           description
         });
 
-        store.dispatch(fetchCampaigns(action.userId));
+        store.dispatch(fetchCampaigns());
       } catch (err) {
         console.error(err);
         store.dispatch(setError(err.message));

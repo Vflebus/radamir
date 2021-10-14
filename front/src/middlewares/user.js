@@ -152,7 +152,7 @@ const userMiddleware = (store) => (next) => async (action) => {
           break;
         }
 
-        store.dispatch(fetchCampaigns(res.data.id));
+        store.dispatch(fetchCampaigns());
         store.dispatch(connectUser(res.data));
       } catch (err) {
         console.error(err);
