@@ -123,7 +123,12 @@
             //     width: 60vw;
             // }
             .imageDiscord {
+                margin-left: 1.5vw;
                 border: none;
+                align-content: unset;
+                h3 {
+                    margin-left: 1.5vw;
+                }
             }
         }
         .addNote {
