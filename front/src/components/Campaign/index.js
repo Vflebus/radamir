@@ -148,7 +148,7 @@ const Campaign = () => {
                             {notesList.publics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.id}/>)}
                         </section>
                         <section className="imageDiscord">
-                            <h3>Illustration actuelle</h3>
+                            <h3>Illustration</h3>
                             <img src={imgUrl} alt="" className="discordImg"/>
                         </section>
                     </section>
