@@ -2,15 +2,17 @@
 
 .campaign {
     h1 {
-        position: absolute;
-        top: 2%;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 5rem;
+        margin-top: 2rem;
         font-family: vars.$title-font;
         font-size: 5rem;
         text-align: center;
-        margin-bottom: 2rem;
+        @media screen and (max-width: 1500px) {
+            font-size: 3rem;
+            @media screen and (max-width: 430px) {
+                text-align: unset;
+                margin-left: 1rem;
+            }
+        }
     }
     .pageOne {
         display: flex;
@@ -42,8 +44,35 @@
             p {
                 margin: 1rem 0 2rem;
                 width: 70%;
+                max-height: 50vh;
                 font-size: 1.2rem;
-                word-break: break-word;
+                overflow: auto;
+            }
+        }
+        @media screen and (max-width: 1500px) {
+            .sectionResume {
+                h2 {
+                    font-size: 2rem;
+                }
+            }
+            @media screen and (max-width: 900px) {
+                align-items: center;
+                justify-content: center;
+                .sectionCarte {
+                    display: none;
+                }
+                .sectionResume {
+                    width: 90%;
+                }
+                @media screen and (max-width: 430px) {
+                    .sectionResume{
+                        justify-content: unset;
+                        p{
+                            width: 100%;
+                            max-height: 40%;
+                        }
+                    }
+                }
             }
         }
     }

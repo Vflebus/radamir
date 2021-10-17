@@ -41,7 +41,9 @@ const Campaign = () => {
         socket.on("ImgUrl", data => {
           setImgUrl(data);
           console.log(data)
-        }, [])
+
+          return () => socket.disconnect();
+        })
     })
 
     const handleDelete = () => {

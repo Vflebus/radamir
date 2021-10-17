@@ -24,7 +24,12 @@ app.listen(port, () => {
 
 // PARTIE SOCKET IO //
 const http = require("http");
-const socketIo = require("socket.io");
+const socketIo = require("socket.io")(httpServer, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"]
+    }
+  });
 const server = http.createServer(app);
 const io = socketIo(server);
 const socketPort = process.env.socketPort || 4001;
