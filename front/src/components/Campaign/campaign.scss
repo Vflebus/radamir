@@ -11,6 +11,10 @@
             @media screen and (max-width: 430px) {
                 text-align: unset;
                 margin-left: 1rem;
+                @media screen and (max-width: 365px){
+                    font-size: 2.5rem;
+                    margin-bottom: 1rem;
+                }
             }
         }
     }
@@ -67,9 +71,22 @@
                 @media screen and (max-width: 430px) {
                     .sectionResume{
                         justify-content: unset;
+                        height: unset;
                         p{
                             width: 100%;
-                            max-height: 40%;
+                            max-height: 40vh;
+                        }
+                    }
+                    @media screen and (max-width: 365px) {
+                        .sectionResume {
+                            h2 {
+                                font-size: 1.5rem;
+                                margin-bottom: 0;
+                                text-decoration: underline;
+                            }
+                            p {
+                                margin-top: 0;
+                            }
                         }
                     }
                 }
@@ -78,7 +95,6 @@
     }
     .pageTwo {
         position: relative;
-        height: 100vh;
         width: 100vw;
         display: flex;
         flex-direction: column;
@@ -88,6 +104,9 @@
             margin-bottom: 1rem;
             transform: translate(2rem, 2rem);
             text-decoration: underline;
+            @media screen and (max-width: 365px) {
+                font-size: 3rem;
+            }
         }
         .bg2 {
             position: absolute;
@@ -96,6 +115,10 @@
             height: 135vh;
             width: 100vw;
             z-index: -1;
+            @media screen and (max-width: 430px) {
+                height: 120%;
+                width: auto;
+            }
         }
         .allNotes {
             margin-top: 20vh;
@@ -148,15 +171,60 @@
                     max-height: 100%;
                 }
             }
-            // .notesPubliques {
-            //     width: 60vw;
-            // }
             .imageDiscord {
                 margin-left: 1.5vw;
                 border: none;
                 align-content: unset;
                 h3 {
                     margin-left: 1.5vw;
+                }
+            }
+            @media screen and (max-width: 430px) {
+                flex-direction: column-reverse;
+                .notesPrivees, .notesPubliques, .imageDiscord {
+                    border: none;
+                    height: 30vh;
+                    width: 90vw;
+                    flex-direction: column;
+                    margin-bottom: 4rem;
+                    align-content: center;
+                    overflow-y: auto;
+                }
+                .notesPrivees {
+                    margin-bottom: 0;
+                }
+                .noteContainer {
+                    width: 35vw;
+                    max-width: unset;
+                    img {
+                        width: 100%;
+                        opacity: .9;
+                    }
+                    h4 {
+                        font-size: 1.25rem;
+                    }
+                }
+                .imageDiscord {
+                    h3 {
+                        align-self: center;
+                    }
+                }
+                @media screen and (max-width: 365px) {
+                    .notesPrivees, .notesPubliques, .imageDiscord {
+                        h3 {
+                            font-size: 2.5rem;
+                        }
+                    }
+                    .imageDiscord {
+                        h3 {
+                            transform: translateY(-8vh);
+                        }
+                    }
+                    .noteContainer {
+                        h4 {
+                            font-size: 1rem;
+                        }
+                    }
                 }
             }
         }
@@ -171,6 +239,16 @@
         }
         .addNote:hover {
             text-decoration: underline;
+        }
+        @media screen and (max-width: 430px) {
+            .addNote {
+                margin-top: 0;
+                width: unset;
+                margin-bottom: 1.5rem;
+                @media screen and (max-width: 365px) {
+                    font-size: 1.5rem;
+                }
+            }
         }
     }
 }
