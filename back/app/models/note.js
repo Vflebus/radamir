@@ -138,11 +138,12 @@ class Note {
   async save() {
     try {
       if (this.id) {
-        await client.query(`SELECT update_note($1, $2, $3, $4);`, [
+        await client.query(`SELECT update_note($1, $2, $3, $4, $5);`, [
           this.title,
           this.content,
           this.is_private,
           this.id,
+          this.image_url
         ]);
       } else {
         const { rows } = await client.query(
