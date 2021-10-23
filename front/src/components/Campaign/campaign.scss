@@ -174,11 +174,6 @@
                 align-items: center;
                 overflow-y: auto;
                 border-right: 5px solid #3B2D19;
-                
-                .discordImg {
-                    max-width: 100%;
-                    max-height: 100%;
-                }
             }
             .imageDiscord {
                 margin-left: 1.5vw;
@@ -186,6 +181,39 @@
                 align-content: unset;
                 h3 {
                     margin-left: 1.5vw;
+                }
+                div{
+                    overflow: visible;
+                }
+                .imgContainer {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    &:hover{
+                        &::after {
+                        content: "Créer une note à partir de cette image";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        color: #C8AD7F;
+                        font-family: vars.$title-font;
+                        font-size: 2rem;
+                        text-align: center;
+                        pointer-events: none;
+                        }
+                    }
+                    .discordImg {
+                        max-width: 100%;
+                        max-height: 100%;
+                        &:hover {
+                            filter: brightness(.2);
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
             @media screen and (max-width: 430px) {

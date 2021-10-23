@@ -10,6 +10,7 @@ import {
     setLoading,
     cleanNotes,
     DELETE_NOTE,
+    setImageUrl,
   } from "../actions/notes";
   import { setError, clearError } from "../actions/error";
 
@@ -53,6 +54,7 @@ const notesMiddleware = (store) => (next) => async (action) => {
 
                 store.dispatch(setTitle(""));
                 store.dispatch(setType("publique"));
+                store.dispatch(setImageUrl(""));
                 store.dispatch(setLoading());
                 store.dispatch(fetchNotes(campaign_id, id));
                 
