@@ -12,8 +12,8 @@ import {
   const initialState = {
     list: {},
     title: "",
-    content:"",
-    image_url:"",
+    content: "",
+    image_url: "",
     type: "publique",
     loading: true
   };
@@ -60,7 +60,8 @@ import {
                 publics: action.publicsData,
               },
               title: "",
-              content:"",
+              content: "",
+              image_url: "",
               type: "publique",
               loading: false,
             }
@@ -76,6 +77,7 @@ import {
               list: {},
               title: "",
               content:"",
+              image_url: "",
               type: "publique",
               loading: true
             }

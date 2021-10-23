@@ -69,6 +69,12 @@ const notesMiddleware = (store) => (next) => async (action) => {
             try {
                 const { title, type, content, image_url } = store.getState().notes;
                 const is_private = (type==="privee");
+                console.log(`updating with : ${{
+                    title,
+                    content,
+                    is_private,
+                    image_url
+                }}}`);
                 await radamirAPI.patch(`/note/${action.note_id}`, {
                     title,
                     content,

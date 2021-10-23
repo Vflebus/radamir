@@ -29,7 +29,6 @@ const Note = ({ title, content, note_id, creator_id, campaign_id, user_id, is_pr
     const handleEdit = () => {
         setIsOpen(false);
         setIsEditOpen(true);
-        console.log(`note: ${note_id} campaign: ${campaign_id}`);
         dispatch(setTitle(title));
         dispatch(setImageUrl(image_url));
         const previousType = is_private ? "privee" : "publique";

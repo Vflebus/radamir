@@ -138,6 +138,7 @@ class Note {
   async save() {
     try {
       if (this.id) {
+        console.log (this.image_url);
         await client.query(`SELECT update_note($1, $2, $3, $4, $5);`, [
           this.title,
           this.content,
