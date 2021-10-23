@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import { createNote, setTitle, setType, setContent } from "../../actions/notes";
+import { createNote, setTitle, setType, setContent, setImageUrl } from "../../actions/notes";
 
 import "./addNoteModal.scss"
 
@@ -13,6 +13,7 @@ const AddNoteModal = ({ open, onClose, campaign_id }) => {
   const { title } = useSelector(({ notes }) => notes);
   const { type } = useSelector(({ notes }) => notes);
   const { content } = useSelector(({ notes }) => notes);
+  const { image_url } = useSelector(({ notes }) => notes);
   const { message } = useSelector(({ error }) => error);
 
   const handleSubmit = (e) => {
@@ -24,6 +25,10 @@ const AddNoteModal = ({ open, onClose, campaign_id }) => {
 
   const handleInputChange = (e) => {
     dispatch(setTitle(e.target.value));
+  };
+
+  const handleImageChange = (e) => {
+    dispatch(setImageUrl(e.target.value));
   };
 
   const handleRadioChange = (e) => {
@@ -52,6 +57,13 @@ const AddNoteModal = ({ open, onClose, campaign_id }) => {
               className="input-title"
               value={title}
               onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              placeholder="url de l'image à associer à la note (optionnel)"
+              className="input-title"
+              value={image_url}
+              onChange={handleImageChange}
             />
             <textarea
                 className="edit-content"

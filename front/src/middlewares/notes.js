@@ -37,7 +37,7 @@ const notesMiddleware = (store) => (next) => async (action) => {
         case CREATE_NOTE:
             try {
                 store.dispatch(clearError());
-                const { title, type, content } = store.getState().notes;
+                const { title, type, content, image_url } = store.getState().notes;
                 const { id } = store.getState().user.loggedUser;
                 const is_private = (type==="privee");
                 const campaign_id = action.campaign_id
@@ -47,7 +47,8 @@ const notesMiddleware = (store) => (next) => async (action) => {
                     content,
                     is_private,
                     campaign_id,
-                    user_id: id
+                    user_id: id,
+                    image_url
                 })
 
                 store.dispatch(setTitle(""));

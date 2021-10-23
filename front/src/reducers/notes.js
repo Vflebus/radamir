@@ -5,13 +5,15 @@ import {
     SET_TITLE,
     SET_CONTENT,
     SET_TYPE,
-    SAVE_NOTES
+    SAVE_NOTES,
+    SET_IMAGE_URL
   } from "../actions/notes";
   
   const initialState = {
     list: {},
     title: "",
     content:"",
+    image_url:"",
     type: "publique",
     loading: true
   };
@@ -36,6 +38,12 @@ import {
                 ...state,
                 content: action.value
             }
+
+        case SET_IMAGE_URL:
+            return {
+                ...state,
+                image_url: action.value
+            }    
 
         case CREATE_NOTE: 
             return {

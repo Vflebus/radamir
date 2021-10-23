@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import "./noteModal.scss"
 
-const NoteModal = ({ title, content, open, onClose }) => {
+const NoteModal = ({ title, content, open, onClose, image_url }) => {
 
     if (!open) return null;
     
@@ -10,7 +10,10 @@ const NoteModal = ({ title, content, open, onClose }) => {
             <div className="modal-overlay" onClick={onClose}></div>
             <div className="noteModalContainer">
                 <h2>{title}</h2>
-                <p>{content}</p>
+                <div className="contentContainer">
+                    <p>{content}</p>
+                    <img src={image_url} alt="" />
+                </div>
             </div>
         </>,
         document.querySelector("#modal")

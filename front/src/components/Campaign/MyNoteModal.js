@@ -4,7 +4,7 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import "./noteModal.scss"
 
-const MyNoteModal = ({ title, content, open, onClose, handleEdit, handleDelete }) => {
+const MyNoteModal = ({ title, content, open, onClose, handleEdit, handleDelete, image_url }) => {
 
     if (!open) return null;
     
@@ -15,7 +15,10 @@ const MyNoteModal = ({ title, content, open, onClose, handleEdit, handleDelete }
                 <h2>{title}</h2>
                 <FontAwesomeIcon icon={faEdit} className="editIcon" onClick={handleEdit}/>
                 <FontAwesomeIcon icon={faTrashAlt} className="deleteIcon" onClick={handleDelete}/>
-                <p>{content}</p>
+                <div className="contentContainer">
+                    <p>{content}</p>
+                    <img src={image_url} alt="" />
+                </div>
             </div>
         </>,
         document.querySelector("#modal")

@@ -146,8 +146,8 @@ class Note {
         ]);
       } else {
         const { rows } = await client.query(
-          `SELECT new_note($1, $2, $3, $4, $5) AS id`,
-          [this.title, this.content, this.is_private, this.campaign_id, this.user_id]
+          `SELECT new_note($1, $2, $3, $4, $5, $6) AS id`,
+          [this.title, this.content, this.is_private, this.campaign_id, this.user_id, this.image_url]
         );
         this.id = rows[0].id;
         return this;

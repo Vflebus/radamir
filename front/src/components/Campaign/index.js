@@ -140,12 +140,12 @@ const Campaign = () => {
                     <section className="allNotes">
                         <section className="notesPrivees">
                             <h3>Mes notes privées</h3>
-                            {notesList.myPrivates.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.id}/>)}
+                            {notesList.myPrivates.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} image_url={note.image_url} key={note.id}/>)}
                         </section>
                         <section className="notesPubliques">
                             <h3>Notes du groupe</h3>
-                            {notesList.myPublics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.id}/>)}
-                            {notesList.publics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} key={note.id}/>)}
+                            {notesList.myPublics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} image_url={note.image_url} key={note.id}/>)}
+                            {notesList.publics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} image_url={note.image_url} key={note.id}/>)}
                         </section>
                         <section className="imageDiscord">
                             <h3>Illustration</h3>

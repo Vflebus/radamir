@@ -59,4 +59,12 @@
     font-size: 2rem;
     cursor: pointer;
   }
+  .contentContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    img {
+      max-width: 50%;
+    }
+  }
 }

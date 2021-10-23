@@ -25,9 +25,9 @@ CREATE FUNCTION update_user(TEXT, TEXT, TEXT, INT) RETURNS void AS $$
 $$ LANGUAGE SQL;
 
 -- notes new & update
-CREATE FUNCTION new_note(TEXT, TEXT, BOOLEAN, INT, INT) RETURNS INT AS $$
-	INSERT INTO "note"("title", "content", "is_private", "campaign_id", "user_id") 
-    VALUES($1, $2, $3, $4, $5) RETURNING id;
+CREATE FUNCTION new_note(TEXT, TEXT, BOOLEAN, INT, INT, VARCHAR(255)) RETURNS INT AS $$
+	INSERT INTO "note"("title", "content", "is_private", "campaign_id", "user_id", "image_url") 
+    VALUES($1, $2, $3, $4, $5, $6) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_note(TEXT, TEXT, BOOLEAN, INT) RETURNS void AS $$
