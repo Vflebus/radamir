@@ -31,7 +31,7 @@ CREATE OR REPLACE FUNCTION new_note(TEXT, TEXT, BOOLEAN, INT, INT, VARCHAR(255))
 $$ LANGUAGE SQL STRICT;
 
 CREATE OR REPLACE FUNCTION update_note(TEXT, TEXT, BOOLEAN, INT, VARCHAR(255)) RETURNS void AS $$
-    UPDATE "note" SET "title" = COALESCE($1, "title"), "content" = COALESCE($2, "content"), "is_private" = COALESCE($3, "is_private"), "image_url" = COALESCE($5, "image_url") WHERE id = $4;
+    UPDATE "note" SET "title" = COALESCE($1, "title"), "content" = COALESCE($2, "content"), "is_private" = COALESCE($3, "is_private"), "image_url" = $5 WHERE id = $4;
 $$ LANGUAGE SQL;
 
 
