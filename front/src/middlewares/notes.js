@@ -10,6 +10,7 @@ import {
     setLoading,
     cleanNotes,
     DELETE_NOTE,
+    setImageUrl,
   } from "../actions/notes";
   import { setError, clearError } from "../actions/error";
 
@@ -37,7 +38,7 @@ const notesMiddleware = (store) => (next) => async (action) => {
         case CREATE_NOTE:
             try {
                 store.dispatch(clearError());
-                const { title, type, content } = store.getState().notes;
+                const { title, type, content, image_url } = store.getState().notes;
                 const { id } = store.getState().user.loggedUser;
                 const is_private = (type==="privee");
                 const campaign_id = action.campaign_id
@@ -47,11 +48,13 @@ const notesMiddleware = (store) => (next) => async (action) => {
                     content,
                     is_private,
                     campaign_id,
-                    user_id: id
+                    user_id: id,
+                    image_url
                 })
 
                 store.dispatch(setTitle(""));
                 store.dispatch(setType("publique"));
+                store.dispatch(setImageUrl(""));
                 store.dispatch(setLoading());
                 store.dispatch(fetchNotes(campaign_id, id));
                 
@@ -64,12 +67,19 @@ const notesMiddleware = (store) => (next) => async (action) => {
 
         case UPDATE_NOTE:
             try {
-                const { title, type, content } = store.getState().notes;
+                const { title, type, content, image_url } = store.getState().notes;
                 const is_private = (type==="privee");
+                console.log(`updating with : ${{
+                    title,
+                    content,
+                    is_private,
+                    image_url
+                }}}`);
                 await radamirAPI.patch(`/note/${action.note_id}`, {
                     title,
                     content,
-                    is_private
+                    is_private,
+                    image_url
                 });
                 const { id } = store.getState().user.loggedUser;
                 store.dispatch(fetchNotes(action.campaign_id, id));
