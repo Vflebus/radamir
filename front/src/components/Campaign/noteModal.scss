@@ -1,11 +1,13 @@
 @use "../../styles/vars";
 
+
 .noteModalContainer { 
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
+  min-width: min(952px, 100vw);
   background-color: rgba( 0, 0, 0, 0.8);
   color: #C8AD7F;
   border: solid .5rem #63412a;

@@ -4,7 +4,7 @@ import NoteModal from "./NoteModal";
 import MyNoteModal from "./MyNoteModal";
 import EditNoteModal from "./EditNoteModal";
 import { useDispatch } from "react-redux";
-import { deleteNote, setContent, setTitle, setType } from "../../actions/notes";
+import { deleteNote, setContent, setImageUrl, setTitle, setType } from "../../actions/notes";
 
 const Note = ({ title, content, note_id, creator_id, campaign_id, user_id, is_private, image_url }) => {
 
@@ -20,6 +20,10 @@ const Note = ({ title, content, note_id, creator_id, campaign_id, user_id, is_pr
     const onClose = () => {
         setIsOpen(false);
         setIsEditOpen(false);
+        dispatch(setContent(""));
+        dispatch(setImageUrl(""));
+        dispatch(setTitle(""));
+        dispatch(setType("publique"));
     }
 
     const handleEdit = () => {
@@ -27,6 +31,7 @@ const Note = ({ title, content, note_id, creator_id, campaign_id, user_id, is_pr
         setIsEditOpen(true);
         console.log(`note: ${note_id} campaign: ${campaign_id}`);
         dispatch(setTitle(title));
+        dispatch(setImageUrl(image_url));
         const previousType = is_private ? "privee" : "publique";
         dispatch(setType(previousType));
         dispatch(setContent(content));
