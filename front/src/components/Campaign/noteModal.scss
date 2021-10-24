@@ -8,7 +8,7 @@
   transform: translate(-50%, -50%);
   width: 50%;
   min-width: min(952px, 100vw);
-  background-color: rgba( 0, 0, 0, 0.8);
+  background-color: rgba( 0, 0, 0, 0.9);
   color: #C8AD7F;
   border: solid .5rem #63412a;
   padding: 2rem;
@@ -23,6 +23,7 @@
   h2, input {
     font-family: vars.$title-font;
     font-size: 5rem;
+    text-align: center;
     margin-bottom: 1rem;
     white-space: pre-line;
   }
@@ -63,6 +64,7 @@
   }
   .contentContainer {
     height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     p {
@@ -70,6 +72,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding-right: 1.5rem;
     }
     img {
       max-width: 50%;

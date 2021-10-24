@@ -25,12 +25,12 @@ CREATE OR REPLACE FUNCTION update_user(TEXT, TEXT, TEXT, INT) RETURNS void AS $$
 $$ LANGUAGE SQL;
 
 -- notes new & update
-CREATE OR REPLACE FUNCTION new_note(TEXT, TEXT, BOOLEAN, INT, INT, VARCHAR(255)) RETURNS INT AS $$
+CREATE OR REPLACE FUNCTION new_note(VARCHAR(45), TEXT, BOOLEAN, INT, INT, VARCHAR(255)) RETURNS INT AS $$
 	INSERT INTO "note"("title", "content", "is_private", "campaign_id", "user_id", "image_url") 
     VALUES($1, $2, $3, $4, $5, $6) RETURNING id;
 $$ LANGUAGE SQL STRICT;
 
-CREATE OR REPLACE FUNCTION update_note(TEXT, TEXT, BOOLEAN, INT, VARCHAR(255)) RETURNS void AS $$
+CREATE OR REPLACE FUNCTION update_note(VARCHAR(45), TEXT, BOOLEAN, INT, VARCHAR(255)) RETURNS void AS $$
     UPDATE "note" SET "title" = COALESCE($1, "title"), "content" = COALESCE($2, "content"), "is_private" = COALESCE($3, "is_private"), "image_url" = COALESCE($5, "image_url") WHERE id = $4;
 $$ LANGUAGE SQL;
 
