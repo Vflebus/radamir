@@ -10,7 +10,6 @@
   min-width: min(952px, 100vw);
   background-color: rgba( 0, 0, 0, 0.9);
   color: #C8AD7F;
-  border: solid .5rem #63412a;
   padding: 2rem;
   z-index: 1000;
   display: flex;
@@ -75,6 +74,7 @@
       padding-right: 1.5rem;
     }
     img {
+      border: 5px solid #C8AD7F;
       max-width: 50%;
       max-height: 100%;
     }

@@ -53,6 +53,7 @@ const AddNoteModal = ({ open, onClose, campaign_id }) => {
           <div className="create-wiki">
             <input
               type="text"
+              maxLength="45"
               placeholder="Titre"
               className="input-title"
               value={title}
@@ -60,6 +61,7 @@ const AddNoteModal = ({ open, onClose, campaign_id }) => {
             />
             <input
               type="text"
+              maxLength="255"
               placeholder="url de l'image à associer à la note (optionnel)"
               className="input-title"
               value={image_url}
