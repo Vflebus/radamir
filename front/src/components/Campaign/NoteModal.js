@@ -11,7 +11,7 @@ const NoteModal = ({ title, content, open, onClose, image_url }) => {
             <div className="noteModalContainer">
                 <h2>{title}</h2>
                 <div className="contentContainer">
-                    <p>{content}</p>
+                    {content !== "" && <p>{content}</p>}
                     {image_url !== "" && <img src={image_url} alt="" />}
                 </div>
             </div>

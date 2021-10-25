@@ -16,7 +16,7 @@ const MyNoteModal = ({ title, content, open, onClose, handleEdit, handleDelete, 
                 <FontAwesomeIcon icon={faEdit} className="editIcon" onClick={handleEdit}/>
                 <FontAwesomeIcon icon={faTrashAlt} className="deleteIcon" onClick={handleDelete}/>
                 <div className="contentContainer">
-                    <p>{content}</p>
+                    {content !== "" && <p>{content}</p>}
                     {image_url !== "" && <img src={image_url} alt="" />}
                 </div>
             </div>
