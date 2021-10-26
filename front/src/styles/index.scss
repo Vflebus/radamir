@@ -9,6 +9,18 @@ body {
   background: url("../assets/images/bg-carte.webp");
   min-height: 100vh;
   overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #C8AD7F darkgrey;
+  &::-webkit-scrollbar{
+    width: .8vw;
+    &-track{
+      background-color: darkgrey;
+    }
+    &-thumb{
+      background-color: #C8AD7F;
+      border-radius: 20px;
+    }
+  }
 }
 .noDisplay {
     opacity: 0%;
