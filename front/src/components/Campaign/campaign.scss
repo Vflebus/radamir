@@ -13,9 +13,10 @@
         height: 10vh;
         @media screen and (max-width: 1500px) {
             font-size: 3rem;
-            @media screen and (max-width: 430px) {
+            @media screen and (max-width: 600px) {
+                align-self: flex-start;
                 text-align: unset;
-                max-width: unset;
+                max-width: 80vw;
                 margin-left: 1rem;
                 @media screen and (max-width: 365px){
                     font-size: 2.5rem;
@@ -112,7 +113,6 @@
             font-size: 4rem;
             font-family: vars.$title-font;
             margin-bottom: 1rem;
-            // transform: translate(2rem, 2rem);
             text-decoration: underline;
             @media screen and (max-width: 365px) {
                 font-size: 3rem;
@@ -122,11 +122,11 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            height: 130vh;
+            height: 115vh;
             width: 100vw;
             z-index: -1;
-            @media screen and (max-width: 430px) {
-                height: 120%;
+            @media screen and (max-width: 600px) {
+                height: 170vh;
                 width: 100vw;
             }
         }
@@ -140,6 +140,12 @@
                 align-self: flex-start;
                 transform: translateY(-7vh);
                 text-decoration: underline;
+                @media screen and (max-width: 1200px) {
+                    font-size: 2rem;
+                    @media screen and (max-width: 830px) {
+                        font-size: 1.5rem;
+                    }
+                }
             }
             .noteContainer {
                 position: relative;
@@ -154,12 +160,14 @@
                 }
                 h4 {
                     font-family: vars.$title-font;
-                    font-size: 1.5rem;
+                    font-size: 1.25vw;
                     text-align: center;
                     position: absolute;
                     top: 50%;
                     left: 50%;
-                    transform: translate(-50%, -50%)
+                    max-width: 70%;
+                    max-height: 80%;
+                    transform: translate(-50%, -50%);
                 }
             }
             .noteContainer:hover{
@@ -217,7 +225,7 @@
                     }
                 }
             }
-            @media screen and (max-width: 430px) {
+            @media screen and (max-width: 600px) {
                 flex-direction: column-reverse;
                 .notesPrivees, .notesPubliques, .imageDiscord {
                     border: none;
@@ -225,7 +233,6 @@
                     width: 90vw;
                     flex-direction: column;
                     margin-bottom: 4rem;
-                    align-content: center;
                     overflow-y: auto;
                 }
                 .notesPrivees {
@@ -239,7 +246,7 @@
                         opacity: .9;
                     }
                     h4 {
-                        font-size: 1.25rem;
+                        font-size: 100%;
                     }
                 }
                 .imageDiscord {
@@ -258,11 +265,6 @@
                             transform: translateY(-8vh);
                         }
                     }
-                    .noteContainer {
-                        h4 {
-                            font-size: 1rem;
-                        }
-                    }
                 }
             }
         }
@@ -279,7 +281,7 @@
         .addNote:hover {
             text-decoration: underline;
         }
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 600px) {
             .addNote {
                 margin-top: 0;
                 width: unset;
