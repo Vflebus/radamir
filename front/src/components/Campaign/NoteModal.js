@@ -1,4 +1,6 @@
 import { createPortal } from "react-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./noteModal.scss"
 
 const NoteModal = ({ title, content, open, onClose, image_url }) => {
@@ -10,6 +12,7 @@ const NoteModal = ({ title, content, open, onClose, image_url }) => {
             <div className="modal-overlay" onClick={onClose}></div>
             <div className="noteModalContainer">
                 <h2>{title}</h2>
+                <FontAwesomeIcon icon={faTimes} className="closeIcon" onClick={onClose} />
                 <div className="contentContainer">
                     {content !== "" && <p>{content}</p>}
                     {image_url !== "" && <img src={image_url} alt="" />}
