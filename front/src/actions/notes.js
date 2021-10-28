@@ -22,6 +22,12 @@ export const setContent = (value) => ({
     value
 });
 
+export const SET_IMAGE_URL = "SET_IMAGE_URL"
+export const setImageUrl = (value) => ({
+  type: SET_IMAGE_URL,
+  value
+})
+
 export const FETCH_NOTES = "FETCH_NOTES";
 export const fetchNotes = (campaign_id, user_id) => ({
   type: FETCH_NOTES,

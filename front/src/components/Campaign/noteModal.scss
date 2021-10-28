@@ -1,26 +1,39 @@
 @use "../../styles/vars";
 
+
 .noteModalContainer { 
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba( 0, 0, 0, 0.8);
+  width: 50%;
+  min-width: min(952px, 100vw);
+  background-color: rgba( 0, 0, 0, 0.9);
   color: #C8AD7F;
-  border: solid .5rem #63412a;
-  padding: 2rem;
+  padding: 2.5rem;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   color: #C8AD7F;
   border: solid .5rem #C8AD7F;
   height: 85vh;
   h2, input {
+    max-width: 80%;
+    max-height: 20%;
     font-family: vars.$title-font;
     font-size: 5rem;
-    margin-bottom: 1rem;
+    text-align: center;
+    transform: translateY(1rem);
+    white-space: pre-line;
+    @media screen and (max-width: 930px) {
+      transform: unset;
+      font-size: 3rem;
+      @media screen and (max-width: 395px) {
+        font-size: 3rem;
+      }
+    }
   }
   input, textarea {
     padding: 0.3rem 0.5rem;
@@ -40,19 +53,69 @@
       font-size: 1.5rem;
       height: 70%;
       overflow: auto;
+      white-space: pre-line;
+      width: 100%;
   }
-  .editIcon {
+  .closeIcon, .editIcon, .deleteIcon {
     position: absolute;
     top: 1rem;
     right: 1rem;
     font-size: 2rem;
     cursor: pointer;
   }
+  .closeIcon {
+    font-size: 2.35rem;
+  }
+  .editIcon {
+    right: 3rem;
+  }
   .deleteIcon {
-    position: absolute;
-    top: 1rem;
-    right: 4rem;
-    font-size: 2rem;
-    cursor: pointer;
+    right: 6rem;
+  }
+  .contentContainer {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    p {
+      box-sizing: content-box;
+      padding-right: 2%;
+      line-height: normal;
+      height: unset;
+      max-height: 70%;
+      display: flex;
+      justify-content: center;
+      vertical-align: top;
+      scrollbar-width: thin;
+      scrollbar-color: #C8AD7F darkgrey;
+      &::-webkit-scrollbar{
+        width: 10px;
+        &-track{
+          background-color: darkgrey;
+        }
+        &-thumb{
+          background-color: #C8AD7F;
+          border-radius: 20px;
+        }
+      }
+    }
+    img {
+      border: 5px solid #C8AD7F;
+      max-width: 40%;
+      max-height: 80%;
+      margin-left: 1.5rem;
+    }
+    @media screen and (max-width: 930px) {
+      flex-direction: column-reverse;
+      margin-top: 2rem;
+      height: 80%;
+      img {
+        max-height: 40%;
+      }
+      p{
+        max-height: 60%;
+      }
+    }
   }
 }

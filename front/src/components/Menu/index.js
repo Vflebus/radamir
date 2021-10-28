@@ -104,11 +104,11 @@ const Menu = () => {
               <NavLink exact to="/wiki" className="links" activeClassName="selected" onClick={toggleMenu}>
                 Wiki
               </NavLink>
-              <NavLink exact to="/campagnes" className="links" activeClassName="selected" onClick={toggleMenu}>
-                Campagnes
-              </NavLink>
               {logged && (
                 <>
+                  <NavLink exact to="/campagnes" className="links" activeClassName="selected" onClick={toggleMenu}>
+                    Campagnes
+                  </NavLink>
                   <NavLink exact to="/profile" className="links" activeClassName="selected" onClick={toggleMenu}>
                     Mon Compte
                   </NavLink>              
