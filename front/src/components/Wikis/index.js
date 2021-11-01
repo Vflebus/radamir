@@ -52,7 +52,8 @@ const Wikis = () => {
                 <img src={arrow} alt="Retour à l'accueil" />
             </Link>
             <WikiSection header="Régions" links={regions} />
-            <WikiSection header="Informations Générales" links={general} />
+	    {general.length !==0 &&
+            <WikiSection header="Informations Générales" links={general} />}
         </div>
     </MotionWrapper>
   );

@@ -154,36 +154,38 @@ area {
     display: none;
 }
 @media screen and (max-width: 767px) {
-    #mainContainer {
-        display: none;
-    }
-    .landscapeWarning {
-        display: block;
-        font-family: 'IM Fell English SC', serif;
-        font-size: 3rem;
-        color: white;
-        text-align: center;
-        width: 100%;
-        position: absolute;
-        top: 35vh;
-        /* left: 50%; */
-        /* transform: translate(-50%, -50%); */
-        animation: blinking 3s linear infinite;
-    }
-    @keyframes blinking {
-        50% {
-            opacity: 0;
+    @media (orientation: portrait) {
+        #mainContainer {
+            display: none;
         }
-    }
-    .landscapeBG {
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
-        /* top: 50%;
-        left: 50%; */
-        /* transform: translate(-50%, -50%); */
-        background: url(../../assets/images/bg-carte.webp);
-        filter: brightness(20%);
+        .landscapeWarning {
+            display: block;
+            font-family: 'IM Fell English SC', serif;
+            font-size: 3rem;
+            color: white;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 35vh;
+            /* left: 50%; */
+            /* transform: translate(-50%, -50%); */
+            animation: blinking 3s linear infinite;
+        }
+        @keyframes blinking {
+            50% {
+                opacity: 0;
+            }
+        }
+        .landscapeBG {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            /* top: 50%;
+            left: 50%; */
+            /* transform: translate(-50%, -50%); */
+            background: url(../../assets/images/bg-carte.webp);
+            filter: brightness(20%);
+        }
     }
 }
 @media (orientation: landscape) {
@@ -191,8 +193,8 @@ area {
         display: none;
     }
 }
-/* @media screen and (max-width: 1500px) {
+@media screen and (max-width: 1500px) {
     .infoBulle {
         display: none;
     }
-} */
+}
