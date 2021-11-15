@@ -19,7 +19,8 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
           }
         });
 
-        const userCampaigns = res.data
+        const userCampaigns = res.data;
+        console.log(userCampaigns);
 
         store.dispatch(saveCampaigns(userCampaigns));
       } catch (err) {
@@ -41,7 +42,7 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
           description
         });
         
-        store.dispatch(fetchCampaigns(action.id));
+        store.dispatch(fetchCampaigns());
       } catch (err) {
         console.error(err);
         store.dispatch(setError(err.message));
