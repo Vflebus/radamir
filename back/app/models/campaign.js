@@ -58,6 +58,7 @@ class Campaign {
         "SELECT * FROM campaign c INNER JOIN campaign_has_players cp ON c.id = cp.campaign_id WHERE cp.user_id = $1 OR cp.user_id = 4",
         [user_id]
       );
+      console.log(rows);
       return rows.map(
         (row) =>
           new Campaign(row)
