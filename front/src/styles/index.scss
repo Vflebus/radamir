@@ -10,6 +10,21 @@
 html {
   font-family: serif;
 }
+*{
+  vertical-align: top;
+  scrollbar-width: thin;
+  scrollbar-color: #C8AD7F darkgrey;
+  &::-webkit-scrollbar{
+    width: 10px;
+    &-track{
+      background-color: darkgrey;
+    }
+    &-thumb{
+      background-color: #C8AD7F;
+      border-radius: 20px;
+    }
+  }
+}
 body {
   position: relative;
   background: url("../assets/images/bg-carte.webp");
