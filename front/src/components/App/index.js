@@ -30,7 +30,7 @@ const App = () => {
   const location = useLocation();
   const [isDesktop, setIsDesktop] = useState(true);
   const { loading } = useSelector(({ wikis }) => wikis);
-  const { logged } = useSelector(({ user }) => user);
+  const { logged, loggedUser } = useSelector(({ user }) => user);
   const isAdmin = useSelector(({ user: { loggedUser } }) => loggedUser.is_admin);
 
   const onResize = () => {
@@ -44,8 +44,8 @@ const App = () => {
 
   useEffect(() => {
     dispatch(checkConnection());
-    dispatch(fetchWikis());
-  }, [dispatch]);
+    dispatch(fetchWikis(loggedUser.id));
+  }, [dispatch, loggedUser.id]);
 
   if (loading) return <Loading />;
 

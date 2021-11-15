@@ -40,8 +40,8 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
           campaign_name,
           description
         });
-
-        store.dispatch(fetchCampaigns());
+        
+        store.dispatch(fetchCampaigns(action.id));
       } catch (err) {
         console.error(err);
         store.dispatch(setError(err.message));
@@ -61,7 +61,7 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
           description
         });
 
-        store.dispatch(fetchCampaigns());
+        store.dispatch(fetchCampaigns(action.userId));
       } catch (err) {
         console.error(err);
         store.dispatch(setError(err.message));
