@@ -2,9 +2,9 @@ const Campaign = require('../models/campaign');
 
 const campaignController = {
     
-    getAllCampaigns: async (_, response) => {
+    getAllCampaigns: async (_, request, response) => {
         try {
-            const campaigns = await Campaign.getAllCampaigns();
+            const campaigns = await Campaign.getAllCampaigns(request.body.user_id);
 			response.json(campaigns);
         } catch (error) {
 			console.error(error);

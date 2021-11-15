@@ -52,9 +52,12 @@ class Campaign {
    * @returns {Array<Campaign>} The list of the campaigns
    * @throws {Error} If the request is failed
    */
-  static async getAllCampaigns() {
+  static async getAllCampaigns(user_id) {
     try {
-      let { rows } = await client.query("SELECT * FROM campaign;");
+      let { rows } = await client.query(
+        "SELECT * FROM campaign c INNER JOIN campaign_has_players cp ON c.id = cp.campaign_id WHERE cp.user_id = $1",
+        [user_id]
+      );
       return rows.map(
         (row) =>
           new Campaign(row)
