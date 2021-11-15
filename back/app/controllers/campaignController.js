@@ -4,8 +4,8 @@ const campaignController = {
     
     getAllCampaigns: async (request, response) => {
         try {
-            console.log(`request params: ${request.data.args.user_id}`);
-            const campaigns = await Campaign.getAllCampaigns(request.data.args.user_id);
+            console.log(`request params: ${request.query.user_id}`);
+            const campaigns = await Campaign.getAllCampaigns(request.query.user_id);
 			response.json(campaigns);
         } catch (error) {
 			console.error(error);
