@@ -2,7 +2,7 @@ const Campaign = require('../models/campaign');
 
 const campaignController = {
     
-    getAllCampaigns: async (_, response) => {
+    getAllCampaigns: async (request, response) => {
         try {
             const campaigns = await Campaign.getAllCampaigns(request.body.user_id);
 			response.json(campaigns);
