@@ -54,6 +54,7 @@ class Campaign {
    */
   static async getAllCampaigns(user_id) {
     try {
+      console.log(user_id);
       let { rows } = await client.query(
         "SELECT * FROM campaign c INNER JOIN campaign_has_players cp ON c.id = cp.campaign_id WHERE cp.user_id = $1",
         [user_id]
