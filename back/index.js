@@ -37,11 +37,11 @@ const socketPort = process.env.socketPort || 4001;
 server.listen(socketPort, () => console.log(`listenning on socketPort ${socketPort}`));
 
 io.on("connection", (socket) => {
-    console.log("New client connected");
-});  
-io.on("disconnect", () => {
-    console.log("Client disconnected");
-  });
+    console.log("New client connected: " + socket.id);
+    socket.on("disconnect"), () => {
+        console.log("Client disconnected: " + socket.id);
+    };
+});
 
 module.exports = io;
 
