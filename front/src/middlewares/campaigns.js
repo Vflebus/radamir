@@ -14,7 +14,9 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
     case FETCH_CAMPAIGNS:
       try {
         const res = await radamirAPI.get("/campaigns", {
-          user_id: action.user_id
+          params: {
+            user_id: action.user_id
+          }
         });
 
         const userCampaigns = res.data
