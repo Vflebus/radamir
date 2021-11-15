@@ -22,7 +22,7 @@ import "./campaign.scss";
 import Note from "./Note";
 
 const Campaign = () => {
-    const ENDPOINT = "http://164.90.223.174:4001/";
+    const ENDPOINT = "http://64.225.103.92:4001/";
     const dispatch = useDispatch();
     const history = useHistory();
     const [deleteOpen, setDeleteOpen] = useState(false);
