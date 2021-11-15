@@ -38,9 +38,9 @@ server.listen(socketPort, () => console.log(`listenning on socketPort ${socketPo
 
 io.on("connection", (socket) => {
     console.log("New client connected: " + socket.id);
-    socket.on("disconnect"), () => {
+    socket.on("disconnect", () => {
         console.log("Client disconnected: " + socket.id);
-    };
+    });
 });
 
 module.exports = io;
