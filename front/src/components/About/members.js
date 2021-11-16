@@ -1,4 +1,18 @@
-[
+const membres = [
+  {
+    "name": "Vincent",
+    "role": "Product Owner & Scrum Master",
+    "img": require("../../assets/images/vincent-photo.jpg").default,
+    "github": "Vflebus",
+    "linkedin": "vincent-flebus-779440220"
+  },
+  {
+    "name": "Noam",
+    "role": "Lead Dev Back",
+    "img": "https://ca.slack-edge.com/T01TU2B3V9V-U01UGUY7830-131369fe221e-512",
+    "github": "GeneralNZR",
+    "linkedin": "noamzeitoun"
+  },
   {
     "name": "Boris",
     "role": "Git Master",
@@ -19,19 +33,7 @@
     "img": "https://i.ibb.co/VprLHQs/1631261938078.jpg",
     "github": "Michael-Morales",
     "linkedin": "morales-michael"
-  },
-  {
-    "name": "Noam",
-    "role": "Lead Dev Back",
-    "img": "https://ca.slack-edge.com/T01TU2B3V9V-U01UGUY7830-131369fe221e-512",
-    "github": "GeneralNZR",
-    "linkedin": "noamzeitoun"
-  },
-  {
-    "name": "Vincent",
-    "role": "Product Owner & Scrum Master",
-    "img": "https://i.ibb.co/TKyPdTz/IMG-20210719-213131.jpg",
-    "github": "Vflebus",
-    "linkedin": "vincent-flebus-779440220"
   }
 ]
+
+export default membres;

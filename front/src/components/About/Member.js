@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import photo from "../../assets/images/vincent-photo.webp"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";

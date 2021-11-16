@@ -7,7 +7,6 @@
   background: url("../../assets/images/bg-carte.webp");
 
   .about {
-    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,8 +16,23 @@
     &__title {
       margin-bottom: 3rem;
       font-family: vars.$title-font;
+      font-size: 4rem;
+      text-transform: uppercase;
+    }
+
+    &__subTitle {
+      margin-bottom: 3rem;
+      font-family: vars.$title-font;
       font-size: 2rem;
       text-transform: uppercase;
+    }
+
+    p {
+      margin-bottom: 3rem;
+      font-size: 1.5rem;
+      text-align: justify;
+      width: 80%;
+      color: black;
     }
 
     &__team {
