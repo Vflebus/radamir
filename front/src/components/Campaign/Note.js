@@ -3,12 +3,13 @@ import cadre from "../../assets/images/parchment.png"
 import NoteModal from "./NoteModal";
 import MyNoteModal from "./MyNoteModal";
 import EditNoteModal from "./EditNoteModal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteNote, setContent, setImageUrl, setTitle, setType } from "../../actions/notes";
 
 const Note = ({ title, content, note_id, creator_id, campaign_id, user_id, is_private, image_url }) => {
-
-    const isMine = creator_id === user_id ? true : false;
+    
+    const isAdmin = useSelector(({ user: { loggedUser } }) => loggedUser.is_admin);
+    const isMine = creator_id === user_id || isAdmin ? true : false;
     const [isOpen, setIsOpen] = useState(false);
     const [isEditOpen, setIsEditOpen] = useState(false);
     const dispatch = useDispatch();
