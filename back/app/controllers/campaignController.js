@@ -15,6 +15,7 @@ const campaignController = {
     getOneCampaign: async (request, response) => {
         try {
             const campaign = await Campaign.getOneCampaign(request.params.id);
+            console.log(`JSON campaign: ${campaign.json}`);
 			response.json(campaign);
         } catch (error) {
 			console.error(error);

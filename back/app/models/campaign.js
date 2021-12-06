@@ -58,6 +58,7 @@ class Campaign {
         "SELECT c.id, c.campaign_name, c.description, c.created_at, c.user_id FROM campaign c INNER JOIN campaign_has_players cp ON c.id = cp.campaign_id WHERE cp.user_id = $1 OR cp.campaign_id = 3",
         [user_id]
       );
+      console.log(`fetched campaigns : ${rows}`);
       return rows.map(
         (row) =>
           new Campaign(row)
