@@ -58,7 +58,7 @@ class Campaign {
         "SELECT c.id, c.campaign_name, c.description, c.created_at, c.user_id FROM campaign c INNER JOIN campaign_has_players cp ON c.id = cp.campaign_id WHERE cp.user_id = $1 OR cp.campaign_id = 3",
         [user_id]
       );
-      console.log(`fetched campaigns : ${rows}`);
+      
       return rows.map(
         (row) =>
           new Campaign(row)
@@ -115,6 +115,10 @@ class Campaign {
             [this.campaign_name, this.description, this.user_id]
         );
         this.id = rows[0].id;
+        await client.query(
+          `INSERT INTO campaign_has_players (campaign_id, user_id) VALUES ($1, $2)`,
+          [this.id, this.user_id]
+        )
       }
     } catch (error) {
       console.log(error);

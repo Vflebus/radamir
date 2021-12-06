@@ -4,6 +4,7 @@ import {
   CREATE_CAMPAIGN,
   DELETE_CAMPAIGN,
   UPDATE_CAMPAIGN,
+  setCampaignLoading,
   saveCampaigns,
   fetchCampaigns
 } from "../actions/campaigns";
@@ -13,6 +14,7 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
     case FETCH_CAMPAIGNS:
       try {
+        console.log(`fetching with user id: ${action.user_id}`)
         const res = await radamirAPI.get("/campaigns", {
           params: {
             user_id: action.user_id
@@ -31,6 +33,7 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
 
     case CREATE_CAMPAIGN:
       try {
+        store.dispatch(setCampaignLoading());
         store.dispatch(clearError());
         const { campaign_name, description } = store.getState().campaigns;
 
@@ -42,7 +45,7 @@ const campaignsMiddleware = (store) => (next) => async (action) => {
           description
         });
         
-        store.dispatch(fetchCampaigns());
+        store.dispatch(fetchCampaigns(action.id));
       } catch (err) {
         console.error(err);
         store.dispatch(setError(err.message));

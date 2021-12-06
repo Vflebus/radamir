@@ -36,3 +36,8 @@ export const deleteCampaign = (userId, campaignId) => ({
   userId,
   campaignId
 });
+
+export const SET_CAMPAIGN_LOADING = "SET_CAMPAIGN_LOADING";
+export const setCampaignLoading = () => ({
+  type: SET_CAMPAIGN_LOADING
+});

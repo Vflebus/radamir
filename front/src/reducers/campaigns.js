@@ -1,6 +1,7 @@
 import {
   SAVE_CAMPAIGNS,
-  SET_CAMPAIGN_INPUT
+  SET_CAMPAIGN_INPUT,
+  SET_CAMPAIGN_LOADING
 } from "../actions/campaigns";
 import { LOGOUT } from "../actions/user";
 
@@ -13,6 +14,12 @@ const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case SET_CAMPAIGN_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+      
     case SAVE_CAMPAIGNS:
       return {
         ...state,

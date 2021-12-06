@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CampaignCard from "./CampaignCard";
 import MotionWrapper from "../MotionWrapper";
 import AddCampaignModal from "../AddCampaignModal";
+import Loading from "../Loading";
 
 import { setCampaignInput } from "../../actions/campaigns";
 
@@ -16,13 +17,15 @@ import bgShip from "../../assets/images/bgShip.png"
 const CampaignList = () => {
     const dispatch = useDispatch();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { list } = useSelector(({ campaigns }) => campaigns);
+    const { list, loading } = useSelector(({ campaigns }) => campaigns);
 
     const handleClose = () => {
         setIsModalOpen(false);
         dispatch(setCampaignInput("campaign_name", ""));
         dispatch(setCampaignInput("description", ""));
     };
+
+    if (loading) return <Loading />;
 
     return (
         <MotionWrapper>

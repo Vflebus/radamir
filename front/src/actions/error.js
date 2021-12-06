@@ -5,6 +5,6 @@ export const setError = (message) => ({
 });
 
 export const CLEAR_ERROR = "CLEAR_ERROR";
-export  const clearError = () => ({
+export const clearError = () => ({
   type: CLEAR_ERROR
 });
