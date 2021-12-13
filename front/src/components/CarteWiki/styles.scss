@@ -195,6 +195,13 @@ area {
 }
 @media screen and (max-width: 1500px) {
     .infoBulle {
-        display: none;
+        font-size: 1rem;
+        max-width: 20vw;
+    }
+    @media screen and (max-width: 1300px) {
+        .infoBulle {
+            font-size: .9rem;
+            max-width: 20vw;
+        }
     }
 }
