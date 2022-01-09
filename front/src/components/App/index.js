@@ -89,7 +89,7 @@ const App = () => {
           </Route>
         )}
         {logged ? (
-          <>
+          <Switch>
             <Route exact path="/campagnes/:id">
               <Campaign />
             </Route> 
@@ -102,11 +102,22 @@ const App = () => {
             <Route>
               <Page404 />
             </Route>
-          </>
+          </Switch>
         ) : (
-          <Route>
-            <Page404 />
-          </Route>
+          <Switch>
+            <Route exact path="/campagnes/:id">
+              <Redirect to="/" />
+            </Route> 
+            <Route exact path="/campagnes">
+              <Redirect to="/" />
+            </Route>
+            <Route exact path="/profile">
+              <Redirect to="/" />
+            </Route>
+            <Route>
+              <Page404 />
+            </Route>
+          </Switch>
         )}
       </Switch>
       <TermsAndAboutLinks key="footer" />
