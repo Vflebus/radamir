@@ -38,7 +38,8 @@ area {
     background-size: cover;
 }
 #carte-radamir {
-    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
     transition-duration: 3s;
 }
 .carte-radamir {

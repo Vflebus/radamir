@@ -99,13 +99,15 @@ const App = () => {
             <Route exact path="/profile">
               <UserProfile />
             </Route>
+            <Route>
+              <Page404 />
+            </Route>
           </>
         ) : (
-          <Redirect to="/" />
+          <Route>
+            <Page404 />
+          </Route>
         )}
-        <Route>
-          <Page404 />
-        </Route>
       </Switch>
       <TermsAndAboutLinks key="footer" />
     </AnimatePresence>
