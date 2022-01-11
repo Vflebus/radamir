@@ -22,7 +22,6 @@ import "./campaign.scss";
 import Note from "./Note";
 
 const Campaign = () => {
-    const ENDPOINT = "http://64.225.103.92:4001/";
     const dispatch = useDispatch();
     const history = useHistory();
     const [deleteOpen, setDeleteOpen] = useState(false);
@@ -36,14 +35,23 @@ const Campaign = () => {
     const currentCampaign = list.find(campaign => campaign.id === +id);
 
     const [imgUrl, setImgUrl] = useState("https://cdn.discordapp.com/attachments/837830452042661899/897226129709096960/Cennetig_le_Minutieux.jpg");
+
+    
+    const ENDPOINT = process.env.SERVERIO;
     useEffect(() => {
-        const socket = socketIOClient(ENDPOINT);
+        console.log('connecting socket');
+        const socket = socketIOClient(ENDPOINT, {
+            reconnection: false
+        });
         socket.on("ImgUrl", data => {
           setImgUrl(data);
           console.log(data)
-        })
-        return () => socket.disconnect();
-    })
+        });
+        return function cleanup() {
+            console.log('disconnecting socket');
+            socket.disconnect();
+        }
+    }, [ENDPOINT]);
 
     const handleDelete = () => {
         dispatch(deleteCampaign(userId, +id));
@@ -142,21 +150,69 @@ const Campaign = () => {
                     <img src={bg2} alt="" className="bg2"/>
                     <h2>Notes</h2>
                     <section className="allNotes">
+
                         <section className="notesPrivees">
+
                             <h3>Mes notes privées</h3>
-                            {notesList.myPrivates.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} image_url={note.image_url} key={note.id}/>)}
+
+                            {notesList.myPrivates.map(
+                                (note) => 
+                                    <Note
+                                        title={note.title}
+                                        content={note.content}
+                                        note_id={note.id}
+                                        creator_id={note.user_id}
+                                        campaign_id={id}
+                                        user_id={userId}
+                                        is_private={note.is_private}
+                                        image_url={note.image_url}
+                                        key={note.id}
+                                    />
+                                )
+                            }
                         </section>
+
                         <section className="notesPubliques">
                             <h3>Notes du groupe</h3>
-                            {notesList.myPublics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} image_url={note.image_url} key={note.id}/>)}
-                            {notesList.publics.map((note) => <Note title={note.title} content={note.content} note_id={note.id} creator_id={note.user_id} campaign_id={id} user_id={userId} is_private={note.is_private} image_url={note.image_url} key={note.id}/>)}
+                            {notesList.myPublics.map(
+                                (note) => 
+                                    <Note 
+                                        title={note.title}
+                                        content={note.content}
+                                        note_id={note.id}
+                                        creator_id={note.user_id}
+                                        campaign_id={id}
+                                        user_id={userId}
+                                        is_private={note.is_private}
+                                        image_url={note.image_url}
+                                        key={note.id}
+                                    />
+                                )
+                            }
+                            {notesList.publics.map(
+                                (note) => 
+                                    <Note
+                                        title={note.title}
+                                        content={note.content}
+                                        note_id={note.id}
+                                        creator_id={note.user_id}
+                                        campaign_id={id}
+                                        user_id={userId}
+                                        is_private={note.is_private}
+                                        image_url={note.image_url}
+                                        key={note.id}
+                                    />
+                                )
+                            }
                         </section>
+
                         <section className="imageDiscord">
                             <h3>Illustration</h3>
                             <div className="imgContainer">
                                 <img src={imgUrl} alt="" className="discordImg" onClick={addModalFromImage}/>
                             </div>
                         </section>
+
                     </section>
                     <button className="addNote" onClick={openAddModal}>Ajouter une nouvelle note</button>
                     <AddNoteModal open={isAddModalOpen} onClose={onAddModalClose} campaign_id={id}/>

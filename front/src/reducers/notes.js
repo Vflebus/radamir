@@ -53,7 +53,6 @@ import {
 
         case SAVE_NOTES:
             return {
-              ...state,
               list: {
                 myPublics: action.myPublicsData,
                 myPrivates: action.myPrivatesData,

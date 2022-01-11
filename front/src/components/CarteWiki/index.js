@@ -1,3 +1,4 @@
+/* eslint-disable no-eval */
 /* eslint-disable no-unused-expressions */
 
 import './styles.scss'
@@ -24,6 +25,11 @@ const CarteWiki = () => {
     const indexLinkRef = useRef();
     const mapContainerRef = useRef();
     const infoRef = useRef();
+    const KarnaclokRef = useRef();
+    const DroknorRef = useRef();
+    const FeidlimidRef = useRef();
+    const VannaRef = useRef();
+    const KervollenRef = useRef();
 
     const { list } = useSelector(({ wikis }) => wikis);
     const regions = list.filter(({ type }) => type === "region");
@@ -31,10 +37,10 @@ const CarteWiki = () => {
     const darkenMap = (region) => {
         mapContainerRef.current.classList.toggle('darkened');
 
-        const targetRegion = document.getElementById(`mouseOver${region}`);
-        targetRegion.classList.toggle('zindex');
-        targetRegion.classList.toggle(`scaled`);
-        targetRegion.classList.toggle(`scaled${region}`);
+        const targetRegion = (eval(region + 'Ref'));
+        targetRegion.current.classList.toggle('zindex');
+        targetRegion.current.classList.toggle(`scaled`);
+        targetRegion.current.classList.toggle(`scaled${region}`);
 
         const { block } = regions.find(({ slug }) => region.toLowerCase() === slug);
         const { content } = block.find(({ title }) => title === "Historique");
@@ -49,10 +55,10 @@ const CarteWiki = () => {
     const fullView = (region) => {
         mapContainerRef.current.classList.toggle('darkened');
 
-        const targetRegion = document.getElementById(`mouseOver${region}`);
-        targetRegion.classList.toggle('zindex');
-        targetRegion.classList.toggle(`scaled`);
-        targetRegion.classList.toggle(`scaled${region}`);
+        const targetRegion = (eval(region + 'Ref'));
+        targetRegion.current.classList.toggle('zindex');
+        targetRegion.current.classList.toggle(`scaled`);
+        targetRegion.current.classList.toggle(`scaled${region}`);
 
         infoRef.current.classList.toggle(`noDisplay`);
         infoRef.current.classList.toggle(`zindex`);
@@ -62,10 +68,13 @@ const CarteWiki = () => {
 
     useEffect(
         () => {
+            console.log('listening for resize');
             imageMapResize();
             window.addEventListener('resize', () => {
+                console.log('resizing...');
                 setTimeout(() => {imageMapResize()}, 1000);
-            });
+                setTimeout(() => {imageMapResize()}, 5000);
+            }, []);
         },
     )
 
@@ -90,11 +99,11 @@ const CarteWiki = () => {
                     
                     {/* FRAGMENTS DE CARTE */}
                     <div id="allMaps">
-                            <img src={section_karnaclok} alt="Empire de Karnaclok" id="mouseOverKarnaclok" className="clickThrough region" />
-                            <img src={section_droknor} alt="Île de Droknor" id="mouseOverDroknor" className="clickThrough region" />
-                            <img src={section_feidlimid} alt="Bois de Feidlimid" id="mouseOverFeidlimid" className="clickThrough region" />
-                            <img src={section_vanna} alt="Domaine de Vanna" id="mouseOverVanna" className="clickThrough region" />
-                            <img src={section_kervollen} alt="Empire de Kervollen" id="mouseOverKervollen" className="clickThrough region" />
+                            <img src={section_karnaclok} alt="Empire de Karnaclok" id="mouseOverKarnaclok" className="clickThrough region" ref={KarnaclokRef}/>
+                            <img src={section_droknor} alt="Île de Droknor" id="mouseOverDroknor" className="clickThrough region" ref={DroknorRef}/>
+                            <img src={section_feidlimid} alt="Bois de Feidlimid" id="mouseOverFeidlimid" className="clickThrough region" ref={FeidlimidRef}/>
+                            <img src={section_vanna} alt="Domaine de Vanna" id="mouseOverVanna" className="clickThrough region" ref={VannaRef}/>
+                            <img src={section_kervollen} alt="Empire de Kervollen" id="mouseOverKervollen" className="clickThrough region" ref={KervollenRef}/>
                     {/* FRAGMENTS DE CARTE */}
 
                         <div id="map-container" ref={mapContainerRef}>
@@ -113,10 +122,8 @@ const CarteWiki = () => {
                             <map name="image-map">
                                 <Link to="/wiki/karnaclok">
                                     <area 
-                                        id="region-karnaclok" 
-                                        target="" 
-                                        alt="Wiki Karnaclok" 
-                                        title="" 
+                                        id="region-karnaclok"
+                                        alt="Wiki Karnaclok"
                                         coords="1276,1057,1287,1031,1296,986,1315,964,1332,930,1344,899,1366,879,1383,859,1403,839,1423,825,1445,808,1468,794,1496,780,1513,760,1536,752,1564,749,1525,732,1491,721,1448,704,1412,695,1383,692,1332,687,1284,687,1248,681,1211,653,1180,624,1168,588,1143,557,1129,523,1098,492,1061,495,1030,495,979,478,948,503,951,526,948,554,931,565,891,551,869,537,838,520,807,543,798,582,790,619,784,661,787,698,798,746,809,774,824,811,846,836,869,862,874,901,874,941,860,978,821,1012,801,1034,790,1088,812,1122,835,1167,855,1201,891,1229,934,1235,996,1243,1027,1243,1069,1243,1118,1232,1140,1224,1160,1195,1168,1150,1185,1116,1202,1082,1231,1048" 
                                         shape="poly"
                                         onMouseOver={() => darkenMap('Karnaclok')}
