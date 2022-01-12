@@ -91,19 +91,50 @@ const CarteWiki = () => {
                             <p id="navText">Index</p>
                         </Link>
                     </div>
+                    
+                    {/* Historique région */}
                     <aside id="infoBulleContainer">
                         <div className="infoBulle noDisplay clickThrough" id="info" ref={infoRef}>
-                            {/* Historique région */}
                         </div>
                     </aside>
                     
                     {/* FRAGMENTS DE CARTE */}
                     <div id="allMaps">
-                            <img src={section_karnaclok} alt="Empire de Karnaclok" id="mouseOverKarnaclok" className="clickThrough region" ref={KarnaclokRef}/>
-                            <img src={section_droknor} alt="Île de Droknor" id="mouseOverDroknor" className="clickThrough region" ref={DroknorRef}/>
-                            <img src={section_feidlimid} alt="Bois de Feidlimid" id="mouseOverFeidlimid" className="clickThrough region" ref={FeidlimidRef}/>
-                            <img src={section_vanna} alt="Domaine de Vanna" id="mouseOverVanna" className="clickThrough region" ref={VannaRef}/>
-                            <img src={section_kervollen} alt="Empire de Kervollen" id="mouseOverKervollen" className="clickThrough region" ref={KervollenRef}/>
+                        <img
+                            src={section_karnaclok}
+                            alt="Empire de Karnaclok"
+                            id="mouseOverKarnaclok"
+                            className="clickThrough region"
+                            ref={KarnaclokRef}
+                        />
+                        <img
+                            src={section_droknor}
+                            alt="Île de Droknor"
+                            id="mouseOverDroknor"
+                            className="clickThrough region"
+                            ref={DroknorRef}
+                        />
+                        <img
+                            src={section_feidlimid}
+                            alt="Bois de Feidlimid"
+                            id="mouseOverFeidlimid"
+                            className="clickThrough region"
+                            ref={FeidlimidRef}
+                        />
+                        <img
+                            src={section_vanna}
+                            alt="Domaine de Vanna"
+                            id="mouseOverVanna"
+                            className="clickThrough region" 
+                            ef={VannaRef}
+                        />
+                        <img
+                            src={section_kervollen}
+                            alt="Empire de Kervollen"
+                            id="mouseOverKervollen"
+                            className="clickThrough region"
+                            ref={KervollenRef}
+                        />
                     {/* FRAGMENTS DE CARTE */}
 
                         <div id="map-container" ref={mapContainerRef}>
@@ -112,7 +143,7 @@ const CarteWiki = () => {
                                 src={carteRadamir}
                                 useMap="#image-map"
                                 id="carte-radamir"
-                                className="appearance carte-radamir"
+                                className="carte-radamir"
                                 alt="Carte de Radamir"
                                 initial={{ opacity: 0, zIndex: -2, y: 25 }}
                                 animate={{ opacity: 1, zIndex: 1, y: 0 }}

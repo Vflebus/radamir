@@ -1,20 +1,12 @@
 const io = require('../../index.js');
 
 const discordBot = (message) => {
-  
-  function checkUrl(url) {
-    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-  }
-
-  console.log(message.content);
-
-  if (message.content.startsWith('http') && message.content.endsWith('jpeg'|'jpg'|'gif'|'png')) {
+  if (message.content.startsWith('http') && (message.content.endsWith('jpeg') || message.content.endsWith('jpg') || message.content.endsWith('gif') || message.content.endsWith('png'))) {
     console.log(`Il correspond ! ${message.content}`);
     io.emit("ImgUrl", message.content);
-  } else
-  if (message.embeds[0]) {
-
-    //The bot only manage messages starting with PREFIX
+  }
+  else if (message.embeds[0]) {
+    console.log('message.embeds[0] found');
     if (message.author.bot) return;
       
     //Array of the arguments after the command in the message
