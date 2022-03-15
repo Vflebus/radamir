@@ -6,13 +6,18 @@ const discordBot = (message) => {
     console.log(`Il correspond ! ${message.content}`);
     io.emit("ImgUrl", message.content);
   }
-  else if (message.attachments.first().url){
-    //attachments est une collection contenant les documents ajoutés au message. Une collection est une classe discord.js basée sur Map. Sa méthode first() renvoie le premier élément de la collection : un object avec une prop url
-    console.log(`found message.attachments.first().url: ${message.attachments.first().url}`);
-    io.emit("ImgUrl", `${message.attachments.first().url}`)
+  else if (message.attachments){
+    if (message.attachments.first().url){
+      //attachments est une collection contenant les documents ajoutés au message. Une collection est une classe discord.js basée sur Map. Sa méthode first() renvoie le premier élément de la collection : un object avec une prop url
+      console.log(`found message.attachments.first().url: ${message.attachments.first().url}`);
+      io.emit("ImgUrl", `${message.attachments.first().url}`)
+    } 
+    else {
+      console.log(`ça ne me concerne pas`);
+    }
   } 
   else {
-    console.log(`ça ne me concerne pas : ${message.content}`);
+    console.log(`ça ne me concerne pas`);
   }
 };
 
