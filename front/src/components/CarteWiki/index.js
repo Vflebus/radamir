@@ -35,9 +35,12 @@ const CarteWiki = () => {
     const regions = list.filter(({ type }) => type === "region");
 
     const darkenMap = (region) => {
+        // console.log(region);
         mapContainerRef.current.classList.toggle('darkened');
 
+        console.log(region+'Ref');
         const targetRegion = (eval(region + 'Ref'));
+        console.log(targetRegion);
         targetRegion.current.classList.toggle('zindex');
         targetRegion.current.classList.toggle(`scaled`);
         targetRegion.current.classList.toggle(`scaled${region}`);
@@ -126,7 +129,7 @@ const CarteWiki = () => {
                             alt="Domaine de Vanna"
                             id="mouseOverVanna"
                             className="clickThrough region" 
-                            ef={VannaRef}
+                            ref={VannaRef}
                         />
                         <img
                             src={section_kervollen}
